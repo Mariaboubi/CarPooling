@@ -1,0 +1,7 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>100</x><y>60</y><w>110</w><h>40</h></coordinates><panel_attributes>&lt;&lt;boundary&gt;&gt;
+RouteUI</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>280</x><y>60</y><w>110</w><h>40</h></coordinates><panel_attributes>&lt;&lt;controller&gt;&gt;
+RouteController</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>190</x><y>140</y><w>110</w><h>40</h></coordinates><panel_attributes>&lt;&lt;entity&gt;&gt;
+Route</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>90</x><y>260</y><w>110</w><h>40</h></coordinates><panel_attributes>&lt;&lt;boundary&gt;&gt;
+RequestUI</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>280</x><y>260</y><w>110</w><h>40</h></coordinates><panel_attributes>&lt;&lt;controller&gt;&gt;
+RequestController</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>190</x><y>340</y><w>110</w><h>40</h></coordinates><panel_attributes>&lt;&lt;entity&gt;&gt;
+Request</panel_attributes><additional_attributes></additional_attributes></element></diagram>

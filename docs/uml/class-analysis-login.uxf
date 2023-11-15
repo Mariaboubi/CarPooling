@@ -1,0 +1,4 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>140</x><y>80</y><w>100</w><h>40</h></coordinates><panel_attributes>&lt;&lt;boundary&gt;&gt;
+AcountUI</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>330</x><y>80</y><w>120</w><h>40</h></coordinates><panel_attributes>&lt;&lt;controller&gt;&gt;
+AcountController</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>240</x><y>200</y><w>100</w><h>40</h></coordinates><panel_attributes>&lt;&lt;entity&gt;&gt;
+User</panel_attributes><additional_attributes></additional_attributes></element></diagram>
