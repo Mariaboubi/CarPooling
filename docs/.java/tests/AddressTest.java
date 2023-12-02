@@ -1,39 +1,79 @@
-package carPooling;
-
-import static org.junit.Assert.*;
-
-import java.sql.Time;
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
 public class AddressTest {
-    private Address address;
 
-    @Before
-    public void setup() {
-        address = new Address();
+    @Test
+    public void testEqualsObject() {
+        Address address1 = new Address();
+        Address address2 = new Address();
+
+        Assertions.assertFalse(address1.equals(null));
+        Assertions.assertEquals(address1, address2);
+        Assertions.assertEquals(address1.hashCode(), address2.hashCode());
+
+        address1.setCity("Ellada");
+        Assertions.assertFalse(address1.equals(address2));
+        Assertions.assertFalse(address1.hashCode() == address2.hashCode());
+        address2.setCity("Ellada");
+        Assertions.assertEquals(address1, address2);
+        Assertions.assertEquals(address1.hashCode(), address2.hashCode());
     }
 
     @Test
-    public void testGetSetStreetName() {
-        String streetName = "Example Street";
-        address.setStreetName(streetName);
-        assertEquals(streetName, address.getStreetName());
+    public void testEqualsAndHashCode() {
+        BasicEqualTester<Address> equalsTester = new BasicEqualTester<Address>();
+        Address address = new Address();
+        equalsTester.setObjectUnderTest(address);
+
+        equalsTester.otherObjectIsNull();
+
+        equalsTester.otherObjectIsOfDifferentType(new Object());
+
+        Address address2 = new Address();
+        equalsTester.bothObjectsHaveNoState(address2);
+
+        address.setStreet("Patision");
+        equalsTester.otherObjectsHasNoState(address2);
+
+        equalsTester.sameReferences(address);
+
+        address2.setStreet("Patision");
+        equalsTester.bothObjectsHaveSameState(address2);
+
+        address.setNumber("76");
+        equalsTester.objectsHaveDifferentState(address2);
+
+        address2.setNumber("87");
+        equalsTester.objectsHaveDifferentState(address2);
+
+        address2.setNumber("76");
+        equalsTester.bothObjectsHaveSameState(address2);
+
+        address.setCity("Athens");
+        equalsTester.objectsHaveDifferentState(address2);
+
+        address2.setCity("Lamia");
+        equalsTester.objectsHaveDifferentState(address2);
+
+        address2.setCity("Athens");
+        equalsTester.bothObjectsHaveSameState(address2);
+
+        address.setCountry("Greece");
+        equalsTester.objectsHaveDifferentState(address2);
+
+        address2.setCountry("Italy");
+        equalsTester.objectsHaveDifferentState(address2);
+
+        address2.setCountry("Greece");
+        equalsTester.bothObjectsHaveSameState(address2);
+
+        address.setZipCode(new ZipCode("111"));
+        equalsTester.objectsHaveDifferentState(address2);
+
+        address2.setZipCode(new ZipCode("222"));
+        equalsTester.objectsHaveDifferentState(address2);
+
+        address2.setZipCode(new ZipCode("111"));
+        equalsTester.bothObjectsHaveSameState(address2);
+
     }
 
-    @Test
-    public void testGetSetStreetNumber() {
-        int streetNumber = 123;
-        address.setStreetNumber(streetNumber);
-        assertEquals(streetNumber, address.getStreetNumber());
-    }
-
-    @Test
-    public void testGetSetZC() {
-        String ZC = "12345";
-        address.setZC(ZC);
-        assertEquals(ZC, address.getZC());
-    }
 }
