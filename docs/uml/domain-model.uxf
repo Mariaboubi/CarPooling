@@ -1,68 +1,68 @@
 <diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notesw
-δηγούκε</help_text><element><id>UMLClass</id><coordinates><x>240</x><y>220</y><w>170</w><h>70</h></coordinates><panel_attributes>Passenger
+δηγούκε</help_text><element><id>UMLClass</id><coordinates><x>240</x><y>210</y><w>170</w><h>70</h></coordinates><panel_attributes>Passenger
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>870</x><y>210</y><w>190</w><h>70</h></coordinates><panel_attributes>Driver
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>870</x><y>200</y><w>190</w><h>70</h></coordinates><panel_attributes>Driver
 --
 license_number :String
-car_type :String</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>140</y><w>250</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;230;10;230;70</additional_attributes></element><element><id>UMLClass</id><coordinates><x>870</x><y>440</y><w>220</w><h>110</h></coordinates><panel_attributes>Route Data
+car_type :String</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>130</y><w>250</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;230;10;230;70</additional_attributes></element><element><id>UMLClass</id><coordinates><x>870</x><y>430</y><w>220</w><h>110</h></coordinates><panel_attributes>Route Data
 --
 date:Date
 start_time: Time
 destination :Address
 estimated_route_cost: float
-number_of_passengers: int</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>950</x><y>270</y><w>40</w><h>190</h></coordinates><panel_attributes>lt=-
+number_of_passengers: int</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>950</x><y>260</y><w>40</w><h>190</h></coordinates><panel_attributes>lt=-
 1
 
 
 *
-</panel_attributes><additional_attributes>10;10;10;170</additional_attributes></element><element><id>UMLClass</id><coordinates><x>530</x><y>280</y><w>270</w><h>120</h></coordinates><panel_attributes>Request
+</panel_attributes><additional_attributes>10;10;10;170</additional_attributes></element><element><id>UMLClass</id><coordinates><x>530</x><y>270</y><w>270</w><h>120</h></coordinates><panel_attributes>Request
 --
 passenger: Passenger
 driver: Driver
 destination: Address
 pickup_point :Address
 pick_up_time :Time
-request_status: Request Status</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>320</x><y>140</y><w>220</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>200;10;10;10;10;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>520</x><y>700</y><w>250</w><h>90</h></coordinates><panel_attributes>Route
+request_status: Request Status</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>320</x><y>130</y><w>220</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>200;10;10;10;10;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>520</x><y>690</y><w>250</w><h>90</h></coordinates><panel_attributes>Route
 --
 driver: Driver
 passengers: Passenger
 route_data: RouteData
-calculate_cost: Money</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>760</x><y>270</y><w>130</w><h>450</h></coordinates><panel_attributes>lt=-
+calculate_cost: Money</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>760</x><y>260</y><w>130</w><h>450</h></coordinates><panel_attributes>lt=-
 m1=1
 m2=1
-drives &gt;</panel_attributes><additional_attributes>10;430;110;10</additional_attributes></element><element><id>Relation</id><coordinates><x>660</x><y>220</y><w>230</w><h>80</h></coordinates><panel_attributes>lt=-
+drives &gt;</panel_attributes><additional_attributes>10;430;110;10</additional_attributes></element><element><id>Relation</id><coordinates><x>660</x><y>210</y><w>230</w><h>80</h></coordinates><panel_attributes>lt=-
 m1=*
 m2=*
-</panel_attributes><additional_attributes>10;60;10;20;210;20</additional_attributes></element><element><id>Relation</id><coordinates><x>400</x><y>220</y><w>210</w><h>80</h></coordinates><panel_attributes>lt=-
+</panel_attributes><additional_attributes>10;60;10;20;210;20</additional_attributes></element><element><id>Relation</id><coordinates><x>400</x><y>210</y><w>220</w><h>80</h></coordinates><panel_attributes>lt=-
 m1=1
 m2=*
-</panel_attributes><additional_attributes>10;20;190;20;190;60</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>330</y><w>160</w><h>130</h></coordinates><panel_attributes>Rate Driver
+</panel_attributes><additional_attributes>10;20;190;20;190;60</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>320</y><w>160</w><h>130</h></coordinates><panel_attributes>Rate Driver
 --
 driver:Driver
 route: Route
 security: float
 politeness : float
 consistency : float
-cleanliness : float</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1110</x><y>290</y><w>160</w><h>100</h></coordinates><panel_attributes>Rate Passenger
+cleanliness : float</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1110</x><y>280</y><w>160</w><h>100</h></coordinates><panel_attributes>Rate Passenger
 --
 passenger: Passenger
 route :Route 
 politeness: float
 consistency:  float
-reliability: float</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1050</x><y>240</y><w>170</w><h>70</h></coordinates><panel_attributes>lt=-
+reliability: float</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1050</x><y>230</y><w>180</w><h>70</h></coordinates><panel_attributes>lt=-
 m1=1
-m2=*</panel_attributes><additional_attributes>10;10;150;10;150;50</additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>230</y><w>190</w><h>120</h></coordinates><panel_attributes>lt=-
+m2=*</panel_attributes><additional_attributes>10;10;150;10;150;50</additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>220</y><w>190</w><h>120</h></coordinates><panel_attributes>lt=-
 m1=1
 m2=*
-</panel_attributes><additional_attributes>10;100;10;20;170;20</additional_attributes></element><element><id>Relation</id><coordinates><x>400</x><y>280</y><w>140</w><h>440</h></coordinates><panel_attributes>lt=-
+</panel_attributes><additional_attributes>10;100;10;20;170;20</additional_attributes></element><element><id>Relation</id><coordinates><x>400</x><y>270</y><w>140</w><h>440</h></coordinates><panel_attributes>lt=-
 m1=*
 m2=1
-travels &gt;</panel_attributes><additional_attributes>10;10;120;420</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1080</x><y>110</y><w>210</w><h>90</h></coordinates><panel_attributes>	"enum"
+travels &gt;</panel_attributes><additional_attributes>10;10;120;420</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1080</x><y>100</y><w>210</w><h>90</h></coordinates><panel_attributes>	"enum"
 _Request Status_
 --
 approved
 wait
-rejected</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>520</x><y>10</y><w>210</w><h>170</h></coordinates><panel_attributes>User
+rejected</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>520</x><y>0</y><w>210</w><h>170</h></coordinates><panel_attributes>User
 --
 name :String
 surname :String
@@ -76,9 +76,9 @@ rate :Float
 
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>550</x><y>460</y><w>210</w><h>100</h></coordinates><panel_attributes>Address
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>550</x><y>450</y><w>210</w><h>100</h></coordinates><panel_attributes>Address
 --
 streetname: String
 streetnumber: int
 ZC: zipcode
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>660</x><y>390</y><w>30</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;70</additional_attributes></element></diagram>
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>660</x><y>380</y><w>30</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;70</additional_attributes></element></diagram>

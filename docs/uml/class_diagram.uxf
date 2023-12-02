@@ -1,0 +1,77 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>50</x><y>10</y><w>310</w><h>330</h></coordinates><panel_attributes>Request
+--
+-passenger: Passenger
+-driver: Driver
+-destination: Address
+-pickup_point :Address
+-pick_up_time :Time
+-request_status: Request
+--
++ getPassenger(): Passenger{query}
++ setPassenger(passenger: Passenger)
++ getDriver(): Driver{query}
++ setDriver(driver: Driver)
++ getDestination(): Address{query}
++ setDestination(destination: Address)
++ getPickupPoint(): Address{query}
++ setPickupPoint(pickupPoint: Address)
++ getPickupTime(): Time{query}
++ setPickupTime(pickupTime: Time)
++ getRequestStatus(): String{query}
++ setRequestStatus(requestStatus: String)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>390</x><y>230</y><w>320</w><h>220</h></coordinates><panel_attributes>Route
+--
+-driver: Driver
+-passengers: Passenger
+-route_data: RouteData
+-calculate_cost: Money
+--
++ getDriver(): Driver
++ setDriver(driver: Driver): void
++ getPassengers(): List&lt;Passenger&gt;
++ setPassengers(passengers: List&lt;Passenger&gt;): void
++ getRouteData(): RouteData
++ setRouteData(routeData: RouteData): void
++ calculateCost(): Money</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>380</x><y>10</y><w>360</w><h>190</h></coordinates><panel_attributes>Address
+--
+- streetName: String
+- streetNumber: int
+- ZC: String
+--
++ Address(streetName: String, streetNumber: int, ZC: String)
++ getStreetName(): String
++ setStreetName(streetName: String): void
++ getStreetNumber(): int
++ setStreetNumber(streetNumber: int): void
++ getZC(): String
++ setZC(ZC: String): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>40</x><y>370</y><w>320</w><h>220</h></coordinates><panel_attributes>DriverRating
+--
+-driver: Driver
+-route: Route
+-securityRating: float
+-politenessRating: float
+-cleanlinessRating: float
+--
++ setSecurityRating(float: securityRating)
++ getSecurityRating(): float
++ setPolitenessRating(float: politenessRating)
++ getPolitenessRating(): float
++ setCleanlinessRating(float: cleanlinessRating)
++ getCleanlinessRating(): float</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>380</x><y>470</y><w>320</w><h>220</h></coordinates><panel_attributes>PassengerRating
+--
+-passenger: Passenger
+-route: Route
+-politenessRating: float
+-consistencyRating: float
+-reliabilityRating: float
+--
++ setPolitenessRating(float: politenessRating)
++ getPolitenessRating(): float
++ setConsistencyRating(float: consistencyRating)
++ getConsistencyRating(): float
++ setReliabilityRating(float: reliabilityRating)
++ getReliabilityRating(): float</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>90</x><y>640</y><w>210</w><h>110</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
+RequestStatus
+--
+APPROVED,
+WAIT,
+REJECTED</panel_attributes><additional_attributes></additional_attributes></element></diagram>
