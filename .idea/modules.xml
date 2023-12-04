@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/team20.iml" filepath="$PROJECT_DIR$/team20.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/CarPooling.iml" filepath="$PROJECT_DIR$/.idea/modules/CarPooling.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/CarPooling.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/CarPooling.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/CarPooling.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/CarPooling.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/CarPooling.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/CarPooling.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/CarPooling.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/CarPooling.app.unitTest.iml" />
     </modules>
   </component>
 </project>
