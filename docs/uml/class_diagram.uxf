@@ -1,8 +1,9 @@
-<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>70</x><y>1200</y><w>310</w><h>330</h></coordinates><panel_attributes>Sub Route
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>50</x><y>1200</y><w>310</w><h>290</h></coordinates><panel_attributes>Sub Route
 --
 - destination: Address
 - pickup_point :Address
 - pick_up_time :Time
+_- subroute_id:int_
 - id: int
 - subroute_id: int
 - cost: Money
@@ -17,9 +18,9 @@
 + getPickupTime(): LocalDateTime{query}
 + setPickupTime(pickupTime: LocalDateTime)
 + calculateCost(): Money{query}
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>500</x><y>990</y><w>350</w><h>540</h></coordinates><panel_attributes>Route
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>480</x><y>990</y><w>350</w><h>540</h></coordinates><panel_attributes>Route
 --
-- route_id: int
+_- route_id: int_
 - driver: Driver
 - id: int
 - Date:  LocalDateTime
@@ -50,7 +51,7 @@
 + setEstimated_cost(pass:Money)
 + calculateTotalCost: Money{query}
 + isCompleted() : boolean
-+ Completed(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>540</x><y>1620</y><w>360</w><h>330</h></coordinates><panel_attributes>Address
++ Completed(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>520</x><y>1620</y><w>360</w><h>330</h></coordinates><panel_attributes>Address
 --
 - street: String
 - Number: String
@@ -58,7 +59,7 @@
 - zip: ZipCode
 - Country: String
 --
-+ getStree(): String
++ getStreet(): String
 + setStreet(street: String): void
 + getNumber(): String
 + setNumber(Number: String): void
@@ -66,22 +67,22 @@
 + setCity(city: String): void
 + getZipCode(): String
 + setZipCode(zipcode: String): void
-+ getCountr(): String
-+ setCountr(countr: String): void
++ getCountry(): String
++ setCountry(country: String): void
 + equals( other:Object): boolean{query}
 + hasCode(): int{query}
 +calculateDistance(address:Address): double {query}
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>20</x><y>270</y><w>370</w><h>180</h></coordinates><panel_attributes>DriverRating
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>270</y><w>370</w><h>180</h></coordinates><panel_attributes>DriverRating
 --
 - securityRating: float
 - cleanlinessRating: float
 --
 + setSecurityRating(float: securityRating): void
 + getSecurityRating(): float
-+ setCleanlinessRating(float: cleanlinessRating)
++ setCleanlinessRating(float: cleanlinessRating): void
 + getCleanlinessRating(): float
-+ averageRating: float
-- validateRating(rating: float, ratingName: String): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>960</x><y>280</y><w>340</w><h>190</h></coordinates><panel_attributes>PassengerRating
++ averageRating(): float
+- validateRating(rating: float, ratingName: String): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>940</x><y>280</y><w>340</w><h>190</h></coordinates><panel_attributes>PassengerRating
 --
 - consistencyRating: float
 - reliabilityRating: float
@@ -93,9 +94,9 @@
 + getReliabilityRating(): float
 + averageRating: float{query}
 - validateRating(rating: float, ratingName: String)
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>520</x><y>480</y><w>300</w><h>430</h></coordinates><panel_attributes>User
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>500</x><y>480</y><w>300</w><h>390</h></coordinates><panel_attributes>User
 --
-- userIdCounter: int
+_- userIdCounter: int_
 - userId : int
 - name : String
 - surname : String
@@ -104,7 +105,7 @@
 - phone : String
 - username : String
 - password : String
-+ rate : float
++ rate : Rating
 --
 + getUserId() : int {query} 
 + getUsername() : String {query} 
@@ -113,12 +114,12 @@
 + getPhone() : String {query} 
 + getEmail() : String {query} 
 + getPassword() : String {query} 
-+ getAge() : int {query} 
-+ getRate() : int {query} 
++ getAge() : int {query}
++ setRate(rate:Rating): void 
 + changePassword (pass:String): void
 + changePersonalDetails (username:String , 
 name:String , surname:String, 
-telephone:String ,email:String ,age:int ): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>980</x><y>740</y><w>370</w><h>320</h></coordinates><panel_attributes>Driver
+telephone:String ,email:String ,age:int ): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>960</x><y>740</y><w>370</w><h>320</h></coordinates><panel_attributes>Driver
 --
 - iban : String
 - license_number: String
@@ -141,7 +142,7 @@ license_number :String, car_type :String )
 
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>50</x><y>730</y><w>310</w><h>360</h></coordinates><panel_attributes>Passenger
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>30</x><y>730</y><w>310</w><h>360</h></coordinates><panel_attributes>Passenger
 --
 - balance : Money
 - cardNumber: String
@@ -164,43 +165,44 @@ cardHolderName :String, cvv:String) : void
 + hasRoute(Route route): boolean
 + getRoutes(): HashSet&lt;Route&gt;
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>810</x><y>630</y><w>190</w><h>260</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;100;10;100;240;170;240</additional_attributes></element><element><id>Relation</id><coordinates><x>350</x><y>630</y><w>190</w><h>260</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>170;10;80;10;80;240;10;240</additional_attributes></element><element><id>UMLClass</id><coordinates><x>470</x><y>0</y><w>380</w><h>180</h></coordinates><panel_attributes>Rating
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>790</x><y>630</y><w>190</w><h>260</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;100;10;100;240;170;240</additional_attributes></element><element><id>Relation</id><coordinates><x>330</x><y>630</y><w>190</w><h>260</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>170;10;80;10;80;240;10;240</additional_attributes></element><element><id>UMLClass</id><coordinates><x>450</x><y>0</y><w>380</w><h>180</h></coordinates><panel_attributes>Rating
 --
 -user: User
 -route: Route
 -politenessRating: float
 
 --
-+ getRoute(): Route
 + setPolitenessRating(float: politenessRating)
 + getPolitenessRating(): float
--  validatePolitenessRating(float: politenessRating): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>180</x><y>80</y><w>310</w><h>210</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>290;10;10;10;10;190</additional_attributes></element><element><id>Relation</id><coordinates><x>840</x><y>80</y><w>330</w><h>220</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;310;10;310;200</additional_attributes></element><element><id>Relation</id><coordinates><x>160</x><y>1080</y><w>360</w><h>90</h></coordinates><panel_attributes>lt=-
+-  validatePolitenessRating(float: politenessRating): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>160</x><y>80</y><w>310</w><h>210</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>290;10;10;10;10;190</additional_attributes></element><element><id>Relation</id><coordinates><x>820</x><y>80</y><w>330</w><h>220</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;310;10;310;200</additional_attributes></element><element><id>Relation</id><coordinates><x>140</x><y>1080</y><w>360</w><h>90</h></coordinates><panel_attributes>lt=-
 m1=*
 m2=*
-travels  &gt;</panel_attributes><additional_attributes>10;10;10;60;340;60</additional_attributes></element><element><id>Relation</id><coordinates><x>170</x><y>440</y><w>80</w><h>310</h></coordinates><panel_attributes>lt=-
+travels  &gt;</panel_attributes><additional_attributes>10;10;10;60;340;60</additional_attributes></element><element><id>Relation</id><coordinates><x>150</x><y>440</y><w>80</w><h>310</h></coordinates><panel_attributes>lt=-
 m1=*
 m2=1
-raiting &gt;</panel_attributes><additional_attributes>10;290;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1130</x><y>460</y><w>80</w><h>300</h></coordinates><panel_attributes>lt=-
+raiting &gt;</panel_attributes><additional_attributes>10;290;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1110</x><y>460</y><w>80</w><h>300</h></coordinates><panel_attributes>lt=-
 m1=1
 m2=*
-raiting &gt;</panel_attributes><additional_attributes>10;280;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>840</x><y>1050</y><w>320</w><h>120</h></coordinates><panel_attributes>lt=-
+raiting &gt;</panel_attributes><additional_attributes>10;280;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>820</x><y>1050</y><w>320</w><h>120</h></coordinates><panel_attributes>lt=-
 m1=*
 m2=1
-drives &gt;</panel_attributes><additional_attributes>10;90;290;90;290;10</additional_attributes></element><element><id>Relation</id><coordinates><x>370</x><y>1270</y><w>150</w><h>50</h></coordinates><panel_attributes>lt=-
+drives &gt;</panel_attributes><additional_attributes>10;90;290;90;290;10</additional_attributes></element><element><id>Relation</id><coordinates><x>350</x><y>1270</y><w>150</w><h>50</h></coordinates><panel_attributes>lt=-
 m1=*
 m2=1
-travels &gt;</panel_attributes><additional_attributes>10;20;130;20</additional_attributes></element><element><id>Relation</id><coordinates><x>670</x><y>1520</y><w>30</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;100</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1020</x><y>1720</y><w>310</w><h>190</h></coordinates><panel_attributes>ZipCode
+travels &gt;</panel_attributes><additional_attributes>10;20;130;20</additional_attributes></element><element><id>Relation</id><coordinates><x>650</x><y>1520</y><w>30</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;100</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1000</x><y>1720</y><w>310</w><h>190</h></coordinates><panel_attributes>ZipCode
 --
-- zipcode: String{readOnly}
-
+- zipcode: String
+- latitude : double
+- longitude: double
 --
-
++ setCode(zip: String): void
 + getCode(): String
++ getLatitude( ): Double{query}
++ getLongitude( ): Double{query}
 + isValid(zipcode: String): boolean{query}
 + equals( other:Object): boolean{query}
 + hasCode(): int{query}
-+ toString: String {query}
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>890</x><y>1790</y><w>150</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;130;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>480</x><y>250</y><w>320</w><h>170</h></coordinates><panel_attributes>Email
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>870</x><y>1790</y><w>150</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;130;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>460</x><y>250</y><w>320</w><h>170</h></coordinates><panel_attributes>Email
 --
 - value: String{readOnly}
 _- EMAIL_PATTERN: Pattern_
@@ -209,31 +211,24 @@ _- EMAIL_PATTERN: Pattern_
 + getAddress(): String
 + isValid( ): boolean{query}
 + equals( other:Object): boolean{query}
-+ hasCode(): int{query}
-+ toString: String {query}
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>650</x><y>410</y><w>30</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>60</x><y>1620</y><w>310</w><h>360</h></coordinates><panel_attributes>Money
++ hasCode(): int{query}</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>630</x><y>410</y><w>30</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>40</x><y>1660</y><w>290</w><h>250</h></coordinates><panel_attributes>Money
 --
--  amount: BigDecimal
+- amount: Double
 - currency: Currency
 --
 
-+ getAmount(): BigDecimal
++ getAmount(): Double
 + getCurrency( ): Currency
 + plus( other:Money): Money{query}
 + minus( other:Money): Money{query}
-+ times( factor:BigDecimal): Money{query}
-+ times( factor:long): Money{query}
-+ divide( divisor :BigDecimal): Money{query}
-+ divide( divisor :long): Money{query}
++ times( factor:Double): Money{query}
++ divide( divisor :Double): Money{query}
 + checkForSameCurrencies( other:Money):void
-+ euros( other:Money): Money{query}
-+ euros( other:long): Money{query}
-+ dollars( amount:BigDecimal): Money{query}
-+ dollars( amount:long): Money{query}
++ euros( other: Double ): Money{query}
++ dollars( amount: Double): Money{query}
 + equals( other:Object): boolean{query}
 + hasCode(): int{query}
-+ toString: String {query}
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>370</x><y>1430</y><w>190</w><h>210</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;170;190</additional_attributes></element><element><id>Relation</id><coordinates><x>160</x><y>1520</y><w>30</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>310</x><y>1520</y><w>230</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>210;10;10;100</additional_attributes></element><element><id>UMLClass</id><coordinates><x>960</x><y>1380</y><w>320</w><h>110</h></coordinates><panel_attributes>AppGlobals
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>350</x><y>1430</y><w>190</w><h>210</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;170;190</additional_attributes></element><element><id>Relation</id><coordinates><x>140</x><y>1480</y><w>30</w><h>200</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;180</additional_attributes></element><element><id>Relation</id><coordinates><x>290</x><y>1520</y><w>230</w><h>160</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>210;10;10;140</additional_attributes></element><element><id>UMLClass</id><coordinates><x>940</x><y>1380</y><w>320</w><h>110</h></coordinates><panel_attributes>AppGlobals
 --
 + COST_PER_KM: double
 + MIN_RATING: float
