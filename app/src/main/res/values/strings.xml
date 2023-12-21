@@ -43,4 +43,11 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="carpooling">CarPooling</string>
+    <string name="passenger">Passenger</string>
+    <string name="driver">Driver</string>
+    <string name="i_want_to_be_a">I want to be a</string>
+    <string name="image_button">image button</string>
+    <string name="back">back</string>
 </resources>
