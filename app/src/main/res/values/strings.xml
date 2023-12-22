@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CarPooling</string>
+    <string name="carPooling">CarPooling</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -43,4 +43,11 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="credit_card_number">Credid Card number</string>
+    <string name="username">Username</string>
+    <string name="fullname">FullName</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="age">Age</string>
+    <string name="email">Email</string>
+    <string name="telephon_number">Telephon number</string>
 </resources>
