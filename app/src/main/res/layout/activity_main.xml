@@ -41,4 +41,10 @@
         app:layout_anchor="@+id/appBarLayout"
         app:layout_anchorGravity="center" />
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="139dp"
+        android:layout_height="84dp"
+        android:text="Button" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
