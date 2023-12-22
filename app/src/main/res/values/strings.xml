@@ -1,5 +1,5 @@
 <resources>
-    <string name="carPooling">CarPooling</string>
+    <string name="app_name">CarPooling</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -50,4 +50,21 @@
     <string name="age">Age</string>
     <string name="email">Email</string>
     <string name="telephon_number">Telephon number</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="carpooling">CarPooling</string>
+    <string name="passenger">Passenger</string>
+    <string name="driver">Driver</string>
+    <string name="i_want_to_be_a">I want to be a</string>
+    <string name="image_button">image button</string>
+    <string name="back">back</string>
+    <string name="title_activity_sign_in">SignInActivity</string>
+    <string name="title_activity_sign_up">SignUpActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
 </resources>
