@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#6A47A7"
     android:fitsSystemWindows="true"
-    tools:context=".MainActivity">
+    tools:context=".model.view.front_page.FrontPageActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -25,7 +25,8 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.524">
+            app:layout_constraintVertical_bias="0.524"
+            tools:ignore="UseCompoundDrawables">
 
             <ImageView
                 android:id="@+id/imageView"
