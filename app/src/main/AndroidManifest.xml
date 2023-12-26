@@ -56,7 +56,7 @@
             android:name=".Driver_Register"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".model.view.sign_up.SignUpActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

@@ -1,4 +1,4 @@
-package gr.aueb.carpooling.model.view.LogIn;
+package gr.aueb.carpooling.model.view;
 
 public interface View {
 //    /**

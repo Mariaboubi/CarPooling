@@ -75,4 +75,23 @@
     <string name="sign_up">Sign Up</string>
     <string name="top_bar">top bar</string>
     <string name="todo">TODO</string>
+    <string name="driver1">driver</string>
+    <string name="sign_up_as">Sign up as :</string>
+    <string name="passenger1">passenger</string>
+    <string name="todo1">TODO</string>
+    <string name="if_you_are_a_driver_fill_in_the_following_boxes">If you are a driver fill in the following boxes .</string>
+    <string name="car_type">Car type</string>
+    <string name="sign_up1">Sign up</string>
+    <string name="driver_s_license_number">Driver\'s license number</string>
+    <string name="password_verification">Password Verification</string>
+    <string name="password1">Password</string>
+    <string name="username1">Username</string>
+    <string name="credid_card_number">Credid Card number</string>
+    <string name="telephon_number1">Telephon number</string>
+    <string name="email1">Email</string>
+    <string name="age1">Age</string>
+    <string name="fullname1">FullName</string>
+    <string name="sign_up2">Sign up</string>
+    <string name="name">Name</string>
+    <string name="surname">Surname</string>
 </resources>
