@@ -67,12 +67,10 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
-    <string name="username">Username</string>
     <string name="login">Login</string>
     <string name="password">Password</string>
     <string name="log_in">Log In</string>
     <string name="don_t_have_an_account">Don\'t have an account?</string>
-    <string name="sign_up">Sign Up</string>
     <string name="top_bar">top bar</string>
     <string name="todo">TODO</string>
     <string name="driver1">driver</string>
@@ -94,4 +92,8 @@
     <string name="sign_up2">Sign up</string>
     <string name="name">Name</string>
     <string name="surname">Surname</string>
+    <string name="iban">Iban</string>
+    <string name="card_holder_name">Card holder Name</string>
+    <string name="cvv">CVV</string>
+    <string name="if_you_are_a_passenger_fill_in_the_following_boxes">If you are a passenger fill in the following boxes</string>
 </resources>

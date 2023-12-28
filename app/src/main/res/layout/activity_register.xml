@@ -6,7 +6,11 @@
     android:layout_height="match_parent"
     android:fillViewport="true">
 
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
+
+
         android:id="@+id/name_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -25,7 +29,7 @@
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.19999999" />
+            app:layout_constraintVertical_bias="0.110000014" />
 
         <EditText
             android:id="@+id/name1_input"
@@ -137,27 +141,7 @@
             app:layout_constraintStart_toStartOf="@+id/email_input"
             app:layout_constraintTop_toBottomOf="@+id/email_input" />
 
-        <EditText
-            android:id="@+id/Credit_card_input"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:background="@drawable/intput_dg"
-            android:drawableLeft="@drawable/ic_credit_card_24"
-            android:drawablePadding="10dp"
-            android:ems="10"
-            android:inputType="text"
-            android:paddingLeft="20dp"
-            android:paddingTop="10dp"
-            android:paddingRight="10dp"
-            android:paddingBottom="10dp"
-            android:text="@string/credid_card_number"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
-            app:layout_constraintEnd_toEndOf="@+id/tel_input"
-            app:layout_constraintHorizontal_bias="0.666"
-            app:layout_constraintStart_toStartOf="@+id/tel_input"
-            app:layout_constraintTop_toBottomOf="@+id/tel_input" />
+
 
         <EditText
             android:id="@+id/username_input"
@@ -175,19 +159,20 @@
             android:text="@string/username1"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
-            app:layout_constraintEnd_toEndOf="@+id/Credit_card_input"
+            app:layout_constraintEnd_toEndOf="@+id/tel_input"
             app:layout_constraintHorizontal_bias="0.666"
-            app:layout_constraintStart_toStartOf="@+id/Credit_card_input"
-            app:layout_constraintTop_toBottomOf="@+id/Credit_card_input" />
+            app:layout_constraintStart_toStartOf="@+id/tel_input"
+            app:layout_constraintTop_toBottomOf="@+id/tel_input" />
 
 
-        <EditText
+       <EditText
             android:id="@+id/password_input"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:background="@drawable/intput_dg"
             android:drawableLeft="@drawable/baseline_lock_outline_24"
+            android:drawableEnd="@drawable/ic_eye"
             android:drawablePadding="10dp"
             android:ems="10"
             android:hint="@string/password1"
@@ -197,6 +182,7 @@
             android:paddingBottom="10dp"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
+            android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="@+id/username_input"
             app:layout_constraintHorizontal_bias="0.666"
             app:layout_constraintStart_toStartOf="@+id/username_input"
@@ -210,6 +196,7 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/intput_dg"
             android:drawableLeft="@drawable/baseline_lock_outline_24"
+            android:drawableEnd="@drawable/ic_eye"
             android:drawablePadding="10dp"
             android:ems="10"
             android:hint="@string/password_verification"
@@ -219,12 +206,30 @@
             android:paddingBottom="10dp"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
+            android:inputType="textPassword"
             app:layout_constraintBottom_toBottomOf="@+id/textView4"
             app:layout_constraintEnd_toEndOf="@+id/password_input"
             app:layout_constraintHorizontal_bias="0.666"
             app:layout_constraintStart_toStartOf="@+id/password_input"
             app:layout_constraintTop_toBottomOf="@+id/password_input"
             app:layout_constraintVertical_bias="0.25" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="110dp"
+            android:text="@string/if_you_are_a_driver_fill_in_the_following_boxes"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.066"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/password_input"
+            tools:ignore="MissingConstraints" />
+
+
 
         <EditText
             android:id="@+id/driver_license_input"
@@ -266,11 +271,117 @@
             android:textColor="@color/black"
             android:textColorHint="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/age_input"
-            app:layout_constraintHorizontal_bias="0.133"
+            app:layout_constraintEnd_toEndOf="@+id/driver_license_input"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/driver_license_input"
             app:layout_constraintTop_toBottomOf="@+id/driver_license_input"
             app:layout_constraintVertical_bias="0.0" />
+
+
+
+        <EditText
+        android:id="@+id/idan_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/intput_dg"
+        android:drawableLeft="@drawable/ic_credit_card_24"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:inputType="text"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:text="@string/iban"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+            app:layout_constraintStart_toStartOf="@+id/car_type_input"
+            app:layout_constraintTop_toBottomOf="@+id/car_type_input" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            android:text="@string/if_you_are_a_passenger_fill_in_the_following_boxes"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.066"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/idan_input"
+            tools:ignore="MissingConstraints" />
+
+
+        <EditText
+            android:id="@+id/Credit_card_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="55dp"
+            android:background="@drawable/intput_dg"
+            android:drawableLeft="@drawable/ic_credit_card_24"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:inputType="text"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:text="@string/credid_card_number"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            app:layout_constraintEnd_toEndOf="@+id/tel_input"
+            app:layout_constraintHorizontal_bias="0.666"
+            app:layout_constraintStart_toStartOf="@+id/idan_input"
+            app:layout_constraintTop_toBottomOf="@+id/idan_input" />
+
+        <EditText
+            android:id="@+id/nameCard_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/intput_dg"
+            android:drawableLeft="@drawable/ic_credit_card_24"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:inputType="text"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:text="@string/card_holder_name"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.666"
+            app:layout_constraintStart_toStartOf="@+id/Credit_card_input"
+            app:layout_constraintTop_toBottomOf="@+id/Credit_card_input" />
+
+        <EditText
+            android:id="@+id/cvv_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/intput_dg"
+            android:drawableLeft="@drawable/ic_credit_card_24"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:inputType="text"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:text="@string/cvv"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.666"
+            app:layout_constraintStart_toStartOf="@+id/nameCard_input"
+            app:layout_constraintTop_toBottomOf="@+id/nameCard_input" />
 
         <Button
             android:id="@+id/Sign_up_button"
@@ -283,23 +394,35 @@
             android:textColorHighlight="#009688"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/car_type_input" />
+            app:layout_constraintTop_toBottomOf="@+id/cvv_input" />
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="110dp"
-            android:text="@string/if_you_are_a_driver_fill_in_the_following_boxes"
-            android:textColor="@color/black"
-            android:textSize="16sp"
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="#6946A6"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.066"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/password_input"
-            tools:ignore="MissingConstraints" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
 
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="50dp"
+                android:layout_height="0dp"
+                android:layout_gravity="left|end"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:backgroundTint="#00FFFFFF"
+                android:contentDescription="@string/back"
+                android:cropToPadding="false"
+                android:scaleType="centerInside"
+
+                app:srcCompat="@drawable/backbutton"
+                tools:ignore="RtlHardcoded" />
+        </LinearLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

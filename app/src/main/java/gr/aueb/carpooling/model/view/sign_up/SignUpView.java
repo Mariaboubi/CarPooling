@@ -19,7 +19,6 @@ public interface SignUpView extends View {
 
     String getPhoneNumber();
 
-    String getCreditCard();
 
     String getUsername();
 
@@ -30,6 +29,14 @@ public interface SignUpView extends View {
     String getDriverLicense();
 
     String getCarType();
+
+    String getIban();
+
+    String getCreditCard();
+
+    String  getCardHolderName();
+
+    String getCvv();
 
 
     void showErrorMessage(String s, String s1);

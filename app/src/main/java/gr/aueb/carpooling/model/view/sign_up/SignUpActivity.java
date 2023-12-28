@@ -1,10 +1,13 @@
 package gr.aueb.carpooling.model.view.sign_up;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 
 import gr.aueb.carpooling.R;
@@ -12,12 +15,39 @@ import gr.aueb.carpooling.model.contact.EmailAddress;
 
 public class SignUpActivity extends AppCompatActivity implements SignUpView {
 
-    private SignUpViewModel viewModel;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        SignUpViewModel viewModel = new ViewModelProvider(this).get(SignUpViewModel.class);
+        viewModel.getPresenter().setView(this);
+
+        if (savedInstanceState == null) {
+            Intent intent = getIntent();
+        }
+
+        findViewById(R.id.Sign_up_button).setOnClickListener(new View.OnClickListener(){ // το κουμπί για να δημιουργηθεί ο λογαριασμός
+            @Override
+            public void onClick(View v){
+                viewModel.getPresenter().onCreateUserAccount();
+            }
+
+        });
+
+
+         /**
+          findViewById(R.id.gobackButton).setOnClickListener(new View.OnClickListener(){// το κουμπί για να επιστρέψει πίσω
+            @Override
+            public void onClick(View v){
+                viewModel.getPresenter().onBack();
+            }
+        });
+         */
+
+
     }
 
     public void showErrorMessage(String title, String message)
@@ -69,10 +99,6 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
         return et_phone_number.getText().toString();
     }
 
-    public String getCreditCard() {
-        EditText et_credit_card = findViewById(R.id.Credit_card_input);
-        return et_credit_card.getText().toString();
-    }
 
     public String getUsername() {
         EditText et_username = findViewById(R.id.username_input);
@@ -100,7 +126,30 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
         return et_car_type.getText().toString();
     }
 
+    @Override
+    public String getIban() {
+        EditText et_iban_type = findViewById(R.id.idan_input);
+        return et_iban_type.getText().toString();
+    }
+
+    public String getCreditCard() {
+        EditText et_credit_card = findViewById(R.id.Credit_card_input);
+        return et_credit_card.getText().toString();
+    }
 
     @Override
-    public void goBack() {finish();}
+    public String getCardHolderName() {
+        EditText et_card_name_holder = findViewById(R.id.nameCard_input);
+        return et_card_name_holder.getText().toString();
+    }
+
+    @Override
+    public String getCvv() {
+        EditText et_cvv = findViewById(R.id.cvv_input);
+        return et_cvv.getText().toString();
+    }
+
+
+    @Override
+    public void goBack() {finish();} //Μας πηγενει στο προιγουμενο activity
 }
