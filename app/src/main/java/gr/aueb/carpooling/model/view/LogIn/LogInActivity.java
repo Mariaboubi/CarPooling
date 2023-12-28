@@ -12,6 +12,7 @@ import android.widget.EditText;
 
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.memoryDao.MemoryInitialized;
+import gr.aueb.carpooling.model.view.sign_up.SignUpActivity;
 
 public class LogInActivity extends AppCompatActivity implements LogInView{
 
@@ -33,11 +34,11 @@ public class LogInActivity extends AppCompatActivity implements LogInView{
 
         }
 
-//        findViewById(R.id.SignUpCustomerButton).setOnClickListener(new android.view.View.OnClickListener() { //το κουμπί όταν θέλει να εγγραφτεί νέος πελάτης στην εφαμοργή
-//            public void onClick(View v) {
-//                viewModel.getPresenter().onSignup();
-//            }
-//        });
+        findViewById(R.id.txtSignUp).setOnClickListener(new android.view.View.OnClickListener() { //το κουμπί όταν θέλει να εγγραφτεί νέος πελάτης στην εφαμοργή
+            public void onClick(View v) {
+                viewModel.getPresenter().onSignup();
+            }
+        });
     }
 
     public void showErrorMessage(String title, String message)
@@ -76,8 +77,8 @@ public class LogInActivity extends AppCompatActivity implements LogInView{
     }
 
     public void signup(){
-//        Intent intent = new Intent(LogInActivity.this, SignUpCustomerActivity.class);
-//        startActivity(intent);
+        Intent intent = new Intent(LogInActivity.this, SignUpActivity.class);
+        startActivity(intent);
     }
 
     public void redirectToChooseCharacterPage(int customerId){

@@ -24,6 +24,7 @@
 
         <activity android:name="gr.aueb.carpooling.model.view.LogIn.LogInActivity"/>
 
+        <activity android:name="gr.aueb.carpooling.model.view.sign_up.SignUpActivity"/>
     </application>
 
 </manifest>

@@ -53,5 +53,12 @@
     <string name="passenger1">passenger</string>
     <string name="purple_logo">purple logo</string>
 
+    <string name="todo1">TODO</string>
+    <string name="if_you_are_a_driver_fill_in_the_following_boxes">If you are a driver fill in the following boxes .</string>
+    <string name="credid_card_number">Credid Card number</string>
+    <string name="telephon_number1">Telephon number</string>
+    <string name="sign_up2">Sign up</string>
+    <string name="name">Name</string>
+    <string name="surname">Surname</string>
 
 </resources>

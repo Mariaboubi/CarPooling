@@ -33,4 +33,8 @@ public class LogInPresenter {
             view.showErrorMessage("Λάθος στοιχεία", "Τα στοιχεία που εισάγατε δεν ήταν σωστά. Προσπαθήστε ξανά");
         }
     }
+
+    public void onSignup() {
+        view.signup();
+    }
 }

@@ -1,6 +1,7 @@
 package gr.aueb.carpooling.model.view.LogIn;
 
 
+import gr.aueb.carpooling.model.view.View;
 
 public interface LogInView extends View {
     /**
