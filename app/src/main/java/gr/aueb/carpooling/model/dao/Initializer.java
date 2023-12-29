@@ -1,15 +1,21 @@
 package gr.aueb.carpooling.model.dao;
 
 import gr.aueb.carpooling.model.User;
+import gr.aueb.carpooling.model.Driver;
 import gr.aueb.carpooling.model.contact.EmailAddress;
 
 public abstract class Initializer {
     public void eraseAll() {
         UserDAO userDAO = getUserDAO();
         userDAO.deleteAll();
+        DriverDAO driverDAO = geDriverDAO();
+        driverDAO.deleteAll();
     }
+
+
     public void prepareData() {
         eraseAll();
+        // NEW USERS/////////////////////////////////////////////////////////////////
         UserDAO userDAO = getUserDAO();
         EmailAddress email1 = new EmailAddress("pappas@gmail.com");
         EmailAddress email2 = new EmailAddress("markos@gmail.com");
@@ -20,6 +26,15 @@ public abstract class Initializer {
         userDAO.save(user1);
         userDAO.save(user2);
         userDAO.save(user3);
+        // NEW DRIVERS////////////////////////////////////////////////////////////////
+        DriverDAO driverDAO= geDriverDAO();
+        Driver driver1= new Driver("maria123","maria","pappa","6900000000",email1,"1234",25,"GRE10230910290194", "112233", "mersedes");
+        Driver driver2= new Driver("markos_andre","markos","andreopoulos","6972169794",email2,"1111",27,"GRE10230910290333", "118899", "BMW");
+        driverDAO.save(driver1);
+        driverDAO.save(driver2);
+
     }
     public abstract UserDAO getUserDAO();
+
+    public abstract DriverDAO geDriverDAO();
 }
