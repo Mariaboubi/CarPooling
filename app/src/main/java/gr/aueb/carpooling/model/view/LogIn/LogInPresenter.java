@@ -5,10 +5,8 @@ import gr.aueb.carpooling.model.dao.UserDAO;
 
 public class LogInPresenter {
     private LogInView view;
-    private UserDAO userDAO;
+    private final UserDAO userDAO;
 
-    private String inputUsername;
-    private String inputPassword;
     public LogInPresenter(UserDAO userDAO){
         this.userDAO=userDAO;
     }
@@ -20,21 +18,19 @@ public class LogInPresenter {
     }
 
     public void authenticate() {
-        inputUsername = view.ExtractUsername();
-        inputPassword = view.ExtractPassword();
-        User user= userDAO.find(inputUsername,inputPassword);
+        String inputUsername = view.extractUsername();
+        String inputPassword = view.extractPassword();
+        User user= userDAO.find(inputUsername, inputPassword);
 
         if (inputUsername.isEmpty() || inputPassword.isEmpty()) {
-            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε όλα τα πεδία.");
+            view.showErrorMessage("Error!", "Complete all the fields");
         }else if(user!=null){
             view.showUserFoundMessage(user.getUserId());
-
         }else{
-            view.showErrorMessage("Λάθος στοιχεία", "Τα στοιχεία που εισάγατε δεν ήταν σωστά. Προσπαθήστε ξανά");
+            view.showErrorMessage("Incorrect username or password.", "Try again!");
         }
     }
-
     public void onSignup() {
-        view.signup();
+        view.openSignupActivity();
     }
 }

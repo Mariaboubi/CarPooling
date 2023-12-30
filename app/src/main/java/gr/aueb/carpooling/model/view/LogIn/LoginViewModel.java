@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel;
 import gr.aueb.carpooling.model.memoryDao.UserDAOmemory;
 
 public class LoginViewModel extends ViewModel {
-    private LogInPresenter loginPresenter;
+    private final LogInPresenter loginPresenter;
     public LoginViewModel()
     {
         loginPresenter = new LogInPresenter(new UserDAOmemory());

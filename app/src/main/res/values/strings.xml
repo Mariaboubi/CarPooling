@@ -55,8 +55,7 @@
 
     <string name="todo1">TODO</string>
     <string name="if_you_are_a_driver_fill_in_the_following_boxes">If you are a driver fill in the following boxes .</string>
-    <string name="credid_card_number">Credid Card number</string>
-    <string name="telephon_number1">Telephon number</string>
+    <string name="telephone_number1">Telephone number</string>
     <string name="sign_up2">Sign up</string>
     <string name="name">Name</string>
     <string name="surname">Surname</string>
@@ -79,5 +78,8 @@
     <string name="street_number">Street Number</string>
     <string name="city">City</string>
     <string name="zipcode">ZipCode</string>
+    <string name="title_activity_passenger_front_page" />
+    <string name="For_drivers"> If you are a driver complete the following: </string>
+    <string name="For_passengers"> If you are a passenger complete the following: </string>
 
 </resources>

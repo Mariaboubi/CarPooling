@@ -6,20 +6,24 @@
     android:layout_height="wrap_content"
     android:background="@color/white"
     android:fillViewport="true"
-    android:padding="16dp"
+    android:padding="0dp"
     tools:context=".model.view.sign_up.SignUpActivity">
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
-        android:layout_marginEnd="22dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
         android:orientation="vertical">
 
+
         <LinearLayout
-            android:layout_width="386dp"
-            android:layout_height="43dp"
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
             android:background="#6946A6"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -28,44 +32,70 @@
             app:layout_constraintVertical_bias="0.0">
 
             <ImageButton
-                android:id="@+id/imageButton2"
+                android:id="@+id/back_button"
                 android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_height="0dp"
+                android:layout_gravity="left|end"
+                android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:backgroundTint="#00FFFFFF"
                 android:contentDescription="@string/back"
-
                 android:cropToPadding="false"
                 android:scaleType="centerInside"
+
                 app:srcCompat="@drawable/backbutton"
                 tools:ignore="RtlHardcoded" />
-
         </LinearLayout>
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:fontFamily="sans-serif-condensed-medium"
-            android:text="@string/sign_up"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="50sp" />
+            android:layout_height="311dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.524"
+            tools:ignore="UseCompoundDrawables">
 
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="wrap_content"
+                android:layout_height="180dp"
+                android:layout_gravity="center_horizontal|top"
+                android:contentDescription="TODO"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:src="@drawable/logo_purple" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/sign_up"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="40sp" />
+
+        </LinearLayout>
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="30dp"
             android:hint="@string/name"
             android:textColorHint="@color/black"
             app:boxStrokeColor="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/SignUpName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed-medium"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:fontFamily="sans-serif-medium"
                 android:inputType="text"
                 android:singleLine="true"
                 android:textColor="@color/black" />
@@ -74,8 +104,10 @@
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:fontFamily="sans-serif-medium"
             android:layout_marginTop="16dp"
             android:hint="@string/surname"
             android:textColorHint="@color/black"
@@ -104,9 +136,10 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/SignUpEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed-medium"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:fontFamily="sans-serif-medium"
                 android:inputType="textEmailAddress"
                 android:singleLine="true"
                 android:textColor="@color/black" />
@@ -124,9 +157,10 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/SignUpPhone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed-medium"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:fontFamily="sans-serif-medium"
                 android:inputType="text|phone"
                 android:singleLine="true"
                 android:textColor="@color/black" />
@@ -144,9 +178,10 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/SignUpAge"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed-medium"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:fontFamily="sans-serif-medium"
                 android:inputType="text"
                 android:singleLine="true"
                 android:textColor="@color/black" />
@@ -164,9 +199,10 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/SignUpUsername"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed-medium"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:fontFamily="sans-serif-medium"
                 android:inputType="text"
                 android:singleLine="true"
                 android:textColor="@color/black" />
@@ -175,25 +211,26 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:hint="@string/password"
-            android:textColorHint="@color/black"
-            app:boxStrokeColor="@color/black"
-            app:passwordToggleEnabled="true">
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="@string/password"
+        android:textColorHint="@color/black"
+        app:boxStrokeColor="@color/black"
+        app:passwordToggleEnabled="true">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/SignUpPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed-medium"
-                android:inputType="text"
-                android:singleLine="true"
-                android:textColor="@color/black" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:fontFamily="sans-serif-medium"
+            android:inputType="text"
+            android:singleLine="true"
+            android:textColor="@color/black" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -207,32 +244,28 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/SignUpConfirmPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed-medium"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:fontFamily="sans-serif-medium"
                 android:inputType="text"
                 android:singleLine="true"
                 android:textColor="@color/black" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="sans-serif-medium"
             android:gravity="start"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed-medium"
-                android:text="@string/if_you_are_a_driver_fill_in_the_following_boxes"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-
-        </LinearLayout>
+            android:paddingStart="3dp"
+            android:text="@string/For_drivers"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            tools:ignore="RtlSymmetry" />
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -245,9 +278,10 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/SignUpIban"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed-medium"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:fontFamily="sans-serif-medium"
                 android:inputType="text"
                 android:singleLine="true"
                 android:textColor="@color/black" />
@@ -265,9 +299,10 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/SignUpLicenseNumber"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed-medium"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:fontFamily="sans-serif-medium"
                 android:inputType="text"
                 android:singleLine="true"
                 android:textColor="@color/black" />
@@ -285,9 +320,10 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/SignUpCarType"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed-medium"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:fontFamily="sans-serif-medium"
                 android:inputType="text"
                 android:singleLine="true"
                 android:textColor="@color/black" />
@@ -305,10 +341,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingStart="3dp"
                 android:fontFamily="sans-serif-condensed-medium"
-                android:text="@string/if_you_are_a_passenger_fill_in_the_following_boxes"
+                android:text="@string/For_passengers"
                 android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:textSize="17sp"
+                android:textStyle="bold"
+                tools:ignore="RtlSymmetry" />
 
 
         </LinearLayout>
@@ -324,9 +363,10 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/SignUpCardNumber"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed-medium"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:fontFamily="sans-serif-medium"
                 android:inputType="text"
                 android:singleLine="true"
                 android:textColor="@color/black" />
@@ -344,9 +384,10 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/SignUpCardHolderName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed-medium"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:fontFamily="sans-serif-medium"
                 android:inputType="text"
                 android:singleLine="true"
                 android:textColor="@color/black" />
@@ -365,9 +406,10 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/SignUpCVV"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed-medium"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:fontFamily="sans-serif-medium"
                 android:inputType="text"
                 android:singleLine="true"
                 android:textColor="@color/black" />
@@ -376,8 +418,9 @@
 
 
         <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
             android:layout_marginTop="32dp">
 
             <ProgressBar
@@ -387,16 +430,17 @@
                 android:layout_gravity="center_horizontal"
                 android:visibility="invisible" />
 
-            <com.google.android.material.button.MaterialButton
+            <Button
                 android:id="@+id/btnSignUp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/black"
-                android:fontFamily="sans-serif-condensed-medium"
-                android:paddingStart="20dp"
-                android:paddingTop="10dp"
-                android:paddingEnd="20dp"
-                android:paddingBottom="20dp"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:background="#6845A5"
+                android:fontFamily="sans-serif-medium"
+                android:paddingStart="0dp"
+                android:paddingTop="0dp"
+                android:paddingEnd="0dp"
+                android:paddingBottom="0dp"
+                android:layout_gravity="center"
                 android:text="@string/sign_up"
                 app:cornerRadius="10dp" />
 

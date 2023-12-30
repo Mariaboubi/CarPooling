@@ -1,36 +1,42 @@
 package gr.aueb.carpooling.model.view.LogIn;
 
-
 import gr.aueb.carpooling.model.view.View;
 
 public interface LogInView extends View {
     /**
-     * Η μέθοδος αυτή λαμβάνει το όνομα που έχει πληκτρολογήσει ο χρήστης στο πεδίο Username
+     * This method retrieves the username entered by the user in the Username field.
      */
-    String ExtractUsername();
+    String extractUsername();
+
     /**
-     * Η μέθδος αυτή λαμβάνει τον κωδικό που έχει πληκτρολογήσει ο χρήστης στο πεδίο PassWord
+     * This method retrieves the password entered by the user in the Password field.
      */
-    String ExtractPassword();
+    String extractPassword();
+
     /**
-     * Εμφανίζει μήνυμα επιτυχίας όταν ο χρηστης συνδεθεί επιτυχώς τον λογαριασμό του
-     * και κατευθύνεται στο Home Page ακτίβιτι όταν πατηθεί το κουμπί ΟΚ
+     * Displays a success message when the user successfully logs into their account
+     * and navigates to the Home Page activity when the OK button is pressed.
+     *
+     * @param id The user ID.
      */
     void showUserFoundMessage(int id);
 
     /**
-     * Η μέθοδος αυτή καλείται όταν πατηθεί το κουμπί εγγραφής για πελάτη
+     * This method is called when the registration button for a customer is pressed.
      */
-    void signup();
+    void openSignupActivity();
 
     /**
-     * Εμφανίζει ενα μήνυμα τύπου alert με
-     * τίτλο title και μήνυμα message.
-     * @param title Ο τίτλος του μηνύματος
-     * @param message Το περιεχόμενο του μηνύματος
+     * Displays an alert-type message with the specified title and message.
+     *
+     * @param title   The title of the message.
+     * @param message The content of the message.
      */
     void showErrorMessage(String title, String message);
 
-
-
+    /**
+     * This method is called when the log in is successful and the user goes to the attribute selection page.
+     */
+    void openAttributeSelectionActivity();
 }
+

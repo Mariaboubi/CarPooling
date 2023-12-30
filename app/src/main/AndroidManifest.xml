@@ -12,8 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CarPooling"
         tools:targetApi="31">
-
-        <activity android:name="gr.aueb.carpooling.model.view.front_page.FrontPageActivity"
+        <activity
+            android:name=".model.view.driver.DriverFrontPage"
+            android:exported="false" />
+        <activity
+            android:name=".model.view.passenger.PassengerFrontPage"
+            android:exported="false"
+            android:label="@string/title_activity_passenger_front_page"
+            android:theme="@style/Theme.CarPooling" />
+        <activity
+            android:name=".model.view.attribute_selection.AttributeSelectionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".model.view.front_page.FrontPageActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,10 +32,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name="gr.aueb.carpooling.model.view.LogIn.LogInActivity"/>
-
-        <activity android:name="gr.aueb.carpooling.model.view.sign_up.SignUpActivity"/>
+        <activity android:name=".model.view.LogIn.LogInActivity" />
+        <activity android:name=".model.view.sign_up.SignUpActivity" />
+        <activity android:name=".model.view.create_route.CreateRouteActivity"/>
     </application>
 
 </manifest>

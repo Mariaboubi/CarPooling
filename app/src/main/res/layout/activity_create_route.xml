@@ -219,6 +219,14 @@
                 android:text="@string/create_route"
                 app:cornerRadius="10dp" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:text="@string/already_have_created_route_and_don_t_want_to_create_more"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
         </FrameLayout>
 
         <LinearLayout
@@ -227,14 +235,6 @@
             android:layout_marginTop="32dp"
             android:gravity="center"
             android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed-medium"
-                android:text="@string/already_have_created_route_and_don_t_want_to_create_more"
-                android:textColor="@color/black"
-                android:textSize="14sp" />
 
 
         </LinearLayout>

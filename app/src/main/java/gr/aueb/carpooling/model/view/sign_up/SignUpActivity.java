@@ -1,23 +1,52 @@
 package gr.aueb.carpooling.model.view.sign_up;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.contact.EmailAddress;
+import gr.aueb.carpooling.model.view.LogIn.LogInActivity;
+import gr.aueb.carpooling.model.view.LogIn.LoginViewModel;
+import gr.aueb.carpooling.model.view.attribute_selection.AttributeSelectionActivity;
 
 public class SignUpActivity extends AppCompatActivity implements SignUpView {
-
-    private SignUpViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        SignUpViewModel viewModel = new ViewModelProvider(this).get(SignUpViewModel.class);
+
+        viewModel.getPresenter().setView(this);
+
+        if (savedInstanceState == null){
+            Intent intent = getIntent();
+        }
+
+        ImageButton back_button = (ImageButton) findViewById(R.id.back_button);
+        back_button.setOnClickListener(v -> openLogInActivity());
+
+        TextView txtSignIn = (TextView) findViewById(R.id.txtSignIn);
+        txtSignIn.setOnClickListener(v -> openLogInActivity());
+
+        Button btnSignUp = (Button) findViewById(R.id.btnSignUp);
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewModel.getPresenter().onCreateUserAccount();
+                openAttributeSelectionActivity();
+            };
+        });
     }
 
     public void showErrorMessage(String title, String message)
@@ -32,14 +61,11 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
     public void showRegistrationSuccessMessage() {
         new AlertDialog.Builder(SignUpActivity.this)
                 .setCancelable(true)
-                .setTitle("Επιτυχής δημιουργία λογαριασμού")
-                .setMessage("Ο λαγαριασμος δημιουργήθηκε με επιτυχία")
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        finish();
-                    }
+                .setTitle("Account created successfully")
+//                .setMessage("Ο λαγαριασμος δημιουργήθηκε με επιτυχία")
+                .setPositiveButton("OK", (dialog, which) -> {
+                    dialog.dismiss();
+                    finish();
                 }).create().show();
 
     }
@@ -88,7 +114,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
     }
 
     public String getPassword() {
-        EditText et_password = findViewById(R.id.SignUpPassword);
+        EditText et_password = findViewById(R.id.password);
         return et_password.getText().toString();
     }
 
@@ -116,4 +142,14 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
 
     @Override
     public void goBack() {finish();}
+
+    public void openLogInActivity() {
+        Intent intent = new Intent(this, LogInActivity.class);
+        startActivity(intent);
+    }
+
+    public void openAttributeSelectionActivity() {
+        Intent intent = new Intent(this, AttributeSelectionActivity.class);
+        startActivity(intent);
+    }
 }

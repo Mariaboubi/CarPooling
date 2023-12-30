@@ -6,6 +6,7 @@ import android.os.Handler;
 
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.view.LogIn.LogInActivity;
+import gr.aueb.carpooling.model.view.attribute_selection.AttributeSelectionActivity;
 
 public class FrontPageActivity extends Activity{
 

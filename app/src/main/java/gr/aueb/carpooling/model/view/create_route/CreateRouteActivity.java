@@ -1,21 +1,20 @@
 package gr.aueb.carpooling.model.view.create_route;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import java.util.HashMap;
 
 import gr.aueb.carpooling.R;
 
-public class CreateRouteActivity extends AppCompatActivity {
+public class CreateRouteActivity extends AppCompatActivity implements CreateRouteView{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,21 +22,22 @@ public class CreateRouteActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_create_route);
         CreateRouteViewModel viewModel = new ViewModelProvider(this).get(CreateRouteViewModel.class);
-        viewModel.getPresenter().setView((CreateRouteView) this);
+        viewModel.getPresenter().setView(this);
         if (savedInstanceState == null) {
             Intent intent = getIntent();
             Bundle extras = intent.getExtras();
+            assert extras != null;
             driverId = extras.getInt("DriverId");
         }
         viewModel.getPresenter().setDriver(driverId);
 
-        findViewById(R.id.btnCreateRoute).setOnClickListener(new View.OnClickListener(){ // Όταν πατηθεί το κουμπί δημιουργίας του εστιατορίου
-            @Override
-            public void onClick(View v){
-                viewModel.getPresenter().onCreateRestaurant();
-            }
-
-        });
+//        findViewById(R.id.btnCreateRoute).setOnClickListener(new View.OnClickListener(){ // Όταν πατηθεί το κουμπί δημιουργίας του εστιατορίου
+//            @Override
+//            public void onClick(View v){
+//                viewModel.getPresenter().onCreateRestaurant();
+//            }
+//
+//        });
 
 
     }

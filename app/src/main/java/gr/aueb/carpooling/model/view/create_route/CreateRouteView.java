@@ -3,7 +3,9 @@ package gr.aueb.carpooling.model.view.create_route;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public interface CreateRouteView {  /**
+import gr.aueb.carpooling.model.view.View;
+
+public interface CreateRouteView extends View {  /**
 * Δημιουργεί ένα hash map στο οποίο έχουμε σαν κλειδί το εστιατορίο
  * και σαν value έχουμε την τιμή του κλειδιού την οποία παίρνουμε απο την οθόνη που έχει περάσει ο οδηγος
  * τα στοιχεία της διαδρομης που θέλει να προσθέσει
