@@ -67,5 +67,17 @@
     <string name="if_you_are_a_passenger_fill_in_the_following_boxes">If you are a passenger fill in the following boxes</string>
     <string name="iban">Iban</string>
     <string name="confirm_password">Confirm Password</string>
+    <string name="create_new_route">Create new route</string>
+    <string name="destination">Destination</string>
+    <string name="date">Date</string>
+    <string name="estimated_cost">Estimated Cost</string>
+    <string name="max_number_of_passenger">Max number of passenger</string>
+    <string name="create_route">Create Route</string>
+    <string name="already_have_created_route_and_don_t_want_to_create_more">Already have created route and don\'t want to create more</string>
+    <string name="existed_routes">Existed Routes</string>
+    <string name="street">Street</string>
+    <string name="street_number">Street Number</string>
+    <string name="city">City</string>
+    <string name="zipcode">ZipCode</string>
 
 </resources>
