@@ -1,16 +1,9 @@
 package gr.aueb.carpooling.model.dao;
 
-import org.threeten.bp.LocalDateTime;
-
-import java.util.Currency;
-
-import gr.aueb.carpooling.model.Route;
+import gr.aueb.carpooling.model.Passenger;
 import gr.aueb.carpooling.model.User;
 import gr.aueb.carpooling.model.Driver;
-import gr.aueb.carpooling.model.contact.Address;
 import gr.aueb.carpooling.model.contact.EmailAddress;
-import gr.aueb.carpooling.model.contact.Money;
-import gr.aueb.carpooling.model.contact.ZipCode;
 
 public abstract class Initializer {
     public void eraseAll() {
@@ -18,14 +11,15 @@ public abstract class Initializer {
         userDAO.deleteAll();
         DriverDAO driverDAO = geDriverDAO();
         driverDAO.deleteAll();
-        RouteDAO routeDAO = geRouteDAO();
-        routeDAO.deleteAll();
+        PassengerDAO passengerDAO = getPassengerDAO();
+        passengerDAO.deleteAll();
+
     }
 
 
     public void prepareData() {
         eraseAll();
-        // NEW USERS /////////////////////////////////////////////////////////////////
+        // NEW USERS/////////////////////////////////////////////////////////////////
         UserDAO userDAO = getUserDAO();
         EmailAddress email1 = new EmailAddress("pappas@gmail.com");
         EmailAddress email2 = new EmailAddress("markos@gmail.com");
@@ -36,31 +30,23 @@ public abstract class Initializer {
         userDAO.save(user1);
         userDAO.save(user2);
         userDAO.save(user3);
-        // NEW DRIVERS ////////////////////////////////////////////////////////////////
+        // NEW DRIVERS////////////////////////////////////////////////////////////////
         DriverDAO driverDAO= geDriverDAO();
         Driver driver1= new Driver("maria123","maria","pappa","6900000000",email1,"1234",25,"GRE10230910290194", "112233", "mersedes");
         Driver driver2= new Driver("markos_andre","markos","andreopoulos","6972169794",email2,"1111",27,"GRE10230910290333", "118899", "BMW");
         driverDAO.save(driver1);
         driverDAO.save(driver2);
-        // NEW ROUTES //////////////////////////////////////////////////////////////////////
-        RouteDAO routeDAO= geRouteDAO();
-        final Currency euroCurrency = Currency.getInstance("EUR");
-        Money money = new Money(10.0, euroCurrency);
-        Address destination = new Address("mesogeiwn", "10", "athens", new ZipCode("16562",0.0,0.0), "greece");
-        Route route1 = new Route(driver1, money, LocalDateTime.of(2023, 10, 12, 10, 12), destination, 3, false);
-        Money money5 = new Money(5.0, euroCurrency);
-        Address destination1 = new Address("mesogeiwn", "157", "athens", new ZipCode("16571",0.0,0.0), "greece");
-        Route route2 = new Route(driver1, money5, LocalDateTime.of(2023, 10, 28, 16, 30), destination1, 2, false);
-        Money money20 = new Money(20.0, euroCurrency);
-        Address destination2 = new Address("tsimiski", "50", "tessaloniki", new ZipCode("54623",0.0,0.0), "greece");
-        Route route3 = new Route(driver2, money20, LocalDateTime.of(2023, 1, 28, 16, 30), destination2, 4, false);
-        routeDAO.save(route1);
-        routeDAO.save(route2);
-        routeDAO.save(route3);
+        // NEW PASSENGERS////////////////////////////////////////////////////////////////
+        PassengerDAO passengerDAO = getPassengerDAO();
+        Passenger passenger1= new Passenger("maria123","maria","pappa","6900000000",email1,"1234",25,"10230910290194", "Maria Volt", "365");
+        Passenger passenger2= new Passenger("markos_andre","markos","andreopoulos","6972169794",email2,"1111",27,"10230910290333", "Markos kapelas", "481");
+        passengerDAO.save(passenger1);
+        passengerDAO.save(passenger2);
+
     }
     public abstract UserDAO getUserDAO();
 
     public abstract DriverDAO geDriverDAO();
 
-    public abstract RouteDAO geRouteDAO();
+    public abstract PassengerDAO getPassengerDAO();
 }
