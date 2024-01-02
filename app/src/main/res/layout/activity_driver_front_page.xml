@@ -2,10 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/passwordText"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".model.view.driver.DriverFrontPage">
-
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="407dp"
@@ -33,111 +33,71 @@
 
             app:srcCompat="@drawable/backbutton"
             tools:ignore="RtlHardcoded" />
-
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayout1"
-        android:layout_width="361dp"
-        android:layout_height="67dp"
-        android:layout_marginEnd="20dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.272">
-
-        <LinearLayout
-            android:id="@+id/linearLayout5"
-            android:layout_width="361dp"
-            android:layout_height="67dp"
-            android:layout_marginEnd="20dp"
-            android:orientation="horizontal">
-
-        </LinearLayout>
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/button_createroute"
-        android:layout_width="340dp"
-        android:layout_height="65dp"
-        android:backgroundTint="#6A47A7"
-        android:fontFamily="sans-serif"
-        android:text="@string/create_new_route"
-        android:textColor="#FFFEFE"
-        android:textColorHighlight="#623FA0"
-        android:textSize="24sp"
-        app:cornerRadius="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout1"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout1"
-        app:strokeColor="#6A47A7"
-        app:strokeWidth="2dp"
-        tools:ignore="DuplicateIds,MissingConstraints"
-        tools:layout_editor_absoluteY="181dp" />
     <LinearLayout
         android:id="@+id/linearLayout3"
-        android:layout_width="361dp"
-        android:layout_height="67dp"
-        android:layout_marginEnd="20dp"
-        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.272">
+        app:layout_constraintVertical_bias="0.108"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="wrap_content"
+            android:layout_height="180dp"
+            android:layout_gravity="center_horizontal|top"
+            android:contentDescription="TODO"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:src="@drawable/logo_purple" />
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/button_showroutes"
-        android:layout_width="340dp"
-        android:layout_height="65dp"
-        android:backgroundTint="#6A47A7"
-        android:fontFamily="sans-serif"
-        android:text="@string/show_existed_routes"
-        android:textColor="#FFFEFE"
-        android:textColorHighlight="#623FA0"
-        android:textSize="24sp"
-        app:cornerRadius="10dp"
-        app:strokeColor="#6A47A7"
-        app:strokeWidth="2dp"
-        tools:ignore="DuplicateIds,MissingConstraints"
-        tools:layout_editor_absoluteX="41dp"
-        tools:layout_editor_absoluteY="295dp" />
 
     <LinearLayout
-        android:id="@+id/linearLayout4"
-        android:layout_width="361dp"
-        android:layout_height="67dp"
-        android:layout_marginEnd="20dp"
-        android:orientation="horizontal"
+        android:layout_width="346dp"
+        android:layout_height="358dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.636"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        app:layout_constraintVertical_bias="0.613">
 
+        <Button
+            android:id="@+id/button_createroute"
+            android:layout_width="320dp"
+            android:layout_height="60dp"
+            android:text="@string/create_new_route" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+        <Button
+            android:id="@+id/button_showroutes"
+            android:layout_width="320dp"
+            android:layout_height="60dp"
+            android:text="@string/show_existed_routes" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+        <Button
+            android:id="@+id/button_showrequests"
+            android:layout_width="320dp"
+            android:layout_height="60dp"
+            android:text="@string/show_requests" />
     </LinearLayout>
-
-    <Button
-        android:id="@+id/button_showrequestes"
-        android:layout_width="340dp"
-        android:layout_height="65dp"
-        android:backgroundTint="#6A47A7"
-        android:fontFamily="sans-serif"
-        android:text="@string/show_requestes"
-        android:textColor="#FFFEFE"
-        android:textColorHighlight="#623FA0"
-        android:textSize="24sp"
-        app:cornerRadius="10dp"
-        app:strokeColor="#6A47A7"
-        app:strokeWidth="2dp"
-        tools:ignore="DuplicateIds,MissingConstraints"
-        tools:layout_editor_absoluteX="41dp"
-        tools:layout_editor_absoluteY="413dp" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
