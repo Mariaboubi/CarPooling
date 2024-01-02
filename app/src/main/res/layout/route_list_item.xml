@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="175dp"
+    android:layout_marginBottom="4dp"
+    android:background="#A788DD"
+    android:outlineProvider="background"
+    android:padding="5dp">
+
+    <TextView
+        android:id="@+id/Destination"
+        android:layout_width="162dp"
+        android:layout_height="42dp"
+        android:background="#00D5C8C8"
+        android:backgroundTint="#FFFFFF"
+        android:text="@string/destination"
+        android:textAlignment="viewStart"
+        android:textColor="#1E1817"
+        android:textSize="28sp"
+        android:textStyle="bold|italic"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.075"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.135"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/Date"
+        android:layout_width="118dp"
+        android:layout_height="39dp"
+        android:text="@string/date"
+        android:textAlignment="viewStart"
+        android:textColor="#271814"
+        android:textSize="28sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.063"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.503"
+        tools:visibility="visible" />
+
+    <Button
+        android:id="@+id/CompletedButton"
+        android:layout_width="137dp"
+        android:layout_height="50dp"
+        android:backgroundTint="#6946A6"
+        android:text="@string/completed"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Date"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

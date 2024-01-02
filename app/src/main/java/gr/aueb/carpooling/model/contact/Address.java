@@ -1,4 +1,6 @@
 package gr.aueb.carpooling.model.contact;
+import androidx.annotation.NonNull;
+
 import gr.aueb.carpooling.model.contact.ZipCode;
 import java.util.Objects;
 
@@ -124,5 +126,12 @@ public class Address implements AddressInterface {
         double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
         return earthRadius * c;
+    }
+    @NonNull
+    public String toString() {
+        return String.format(
+                "Address: %s %s, %s, %s, %s, %s",
+                street, number, city, zip, country
+        );
     }
 }

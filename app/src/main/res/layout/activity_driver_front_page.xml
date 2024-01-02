@@ -36,4 +36,108 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="361dp"
+        android:layout_height="67dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.272">
+
+        <LinearLayout
+            android:id="@+id/linearLayout5"
+            android:layout_width="361dp"
+            android:layout_height="67dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_createroute"
+        android:layout_width="340dp"
+        android:layout_height="65dp"
+        android:backgroundTint="#6A47A7"
+        android:fontFamily="sans-serif"
+        android:text="@string/create_new_route"
+        android:textColor="#FFFEFE"
+        android:textColorHighlight="#623FA0"
+        android:textSize="24sp"
+        app:cornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout1"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout1"
+        app:strokeColor="#6A47A7"
+        app:strokeWidth="2dp"
+        tools:ignore="DuplicateIds,MissingConstraints"
+        tools:layout_editor_absoluteY="181dp" />
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="361dp"
+        android:layout_height="67dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.272">
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_showroutes"
+        android:layout_width="340dp"
+        android:layout_height="65dp"
+        android:backgroundTint="#6A47A7"
+        android:fontFamily="sans-serif"
+        android:text="@string/show_existed_routes"
+        android:textColor="#FFFEFE"
+        android:textColorHighlight="#623FA0"
+        android:textSize="24sp"
+        app:cornerRadius="10dp"
+        app:strokeColor="#6A47A7"
+        app:strokeWidth="2dp"
+        tools:ignore="DuplicateIds,MissingConstraints"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="295dp" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="361dp"
+        android:layout_height="67dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_showrequestes"
+        android:layout_width="340dp"
+        android:layout_height="65dp"
+        android:backgroundTint="#6A47A7"
+        android:fontFamily="sans-serif"
+        android:text="@string/show_requestes"
+        android:textColor="#FFFEFE"
+        android:textColorHighlight="#623FA0"
+        android:textSize="24sp"
+        app:cornerRadius="10dp"
+        app:strokeColor="#6A47A7"
+        app:strokeWidth="2dp"
+        tools:ignore="DuplicateIds,MissingConstraints"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="413dp" />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

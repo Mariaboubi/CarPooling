@@ -1,5 +1,7 @@
 package gr.aueb.carpooling.model.contact;
 
+import androidx.annotation.NonNull;
+
 /**
  * Interface for Address functionalities.
  */
@@ -74,4 +76,7 @@ public interface AddressInterface {
      * @return The country name.
      */
     String getCountry();
+
+    @NonNull
+    String toString();
 }
