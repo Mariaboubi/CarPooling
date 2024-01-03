@@ -24,7 +24,7 @@ public class DriverFrontPage extends AppCompatActivity implements DriverFrontPag
 
     private  DriverFrontPageViewModel viewModel;
 
-    private int userId;
+    private String username;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +39,7 @@ public class DriverFrontPage extends AppCompatActivity implements DriverFrontPag
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            userId = extras.getInt("Id");
+            username = extras.getString("Username");
             //The key argument here must match that used in the other activity
         }
 
@@ -57,23 +57,35 @@ public class DriverFrontPage extends AppCompatActivity implements DriverFrontPag
         create_route_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openCreateRoutePage(userId);
+                openCreateRoutePage(username);
             }
         });
 
 
+        Button show_existed_route_button = (Button) findViewById(R.id.button_showroutes);
+        show_existed_route_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openExistedRoutePage(username);
+            }
+        });
 
     }
 
-    void openCreateRoutePage(int userId) {
+    void openCreateRoutePage(String userId) {
         Intent intent = new Intent(this, CreateRouteActivity.class);
-        intent.putExtra("Id", userId);
+        intent.putExtra("Username", username);
         startActivity(intent);
     }
     void openAttributeSelectionActivity() {
         Intent intent = new Intent(this, AttributeSelectionActivity.class);
-        intent.putExtra("Id", userId);
+        intent.putExtra("Username", username);
         startActivity(intent);
     }
 
+    void openExistedRoutePage(String username) {
+        Intent intent = new Intent(this, ExistedRouteActivity.class);
+        intent.putExtra("Username", username);
+        startActivity(intent);
+    }
 }

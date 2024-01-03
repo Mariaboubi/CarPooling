@@ -132,6 +132,9 @@ public interface RouteInterface {
      */
     Address getDestination();
 
+
+    String getDestinationString();
+
     /**
      * Set the destination address of the route.
      *

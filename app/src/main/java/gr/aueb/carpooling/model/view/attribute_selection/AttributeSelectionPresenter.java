@@ -26,11 +26,19 @@ public class AttributeSelectionPresenter {
         this.view = view;
     }
 
-    public boolean authenticateAttributePassenger(int id) {
-        return passengerDAO.findPassenger(id);
+    public boolean authenticateAttributePassenger(String username) {
+//        view.showErrorMessage("Id in passenger", String.valueOf(id));
+        boolean b = passengerDAO.find(username);
+        String str = String.valueOf(b);
+//        view.showErrorMessage("Id in passenger", String.valueOf(b));
+        return passengerDAO.find(username);
     }
 
-    public boolean authenticateAttributeDriver(int id) {
-        return driverDAO.findDriver(id);
+    public boolean authenticateAttributeDriver(String username) {
+//        view.showErrorMessage("Id in driver", String.valueOf(id));
+        boolean b = driverDAO.find(username);
+        String str = String.valueOf(b);
+//        view.showErrorMessage("Id in driver", username);
+        return driverDAO.find(username);
     }
 }

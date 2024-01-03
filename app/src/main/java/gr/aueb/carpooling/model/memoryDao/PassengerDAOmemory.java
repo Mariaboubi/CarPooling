@@ -35,13 +35,13 @@ public class PassengerDAOmemory implements PassengerDAO {
     public void save(Passenger entity) {entities.add(entity);}
 
     @Override
-    public Passenger find(String username) {
+    public boolean find(String username) {
         for(Passenger passenger: entities){
             if(username.equals(passenger.getUsername())){
-                return passenger;
+                return true;
             }
         }
-        return null;
+        return false;
     }
 
     @Override
@@ -66,7 +66,7 @@ public class PassengerDAOmemory implements PassengerDAO {
 
     public boolean findPassenger(int id) {
         for(Passenger passenger: entities){
-            if(passenger.getUserId()==id){
+            if(passenger.getPassengerId()==id){
                 return true;
             }
         }

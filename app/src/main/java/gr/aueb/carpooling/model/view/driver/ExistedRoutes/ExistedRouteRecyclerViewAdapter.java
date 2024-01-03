@@ -1,5 +1,6 @@
 package gr.aueb.carpooling.model.view.driver.ExistedRoutes;
 
+import android.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -17,8 +19,10 @@ import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.Route;
 
 public class ExistedRouteRecyclerViewAdapter extends RecyclerView.Adapter<ExistedRouteRecyclerViewAdapter.ViewHolder>{
-
     private final List<Route> routes;
+
+    private Route currentItem;
+    private ExistedRouteViewModel viewModel;
     private final ExistedRouteRecyclerViewAdapter.RouteSelectionListener listener;
     /**
      * Αρχικοποιεί την λίστα με τις διαθέσιμες διαδρομές
@@ -41,7 +45,7 @@ public class ExistedRouteRecyclerViewAdapter extends RecyclerView.Adapter<Existe
     @NonNull
     @Override
     public ExistedRouteRecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ExistedRouteRecyclerViewAdapter.ViewHolder(LayoutInflater.from(parent.getContext())
+        return new ViewHolder(LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.route_list_item, parent, false));
     }
 
@@ -53,20 +57,29 @@ public class ExistedRouteRecyclerViewAdapter extends RecyclerView.Adapter<Existe
      */
     @Override
     public void onBindViewHolder(@NonNull ExistedRouteRecyclerViewAdapter.ViewHolder holder, int position) {
-        final Route currentItem = routes.get(position);
-        holder.routeDest.setText((currentItem.getDestination()).toString());
-        holder.routeDate.setText((currentItem.getDestination()).toString());
-        holder.routeDest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listener.selectRoute(currentItem);
-            }
-        });
+        currentItem = routes.get(position);
+
+        holder.routeDest.setText((currentItem.getDestinationString()));
+        holder.routeDate.setText((currentItem.getDate().toString()));
+        boolean b = currentItem.isCompleted();
+
+        holder.routeCompleted.setText((String.valueOf(b)));
+//        holder.routeDest.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                listener.selectRoute(currentItem);
+//            }m
+//        });
         holder.CompletedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 currentItem.Completed();
+                //listener.selectRoute(currentItem);
+                boolean b = currentItem.isCompleted();
+                holder.routeCompleted.setText((String.valueOf(b)));
+                //viewModel.getPresenter().showError(b);
             }
+
         });
 
     }
@@ -79,25 +92,29 @@ public class ExistedRouteRecyclerViewAdapter extends RecyclerView.Adapter<Existe
     /**
      * Αρχικοποιεί τα Text Views που χρησιμοποιούμε στην παραπάνω μέθοδο
      */
-    public class ViewHolder extends RecyclerView.ViewHolder
+    public static class ViewHolder extends RecyclerView.ViewHolder
     {
         public final TextView routeDest;
         public final TextView routeDate;
+
+        public final TextView routeCompleted;
         public final Button CompletedButton;
         public ViewHolder(View v)
         {
             super(v);
-            routeDest = v.findViewById(R.id.Destination);
-            routeDate = v.findViewById(R.id.Date);
-            CompletedButton = v.findViewById(R.id.CompletedButton);
+            routeDest = (TextView) v.findViewById(R.id.Destination);
+            routeDate = (TextView) v.findViewById(R.id.Date);
+            routeCompleted = (TextView) v.findViewById(R.id.Completed);
+            CompletedButton = (Button) v.findViewById(R.id.CompletedButton);
         }
-        /**
-         * @return τα στοιχεία της διαδρομής οταν καλεστεί με System.out.print
-         */
-        @Override
-        public String toString() {
-            return super.toString() +" "+routeDest.getText()+" "+routeDate.getText()+ " "+CompletedButton.getText();
-        }
+//        /**
+//         * @return τα στοιχεία της διαδρομής οταν καλεστεί με System.out.print
+//         */
+//        @NonNull
+//        @Override
+//        public String toString() {
+//            return super.toString() +" "+routeDest.getText().toString().trim()+" "+routeDate.getText().toString().trim()+ " "+CompletedButton.getText().toString().trim();
+//        }
     }
 
 

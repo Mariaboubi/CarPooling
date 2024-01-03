@@ -4,16 +4,24 @@ import gr.aueb.carpooling.model.Driver;
 import gr.aueb.carpooling.model.Passenger;
 import gr.aueb.carpooling.model.User;
 import gr.aueb.carpooling.model.contact.EmailAddress;
+import gr.aueb.carpooling.model.dao.DriverDAO;
+import gr.aueb.carpooling.model.dao.PassengerDAO;
 import gr.aueb.carpooling.model.dao.UserDAO;
 import gr.aueb.carpooling.model.contact.EmailAddress;
 
 public class SignUpPresenter {
 
     private final UserDAO userDao;
+
+    private final DriverDAO driverDao;
+
+    private final PassengerDAO passengerDao;
     private SignUpView view;
 
-    public SignUpPresenter(UserDAO userDao) {
+    public SignUpPresenter(UserDAO userDao, DriverDAO driverDao, PassengerDAO passengerDao) {
         this.userDao = userDao;
+        this.driverDao = driverDao;
+        this.passengerDao = passengerDao;
     }
 
     public void setView(SignUpView v) {
@@ -49,6 +57,7 @@ public class SignUpPresenter {
         String inputDriverLicense = view.getDriverLicense();
         String inputCarType = view.getCarType();
 
+
         if (inputName.isEmpty() && inputSurname.isEmpty() && inputUsername.isEmpty() && inputAge.isEmpty() && !inputEmail.isValid() &&
                 inputPassword.isEmpty() && inputPasswordVerification.isEmpty() && inputPhoneNumber.isEmpty()) {
             view.showErrorMessage("Error!", "Complete all the fields");
@@ -64,16 +73,18 @@ public class SignUpPresenter {
             view.showErrorMessage("Error!", "Το password must have at least 8 characters.");
         } else if (!inputPassword.equals(inputPasswordVerification)) {
             view.showErrorMessage("Error!", "The fields password και confirm password must match!");
-        } else {
+        } else  {
             if (!((inputDriverLicense.isEmpty() && inputCarType.isEmpty() && inputIban.isEmpty()) ||
                     (!inputDriverLicense.isEmpty() && !inputCarType.isEmpty() && !inputIban.isEmpty()))) {
                 view.showErrorMessage("Error!", "All the fields of the driver must be completed.");
             } else {
+
                 User newUser = new User(inputUsername, inputName, inputSurname, inputPhoneNumber, inputEmail, inputPassword, inputAge);
                 userDao.save(newUser);
-                Driver driver = new Driver(inputUsername, inputName, inputSurname, inputPhoneNumber, inputEmail, inputPassword, inputAge, inputIban, inputDriverLicense, inputCarType);
+                Driver driver = new Driver(newUser.getUsername(), newUser.getName(), newUser.getSurname(), newUser.getPhone(), newUser.getEmail(), newUser.getPassword(), newUser.getAge(), inputIban, inputDriverLicense, inputCarType);
+                driverDao.save(driver);
                 // Successful registration
-                view.showRegistrationSuccessMessage();
+//                view.showRegistrationSuccessMessage();
             }
             if (!((inputCardNumber.isEmpty() && inputCardHolderName.isEmpty() && inputCVV.isEmpty()) ||
                     (!inputCardNumber.isEmpty() && !inputCardHolderName.isEmpty() && !inputCVV.isEmpty()))) {
@@ -84,7 +95,8 @@ public class SignUpPresenter {
                 }
                 User newUser = new User(inputUsername, inputName, inputSurname, inputPhoneNumber, inputEmail, inputPassword, inputAge);
                 userDao.save(newUser);
-                Passenger passenger = new Passenger(inputUsername, inputName, inputSurname, inputPhoneNumber, inputEmail, inputPassword, inputAge, inputCardNumber, inputCardHolderName, inputCVV);
+                Passenger passenger = new Passenger(newUser.getUsername(), newUser.getName(), newUser.getSurname(), newUser.getPhone(), newUser.getEmail(), newUser.getPassword(), newUser.getAge(), inputCardNumber, inputCardHolderName, inputCVV);
+                passengerDao.save(passenger);
                 // Successful registration
                 view.showRegistrationSuccessMessage();
             }

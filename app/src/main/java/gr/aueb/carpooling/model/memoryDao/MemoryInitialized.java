@@ -14,7 +14,7 @@ public class MemoryInitialized extends Initializer {
     }
 
     @Override
-    public DriverDAO geDriverDAO() {
+    public DriverDAO getDriverDAO() {
         return new DriverDAOmemory();
     }
 
@@ -24,5 +24,10 @@ public class MemoryInitialized extends Initializer {
 
     @Override
     public PassengerDAO getPassengerDAO() {return new PassengerDAOmemory();}
+
+    @Override
+    public RouteDAO getRouteDAO() {
+        return new RouteDAOmemory();
+    }
 
 }

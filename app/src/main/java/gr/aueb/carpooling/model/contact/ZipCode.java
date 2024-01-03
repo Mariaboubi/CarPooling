@@ -64,4 +64,8 @@ public class ZipCode {
     }
 
 
+    @NonNull
+    public String toString() {
+        return zipcode;
+    }
 }

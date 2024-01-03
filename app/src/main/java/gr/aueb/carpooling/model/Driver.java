@@ -7,10 +7,12 @@ public class Driver extends User implements DriverInterface {
     private String iban, license_number, car_type; // personal details
     private final Set<Route> routes; // A HashSet of Routes that the driver takes part
 
+    private final int driver_id;
     // Constructor
     public Driver(String username, String name, String surname, String phone, EmailAddress email,
                   String password, String age, String iban, String license_number, String car_type) {
         super(username, name, surname, phone, email, password, age);
+        driver_id = super.getUserId();
         // Check for null values and provide meaningful error messages
         Objects.requireNonNull(iban, "IBAN cannot be null");
         Objects.requireNonNull(license_number, "License number cannot be null");
@@ -32,6 +34,9 @@ public class Driver extends User implements DriverInterface {
         this.car_type = car_type;
     }
 
+    public int getDriverId() {
+        return driver_id;
+    }
     public String getIban() {
         return iban;
     }

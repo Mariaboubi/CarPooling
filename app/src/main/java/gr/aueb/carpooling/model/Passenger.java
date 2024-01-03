@@ -10,10 +10,12 @@ public class Passenger extends User implements PassengerInterface {
     private Money balance; // The money that Passenger puts in the app in order to pay
     private final Set<Route> routes; // A HashSet of routes that the Passenger takes part
 
+    private final int passenger_id;
     // Constructor
     public Passenger(String username, String name, String surname, String phone, EmailAddress email,
                      String password, String age, String cardNumber, String cardHolderName, String CVV) {
         super(username, name, surname, phone, email, password, age);// calling the father constructor(User)
+        passenger_id = super.getUserId();
         changeBankDetails(cardNumber, cardHolderName, CVV);
         Currency euroCurrency = Currency.getInstance("EUR");
         this.balance = new Money(0.0, euroCurrency);
@@ -26,6 +28,9 @@ public class Passenger extends User implements PassengerInterface {
         this.CVV = CVV;
     }
 
+    public int getPassengerId() {
+        return passenger_id;
+    }
     // Getters for personal details
     public String getCardNumber() {
         return cardNumber;

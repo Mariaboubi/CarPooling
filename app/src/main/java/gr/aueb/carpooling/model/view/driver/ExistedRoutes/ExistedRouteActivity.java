@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,13 +14,14 @@ import android.widget.TextView;
 
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.Route;
+import gr.aueb.carpooling.model.view.LogIn.LogInActivity;
 import gr.aueb.carpooling.model.view.driver.DriverFrontPage;
 
 public class ExistedRouteActivity extends AppCompatActivity implements ExitedRouteView,ExistedRouteRecyclerViewAdapter.RouteSelectionListener{
-    ExistedRouteViewModel viewModel;
-    int driverId;
-    RecyclerView recyclerView;
-    TextView emptyView;
+    private ExistedRouteViewModel viewModel;
+    private String username;
+    private RecyclerView recyclerView;
+    private TextView emptyView;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +30,10 @@ public class ExistedRouteActivity extends AppCompatActivity implements ExitedRou
 
         viewModel = new ViewModelProvider(this).get(ExistedRouteViewModel.class);
         viewModel.getPresenter().setView(this);
-
-        if (savedInstanceState == null) {
-            Intent intent = getIntent();
-            Bundle extras = intent.getExtras();
-            driverId = extras.getInt("DriverId");
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            username = extras.getString("Username");
+            //The key argument here must match that used in the other activity
         }
         viewModel.getPresenter().setRouteList();
         // ui initialization
@@ -50,8 +51,8 @@ public class ExistedRouteActivity extends AppCompatActivity implements ExitedRou
     @Override
     public void selectRoute(Route route) {
         Intent intent = new Intent(ExistedRouteActivity.this, DriverFrontPage.class);
-        intent.putExtra("RouteId",route.getId());
-        intent.putExtra("DriverId",driverId);
+//        intent.putExtra("RouteId",route.getId());
+        intent.putExtra("Username",username);
         startActivity(intent);
     }
 
@@ -72,5 +73,18 @@ public class ExistedRouteActivity extends AppCompatActivity implements ExitedRou
         emptyView.setVisibility(View.GONE);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new ExistedRouteRecyclerViewAdapter(viewModel.getPresenter().getRouteList(), this));
+    }
+    public void showErrorMessage(String title, String message)
+    {
+        new AlertDialog.Builder(ExistedRouteActivity.this)
+                .setCancelable(true)
+                .setTitle(title)
+                .setMessage(message)
+                .setPositiveButton("OK", null).create().show();
+
+        Intent intent = new Intent(ExistedRouteActivity.this, LogInActivity.class);
+//        intent.putExtra("Username",username);
+        startActivity(intent);
+
     }
 }

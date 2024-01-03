@@ -17,7 +17,7 @@ public interface PassengerDAO {
 
     void save(Passenger entity);
 
-    Passenger find(String username);
+    boolean find(String username);
 
     Passenger find(String username, String password);
 

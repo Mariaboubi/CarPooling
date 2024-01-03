@@ -106,6 +106,10 @@ public class Route implements RouteInterface {
         return this.destination;
     }
 
+    public String getDestinationString() {
+        return this.destination.toString();
+    }
+
     public void setDestination(Address destination) {
         this.destination = destination;
     }

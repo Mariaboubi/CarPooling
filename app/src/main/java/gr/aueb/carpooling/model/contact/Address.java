@@ -130,7 +130,7 @@ public class Address implements AddressInterface {
     @NonNull
     public String toString() {
         return String.format(
-                "Address: %s %s, %s, %s, %s, %s",
+                "Address: %s %s, %s, %s, %s",
                 street, number, city, zip, country
         );
     }

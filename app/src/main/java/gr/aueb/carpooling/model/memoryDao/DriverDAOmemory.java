@@ -42,13 +42,13 @@ public class DriverDAOmemory implements DriverDAO {
     }
 
     @Override
-    public Driver find(String username) {
+    public boolean find(String username) {
         for(Driver driver: entities){
             if(username.equals(driver.getUsername())){
-                return driver;
+                return true;
             }
         }
-        return null;
+        return false;
     }
 
     @Override
@@ -73,7 +73,7 @@ public class DriverDAOmemory implements DriverDAO {
 
     public boolean findDriver(int id) {
         for(Driver driver: entities){
-            if(driver.getUserId()==id){
+            if(driver.getDriverId()==id){
                 return true;
             }
         }

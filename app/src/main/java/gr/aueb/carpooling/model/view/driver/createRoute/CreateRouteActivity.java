@@ -4,34 +4,39 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import java.util.HashMap;
 
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.memoryDao.MemoryInitialized;
+import gr.aueb.carpooling.model.view.LogIn.LogInActivity;
+import gr.aueb.carpooling.model.view.driver.DriverFrontPage;
 
 public class CreateRouteActivity extends AppCompatActivity implements CreateRouteView {
 
     private CreateRouteViewModel viewModel;
-    private int driverId;
+    private String username;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_route);
 
-
+        @SuppressLint({"MissingInflatedId", "LocalSuppress"})
+        ImageButton back_button = (ImageButton) findViewById(R.id.back_button);
+        back_button.setOnClickListener(v -> openDriverFrontPage());
         viewModel = new ViewModelProvider(this).get(CreateRouteViewModel.class);
         viewModel.getPresenter().setView(this);
 
-        if (savedInstanceState == null) {
-            Intent intent = getIntent();
-            Bundle extras = intent.getExtras();
-            assert extras != null;
-            int driverId = extras.getInt("DriverId");
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            username = extras.getString("Username");
+            //The key argument here must match that used in the other activity
         }
 
     }
@@ -61,6 +66,11 @@ public class CreateRouteActivity extends AppCompatActivity implements CreateRout
     @Override
     public void goBack() {
 
+    }
+
+    public void openDriverFrontPage() {
+        Intent intent = new Intent(this, DriverFrontPage.class);
+        startActivity(intent);
     }
 
     @Override

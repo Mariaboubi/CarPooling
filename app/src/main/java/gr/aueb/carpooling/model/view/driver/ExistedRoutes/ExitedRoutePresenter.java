@@ -1,5 +1,8 @@
 package gr.aueb.carpooling.model.view.driver.ExistedRoutes;
 
+import android.app.AlertDialog;
+import android.content.Context;
+
 import java.util.ArrayList;
 
 import gr.aueb.carpooling.model.Route;
@@ -62,5 +65,10 @@ public class ExitedRoutePresenter {
      */
     public ArrayList<Route> getRouteList() {
         return routes;
+    }
+
+    public void showError(boolean b) {
+        view.showErrorMessage("is Completed", String.valueOf(b));
+
     }
 }

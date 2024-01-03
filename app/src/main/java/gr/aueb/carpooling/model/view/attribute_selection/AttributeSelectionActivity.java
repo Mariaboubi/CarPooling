@@ -3,6 +3,7 @@ package gr.aueb.carpooling.model.view.attribute_selection;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -23,7 +24,7 @@ public class AttributeSelectionActivity extends AppCompatActivity implements Att
     private Button passenger_button;
     private Button driver_button;
     private AttributeSelectionViewModel viewModel;
-    private int userId;
+    private String username;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +40,7 @@ public class AttributeSelectionActivity extends AppCompatActivity implements Att
 
        Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            userId = extras.getInt("Id");
+            username = extras.getString("Id");
             //The key argument here must match that used in the other activity
         }
 
@@ -59,7 +60,8 @@ public class AttributeSelectionActivity extends AppCompatActivity implements Att
         passenger_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean isPassenger = viewModel.getPresenter().authenticateAttributePassenger(userId);
+                boolean isPassenger = viewModel.getPresenter().authenticateAttributePassenger(username);
+                showErrorMessage("Passenger", String.valueOf(isPassenger));
                 if (isPassenger){
                     openPassengerPage();
                 } else {
@@ -71,9 +73,10 @@ public class AttributeSelectionActivity extends AppCompatActivity implements Att
         driver_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            boolean isDriver = viewModel.getPresenter().authenticateAttributeDriver(userId);
-                if (isDriver){
-                    openDriverPage();
+            boolean isDriver = viewModel.getPresenter().authenticateAttributeDriver(username);
+            showErrorMessage("Driver", String.valueOf(isDriver));
+            if (isDriver){
+                    openDriverPage(username);
                 } else {
                     openLogInActivity();
                 }
@@ -91,9 +94,19 @@ public class AttributeSelectionActivity extends AppCompatActivity implements Att
         startActivity(intent);
     }
 
-    public void openDriverPage() {
+    public void openDriverPage(String username) {
         Intent intent = new Intent(this, DriverFrontPage.class);
+        intent.putExtra("Username", username) ;
         startActivity(intent);
     }
+    public void showErrorMessage(String title, String message)
+    {
+        new AlertDialog.Builder(AttributeSelectionActivity.this)
+                .setCancelable(true)
+                .setTitle(title)
+                .setMessage(message)
+                .setPositiveButton("OK", null).create().show();
+    }
+
 
 }

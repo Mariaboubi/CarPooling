@@ -83,7 +83,7 @@ public class LogInActivity extends AppCompatActivity implements LogInView{
 
     public void openAttributeSelectionActivity(int id){
         Intent intent = new Intent(LogInActivity.this, AttributeSelectionActivity.class);
-        intent.putExtra("Id", id);
+        intent.putExtra("Id", extractUsername());
         startActivity(intent);
     }
 }

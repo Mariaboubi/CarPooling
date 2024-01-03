@@ -25,7 +25,7 @@ public class PassengerFrontPageActivity extends AppCompatActivity implements Pas
 
     private  PassengerFrontPageViewModel viewModel;
 
-    private int userId;
+    private String username;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +40,7 @@ public class PassengerFrontPageActivity extends AppCompatActivity implements Pas
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            userId = extras.getInt("Id");
+            username = extras.getString("Username");
             //The key argument here must match that used in the other activity
         }
 

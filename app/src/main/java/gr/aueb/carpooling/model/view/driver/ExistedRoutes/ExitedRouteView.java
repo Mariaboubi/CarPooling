@@ -1,6 +1,8 @@
 package gr.aueb.carpooling.model.view.driver.ExistedRoutes;
 
-public interface ExitedRouteView {
+import gr.aueb.carpooling.model.view.View;
+
+public interface ExitedRouteView extends View {
 
     void goBack();
 
@@ -16,4 +18,6 @@ public interface ExitedRouteView {
      * απουσίας εστιατορίων
      */
     void ShowRoutes();
+
+    void showErrorMessage(String title, String message);
 }
