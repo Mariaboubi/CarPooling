@@ -7,7 +7,7 @@
     android:background="@color/white"
     android:fillViewport="true"
     android:padding="16dp"
-    tools:context=".model.view.create_route.CreateRouteActivity">
+    tools:context=".model.view.driver.createRoute.CreateRouteActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

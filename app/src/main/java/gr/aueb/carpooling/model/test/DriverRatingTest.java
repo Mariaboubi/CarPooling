@@ -29,7 +29,7 @@ public class DriverRatingTest {
     @BeforeEach
     public void setUp() {
         email = new EmailAddress("pappas@gmail.com");
-        driver = new Driver("john123", "john", "pappas", "696949", email, "12345123", 19, "GR16272397", "GRE10230910290194"
+        driver = new Driver("john123", "john", "pappas", "696949", email, "12345123", "19", "GR16272397", "GRE10230910290194"
                 , "mersedes");
         money = new Money(10.0, euroCurrency);
         ZipCode zip = new ZipCode("16562",0.0,0.0);

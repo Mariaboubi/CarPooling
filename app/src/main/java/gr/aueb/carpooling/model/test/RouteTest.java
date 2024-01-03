@@ -39,9 +39,9 @@ public class RouteTest {
     public void setup() {
         EmailAddress email = new EmailAddress("pappas@gmail.com");
         EmailAddress email2 =  new EmailAddress("pappadia@gmail.com");
-        driver = new Driver("john123", "john", "pappas", "696949", email, "12345123", 19, "GRE10230910290194",
+        driver = new Driver("john123", "john", "pappas", "696949", email, "12345123", "19", "GRE10230910290194",
                 "112233", "mersedes");
-        driver1 = new Driver("maria123", "maria", "pappas", "696948", email, "12345123", 19, "GRE10230910290194",
+        driver1 = new Driver("maria123", "maria", "pappas", "696948", email, "12345123", "19", "GRE10230910290194",
                 "112233", "mersedes");
         money = new Money(10.0, euroCurrency);
         destination = new Address("mesogeiwn", "10", "athens", new ZipCode("16562",0.0,0.0), "greece");
@@ -51,7 +51,7 @@ public class RouteTest {
         pickupPoint = new Address("mesogeiwn", "16", "athens", new ZipCode("16563",0.0,0.0), "greece");
         pickupTime = LocalDateTime.of(2023, 12, 1, 12, 30);
         subroute = new Subroute(destination, pickupPoint, pickupTime);
-        passenger = new Passenger("eleni3", "eleni", "pappa", "6969497297", email2, "12345183", 23, "14222",
+        passenger = new Passenger("eleni3", "eleni", "pappa", "6969497297", email2, "12345183", "23", "14222",
                 "eleni", "352");
     }
 

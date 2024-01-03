@@ -34,7 +34,7 @@ public class DriverTest {
     @BeforeEach
     public void setUp() {
         email = new EmailAddress("pappas@gmail.com");
-        driver = new Driver("john123", "john", "pappas", "696949", email, "12345123", 19, "GRE10230910290194",
+        driver = new Driver("john123", "john", "pappas", "696949", email, "12345123", "19", "GRE10230910290194",
                 "112233", "mersedes");
         Money money = new Money(10.0, euroCurrency);
         ZipCode zip = new ZipCode("16562",0.0,0.0);

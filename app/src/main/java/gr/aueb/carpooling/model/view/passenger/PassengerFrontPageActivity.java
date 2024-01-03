@@ -11,7 +11,6 @@ import android.widget.ImageButton;
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.view.LogIn.LogInActivity;
 import gr.aueb.carpooling.model.view.attribute_selection.AttributeSelectionActivity;
-import gr.aueb.carpooling.model.view.create_route.CreateRouteActivity;
 import gr.aueb.carpooling.model.view.subroute.subrouteActivity;
 
 public class PassengerFrontPageActivity extends AppCompatActivity {

@@ -10,7 +10,7 @@ public interface SubrouteDAO {
 
     void deleteAll();
 
-    void save(Passenger passenger , Subroute entity);
+    void save(Passenger passenger,Subroute entity);
 
     List<Subroute> findAll();
 

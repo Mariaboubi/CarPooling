@@ -19,13 +19,14 @@ import gr.aueb.carpooling.model.view.LogIn.LoginViewModel;
 import gr.aueb.carpooling.model.view.attribute_selection.AttributeSelectionActivity;
 
 public class SignUpActivity extends AppCompatActivity implements SignUpView {
-
+    private SignUpViewModel viewModel;
+    private Button btnSignUp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        SignUpViewModel viewModel = new ViewModelProvider(this).get(SignUpViewModel.class);
+        viewModel = new ViewModelProvider(this).get(SignUpViewModel.class);
 
         viewModel.getPresenter().setView(this);
 
@@ -39,12 +40,12 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
         TextView txtSignIn = (TextView) findViewById(R.id.txtSignIn);
         txtSignIn.setOnClickListener(v -> openLogInActivity());
 
-        Button btnSignUp = (Button) findViewById(R.id.btnSignUp);
+        btnSignUp = (Button) findViewById(R.id.btnSignUp);
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 viewModel.getPresenter().onCreateUserAccount();
-                openAttributeSelectionActivity();
+//                openAttributeSelectionActivity();
             };
         });
     }
@@ -59,89 +60,79 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
     }
 
     public void showRegistrationSuccessMessage() {
-        new AlertDialog.Builder(SignUpActivity.this)
-                .setCancelable(true)
-                .setTitle("Account created successfully")
-//                .setMessage("Ο λαγαριασμος δημιουργήθηκε με επιτυχία")
-                .setPositiveButton("OK", (dialog, which) -> {
-                    dialog.dismiss();
-                    finish();
-                }).create().show();
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openLogInActivity();
+            }
+        });
 
     }
 
     public String getName() {
-        EditText et_name = findViewById(R.id.SignUpName);
-        return et_name.getText().toString();
+        return ((EditText)findViewById(R.id.SignUpName)).getText().toString().trim();
     }
 
     public String getSurname() {
-        EditText et_surname = findViewById(R.id.SignUpSurname);
-        return et_surname.getText().toString();
+        return ((EditText)findViewById(R.id.SignUpSurname)).getText().toString().trim();
     }
 
-    public Integer getAge() {
+    public String getAge() {
         EditText et_age = findViewById(R.id.SignUpAge);
-        return Integer.parseInt(et_age.getText().toString());
+        return et_age.getText().toString().trim();
     }
 
-    public EmailAddress getEmail() {
+    public String getEmail() {
         EditText et_email = findViewById(R.id.SignUpEmail);
-        return new EmailAddress(et_email.getText().toString());
+        return et_email.getText().toString().trim();
     }
 
     public String getPhoneNumber() {
-        EditText et_phone_number = findViewById(R.id.SignUpPhone);
-        return et_phone_number.getText().toString();
+        EditText et_phone = findViewById(R.id.SignUpPhone);
+        return et_phone.getText().toString().trim();
     }
 
     public String getCardNumber() {
-        EditText et_credit_card = findViewById(R.id.SignUpCardNumber);
-        return et_credit_card.getText().toString();
+        return ((EditText)findViewById(R.id.SignUpCardNumber)).getText().toString().trim();
     }
     public String getCardHolderName() {
-        EditText et_credit_card = findViewById(R.id.SignUpCardHolderName);
-        return et_credit_card.getText().toString();
+        return ((EditText)findViewById(R.id.SignUpCardHolderName)).getText().toString().trim();
     }
     public String getCVV() {
         EditText et_credit_card = findViewById(R.id.SignUpCVV);
-        return et_credit_card.getText().toString();
+        return et_credit_card.getText().toString().trim();
     }
 
     public String getUsername() {
         EditText et_username = findViewById(R.id.SignUpUsername);
-        return et_username.getText().toString();
+        return et_username.getText().toString().trim();
     }
 
     public String getPassword() {
         EditText et_password = findViewById(R.id.password);
-        return et_password.getText().toString();
+        return et_password.getText().toString().trim();
     }
 
     public String getPasswordVerification() {
         EditText et_password_verification = findViewById(R.id.SignUpConfirmPassword);
-        return et_password_verification.getText().toString();
+        return et_password_verification.getText().toString().trim();
     }
 
     public String getDriverLicense() {
         EditText et_driver_license = findViewById(R.id.SignUpLicenseNumber);
-        return et_driver_license.getText().toString();
+        return et_driver_license.getText().toString().trim();
     }
 
     @Override
     public String getCarType() {
         EditText et_car_type = findViewById(R.id.SignUpCarType);
-        return et_car_type.getText().toString();
+        return et_car_type.getText().toString().trim();
     }
 
     public String getIban() {
         EditText et_iban = findViewById(R.id.SignUpIban);
-        return et_iban.getText().toString();
+        return et_iban.getText().toString().trim();
     }
-
-
-    @Override
-    public void goBack() {finish();}
 
     public void openLogInActivity() {
         Intent intent = new Intent(this, LogInActivity.class);
@@ -149,7 +140,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
     }
 
     public void openAttributeSelectionActivity() {
-        Intent intent = new Intent(this, AttributeSelectionActivity.class);
+        Intent intent = new Intent(SignUpActivity.this, AttributeSelectionActivity.class);
         startActivity(intent);
     }
 }

@@ -9,7 +9,7 @@ public class Driver extends User implements DriverInterface {
 
     // Constructor
     public Driver(String username, String name, String surname, String phone, EmailAddress email,
-                  String password, int age, String iban, String license_number, String car_type) {
+                  String password, String age, String iban, String license_number, String car_type) {
         super(username, name, surname, phone, email, password, age);
         // Check for null values and provide meaningful error messages
         Objects.requireNonNull(iban, "IBAN cannot be null");
@@ -26,7 +26,7 @@ public class Driver extends User implements DriverInterface {
     }
 
     public void changePersonalDetails(String username, String name, String surname, String phone, EmailAddress email,
-                                      int age, String license_number, String car_type) {
+                                      String age, String license_number, String car_type) {
         super.changePersonalDetails(username, name, surname, phone, email, age); // calling the father class method
         this.license_number = license_number;
         this.car_type = car_type;

@@ -161,7 +161,7 @@
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:fontFamily="sans-serif-medium"
-                android:inputType="text|phone"
+                android:inputType="phone"
                 android:singleLine="true"
                 android:textColor="@color/black" />
 

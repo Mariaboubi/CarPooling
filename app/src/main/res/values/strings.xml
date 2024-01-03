@@ -84,9 +84,12 @@
     <string name="pick_up_point" />
     <string name="create" />
     <string name="already_have_entered_route_and_don_t_want_to_enter_more" />
+    <string name="no_existed_route">no existed route : (</string>
+    <string name="completed">Completed</string>
+    <string name="create2" />
+    <string name="already_have_entered_subroute_and_don_t_want_to_enter_more" />
     <string name="show_requests">Show requests</string>
     <string name="show_existed_routes">Show existed routes</string>
     <string name="no_routes_found">No routes found : (</string>
-    <string name="completed">completed</string>
 
 </resources>

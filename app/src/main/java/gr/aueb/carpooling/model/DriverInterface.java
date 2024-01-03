@@ -22,7 +22,7 @@ public interface DriverInterface {
      * @param carType The new car type of the driver.
      */
     void changePersonalDetails(String username, String name, String surname, String phone, EmailAddress email,
-                               int age, String licenseNumber, String carType);
+                               String age, String licenseNumber, String carType);
 
     /**
      * Getter method to retrieve the IBAN of the driver.

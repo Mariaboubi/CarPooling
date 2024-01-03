@@ -6,12 +6,12 @@ public class User implements UserInterface {
     private final int userId; // The id of the user
     private EmailAddress email; // User's Email Address
     private String username, password, surname, name, phone; // Personal details
-    private int age; // User's age
+    private String age; // User's age
     public Rating rate; // User's rating
 
     // Constructor
     public User(String username, String name, String surname, String phone, EmailAddress email, String password,
-                int age) {
+                String age) {
         this.userId = ++userIdCounter;
         this.username = username;
         this.name = name;
@@ -52,11 +52,11 @@ public class User implements UserInterface {
     public String getPassword() {
         return this.password;
     }
-    public int getAge() {
+    public String getAge() {
         return this.age;
     }
     public void changePersonalDetails(String username, String name, String surname, String phone, EmailAddress email,
-                                      int age) {
+                                      String age) {
         this.username = username;
         this.name = name;
         this.surname = surname;

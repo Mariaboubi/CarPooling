@@ -1,4 +1,4 @@
-package gr.aueb.carpooling.model.view.create_route;
+package gr.aueb.carpooling.model.view.driver.createRoute;
 
 import org.threeten.bp.LocalDateTime;
 
@@ -15,6 +15,7 @@ import gr.aueb.carpooling.model.dao.DriverDAO;
 import gr.aueb.carpooling.model.dao.RouteDAO;
 
 public class CreateRoutePresenter {
+
     private RouteDAO routeDAO;
     private DriverDAO driverDAO;
 
@@ -35,8 +36,7 @@ public class CreateRoutePresenter {
     public void setView(CreateRouteView view) {
         this.view = view;
     }
-
-    public void onCreateRestaurant() {
+    public void onCreateRoute() {
         boolean isEmpty = false;
         HashMap<String, String> details = view.getRouteDetails();
 

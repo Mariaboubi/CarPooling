@@ -74,7 +74,7 @@ public interface UserInterface {
      *
      * @return The age of the user
      */
-    int getAge();
+    String getAge();
 
     /**
      * Change the personal details of the user.
@@ -87,7 +87,7 @@ public interface UserInterface {
      * @param age      The new age
      */
     void changePersonalDetails(String username, String name, String surname, String phone, EmailAddress email,
-                               int age);
+                               String age);
 
     /**
      * Change the password of the user.

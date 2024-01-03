@@ -13,9 +13,9 @@ public interface SignUpView extends View {
 
     String getSurname();
 
-    Integer getAge();
+    String getAge();
 
-    EmailAddress getEmail();
+    String getEmail();
 
     String getPhoneNumber();
 
@@ -45,9 +45,9 @@ public interface SignUpView extends View {
     void showRegistrationSuccessMessage();
 
 
-    /** Καλείται για να επιστρέψουμε στο προηγούμενο Activity
-     */
-    void goBack();
+//    /** Καλείται για να επιστρέψουμε στο προηγούμενο Activity
+//     */
+//    void goBack();
 
 
 }

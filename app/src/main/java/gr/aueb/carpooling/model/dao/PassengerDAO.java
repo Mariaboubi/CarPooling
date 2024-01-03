@@ -23,6 +23,8 @@ public interface PassengerDAO {
 
     Passenger find(int id);
 
+    boolean findPassenger(int id);
+
     Set<Route> findRoute(int id);
 
     int nextId();

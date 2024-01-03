@@ -7,7 +7,7 @@ import gr.aueb.carpooling.model.memoryDao.DriverDAOmemory;
 import gr.aueb.carpooling.model.memoryDao.PassengerDAOmemory;
 import gr.aueb.carpooling.model.memoryDao.RouteDAOmemory;
 import gr.aueb.carpooling.model.memoryDao.SubrouteDAOmemory;
-import gr.aueb.carpooling.model.view.create_route.CreateRoutePresenter;
+
 
 public class SubrouteViewModel extends ViewModel {
     SubroutePresenter presenter;

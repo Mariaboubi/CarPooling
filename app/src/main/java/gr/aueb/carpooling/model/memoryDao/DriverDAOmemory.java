@@ -71,6 +71,15 @@ public class DriverDAOmemory implements DriverDAO {
         return null;
     }
 
+    public boolean findDriver(int id) {
+        for(Driver driver: entities){
+            if(driver.getUserId()==id){
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     public Set<Route> findRestaurants(int id) {
         ArrayList<Route> result= new ArrayList<>();

@@ -12,7 +12,7 @@ public class Passenger extends User implements PassengerInterface {
 
     // Constructor
     public Passenger(String username, String name, String surname, String phone, EmailAddress email,
-                     String password, int age, String cardNumber, String cardHolderName, String CVV) {
+                     String password, String age, String cardNumber, String cardHolderName, String CVV) {
         super(username, name, surname, phone, email, password, age);// calling the father constructor(User)
         changeBankDetails(cardNumber, cardHolderName, CVV);
         Currency euroCurrency = Currency.getInstance("EUR");

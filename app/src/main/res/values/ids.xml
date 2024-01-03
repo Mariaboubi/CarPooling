@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="linearLayout1" type="id" />
+    <item name="button_createroute" type="id" />
+    <item name="button_showroutes" type="id" />
+    <item name="linearLayout4" type="id" />
+    <item name="button_showrequestes" type="id" />
+    <item name="show_requests" type="id" />
+    <item name="SubrouteProgressBar" type="id" />
+    <item name="btnCreateSubroute" type="id" />
+</resources>

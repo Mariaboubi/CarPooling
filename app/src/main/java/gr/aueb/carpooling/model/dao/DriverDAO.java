@@ -22,6 +22,8 @@ public interface DriverDAO {
 
     Driver find(int id);
 
+    boolean findDriver(int id);
+
     Set<Route> findRestaurants(int id);
 
     int nextId();

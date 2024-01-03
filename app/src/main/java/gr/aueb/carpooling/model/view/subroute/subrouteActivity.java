@@ -3,11 +3,13 @@ package gr.aueb.carpooling.model.view.subroute;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -19,17 +21,22 @@ import gr.aueb.carpooling.model.view.passenger.PassengerFrontPageActivity;
 public class subrouteActivity extends AppCompatActivity implements SubrouteView {
 
     private ImageButton back_button;
+    private Button create_route_button;
     private int passengerId;
 
+    private SubrouteViewModel viewModel;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subroute);
 
-        back_button = (ImageButton) findViewById(R.id.back_button2);
+        back_button = (ImageButton) findViewById(R.id.back_button);
+        create_route_button = (Button) findViewById(R.id.btnCreateSubroute);
 
-        SubrouteViewModel viewModel = new ViewModelProvider(this).get(SubrouteViewModel.class);
+        viewModel = new ViewModelProvider(this).get(SubrouteViewModel.class);
+
         viewModel.getPresenter().setView(this);
 
         if (savedInstanceState == null) {
@@ -39,13 +46,13 @@ public class subrouteActivity extends AppCompatActivity implements SubrouteView 
             passengerId = extras.getInt("PassengerId");
         }
         viewModel.getPresenter().setPassenger(passengerId);
-//
-//        findViewById(R.id.btnCreateSubroute).setOnClickListener(new View.OnClickListener(){ // Όταν πατηθεί το κουμπί δημιουργίας του  subroute
-//            @Override
-//            public void onClick(View v){
-//                viewModel.getPresenter().onCreateSubRoute();
-//            }
-//        });
+
+        create_route_button.setOnClickListener(new View.OnClickListener(){ // Όταν πατηθεί το κουμπί δημιουργίας του  subroute
+            @Override
+            public void onClick(View v){
+                viewModel.getPresenter().onCreateSubRoute();
+            }
+        });
 
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -61,7 +61,7 @@ public class LogInActivity extends AppCompatActivity implements LogInView{
         login_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openAttributeSelectionActivity();
+                openAttributeSelectionActivity(id);
             }
         });
     }
@@ -81,8 +81,9 @@ public class LogInActivity extends AppCompatActivity implements LogInView{
         startActivity(intent);
     }
 
-    public void openAttributeSelectionActivity(){
+    public void openAttributeSelectionActivity(int id){
         Intent intent = new Intent(LogInActivity.this, AttributeSelectionActivity.class);
+        intent.putExtra("Id", id);
         startActivity(intent);
     }
 }

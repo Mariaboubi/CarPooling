@@ -37,6 +37,6 @@ public interface LogInView extends View {
     /**
      * This method is called when the log in is successful and the user goes to the attribute selection page.
      */
-    void openAttributeSelectionActivity();
+    void openAttributeSelectionActivity(int id);
 }
 

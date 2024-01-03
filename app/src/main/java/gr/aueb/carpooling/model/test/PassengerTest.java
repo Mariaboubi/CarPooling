@@ -37,9 +37,9 @@ public class PassengerTest {
     public void setUp() {
         email1 = new EmailAddress("pappas@gmail.com");
         email2 = new EmailAddress("pappassmar@gmail.com");
-        passenger = new Passenger("john123", "john", "pappas", "6969497299", email1, "12345123", 19, "12222",
+        passenger = new Passenger("john123", "john", "pappas", "6969497299", email1, "12345123", "19", "12222",
                 "john", "322");
-        driver = new Driver("maria123", "maria", "pappas", "69694559", email2, "12345124", 19, "GRE10230910290194",
+        driver = new Driver("maria123", "maria", "pappas", "69694559", email2, "12345124", "19", "GRE10230910290194",
                 "112233", "mersedes");
         money = new Money(0.0, euroCurrency);
         Address destination = new Address("Veikou", "37", "Athens", new ZipCode("11146",0.0,0.0), "Greece");
@@ -102,7 +102,7 @@ public class PassengerTest {
 
     @Test
     public void testChangePersonalDetails() {// we decide to change only the username
-        passenger.changePersonalDetails("john322", "john", "pappas", "696949", email2, 19);
+        passenger.changePersonalDetails("john322", "john", "pappas", "696949", email2, "19");
         assertEquals(passenger.getUsername(), "john322");
     }
 

@@ -1,6 +1,7 @@
 package gr.aueb.carpooling.model.view.attribute_selection;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,20 +11,39 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import gr.aueb.carpooling.R;
+import gr.aueb.carpooling.model.memoryDao.MemoryInitialized;
 import gr.aueb.carpooling.model.view.LogIn.LogInActivity;
-import gr.aueb.carpooling.model.view.create_route.CreateRouteActivity;
+import gr.aueb.carpooling.model.view.LogIn.LoginViewModel;
 import gr.aueb.carpooling.model.view.driver.DriverFrontPage;
-import gr.aueb.carpooling.model.view.passenger.PassengerFrontPage;
+import gr.aueb.carpooling.model.view.passenger.PassengerFrontPageActivity;
 
-public class AttributeSelectionActivity extends AppCompatActivity {
+public class AttributeSelectionActivity extends AppCompatActivity implements AttributeSelectionView {
 
     private ImageButton back_button;
     private Button passenger_button;
     private Button driver_button;
+    private AttributeSelectionViewModel viewModel;
+    private int userId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_attribute);
+
+        MemoryInitialized dataHelper = new MemoryInitialized();
+        dataHelper.prepareData();
+
+
+        viewModel = new ViewModelProvider(this).get(AttributeSelectionViewModel.class);
+
+        viewModel.getPresenter().setView(this);
+
+       Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            userId = extras.getInt("Id");
+            //The key argument here must match that used in the other activity
+        }
+
+
 
         back_button = (ImageButton) findViewById(R.id.back_button);
         passenger_button = (Button) findViewById(R.id.button_passenger);
@@ -39,14 +59,24 @@ public class AttributeSelectionActivity extends AppCompatActivity {
         passenger_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openPassengerPage();
+                boolean isPassenger = viewModel.getPresenter().authenticateAttributePassenger(userId);
+                if (isPassenger){
+                    openPassengerPage();
+                } else {
+                    openLogInActivity();
+                }
             }
         });
 
         driver_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openDriverPage();
+            boolean isDriver = viewModel.getPresenter().authenticateAttributeDriver(userId);
+                if (isDriver){
+                    openDriverPage();
+                } else {
+                    openLogInActivity();
+                }
             }
         });
     }
@@ -57,12 +87,13 @@ public class AttributeSelectionActivity extends AppCompatActivity {
     }
 
     public void openPassengerPage() {
-        Intent intent = new Intent(this, PassengerFrontPage.class);
+        Intent intent = new Intent(this, PassengerFrontPageActivity.class);
         startActivity(intent);
     }
 
     public void openDriverPage() {
-        Intent intent = new Intent(this, CreateRouteActivity.class);
+        Intent intent = new Intent(this, DriverFrontPage.class);
         startActivity(intent);
     }
+
 }

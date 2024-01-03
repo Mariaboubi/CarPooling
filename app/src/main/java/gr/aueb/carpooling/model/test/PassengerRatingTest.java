@@ -30,9 +30,9 @@ public class PassengerRatingTest {
     public void setUp() {
         EmailAddress email = new EmailAddress("pappas@gmail.com");
         EmailAddress email2 = new EmailAddress("pappadia@gmail.com");
-        passenger = new Passenger("john123", "john", "pappas", "6969497299", email, "12345123", 19,
+        passenger = new Passenger("john123", "john", "pappas", "6969497299", email, "12345123", "19",
                 "12222", "john", "322");
-        driver = new Driver("maria123", "maria", "pappas", "69694559", email2, "12345124", 19, "GRE10230910290194",
+        driver = new Driver("maria123", "maria", "pappas", "69694559", email2, "12345124", "19", "GRE10230910290194",
                 "112233", "mersedes");
         Money money = new Money(10.0, euroCurrency);
         Address destination = new Address("mesogeiwn", "10", "athens", new ZipCode("16562",0.0,0.0), "greece");

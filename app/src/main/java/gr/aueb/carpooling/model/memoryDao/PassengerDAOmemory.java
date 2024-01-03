@@ -64,6 +64,15 @@ public class PassengerDAOmemory implements PassengerDAO {
         return null;
     }
 
+    public boolean findPassenger(int id) {
+        for(Passenger passenger: entities){
+            if(passenger.getUserId()==id){
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     public Set<Route> findRoute(int id) {
         ArrayList<Route> result= new ArrayList<>();
