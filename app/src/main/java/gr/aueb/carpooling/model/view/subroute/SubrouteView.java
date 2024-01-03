@@ -10,7 +10,6 @@ public interface SubrouteView extends View {
 
     void showErrorMessage(String title, String message);
 
-    void goBack();
 
 
     void showRouteAddedMessage();

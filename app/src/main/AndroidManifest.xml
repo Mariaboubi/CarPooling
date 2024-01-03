@@ -13,10 +13,16 @@
         android:theme="@style/Theme.CarPooling"
         tools:targetApi="31">
         <activity
-            android:name=".model.view.driver.DriverFrontPage"
+            android:name=".model.view.passenger.search_route.SearchRouteActivity"
             android:exported="false" />
         <activity
-            android:name=".model.view.passenger.PassengerFrontPage"
+            android:name=".model.view.driver.createRoute.CreateRouteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".model.view.driver.DriverFrontPage"
+            android:exported="true" />
+        <activity
+            android:name=".model.view.passenger.PassengerFrontPageActivity"
             android:exported="false"
             android:label="@string/title_activity_passenger_front_page"
             android:theme="@style/Theme.CarPooling" />
@@ -32,9 +38,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".model.view.LogIn.LogInActivity" />
-        <activity android:name=".model.view.sign_up.SignUpActivity" />
-        <activity android:name=".model.view.create_route.CreateRouteActivity"/>
+        <activity
+            android:name=".model.view.LogIn.LogInActivity"
+            android:exported="false" />
+        <activity
+            android:name=".model.view.sign_up.SignUpActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".model.view.subroute.subrouteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".model.view.driver.ExistedRoutes.ExistedRouteActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

@@ -43,9 +43,9 @@ public abstract class Initializer {
         //// NEW DRIVERS////////////////////////////////////////////////////////////////
         DriverDAO driverDAO= getDriverDAO();
         Driver driver1= new Driver(user1.getUsername(),user1.getName(),user1.getSurname(),user1.getPhone(), user1.getEmail(),user1.getPassword(), user1.getAge(), "GRE10230910290194", "112233", "mersedes");
-        Driver driver2= new Driver(user2.getUsername(),user2.getName(),user2.getSurname(),user2.getPhone(), user2.getEmail(),user2.getPassword(), user2.getAge(),"GRE10230910290333", "118899", "BMW");
+       // Driver driver2= new Driver(user2.getUsername(),user2.getName(),user2.getSurname(),user2.getPhone(), user2.getEmail(),user2.getPassword(), user2.getAge(),"GRE10230910290333", "118899", "BMW");
         driverDAO.save(driver1);
-        driverDAO.save(driver2);
+        //driverDAO.save(driver2);
         // NEW PASSENGERS////////////////////////////////////////////////////////////////
         PassengerDAO passengerDAO = getPassengerDAO();
 //        Passenger passenger1= new Passenger("maria123","maria","pappa","6900000000",email1,"1234","25","10230910290194", "Maria Volt", "365");
@@ -64,10 +64,10 @@ public abstract class Initializer {
         Route route2 = new Route(driver1, money5, LocalDateTime.of(2023, 10, 28, 16, 30), destination1, 2, false);
         Money money20 = new Money(20.0, euroCurrency);
         Address destination2 = new Address("tsimiski", "50", "tessaloniki", new ZipCode("54623",0.0,0.0), "greece");
-        Route route3 = new Route(driver2, money20, LocalDateTime.of(2023, 1, 28, 16, 30), destination2, 4, false);
+        //Route route3 = new Route(driver2, money20, LocalDateTime.of(2023, 1, 28, 16, 30), destination2, 4, false);
         routeDAO.save(route1);
         routeDAO.save(route2);
-        routeDAO.save(route3);
+       // routeDAO.save(route3);
 
     }
     public abstract UserDAO getUserDAO();

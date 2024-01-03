@@ -56,7 +56,9 @@ public class SignUpPresenter {
         String inputIban = view.getIban();
         String inputDriverLicense = view.getDriverLicense();
         String inputCarType = view.getCarType();
-
+        boolean isDriver = false;
+        boolean isPassenger  = false;
+        boolean isUser = false;
 
         if (inputName.isEmpty() && inputSurname.isEmpty() && inputUsername.isEmpty() && inputAge.isEmpty() && !inputEmail.isValid() &&
                 inputPassword.isEmpty() && inputPasswordVerification.isEmpty() && inputPhoneNumber.isEmpty()) {
@@ -77,8 +79,9 @@ public class SignUpPresenter {
             if (!((inputDriverLicense.isEmpty() && inputCarType.isEmpty() && inputIban.isEmpty()) ||
                     (!inputDriverLicense.isEmpty() && !inputCarType.isEmpty() && !inputIban.isEmpty()))) {
                 view.showErrorMessage("Error!", "All the fields of the driver must be completed.");
-            } else {
-
+            }
+            else if(!inputDriverLicense.isEmpty() && !inputCarType.isEmpty() && !inputIban.isEmpty()){
+                isDriver = true;
                 User newUser = new User(inputUsername, inputName, inputSurname, inputPhoneNumber, inputEmail, inputPassword, inputAge);
                 userDao.save(newUser);
                 Driver driver = new Driver(newUser.getUsername(), newUser.getName(), newUser.getSurname(), newUser.getPhone(), newUser.getEmail(), newUser.getPassword(), newUser.getAge(), inputIban, inputDriverLicense, inputCarType);
@@ -89,10 +92,11 @@ public class SignUpPresenter {
             if (!((inputCardNumber.isEmpty() && inputCardHolderName.isEmpty() && inputCVV.isEmpty()) ||
                     (!inputCardNumber.isEmpty() && !inputCardHolderName.isEmpty() && !inputCVV.isEmpty()))) {
                 view.showErrorMessage("Error!", "All the fields of the passenger must be completed.");
-            } else {
+            } else if(!inputCardNumber.isEmpty() && !inputCardHolderName.isEmpty() && !inputCVV.isEmpty()){
                 if(inputCVV.length() < 3) {
                     view.showErrorMessage("Error!", "CVV must have 3 numbers.");
                 }
+                isPassenger = true;
                 User newUser = new User(inputUsername, inputName, inputSurname, inputPhoneNumber, inputEmail, inputPassword, inputAge);
                 userDao.save(newUser);
                 Passenger passenger = new Passenger(newUser.getUsername(), newUser.getName(), newUser.getSurname(), newUser.getPhone(), newUser.getEmail(), newUser.getPassword(), newUser.getAge(), inputCardNumber, inputCardHolderName, inputCVV);

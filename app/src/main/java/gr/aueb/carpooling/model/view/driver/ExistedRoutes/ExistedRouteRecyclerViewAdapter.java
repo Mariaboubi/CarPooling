@@ -107,14 +107,7 @@ public class ExistedRouteRecyclerViewAdapter extends RecyclerView.Adapter<Existe
             routeCompleted = (TextView) v.findViewById(R.id.Completed);
             CompletedButton = (Button) v.findViewById(R.id.CompletedButton);
         }
-//        /**
-//         * @return τα στοιχεία της διαδρομής οταν καλεστεί με System.out.print
-//         */
-//        @NonNull
-//        @Override
-//        public String toString() {
-//            return super.toString() +" "+routeDest.getText().toString().trim()+" "+routeDate.getText().toString().trim()+ " "+CompletedButton.getText().toString().trim();
-//        }
+
     }
 
 

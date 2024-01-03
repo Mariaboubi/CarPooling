@@ -91,5 +91,9 @@
     <string name="show_requests">Show requests</string>
     <string name="show_existed_routes">Show existed routes</string>
     <string name="no_routes_found">No routes found : (</string>
+    <string name="search_route">Search route</string>
+    <string name="no_available_routes">No available routes</string>
+    <string name="rate">Rate :</string>
+    <string name="request">Request</string>
 
 </resources>

@@ -17,12 +17,13 @@ import java.util.HashMap;
 
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.view.passenger.PassengerFrontPageActivity;
+import gr.aueb.carpooling.model.view.passenger.search_route.SearchRouteActivity;
 
 public class subrouteActivity extends AppCompatActivity implements SubrouteView {
 
     private ImageButton back_button;
     private Button create_route_button;
-    private int passengerId;
+    private String username;
 
     private SubrouteViewModel viewModel;
 
@@ -39,13 +40,11 @@ public class subrouteActivity extends AppCompatActivity implements SubrouteView 
 
         viewModel.getPresenter().setView(this);
 
-        if (savedInstanceState == null) {
-            Intent intent = getIntent();
-            Bundle extras = intent.getExtras();
-            assert extras != null;
-            passengerId = extras.getInt("PassengerId");
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            username = extras.getString("Username");
+            //The key argument here must match that used in the other activity
         }
-        viewModel.getPresenter().setPassenger(passengerId);
 
         create_route_button.setOnClickListener(new View.OnClickListener(){ // Όταν πατηθεί το κουμπί δημιουργίας του  subroute
             @Override
@@ -56,11 +55,11 @@ public class subrouteActivity extends AppCompatActivity implements SubrouteView 
 
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {openPassengerFrontPageActivity();}
+            public void onClick(View v) {openPassengerFrontPageActivity(username);}
         });
 
 
-        }
+    }
 
 
 
@@ -79,6 +78,7 @@ public class subrouteActivity extends AppCompatActivity implements SubrouteView 
         details.put("Date",(((EditText)findViewById(R.id.Date)).getText().toString().trim()));
 
         return details;
+
     }
 
     @Override
@@ -94,25 +94,17 @@ public class subrouteActivity extends AppCompatActivity implements SubrouteView 
 
     @Override
     public void showRouteAddedMessage() {
-
-        new AlertDialog.Builder(subrouteActivity.this)
-                .setCancelable(true)
-                .setTitle("Επιτυχής προσθήκη διαδρομης")
-                .setMessage("Η διαδρομή προστέθηκε με επιτυχία στην λίστα του οδηγού!")
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        finish();
-                    }
-                }).create().show();
+        Intent intent = new Intent(this, SearchRouteActivity.class);
+        intent.putExtra("Username",username);
+        startActivity(intent);
 
     }
 
-    public void goBack() {finish();}
 
-    public void openPassengerFrontPageActivity(){
+    public void openPassengerFrontPageActivity(String username){
         Intent intent = new Intent(this, PassengerFrontPageActivity.class);
+        intent.putExtra("Username",username);
         startActivity(intent);
     }
 }
+

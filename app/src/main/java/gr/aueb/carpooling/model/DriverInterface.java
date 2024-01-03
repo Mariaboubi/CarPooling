@@ -97,4 +97,6 @@ public interface DriverInterface {
      * @return The set of routes associated with the driver.
      */
     HashSet<Route> getRoutes();
+
+    String getAverageRating();
 }

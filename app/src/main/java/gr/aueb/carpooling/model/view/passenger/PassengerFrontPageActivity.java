@@ -57,7 +57,7 @@ public class PassengerFrontPageActivity extends AppCompatActivity implements Pas
 
         CreateSubroute_button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {openCreateRoutePage();}
+            public void onClick(View v) {openCreateRoutePage(username);}
         });
 
 //        ShowSubroutes_button.setOnClickListener(new View.OnClickListener() {
@@ -73,8 +73,9 @@ public class PassengerFrontPageActivity extends AppCompatActivity implements Pas
         startActivity(intent);
     }
 
-    public void openCreateRoutePage() {
+    public void openCreateRoutePage(String username) {
         Intent intent = new Intent(this, subrouteActivity.class);
+        intent.putExtra("Username",username);
         startActivity(intent);
     }
 

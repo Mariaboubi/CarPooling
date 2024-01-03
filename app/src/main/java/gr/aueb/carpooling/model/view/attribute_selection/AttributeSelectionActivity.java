@@ -63,7 +63,7 @@ public class AttributeSelectionActivity extends AppCompatActivity implements Att
                 boolean isPassenger = viewModel.getPresenter().authenticateAttributePassenger(username);
                 showErrorMessage("Passenger", String.valueOf(isPassenger));
                 if (isPassenger){
-                    openPassengerPage();
+                    openPassengerPage(username);
                 } else {
                     openLogInActivity();
                 }
@@ -89,8 +89,9 @@ public class AttributeSelectionActivity extends AppCompatActivity implements Att
         startActivity(intent);
     }
 
-    public void openPassengerPage() {
+    public void openPassengerPage(String username) {
         Intent intent = new Intent(this, PassengerFrontPageActivity.class);
+        intent.putExtra("Username", username) ;
         startActivity(intent);
     }
 
