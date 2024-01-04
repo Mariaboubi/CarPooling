@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="275dp"
+    android:layout_marginBottom="4dp"
+    android:background="#A788DD"
+    android:outlineProvider="background"
+    android:padding="5dp"
+    tools:ignore="MissingDefaultResource">
+
+    <TextView
+        android:id="@+id/Passenger"
+        android:layout_width="153dp"
+        android:layout_height="44dp"
+        android:background="#00D5C8C8"
+        android:backgroundTint="#FFFFFF"
+        android:text="@string/name"
+        android:textAlignment="viewStart"
+        android:textColor="#1E1817"
+        android:textSize="25sp"
+        android:textStyle="bold|italic"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.084"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.049"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/RatingPassenger"
+        android:layout_width="153dp"
+        android:layout_height="44dp"
+        android:background="#00D5C8C8"
+        android:backgroundTint="#FFFFFF"
+        android:text="@string/surname"
+        android:textAlignment="viewStart"
+        android:textColor="#1E1817"
+        android:textSize="25sp"
+        android:textStyle="bold|italic"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.891"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.049"
+        tools:visibility="visible" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:hint="@string/rating_politeness"
+        android:textColorHint="@color/black"
+        app:boxStrokeColor="@color/black"
+        tools:ignore="MissingConstraints">
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:hint="@string/rating_consistency"
+        android:textColorHint="@color/black"
+        app:boxStrokeColor="@color/black"
+        tools:ignore="MissingConstraints">
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:hint="@string/rating_reliability"
+        android:textColorHint="@color/black"
+        app:boxStrokeColor="@color/black"
+        tools:ignore="MissingConstraints">
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/RateButton"
+        android:layout_width="137dp"
+        android:layout_height="50dp"
+        android:backgroundTint="#6946A6"
+        android:text="Rate"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/reliabilityText"
+        android:layout_width="229dp"
+        android:layout_height="39dp"
+        android:fontFamily="sans-serif-medium"
+        android:inputType="numberDecimal"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="138dp"
+        tools:text="Reliability" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/consistencyText"
+        android:layout_width="236dp"
+        android:layout_height="45dp"
+        android:fontFamily="sans-serif-medium"
+        android:inputType="numberDecimal"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        tools:layout_editor_absoluteX="5dp"
+        tools:layout_editor_absoluteY="76dp"
+        tools:text="Consistency" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/politenessText"
+        android:layout_width="237dp"
+        android:layout_height="48dp"
+        android:fontFamily="sans-serif-medium"
+        android:inputType="numberDecimal"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="193dp"
+        tools:text="Politeness" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

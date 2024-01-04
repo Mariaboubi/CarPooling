@@ -49,7 +49,7 @@ public class subrouteActivity extends AppCompatActivity implements SubrouteView 
         create_route_button.setOnClickListener(new View.OnClickListener(){ // Όταν πατηθεί το κουμπί δημιουργίας του  subroute
             @Override
             public void onClick(View v){
-                viewModel.getPresenter().onCreateSubRoute();
+                viewModel.getPresenter().onCreateSubRoute(username);
             }
         });
 

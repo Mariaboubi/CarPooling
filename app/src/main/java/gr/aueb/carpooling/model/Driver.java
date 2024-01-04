@@ -7,6 +7,7 @@ public class Driver extends User implements DriverInterface {
     private String iban, license_number, car_type; // personal details
     private final Set<Route> routes; // A HashSet of Routes that the driver takes part
 
+    private final Set<PassengerRating> passanger_rating;
     private final int driver_id;
     private DriverRating driver_rating;
     // Constructor
@@ -22,6 +23,7 @@ public class Driver extends User implements DriverInterface {
 
         // Initialize the 'routes' set
         this.routes = new HashSet<>();
+        this.passanger_rating = new HashSet<>();
 
         // Initialize the instance variables
         this.iban = iban;
@@ -80,6 +82,10 @@ public class Driver extends User implements DriverInterface {
         this.routes.add(route);
     }
 
+    public void addPassengerRating(PassengerRating rating) {
+        this.passanger_rating.add(rating);
+    }
+
     public void removeRoute(Route route) throws UnsupportedOperationException {
         if(routes.size() > 0) {
             this.routes.remove(route);
@@ -88,12 +94,28 @@ public class Driver extends User implements DriverInterface {
         }
     }
 
+    public void removePassengerRating(PassengerRating rating) throws UnsupportedOperationException {
+        if(passanger_rating.size() > 0) {
+            this.passanger_rating.remove(rating);
+        } else {
+            throw new UnsupportedOperationException("Cannot remove from an empty passenger rating set.");
+        }
+    }
+
     public boolean hasRoute(Route route) {
         return routes.contains(route);
     }
 
+    public boolean hasPassengerRating(PassengerRating rating) {
+        return passanger_rating.contains(rating);
+    }
+
     public HashSet<Route> getRoutes() {
         return new HashSet<>(routes); // Return a new set to avoid direct access to the internal set
+    }
+
+    public HashSet<PassengerRating> getPassengerRating() {
+        return new HashSet<>(passanger_rating); // Return a new set to avoid direct access to the internal set
     }
 
 }

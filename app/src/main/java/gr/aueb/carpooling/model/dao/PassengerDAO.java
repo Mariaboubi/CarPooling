@@ -21,6 +21,10 @@ public interface PassengerDAO {
 
     Passenger find(String username, String password);
 
+    Passenger findByUsername(String username);
+
+    Passenger findByName(String name);
+
     Passenger find(int id);
 
     boolean findPassenger(int id);

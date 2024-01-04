@@ -14,6 +14,10 @@ public class PassengerRating extends Rating implements PassengerRatingInterface{
         this.reliabilityRating = reliabilityRating;
     }
 
+    public Passenger getPassenger(){
+        return (Passenger) super.getUser();
+    }
+
     public void setConsistencyRating(float consistencyRating) throws IllegalArgumentException {
         validateRating(consistencyRating, "Consistency");
         this.consistencyRating = consistencyRating;

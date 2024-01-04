@@ -32,7 +32,7 @@ public class SubroutePresenter {
         this.subrouteDAO = subrouteDAO;
     }
 
-    public void onCreateSubRoute() {
+    public void onCreateSubRoute(String username) {
         boolean isEmpty = false;
         HashMap<String, String> details = view.getSubRouteDetails();
 
@@ -65,8 +65,8 @@ public class SubroutePresenter {
             Address destination= new Address(details.get("Street"),details.get("Street Number"),details.get("City"),zipCode,"Greece");
             Address pickUpPoint = new Address(details.get("PickUp Street"),details.get("PickUp Street Number"),details.get("PickUp City"),zipCode,"Greece");
             Subroute subroute = new Subroute(destination,pickUpPoint, LocalDateTime.parse(details.get("Date")));
-
-            subrouteDAO.save(this.passenger,subroute);
+            passenger= passengerDAO.findByUsername(username);
+            subrouteDAO.save(passenger,subroute);
             //passenger.addRoute();
             view.showRouteAddedMessage();
         }

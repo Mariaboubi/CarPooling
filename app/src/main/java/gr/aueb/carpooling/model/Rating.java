@@ -12,6 +12,13 @@ public  class Rating implements RatingInterface {
         this.politenessRating = politenessRating;
     }
 
+    public Route getRoute() {
+        return route;
+    }
+
+    public User getUser() {
+        return user;
+    }
 
     public float getPolitenessRating() {
         return politenessRating;

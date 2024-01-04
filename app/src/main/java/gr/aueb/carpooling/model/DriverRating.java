@@ -24,6 +24,8 @@ public class DriverRating extends Rating implements DriverRatingInterface {
         return securityRating;
     }
 
+    public Route getRoute(){return super.getRoute();}
+
     @Override
     public void setCleanlinessRating(float cleanlinessRating) {
         validateRating(cleanlinessRating, "Cleanliness");

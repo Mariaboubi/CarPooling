@@ -1,6 +1,7 @@
 package gr.aueb.carpooling.model.dao;
 
 import gr.aueb.carpooling.model.Passenger;
+import gr.aueb.carpooling.model.PassengerRating;
 import gr.aueb.carpooling.model.User;
 import gr.aueb.carpooling.model.Driver;
 import gr.aueb.carpooling.model.contact.EmailAddress;
@@ -19,6 +20,8 @@ public abstract class Initializer {
         driverDAO.deleteAll();
         PassengerDAO passengerDAO = getPassengerDAO();
         passengerDAO.deleteAll();
+        PassengerRatingDao passengerRatingDao = getPassengerRatingDAO();
+        passengerRatingDao.deleteAll();
 
         RouteDAO routeDAO = getRouteDAO();
         routeDAO.deleteAll();
@@ -67,7 +70,16 @@ public abstract class Initializer {
         //Route route3 = new Route(driver2, money20, LocalDateTime.of(2023, 1, 28, 16, 30), destination2, 4, false);
         routeDAO.save(route1);
         routeDAO.save(route2);
+
+        passenger2.addRoute(route1);
+        passenger2.addRoute(route2);
        // routeDAO.save(route3);
+
+        //NEW PASSENGER RATING//////////////////////////////////////////////////////////////
+
+        PassengerRatingDao passengerRatingDao= getPassengerRatingDAO();
+        PassengerRating pas_rating1= new PassengerRating(passenger2,route1,4.0f,5.0f,3.5f);
+        driver1.addPassengerRating(pas_rating1);
 
     }
     public abstract UserDAO getUserDAO();
@@ -75,6 +87,8 @@ public abstract class Initializer {
     public abstract DriverDAO getDriverDAO();
 
     public abstract PassengerDAO getPassengerDAO();
+
+    public abstract PassengerRatingDao getPassengerRatingDAO();
 
     public abstract RouteDAO getRouteDAO();
 }

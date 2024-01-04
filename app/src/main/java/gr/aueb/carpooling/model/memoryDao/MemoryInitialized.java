@@ -3,6 +3,7 @@ package gr.aueb.carpooling.model.memoryDao;
 import gr.aueb.carpooling.model.dao.DriverDAO;
 import gr.aueb.carpooling.model.dao.Initializer;
 import gr.aueb.carpooling.model.dao.PassengerDAO;
+import gr.aueb.carpooling.model.dao.PassengerRatingDao;
 import gr.aueb.carpooling.model.dao.RouteDAO;
 import gr.aueb.carpooling.model.dao.UserDAO;
 
@@ -24,6 +25,8 @@ public class MemoryInitialized extends Initializer {
 
     @Override
     public PassengerDAO getPassengerDAO() {return new PassengerDAOmemory();}
+
+    public PassengerRatingDao getPassengerRatingDAO() {return new PassengerRatingDAOmemory();}
 
     @Override
     public RouteDAO getRouteDAO() {
