@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:layout_marginBottom="4dp"
+    android:background="#A788DD"
+    android:outlineProvider="background"
+    android:padding="5dp">
+
+    <TextView
+        android:id="@+id/Destination"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:background="#00D5C8C8"
+        android:backgroundTint="#FFFFFF"
+        android:text="@string/destination"
+        android:textAlignment="viewStart"
+        android:textColor="#1E1817"
+        android:textSize="25sp"
+        android:textStyle="bold|italic"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.075"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.135"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/pickUpPoint"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:text="@string/pick_up_point"
+        android:textAlignment="viewStart"
+        android:textColor="#271814"
+        android:textSize="25sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+
+    <TextView
+        android:id="@+id/driver_name"
+        android:layout_width="match_parent"
+        android:layout_height="39dp"
+        android:text="@string/name"
+        android:textAlignment="viewStart"
+        android:textColor="#271814"
+        android:textSize="25sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.672"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/Date"
+        android:layout_width="match_parent"
+        android:layout_height="39dp"
+        android:text="@string/date"
+        android:textAlignment="viewStart"
+        android:textColor="#271814"
+        android:textSize="25sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.860"
+        tools:visibility="visible" />
+
+    <Button
+        android:id="@+id/DeleteButton"
+        android:layout_width="137dp"
+        android:layout_height="50dp"
+        android:backgroundTint="#6946A6"
+        android:text="@string/delete"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Date"
+        app:layout_constraintVertical_bias="1.0" />
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
