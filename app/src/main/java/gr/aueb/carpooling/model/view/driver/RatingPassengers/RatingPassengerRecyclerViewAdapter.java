@@ -1,5 +1,7 @@
 package gr.aueb.carpooling.model.view.driver.RatingPassengers;
 
+import static android.content.Intent.getIntent;
+
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -28,23 +30,26 @@ import gr.aueb.carpooling.model.contact.Address;
 import gr.aueb.carpooling.model.contact.Money;
 import gr.aueb.carpooling.model.contact.ZipCode;
 import gr.aueb.carpooling.model.dao.PassengerDAO;
+import gr.aueb.carpooling.model.dao.PassengerRatingDao;
+import gr.aueb.carpooling.model.dao.RouteDAO;
 import gr.aueb.carpooling.model.view.driver.ExistedRoutes.ExistedRouteViewModel;
 
 public class RatingPassengerRecyclerViewAdapter extends RecyclerView.Adapter<RatingPassengerRecyclerViewAdapter.ViewHolder>{
     private final List<PassengerRating> ratings;
-    private final Context mContext;
 
     private PassengerDAO passengerDAO;
-    private String destination;
-
+    private PassengerRatingDao passengerRatingDao;
+    private RouteDAO routeDAO;
     private PassengerRating currentItem;
     private RatingPassengersViewModel viewModel;
     private final RatingPassengerRecyclerViewAdapter.PassengerRatingSelectionListener listener;
 
-    public  RatingPassengerRecyclerViewAdapter(Context context, ArrayList<PassengerRating> ratings, PassengerRatingSelectionListener listener){
+    private int route_id;
+
+    public  RatingPassengerRecyclerViewAdapter(ArrayList<PassengerRating> ratings, PassengerRatingSelectionListener listener,int route_id){
         this.ratings = ratings;
         this.listener=listener;
-        this.mContext = context;
+        this.route_id = route_id;
     }
 
 
@@ -60,11 +65,8 @@ public class RatingPassengerRecyclerViewAdapter extends RecyclerView.Adapter<Rat
     @NonNull
     @Override
     public RatingPassengerRecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-
-        return new RatingPassengerRecyclerViewAdapter(LayoutInflater.from(parent.getContext())
+        return new ViewHolder(LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.rating_passenger_list_item, parent, false));
-
     }
 
 
@@ -73,8 +75,8 @@ public class RatingPassengerRecyclerViewAdapter extends RecyclerView.Adapter<Rat
      *        item at the given position in the data set.
      * @param position The position of the item within the adapter's data set.
      */
-    @Override
-    public void onBindViewHolder(@NonNull RatingPassengerRecyclerViewAdapter.ViewHolder holder, int position) {
+//    @Override
+public void onBindViewHolder(@NonNull RatingPassengerRecyclerViewAdapter.ViewHolder holder, int position) {
         currentItem = ratings.get(position);
 
         holder.ratingName.setText((currentItem.getPassenger().getName()));
@@ -82,36 +84,37 @@ public class RatingPassengerRecyclerViewAdapter extends RecyclerView.Adapter<Rat
         onCreateRatingPassenger(currentItem);
 
 
-    }
+}
 
     public void onCreateRatingPassenger(PassengerRating currentItem) {
-        boolean isEmpty = false;
-        RatingPassengerView view = null;
-        HashMap<String, String> details = view.getRateDetails();
-
-        for (Map.Entry<String, String> set : details.entrySet()) {
-            if (set.getValue().isEmpty() || set.getValue() == null) {
-                isEmpty = true;
-                break;
-            }
-        }
-        float consisteny = Float.parseFloat(details.get("Consistency"));
-        float reliability = Float.parseFloat(details.get("Reliability"));
-        float politeness = Float.parseFloat(details.get("Politeness"));
-        if (isEmpty) {
-            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε όλα τα πεδία!.");
-        } else if (consisteny < 0.0f || consisteny > 5.0f) {
-            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε αριθμό αναμεσα στο 0 και στο 5");
-        } else if (reliability < 0.0f || reliability > 5.0f) {
-            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε αριθμό αναμεσα στο 0 και στο 5");
-        } else if (politeness < 0.0f || politeness > 5.0f) {
-            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε αριθμό αναμεσα στο 0 και στο 5");
-
-        } else {
-            Passenger passenger = passengerDAO.findByName(currentItem.getPassenger().getName());
-            PassengerRating passengerRating = new PassengerRating(passenger,consisteny,reliability,politeness);
-
-        }
+//        boolean isEmpty = false;
+//        RatingPassengerView view = null;
+//        HashMap<String, String> details = view.getRateDetails();
+//
+//        for (Map.Entry<String, String> set : details.entrySet()) {
+//            if (set.getValue().isEmpty() || set.getValue() == null) {
+//                isEmpty = true;
+//                break;
+//            }
+//        }
+//        float consisteny = Float.parseFloat(details.get("Consistency"));
+//        float reliability = Float.parseFloat(details.get("Reliability"));
+//        float politeness = Float.parseFloat(details.get("Politeness"));
+//        if (isEmpty) {
+//            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε όλα τα πεδία!.");
+//        } else if (consisteny < 0.0f || consisteny > 5.0f) {
+//            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε αριθμό αναμεσα στο 0 και στο 5");
+//        } else if (reliability < 0.0f || reliability > 5.0f) {
+//            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε αριθμό αναμεσα στο 0 και στο 5");
+//        } else if (politeness < 0.0f || politeness > 5.0f) {
+//            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε αριθμό αναμεσα στο 0 και στο 5");
+//
+//        } else {
+//            Passenger passenger = passengerDAO.findByName(currentItem.getPassenger().getName());
+//            Route route = routeDAO.find(route_id);
+//            PassengerRating passengerRating = new PassengerRating(passenger,route,consisteny,reliability,politeness);
+//            passengerRatingDao.save(passengerRating);
+//        }
     }
 
     @Override

@@ -21,7 +21,7 @@ public class ExistedSubrouteRecyclerViewAdapter extends RecyclerView.Adapter<Exi
 
     private final List<Subroute> subroutes;
 
-    private Subroute currenSubroute;
+    private Subroute currentSubroute;
 
     private Route currentItem;
 
@@ -61,24 +61,24 @@ public class ExistedSubrouteRecyclerViewAdapter extends RecyclerView.Adapter<Exi
 
     @Override
     public void onBindViewHolder(@NonNull ExistedSubrouteRecyclerViewAdapter.ViewHolder holder, int position) {
-        currenSubroute = subroutes.get(position);
-        currentItem = presenter.getRoute(currenSubroute);
-
-
-        holder.subrouteDest.setText(currenSubroute.getDestination().toString());
-        holder.subroutepickUpPoint.setText(currenSubroute.getPickupPointString());
-        holder.subrouteDate.setText((currenSubroute.getPickupTime().toString()));
+//        currentSubroute = subroutes.get(position);
+//        currentItem = presenter.getRoute(currentSubroute);
+//
+//
+//        holder.subrouteDest.setText(currenSubroute.getDestination().toString());
+//        holder.subroutepickUpPoint.setText(currenSubroute.getPickupPoint().toString());
+//        holder.subrouteDate.setText((currenSubroute.getPickupTime().toString()));
        // holder.subrouteName.setText((currentItem.getDriversName()));
 
-        holder.Delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int clickedPosition = holder.getAdapterPosition();
-                if (clickedPosition != RecyclerView.NO_POSITION) {
-                    deleteSubroute(clickedPosition);
-                }
-            }
-        });
+//        holder.Delete.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                int clickedPosition = holder.getAdapterPosition();
+//                if (clickedPosition != RecyclerView.NO_POSITION) {
+//                    deleteSubroute(clickedPosition);
+//                }
+//            }
+//        });
 
     }
 
@@ -88,7 +88,7 @@ public class ExistedSubrouteRecyclerViewAdapter extends RecyclerView.Adapter<Exi
 
         // If needed, notify any listener about the deletion
         if (listener != null) {
-            listener.selectSubroute(currenSubroute);
+            listener.selectSubroute(currentSubroute);
         }
     }
 
@@ -100,7 +100,7 @@ public class ExistedSubrouteRecyclerViewAdapter extends RecyclerView.Adapter<Exi
     /**
      * Αρχικοποιεί τα Text Views που χρησιμοποιούμε στην παραπάνω μέθοδο
      */
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         public final TextView subrouteDest;
         public final TextView subrouteDate;
 

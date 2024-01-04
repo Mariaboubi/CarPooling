@@ -80,16 +80,6 @@ public class DriverDAOmemory implements DriverDAO {
         return false;
     }
 
-    @Override
-    public Set<Route> findRestaurants(int id) {
-        ArrayList<Route> result= new ArrayList<>();
-        for(Driver driver : entities){
-            if(driver.getUserId()==id){
-                result.addAll(driver.getRoutes());
-            }
-        }
-        return (Set<Route>) result;
-    }
 
     @Override
     public int nextId() {

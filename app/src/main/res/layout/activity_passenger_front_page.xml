@@ -8,7 +8,7 @@
     tools:context=".model.view.passenger.PassengerFrontPageActivity">
 <LinearLayout
     android:id="@+id/linearLayout2"
-    android:layout_width="407dp"
+    android:layout_width="match_parent"
     android:layout_height="53dp"
     android:background="#6946A6"
     android:orientation="vertical"
@@ -20,18 +20,18 @@
     app:layout_constraintVertical_bias="0.0">
 
     <ImageButton
-        android:id="@+id/back_button"
-        android:layout_width="50dp"
+        android:id="@+id/log_out"
+        android:layout_width="58dp"
         android:layout_height="0dp"
-        android:layout_gravity="left|end"
+        android:layout_gravity="end"
+        android:layout_marginEnd="3dp"
         android:layout_weight="1"
         android:adjustViewBounds="true"
         android:backgroundTint="#00FFFFFF"
         android:contentDescription="@string/back"
         android:cropToPadding="false"
         android:scaleType="centerInside"
-
-        app:srcCompat="@drawable/backbutton"
+        app:srcCompat="@drawable/log_out"
         tools:ignore="RtlHardcoded" />
 </LinearLayout>
 
@@ -62,8 +62,8 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="400dp"
-        android:layout_height="200dp"
+        android:layout_width="match_parent"
+        android:layout_height="148dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -76,7 +76,8 @@
             android:id="@+id/createRouteButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="CREATE ROUTE" />
+            android:text="@string/create_route"
+            android:textSize="20sp" />
 
         <Space
             android:layout_width="match_parent"
@@ -86,7 +87,8 @@
             android:id="@+id/showRoutesButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="SHOW ROUTES" />
+            android:text="@string/show_routes"
+            android:textSize="20sp" />
     </LinearLayout>
 
 

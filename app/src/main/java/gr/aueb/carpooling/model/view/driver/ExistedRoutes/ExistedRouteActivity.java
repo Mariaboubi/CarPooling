@@ -13,9 +13,11 @@ import android.view.View;
 import android.widget.TextView;
 
 import gr.aueb.carpooling.R;
+import gr.aueb.carpooling.model.PassengerRating;
 import gr.aueb.carpooling.model.Route;
 import gr.aueb.carpooling.model.view.LogIn.LogInActivity;
 import gr.aueb.carpooling.model.view.driver.DriverFrontPage;
+import gr.aueb.carpooling.model.view.driver.RatingPassengers.RatingPassengers;
 
 public class ExistedRouteActivity extends AppCompatActivity implements ExitedRouteView,ExistedRouteRecyclerViewAdapter.RouteSelectionListener{
     private ExistedRouteViewModel viewModel;
@@ -30,6 +32,7 @@ public class ExistedRouteActivity extends AppCompatActivity implements ExitedRou
 
         viewModel = new ViewModelProvider(this).get(ExistedRouteViewModel.class);
         viewModel.getPresenter().setView(this);
+
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             username = extras.getString("Username");
@@ -40,51 +43,57 @@ public class ExistedRouteActivity extends AppCompatActivity implements ExitedRou
         recyclerView = findViewById(R.id.ChooseRouteRecyclerView);
         emptyView = findViewById(R.id.NoRoutes);
         viewModel.getPresenter().onChangeLayout();
-        findViewById(R.id.back_button).setOnClickListener(new View.OnClickListener(){
+
+
+        findViewById(R.id.back_button).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 viewModel.getPresenter().onBack();
             }
         });
+
+
     }
 
-    @Override
-    public void selectRoute(Route route) {
-        Intent intent = new Intent(ExistedRouteActivity.this, DriverFrontPage.class);
+        @Override
+        public void selectRoute (Route route){
+            Intent intent = new Intent(ExistedRouteActivity.this, RatingPassengers.class);
 //        intent.putExtra("RouteId",route.getId());
-        intent.putExtra("Username",username);
-        startActivity(intent);
-    }
+            intent.putExtra("Username", username);
+            startActivity(intent);
+        }
 
-    @Override
-    public void goBack() {
 
-    }
 
-    @Override
-    public void ShowNoRoutes() {
-        recyclerView.setVisibility(View.GONE);
-        emptyView.setVisibility(View.VISIBLE);
-    }
+        @Override
+        public void goBack () {
 
-    @Override
-    public void ShowRoutes() {
-        recyclerView.setVisibility(View.VISIBLE);
-        emptyView.setVisibility(View.GONE);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new ExistedRouteRecyclerViewAdapter(viewModel.getPresenter().getRouteList(), this));
-    }
-    public void showErrorMessage(String title, String message)
-    {
-        new AlertDialog.Builder(ExistedRouteActivity.this)
-                .setCancelable(true)
-                .setTitle(title)
-                .setMessage(message)
-                .setPositiveButton("OK", null).create().show();
+        }
 
-        Intent intent = new Intent(ExistedRouteActivity.this, LogInActivity.class);
+        @Override
+        public void ShowNoRoutes () {
+            recyclerView.setVisibility(View.GONE);
+            emptyView.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        public void ShowRoutes () {
+            recyclerView.setVisibility(View.VISIBLE);
+            emptyView.setVisibility(View.GONE);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            recyclerView.setAdapter(new ExistedRouteRecyclerViewAdapter(viewModel.getPresenter().getRouteList(), this));
+        }
+        public void showErrorMessage (String title, String message)
+        {
+            new AlertDialog.Builder(ExistedRouteActivity.this)
+                    .setCancelable(true)
+                    .setTitle(title)
+                    .setMessage(message)
+                    .setPositiveButton("OK", null).create().show();
+
+            Intent intent = new Intent(ExistedRouteActivity.this, LogInActivity.class);
 //        intent.putExtra("Username",username);
-        startActivity(intent);
+            startActivity(intent);
 
+        }
     }
-}

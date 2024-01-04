@@ -71,7 +71,7 @@
     <string name="date">Date</string>
     <string name="estimated_cost">Estimated Cost</string>
     <string name="max_number_of_passenger">Max number of passenger</string>
-    <string name="create_route">Create Route</string>
+    <string name="create_route">Create route</string>
     <string name="already_have_created_route_and_don_t_want_to_create_more">Already have created route and don\'t want to create more</string>
     <string name="existed_routes">Existed Routes</string>
     <string name="street">Street</string>
@@ -82,11 +82,9 @@
     <string name="For_drivers"> If you are a driver complete the following: </string>
     <string name="For_passengers"> If you are a passenger complete the following: </string>
     <string name="pick_up_point" />
-    <string name="create" />
     <string name="already_have_entered_route_and_don_t_want_to_enter_more" />
     <string name="no_existed_route">no existed route : (</string>
     <string name="completed">Completed</string>
-    <string name="create2" />
     <string name="already_have_entered_subroute_and_don_t_want_to_enter_more" />
     <string name="show_requests">Show requests</string>
     <string name="show_existed_routes">Show existed routes</string>
@@ -95,5 +93,14 @@
     <string name="no_available_routes">No available routes</string>
     <string name="rate">Rate :</string>
     <string name="request">Request</string>
+    <string name="if_you_want_to_be_also_a_driver_complete_the_following">If you want to be also a driver, complete the following :</string>
+    <string name="if_you_want_to_be_also_a_passenger_complete_the_following">if you want to be also a passenger, complete the following :</string>
+    <string name="show_routes">Show routes</string>
+    <string name="create">create</string>
+    <string name="no_passengers">No passengers</string>
+    <string name="consistency">Consistency</string>
+    <string name="reliability">Reliability</string>
+    <string name="politeness">Politeness</string>
+    <string name="delete">Delete</string>
 
 </resources>

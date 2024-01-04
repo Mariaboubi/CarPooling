@@ -14,13 +14,14 @@ import android.widget.ImageButton;
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.memoryDao.MemoryInitialized;
 import gr.aueb.carpooling.model.view.LogIn.LogInActivity;
-import gr.aueb.carpooling.model.view.LogIn.LoginViewModel;
 import gr.aueb.carpooling.model.view.driver.DriverFrontPage;
 import gr.aueb.carpooling.model.view.passenger.PassengerFrontPageActivity;
+import gr.aueb.carpooling.model.view.sign_up.driver.DriverSignUpActivity;
+import gr.aueb.carpooling.model.view.sign_up.passenger.PassengerSignUpActivity;
 
 public class AttributeSelectionActivity extends AppCompatActivity implements AttributeSelectionView {
 
-    private ImageButton back_button;
+    private ImageButton log_out_button;
     private Button passenger_button;
     private Button driver_button;
     private AttributeSelectionViewModel viewModel;
@@ -46,11 +47,11 @@ public class AttributeSelectionActivity extends AppCompatActivity implements Att
 
 
 
-        back_button = (ImageButton) findViewById(R.id.back_button);
+        log_out_button = (ImageButton) findViewById(R.id.log_out);
         passenger_button = (Button) findViewById(R.id.button_passenger);
         driver_button = (Button) findViewById(R.id.button_driver);
 
-        back_button.setOnClickListener(new View.OnClickListener() {
+        log_out_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openLogInActivity();
@@ -65,7 +66,7 @@ public class AttributeSelectionActivity extends AppCompatActivity implements Att
                 if (isPassenger){
                     openPassengerPage(username);
                 } else {
-                    openLogInActivity();
+                    openFillPassengerInfo();
                 }
             }
         });
@@ -76,10 +77,10 @@ public class AttributeSelectionActivity extends AppCompatActivity implements Att
             boolean isDriver = viewModel.getPresenter().authenticateAttributeDriver(username);
             showErrorMessage("Driver", String.valueOf(isDriver));
             if (isDriver){
-                    openDriverPage(username);
-                } else {
-                    openLogInActivity();
-                }
+                openDriverPage(username);
+            } else {
+                openFillDriverInfo();
+            }
             }
         });
     }
@@ -109,5 +110,16 @@ public class AttributeSelectionActivity extends AppCompatActivity implements Att
                 .setPositiveButton("OK", null).create().show();
     }
 
+    public void openFillDriverInfo() {
+        Intent intent = new Intent(this, DriverSignUpActivity.class);
+        intent.putExtra("Username", username) ;
+        startActivity(intent);
 
+    }
+
+    public void openFillPassengerInfo() {
+        Intent intent = new Intent(this, PassengerSignUpActivity.class);
+        intent.putExtra("Username", username) ;
+        startActivity(intent);
+    }
 }

@@ -1,22 +1,26 @@
 package gr.aueb.carpooling.model.view.driver.ExistedRoutes;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
-
+import  android.content.Context;
 import java.util.ArrayList;
 import java.util.List;
 
 
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.Route;
+import gr.aueb.carpooling.model.view.driver.RatingPassengers.RatingPassengerRecyclerViewAdapter;
+import gr.aueb.carpooling.model.view.driver.RatingPassengers.RatingPassengers;
 
 public class ExistedRouteRecyclerViewAdapter extends RecyclerView.Adapter<ExistedRouteRecyclerViewAdapter.ViewHolder>{
     private final List<Route> routes;
@@ -76,7 +80,19 @@ public class ExistedRouteRecyclerViewAdapter extends RecyclerView.Adapter<Existe
                 currentItem.Completed();
                 //listener.selectRoute(currentItem);
                 boolean b = currentItem.isCompleted();
+
                 holder.routeCompleted.setText((String.valueOf(b)));
+                listener.selectRoute(currentItem);
+
+//                Context context = view.getContext();
+//                Intent intent = new Intent(context, RatingPassengers.class);
+//                // extras
+//                intent.putExtra("Route id",currentItem.getId());
+                //context.startActivity(intent);
+
+//                Intent intent = new Intent(this , RatingPassengers.class);
+//                intent.putExtra("Route id",currentItem.getId());
+//                startActivity(intent);
                 //viewModel.getPresenter().showError(b);
             }
 
@@ -113,5 +129,8 @@ public class ExistedRouteRecyclerViewAdapter extends RecyclerView.Adapter<Existe
 
     public interface RouteSelectionListener {
         void selectRoute(Route route);
+
+
     }
+
 }

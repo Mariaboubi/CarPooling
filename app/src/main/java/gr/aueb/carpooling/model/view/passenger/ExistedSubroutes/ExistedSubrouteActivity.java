@@ -39,15 +39,16 @@ public class ExistedSubrouteActivity extends AppCompatActivity implements Existe
 
         viewModel = new ViewModelProvider(this).get(ExistedSubrouteViewModel.class);
         viewModel.getPresenter().setView(this);
-        Bundle extras = getIntent().getExtras();
 
+        Bundle extras = getIntent().getExtras();
         if (extras != null) {
             username = extras.getString("Username");
             //The key argument here must match that used in the other activity
         }
-        viewModel.getPresenter().setSubrouteList();
+        //viewModel.getPresenter().setSubrouteList();
+
         recyclerView = findViewById(R.id.ChooseSubrouteRecyclerView);
-        emptyView = findViewById(R.id.NoRoutes);
+        emptyView = findViewById(R.id.NoSubroutes);
         viewModel.getPresenter().onChangeLayout();
 
         findViewById(R.id.back_button).setOnClickListener(new View.OnClickListener(){

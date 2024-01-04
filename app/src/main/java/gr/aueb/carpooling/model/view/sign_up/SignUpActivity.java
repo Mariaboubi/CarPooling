@@ -45,7 +45,6 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
             @Override
             public void onClick(View v) {
                 viewModel.getPresenter().onCreateUserAccount();
-//                openAttributeSelectionActivity();
             };
         });
     }
@@ -134,12 +133,12 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
         return et_iban.getText().toString().trim();
     }
 
-    public void openLogInActivity() {
+    private void openLogInActivity() {
         Intent intent = new Intent(this, LogInActivity.class);
         startActivity(intent);
     }
 
-    public void openAttributeSelectionActivity() {
+    private void openAttributeSelectionActivity() {
         Intent intent = new Intent(SignUpActivity.this, AttributeSelectionActivity.class);
         startActivity(intent);
     }

@@ -76,6 +76,14 @@ public class SubrouteDAOmemory implements SubrouteDAO {
         return subroutesForPassenger;
     }
 
+    public Route findRouteBySubroute(Subroute subroute) {
+        for (Route route : routes) {
+            if (route.getPassengerRoutes().containsValue(subroute)) {
+                return route; // Return the route that contains the given subroute
+            }
+        }
+        return null;
+    }
     @Override
     public int nextId() {
         return (routes.size() > 0 ? routes.get(routes.size()-1).getId()+1 : 1);

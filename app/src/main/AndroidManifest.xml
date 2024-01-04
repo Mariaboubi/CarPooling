@@ -13,6 +13,12 @@
         android:theme="@style/Theme.CarPooling"
         tools:targetApi="31">
         <activity
+            android:name=".model.view.sign_up.passenger.PassengerSignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".model.view.sign_up.driver.DriverSignUpActivity"
+            android:exported="false" />
+        <activity
             android:name=".model.view.passenger.search_route.SearchRouteActivity"
             android:exported="false" />
         <activity
@@ -44,13 +50,20 @@
         <activity
             android:name=".model.view.sign_up.SignUpActivity"
             android:exported="false" />
-
         <activity
             android:name=".model.view.subroute.subrouteActivity"
             android:exported="false" />
         <activity
             android:name=".model.view.driver.ExistedRoutes.ExistedRouteActivity"
             android:exported="true" />
+
+        <activity
+            android:name=".model.view.driver.RatingPassengers.RatingPassengers"
+            android:exported="true" />
+        <activity
+            android:name=".model.view.passenger.ExistedSubroutes.ExistedSubrouteActivity"
+            android:exported="true" />
+
     </application>
 
 </manifest>

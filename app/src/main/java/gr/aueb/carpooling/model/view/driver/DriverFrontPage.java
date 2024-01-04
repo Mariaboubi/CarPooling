@@ -12,19 +12,21 @@ import android.widget.ImageButton;
 
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.memoryDao.MemoryInitialized;
+import gr.aueb.carpooling.model.view.LogIn.LogInActivity;
 import gr.aueb.carpooling.model.view.attribute_selection.AttributeSelectionActivity;
 import gr.aueb.carpooling.model.view.driver.ExistedRoutes.ExistedRouteActivity;
 import gr.aueb.carpooling.model.view.driver.createRoute.CreateRouteActivity;
 
 public class DriverFrontPage extends AppCompatActivity implements DriverFrontPageView {
 
-    private ImageButton back_button ;
+    private ImageButton log_out_button ;
 
     private Button create_route_button;
 
     private  DriverFrontPageViewModel viewModel;
 
     private String username;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,12 +45,12 @@ public class DriverFrontPage extends AppCompatActivity implements DriverFrontPag
             //The key argument here must match that used in the other activity
         }
 
-        back_button = (ImageButton) findViewById(R.id.back_button);
+        log_out_button = (ImageButton) findViewById(R.id.log_out);
 
-        back_button.setOnClickListener(new View.OnClickListener() {
+        log_out_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openAttributeSelectionActivity();
+                openLogInActivity();
             }
         });
 
@@ -77,9 +79,8 @@ public class DriverFrontPage extends AppCompatActivity implements DriverFrontPag
         intent.putExtra("Username", username);
         startActivity(intent);
     }
-    void openAttributeSelectionActivity() {
-        Intent intent = new Intent(this, AttributeSelectionActivity.class);
-        intent.putExtra("Username", username);
+    void openLogInActivity() {
+        Intent intent = new Intent(this, LogInActivity.class);
         startActivity(intent);
     }
 

@@ -8,10 +8,6 @@ public interface RatingPassengerView extends View {
 
     HashMap<String,String> getRateDetails();
 
-    void goBack();
-
-    void showErrorMessage(String title, String message);
-
 
     /**
      * Κρυβουμε το recyclerView και κάνουμε ορατό μήνυμα ενημέρωσης για την
@@ -25,4 +21,6 @@ public interface RatingPassengerView extends View {
      */
     void ShowPassengers();
 
+
+    void showErrorMessage(String title, String message);
 }

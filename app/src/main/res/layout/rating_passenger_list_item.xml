@@ -10,10 +10,11 @@
     android:padding="5dp"
     tools:ignore="MissingDefaultResource">
 
+
     <TextView
-        android:id="@+id/Passenger"
+        android:id="@+id/PassengerName"
         android:layout_width="153dp"
-        android:layout_height="44dp"
+        android:layout_height="50dp"
         android:background="#00D5C8C8"
         android:backgroundTint="#FFFFFF"
         android:text="@string/name"
@@ -24,17 +25,16 @@
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-
-        app:layout_constraintHorizontal_bias="0.084"
+        app:layout_constraintHorizontal_bias="0.044"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.049"
         tools:visibility="visible" />
 
     <TextView
-        android:id="@+id/RatingPassenger"
+        android:id="@+id/PassengerSurname"
         android:layout_width="153dp"
-        android:layout_height="44dp"
+        android:layout_height="50dp"
         android:background="#00D5C8C8"
         android:backgroundTint="#FFFFFF"
         android:text="@string/surname"
@@ -45,8 +45,7 @@
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-
-        app:layout_constraintHorizontal_bias="0.891"
+        app:layout_constraintHorizontal_bias="0.967"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.049"
@@ -57,7 +56,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:hint="@string/rating_politeness"
+        android:hint="@string/consistency"
+        android:textColorHint="@color/black"
+        app:boxStrokeColor="@color/black"
+        tools:ignore="MissingConstraints">
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:hint="@string/reliability"
         android:textColorHint="@color/black"
         app:boxStrokeColor="@color/black"
         tools:ignore="MissingConstraints">
@@ -69,19 +79,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:hint="@string/rating_consistency"
-        android:textColorHint="@color/black"
-        app:boxStrokeColor="@color/black"
-        tools:ignore="MissingConstraints">
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:hint="@string/rating_reliability"
+        android:hint="@string/politeness"
         android:textColorHint="@color/black"
         app:boxStrokeColor="@color/black"
         tools:ignore="MissingConstraints">
@@ -90,50 +88,63 @@
 
     <Button
         android:id="@+id/RateButton"
-        android:layout_width="137dp"
-        android:layout_height="50dp"
-        android:backgroundTint="#6946A6"
-        android:text="Rate"
+        android:layout_width="121dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="#673AB7"
+        android:text="@string/rate"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.96"
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/reliabilityText"
-        android:layout_width="229dp"
-        android:layout_height="39dp"
+        android:layout_width="240dp"
+        android:layout_height="50dp"
         android:fontFamily="sans-serif-medium"
         android:inputType="numberDecimal"
         android:singleLine="true"
         android:textColor="@color/black"
-        tools:layout_editor_absoluteX="10dp"
-        tools:layout_editor_absoluteY="138dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.622"
         tools:text="Reliability" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/consistencyText"
-        android:layout_width="236dp"
-        android:layout_height="45dp"
+        android:layout_width="240dp"
+        android:layout_height="50dp"
         android:fontFamily="sans-serif-medium"
         android:inputType="numberDecimal"
         android:singleLine="true"
         android:textColor="@color/black"
-        tools:layout_editor_absoluteX="5dp"
-        tools:layout_editor_absoluteY="76dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.334"
         tools:text="Consistency" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/politenessText"
-        android:layout_width="237dp"
-        android:layout_height="48dp"
+        android:layout_width="240dp"
+        android:layout_height="50dp"
         android:fontFamily="sans-serif-medium"
         android:inputType="numberDecimal"
         android:singleLine="true"
         android:textColor="@color/black"
-        tools:layout_editor_absoluteX="10dp"
-        tools:layout_editor_absoluteY="193dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.897"
         tools:text="Politeness" />
 
 

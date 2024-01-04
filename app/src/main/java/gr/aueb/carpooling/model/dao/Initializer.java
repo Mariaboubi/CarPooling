@@ -29,7 +29,7 @@ public abstract class Initializer {
 
 
     public void prepareData() {
-        eraseAll();
+        //eraseAll();
         //// NEW USERS/////////////////////////////////////////////////////////////////
         UserDAO userDAO = getUserDAO();
         EmailAddress email1 = new EmailAddress("pappas@gmail.com");
@@ -74,13 +74,13 @@ public abstract class Initializer {
         passenger2.addRoute(route1);
         passenger2.addRoute(route2);
        // routeDAO.save(route3);
-
+        driver1.addRoute(route1);
         //NEW PASSENGER RATING//////////////////////////////////////////////////////////////
 
         PassengerRatingDao passengerRatingDao= getPassengerRatingDAO();
         PassengerRating pas_rating1= new PassengerRating(passenger2,route1,4.0f,5.0f,3.5f);
         driver1.addPassengerRating(pas_rating1);
-
+        passengerRatingDao.save(pas_rating1);
     }
     public abstract UserDAO getUserDAO();
 

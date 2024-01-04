@@ -60,9 +60,6 @@ public class RatingPassengerPresenter {
     /**
      * Καλεί την μέθοδο του view που μας πηγαίνει στο προηγούμενο activity που μας κάλεσε
      */
-    public void onBack(){
-        view.goBack();
-    }
     /**
      * Επιστρέφει την λίστα με τις διαδρομές
      * @return η λίστα με τις διαδρομες
