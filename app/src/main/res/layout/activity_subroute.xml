@@ -6,18 +6,18 @@
     android:layout_height="wrap_content"
     android:background="@color/white"
     android:fillViewport="true"
-    android:padding="16dp"
-    tools:context=".model.view.subroute.subrouteActivity">
+    android:padding="0dp"
+    tools:context=".model.view.subroute.SubrouteActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
-        android:layout_marginEnd="22dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
         android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="407dp"
+            android:layout_width="match_parent"
             android:layout_height="53dp"
             android:background="#6946A6"
             android:orientation="vertical"
@@ -75,8 +75,9 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/SubrouteStreetInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:inputType="text"
                 android:singleLine="true"
@@ -95,8 +96,9 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/SubrouteNumberInput1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:inputType="text"
                 android:singleLine="true"
@@ -116,8 +118,9 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/SubrouteCityInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:inputType="text"
                 android:singleLine="true"
@@ -136,8 +139,9 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/SubrouteZipCodeInput1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:inputType="number"
                 android:singleLine="true"
@@ -151,7 +155,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:fontFamily="sans-serif-condensed-medium"
-            android:text="@string/pick_up_point"
+            android:text="Pick up point"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="20sp" />
@@ -167,8 +171,9 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/PickUpStreet"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:inputType="text"
                 android:singleLine="true"
@@ -187,8 +192,9 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/PickUpNumber"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:inputType="text"
                 android:singleLine="true"
@@ -208,8 +214,9 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/PickUpCity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:inputType="text"
                 android:singleLine="true"
@@ -228,8 +235,9 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/PickUpZipCode"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:inputType="number"
                 android:singleLine="true"
@@ -248,8 +256,9 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/Date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:inputType="text|datetime"
                 android:singleLine="true"
