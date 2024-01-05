@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".model.view.passenger.top_up.TopUpActivity">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="407dp"
+            android:layout_height="53dp"
+            android:background="#6946A6"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+
+            <ImageButton
+                android:id="@+id/back_button"
+                android:layout_width="50dp"
+                android:layout_height="0dp"
+                android:layout_gravity="left|end"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:backgroundTint="#00FFFFFF"
+                android:contentDescription="@string/back"
+                android:cropToPadding="false"
+                android:scaleType="centerInside"
+
+                app:srcCompat="@drawable/backbutton"
+                tools:ignore="RtlHardcoded" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/BalanceText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="70dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="@string/balance"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="50sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="361dp"
+        android:layout_height="67dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.733"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.564">
+
+        <Button
+            android:id="@+id/topUp5"
+            android:layout_width="171dp"
+            android:layout_height="67dp"
+            android:backgroundTint="#6A47A7"
+            android:fontFamily="sans-serif"
+            android:text="@string/_5"
+            android:textColor="#FFFEFE"
+            android:textColorHighlight="#623FA0"
+            android:textSize="24sp"
+            app:cornerRadius="10dp"
+            app:strokeColor="#6A47A7"
+            app:strokeWidth="2dp"
+            tools:ignore="DuplicateIds" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/topUp10"
+            android:layout_width="171dp"
+            android:layout_height="67dp"
+            android:backgroundTint="#6A47A7"
+            android:fontFamily="sans-serif"
+            android:text="@string/_10"
+            android:textColor="#FFFEFE"
+            android:textColorHighlight="#623FA0"
+            android:textSize="24sp"
+            app:cornerRadius="10dp"
+            app:strokeColor="#6A47A7"
+            app:strokeWidth="2dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="361dp"
+        android:layout_height="67dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.733"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.700">
+
+        <Button
+            android:id="@+id/topUp20"
+            android:layout_width="171dp"
+            android:layout_height="67dp"
+            android:backgroundTint="#6A47A7"
+            android:fontFamily="sans-serif"
+            android:text="@string/_20"
+            android:textColor="#FFFEFE"
+            android:textColorHighlight="#623FA0"
+            android:textSize="24sp"
+            app:cornerRadius="10dp"
+            app:strokeColor="#6A47A7"
+            app:strokeWidth="2dp"
+            tools:ignore="DuplicateIds" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/topUp50"
+            android:layout_width="171dp"
+            android:layout_height="67dp"
+            android:backgroundTint="#6A47A7"
+            android:fontFamily="sans-serif"
+            android:text="@string/_50"
+            android:textColor="#FFFEFE"
+            android:textColorHighlight="#623FA0"
+            android:textSize="24sp"
+            app:cornerRadius="10dp"
+            app:strokeColor="#6A47A7"
+            app:strokeWidth="2dp" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
