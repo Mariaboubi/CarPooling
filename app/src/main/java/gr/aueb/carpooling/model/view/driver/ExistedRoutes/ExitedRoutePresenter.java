@@ -39,7 +39,7 @@ public class ExitedRoutePresenter {
      * Γεμίζει την λίστα με της διαδρομεσ του συγκεκριμενου οδηγού
      */
     public void setRouteList() {
-        routes = (ArrayList<Route>) routeDAO.findAll();
+        routes = (ArrayList<Route>) routeDAO.findExistedRoutes();
     }
     /**
      *  Ελεγχουμε εαν η λίστα με τις διαδρομες είναι άδεια

@@ -7,7 +7,7 @@
     android:background="@color/white"
     android:fillViewport="true"
     android:padding="0dp"
-    tools:context=".model.view.subroute.SubrouteActivity">
+    tools:context=".model.view.subroute.subrouteActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -62,7 +62,7 @@
             android:text="@string/destination"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="25sp" />
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -155,10 +155,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:fontFamily="sans-serif-condensed-medium"
-            android:text="Pick up point"
+            android:text="@string/pick_up_point1"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="25sp" />
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -272,7 +272,9 @@
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
             android:layout_marginTop="32dp">
+
 
             <ProgressBar
                 android:id="@+id/SubrouteProgressBar"
@@ -290,41 +292,13 @@
                 android:paddingStart="0dp"
                 android:paddingTop="0dp"
                 android:paddingEnd="0dp"
-                android:paddingBottom="0dp"
+                android:paddingBottom="10dp"
                 android:layout_gravity="center"
+                android:textSize="20sp"
                 android:text="@string/search_route"
                 app:cornerRadius="10dp" />
 
         </FrameLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed-medium"
-                android:text="@string/already_have_entered_subroute_and_don_t_want_to_enter_more"
-                android:textColor="@color/black"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/txtSignIn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:fontFamily="sans-serif-condensed-medium"
-                android:text="@string/create"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                android:textStyle="bold" />
-
-
-        </LinearLayout>
 
     </LinearLayout>
 

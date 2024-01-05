@@ -4,15 +4,16 @@ import java.util.ArrayList;
 
 import gr.aueb.carpooling.model.Route;
 import gr.aueb.carpooling.model.dao.RouteDAO;
+import gr.aueb.carpooling.model.memoryDao.RouteDAOmemory;
 
 public class SearchRoutePresenter {
     SearchRouteView view;
-    private RouteDAO routeDAO;
+    private RouteDAO routeDAO = new RouteDAOmemory();
 
     private ArrayList<Route> routes;
 
 
-    public SearchRoutePresenter(RouteDAO routeDAO) {
+    public SearchRoutePresenter(RouteDAOmemory routeDAO) {
         this.routeDAO = routeDAO;
         this.routes = new ArrayList<>();
     }
@@ -39,6 +40,8 @@ public class SearchRoutePresenter {
      * Γεμίζει την λίστα με της διαδρομεσ του συγκεκριμενου οδηγού
      */
     public void setRouteList() {
+
+
         this.routes = (ArrayList<Route>) routeDAO.findAll();
     }
 

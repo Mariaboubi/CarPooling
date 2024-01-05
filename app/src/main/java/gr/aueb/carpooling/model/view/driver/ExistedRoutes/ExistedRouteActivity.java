@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.Route;
+import gr.aueb.carpooling.model.view.driver.DriverFrontPage;
 import gr.aueb.carpooling.model.view.log_in.LogInActivity;
 import gr.aueb.carpooling.model.view.driver.RatingPassengers.RatingPassengers;
 
@@ -46,7 +47,9 @@ public class ExistedRouteActivity extends AppCompatActivity implements ExitedRou
         findViewById(R.id.back_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewModel.getPresenter().onBack();
+                Intent intent = new Intent(ExistedRouteActivity.this, DriverFrontPage.class);
+                intent.putExtra("Username", username);
+                startActivity(intent);
             }
         });
 

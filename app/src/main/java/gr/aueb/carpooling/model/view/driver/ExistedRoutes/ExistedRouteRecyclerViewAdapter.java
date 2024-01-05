@@ -60,7 +60,7 @@ public class ExistedRouteRecyclerViewAdapter extends RecyclerView.Adapter<Existe
         holder.routeDate.setText((currentItem.getDate().toString()));
         boolean b = currentItem.isCompleted();
 
-        holder.routeCompleted.setText((String.valueOf(b)));
+       // holder.routeCompleted.setText((String.valueOf(b)));
 //        holder.routeDest.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -71,10 +71,9 @@ public class ExistedRouteRecyclerViewAdapter extends RecyclerView.Adapter<Existe
             @Override
             public void onClick(View view) {
                 currentItem.Completed();
-                //listener.selectRoute(currentItem);
                 boolean b = currentItem.isCompleted();
 
-                holder.routeCompleted.setText((String.valueOf(b)));
+               // holder.routeCompleted.setText((String.valueOf(b)));
                 listener.selectRoute(currentItem);
 
 //                Context context = view.getContext();
@@ -106,14 +105,14 @@ public class ExistedRouteRecyclerViewAdapter extends RecyclerView.Adapter<Existe
         public final TextView routeDest;
         public final TextView routeDate;
 
-        public final TextView routeCompleted;
+        //public final TextView routeCompleted;
         public final Button CompletedButton;
         public ViewHolder(View v)
         {
             super(v);
             routeDest = (TextView) v.findViewById(R.id.Destination);
             routeDate = (TextView) v.findViewById(R.id.Date);
-            routeCompleted = (TextView) v.findViewById(R.id.Completed);
+            //routeCompleted = (Button) v.findViewById(R.id.Completed);
             CompletedButton = (Button) v.findViewById(R.id.CompletedButton);
         }
 

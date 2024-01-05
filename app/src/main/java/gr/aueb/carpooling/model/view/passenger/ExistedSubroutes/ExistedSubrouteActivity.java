@@ -67,7 +67,9 @@ public class ExistedSubrouteActivity extends AppCompatActivity implements Existe
 
     @Override
     public void goBack() {
-
+        Intent intent = new Intent(ExistedSubrouteActivity.this, PassengerFrontPageActivity.class);
+        intent.putExtra("Username",username);
+        startActivity(intent);
     }
 
     @Override
