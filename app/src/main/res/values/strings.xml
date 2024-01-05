@@ -102,5 +102,11 @@
     <string name="reliability">Reliability</string>
     <string name="politeness">Politeness</string>
     <string name="delete">Delete</string>
+    <string name="balance">Balance</string>
+    <string name="_10">10€</string>
+    <string name="_20">20€</string>
+    <string name="_50">50€</string>
+    <string name="_5">5€</string>
+    <string name="wallet">wallet</string>
 
 </resources>

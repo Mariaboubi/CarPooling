@@ -13,14 +13,15 @@ import android.widget.ImageButton;
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.memoryDao.MemoryInitialized;
 import gr.aueb.carpooling.model.view.LogIn.LogInActivity;
-import gr.aueb.carpooling.model.view.attribute_selection.AttributeSelectionActivity;
-import gr.aueb.carpooling.model.view.driver.DriverFrontPageViewModel;
 import gr.aueb.carpooling.model.view.passenger.ExistedSubroutes.ExistedSubrouteActivity;
-import gr.aueb.carpooling.model.view.subroute.subrouteActivity;
+import gr.aueb.carpooling.model.view.passenger.top_up.TopUpActivity;
+import gr.aueb.carpooling.model.view.passenger.subroute.subrouteActivity;
 
 public class PassengerFrontPageActivity extends AppCompatActivity implements PassengerFrontPageView {
 
     private ImageButton log_out_button;
+
+    private ImageButton wallet;
 
     private Button CreateSubroute_button;
     private Button ShowSubroutes_button;
@@ -48,6 +49,7 @@ public class PassengerFrontPageActivity extends AppCompatActivity implements Pas
         }
 
         log_out_button = (ImageButton) findViewById(R.id.log_out);
+        wallet = (ImageButton) findViewById(R.id.Wallet);
         CreateSubroute_button = (Button) findViewById(R.id.createRouteButton);
         ShowSubroutes_button = (Button) findViewById(R.id.showRoutesButton);
 
@@ -56,6 +58,11 @@ public class PassengerFrontPageActivity extends AppCompatActivity implements Pas
             public void onClick(View v) {
                 openLogInActivity();
             }
+        });
+
+        wallet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {openTopUpActivity();}
         });
 
         CreateSubroute_button.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +80,11 @@ public class PassengerFrontPageActivity extends AppCompatActivity implements Pas
 
     void openLogInActivity() {
         Intent intent = new Intent(this, LogInActivity.class);
+        startActivity(intent);
+    }
+
+    void openTopUpActivity(){
+        Intent intent = new Intent(this , TopUpActivity.class);
         startActivity(intent);
     }
 

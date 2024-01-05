@@ -51,7 +51,7 @@
             android:name=".model.view.sign_up.SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".model.view.subroute.subrouteActivity"
+            android:name=".model.view.passenger.subroute.subrouteActivity"
             android:exported="false" />
         <activity
             android:name=".model.view.driver.ExistedRoutes.ExistedRouteActivity"
@@ -62,6 +62,10 @@
             android:exported="true" />
         <activity
             android:name=".model.view.passenger.ExistedSubroutes.ExistedSubrouteActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".model.view.passenger.top_up.TopUpActivity"
             android:exported="true" />
 
     </application>
