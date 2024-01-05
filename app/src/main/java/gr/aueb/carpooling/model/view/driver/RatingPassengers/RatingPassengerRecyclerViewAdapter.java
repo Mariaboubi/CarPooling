@@ -27,28 +27,20 @@ public class RatingPassengerRecyclerViewAdapter extends RecyclerView.Adapter<Rat
     private final List<PassengerRating> ratings;
 
     private PassengerDAO passengerDAO;
-    private PassengerRatingDao passengerRatingDao = new PassengerRatingDAOmemory();
-    private RouteDAO routeDAO= new RouteDAOmemory();
-    private PassengerRating currentItem;
-//    private String politeness;
-//
-//    private String cosistency;
-//
-//    private String reliability;
+    private final PassengerRatingDao passengerRatingDao = new PassengerRatingDAOmemory();
+    private final RouteDAO routeDAO= new RouteDAOmemory();
+
         private RatingPassengersViewModel viewModel;
 
         private RatingPassengerView view;
         private final RatingPassengerRecyclerViewAdapter.PassengerRatingSelectionListener listener;
 
-        private int route_id;
+        private final int route_id;
 
     public  RatingPassengerRecyclerViewAdapter(ArrayList<PassengerRating> ratings, PassengerRatingSelectionListener listener,int route_id ){
             this.ratings = ratings;
             this.listener=listener;
             this.route_id = route_id;
-//        this.politeness=politeness;
-//        this.reliability=reliability;
-//        this.cosistency=cosistency;
         }
 
 
@@ -65,7 +57,7 @@ public class RatingPassengerRecyclerViewAdapter extends RecyclerView.Adapter<Rat
         @Override
         public RatingPassengerRecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             return new ViewHolder(LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.rating_passenger_list_item, parent, false));
+                    .inflate(R.layout.activity_driver_rating_passenger_list_item, parent, false));
         }
 
 
@@ -76,7 +68,7 @@ public class RatingPassengerRecyclerViewAdapter extends RecyclerView.Adapter<Rat
          */
 //    @Override
         public void onBindViewHolder(@NonNull RatingPassengerRecyclerViewAdapter.ViewHolder holder, int position) {
-            currentItem = ratings.get(position);
+            PassengerRating currentItem = ratings.get(position);
 
             holder.ratingUsername.setText((currentItem.getPassenger().getUsername()));
             Passenger passenger = currentItem.getPassenger();
@@ -84,16 +76,13 @@ public class RatingPassengerRecyclerViewAdapter extends RecyclerView.Adapter<Rat
             String politeness = holder.ratingPoliteness;
             String consistency = holder.ratingConsistency;
             Route route = routeDAO.find(route_id);
-//            PassengerRating passengerRating = new PassengerRating(passenger,route,politeness,consistency,reliability);
-//            passengerRatingDao.save(passengerRating);
+            currentItem.setConsistencyRating(reliability);
+            currentItem.setReliabilityRating(politeness);
+            currentItem.setPolitenessRating(consistency);
+            //PassengerRating passengerRating = new PassengerRating(passenger,route,politeness,consistency,reliability);
+            passengerRatingDao.save(currentItem);
 
-//            holder.RateButton.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-////                    passengerRatingDao.save(passengerRating);
-////                    view.showErrorMessage("Rate has completed");
-//                }
-//            });
+            holder.RateButton.setOnClickListener(v -> listener.selectRate(currentItem));
 
 
         }

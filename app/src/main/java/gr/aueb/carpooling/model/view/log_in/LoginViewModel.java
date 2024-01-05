@@ -1,4 +1,4 @@
-package gr.aueb.carpooling.model.view.LogIn;
+package gr.aueb.carpooling.model.view.log_in;
 
 import androidx.lifecycle.ViewModel;
 

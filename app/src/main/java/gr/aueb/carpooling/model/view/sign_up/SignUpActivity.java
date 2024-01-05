@@ -6,17 +6,14 @@ import androidx.lifecycle.ViewModelProvider;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import gr.aueb.carpooling.R;
-import gr.aueb.carpooling.model.contact.EmailAddress;
-import gr.aueb.carpooling.model.view.LogIn.LogInActivity;
-import gr.aueb.carpooling.model.view.LogIn.LoginViewModel;
-import gr.aueb.carpooling.model.view.attribute_selection.AttributeSelectionActivity;
+import gr.aueb.carpooling.model.view.log_in.LogInActivity;
 
 public class SignUpActivity extends AppCompatActivity implements SignUpView {
     private SignUpViewModel viewModel;
@@ -24,15 +21,12 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_sign_up);
 
         viewModel = new ViewModelProvider(this).get(SignUpViewModel.class);
 
         viewModel.getPresenter().setView(this);
 
-        if (savedInstanceState == null){
-            Intent intent = getIntent();
-        }
 
         ImageButton back_button = (ImageButton) findViewById(R.id.back_button);
         back_button.setOnClickListener(v -> openLogInActivity());
@@ -41,12 +35,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
         txtSignIn.setOnClickListener(v -> openLogInActivity());
 
         btnSignUp = (Button) findViewById(R.id.btnSignUp);
-        btnSignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                viewModel.getPresenter().onCreateUserAccount();
-            };
-        });
+        btnSignUp.setOnClickListener(v -> viewModel.getPresenter().onCreateUserAccount());
     }
 
     public void showErrorMessage(String title, String message)
@@ -58,13 +47,8 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
                 .setPositiveButton("OK", null).create().show();
     }
 
-    public void showRegistrationSuccessMessage() {
-        btnSignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openLogInActivity();
-            }
-        });
+    public void showRegistrationSuccessMessage() { // when the registration has been successful , goes to log in page
+        btnSignUp.setOnClickListener(v -> openLogInActivity());
 
     }
 
@@ -135,11 +119,6 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
 
     private void openLogInActivity() {
         Intent intent = new Intent(this, LogInActivity.class);
-        startActivity(intent);
-    }
-
-    private void openAttributeSelectionActivity() {
-        Intent intent = new Intent(SignUpActivity.this, AttributeSelectionActivity.class);
         startActivity(intent);
     }
 }

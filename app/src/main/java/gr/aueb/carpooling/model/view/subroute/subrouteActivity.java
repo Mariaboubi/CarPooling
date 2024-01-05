@@ -16,7 +16,6 @@ import android.widget.ImageButton;
 import java.util.HashMap;
 
 import gr.aueb.carpooling.R;
-import gr.aueb.carpooling.model.view.LogIn.LogInActivity;
 import gr.aueb.carpooling.model.view.passenger.PassengerFrontPageActivity;
 import gr.aueb.carpooling.model.view.passenger.search_route.SearchRouteActivity;
 
@@ -32,7 +31,7 @@ public class subrouteActivity extends AppCompatActivity implements SubrouteView 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_subroute);
+        setContentView(R.layout.activity_passenger_create_subroute);
 
         back_button = (ImageButton) findViewById(R.id.back_button);
         create_route_button = (Button) findViewById(R.id.btnCreateSubroute);

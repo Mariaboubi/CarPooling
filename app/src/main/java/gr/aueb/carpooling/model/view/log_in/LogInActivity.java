@@ -1,11 +1,10 @@
-package gr.aueb.carpooling.model.view.LogIn;
+package gr.aueb.carpooling.model.view.log_in;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import gr.aueb.carpooling.R;
@@ -21,8 +20,8 @@ public class LogInActivity extends AppCompatActivity implements LogInView{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
 
-        MemoryInitialized dataHelper = new MemoryInitialized();
-        dataHelper.prepareData();
+//        MemoryInitialized dataHelper = new MemoryInitialized();
+//        dataHelper.prepareData();
 
         login_button = (Button) findViewById(R.id.btnLogIn);
 
@@ -30,20 +29,9 @@ public class LogInActivity extends AppCompatActivity implements LogInView{
 
         viewModel.getPresenter().setView(this);
 
-        if (savedInstanceState == null){
-            Intent intent = getIntent();
-        }
 
-        findViewById(R.id.txtSignUp).setOnClickListener(new android.view.View.OnClickListener() { //το κουμπί όταν θέλει να εγγραφτεί νέος πελάτης στην εφαμοργή
-            public void onClick(View v) {
-                viewModel.getPresenter().onSignup();
-            }
-        });
-        login_button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                viewModel.getPresenter().authenticate();
-            }
-        });
+        findViewById(R.id.txtSignUp).setOnClickListener(v -> viewModel.getPresenter().onSignup()); // Goes to sign up page
+        login_button.setOnClickListener(v -> viewModel.getPresenter().authenticate()); // Authenticates the user
 
     }
 
@@ -56,14 +44,9 @@ public class LogInActivity extends AppCompatActivity implements LogInView{
                 .setPositiveButton("OK", null).create().show();
     }
 
-    public void showUserFoundMessage(int id)
+    public void onAttributeSelection(String username)
     {
-        login_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openAttributeSelectionActivity(id);
-            }
-        });
+        login_button.setOnClickListener(v -> openAttributeSelectionActivity(username));
     }
 
     public String extractUsername()
@@ -81,7 +64,7 @@ public class LogInActivity extends AppCompatActivity implements LogInView{
         startActivity(intent);
     }
 
-    public void openAttributeSelectionActivity(int id){
+    public void openAttributeSelectionActivity(String username){
         Intent intent = new Intent(LogInActivity.this, AttributeSelectionActivity.class);
         intent.putExtra("Id", extractUsername());
         startActivity(intent);

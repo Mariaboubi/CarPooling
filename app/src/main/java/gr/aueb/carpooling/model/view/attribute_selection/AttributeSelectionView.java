@@ -6,3 +6,4 @@ public interface AttributeSelectionView extends View {
 
     void showErrorMessage(String title,String message);
 }
+

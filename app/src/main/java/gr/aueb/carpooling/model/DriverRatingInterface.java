@@ -9,28 +9,28 @@ public interface DriverRatingInterface {
      *
      * @param securityRating The security rating to be set
      */
-    void setSecurityRating(float securityRating);
+    void setSecurityRating(String securityRating);
 
     /**
      * Get the security rating for the driver.
      *
      * @return The security rating
      */
-    float getSecurityRating();
+    String getSecurityRating();
 
     /**
      * Set the cleanliness rating for the driver.
      *
      * @param cleanlinessRating The cleanliness rating to be set
      */
-    void setCleanlinessRating(float cleanlinessRating);
+    void setCleanlinessRating(String cleanlinessRating);
 
     /**
      * Get the cleanliness rating for the driver.
      *
      * @return The cleanliness rating
      */
-    float getCleanlinessRating();
+    String getCleanlinessRating();
 
     /**
      * Calculate and return the average rating for the driver.

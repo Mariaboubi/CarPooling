@@ -36,7 +36,7 @@
             android:name=".model.view.attribute_selection.AttributeSelectionActivity"
             android:exported="false" />
         <activity
-            android:name=".model.view.front_page.FrontPageActivity"
+            android:name=".model.view.front_page.AppFrontPageActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -45,13 +45,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".model.view.LogIn.LogInActivity"
+            android:name=".model.view.log_in.LogInActivity"
             android:exported="false" />
         <activity
             android:name=".model.view.sign_up.SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".model.view.passenger.subroute.subrouteActivity"
+            android:name=".model.view.subroute.subrouteActivity"
             android:exported="false" />
         <activity
             android:name=".model.view.driver.ExistedRoutes.ExistedRouteActivity"
@@ -67,6 +67,7 @@
         <activity
             android:name=".model.view.passenger.top_up.TopUpActivity"
             android:exported="true" />
+
 
     </application>
 

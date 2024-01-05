@@ -43,7 +43,7 @@ public class DriverTest {
         route = new Route(driver, money, LocalDateTime.of(2023, 10, 12, 10, 12), destination, 3, false);
         route1 = new Route(driver, money, LocalDateTime.of(2023, 9, 12, 10, 12), destination, 2, false);
 
-        rate = new DriverRating(driver, route, 4.0f, 4.3f, 4.4f);
+        rate = new DriverRating(driver, route, "4.0", "4.3", "4.4");
 
     }
 

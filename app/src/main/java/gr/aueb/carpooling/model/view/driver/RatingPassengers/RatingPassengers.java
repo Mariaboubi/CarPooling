@@ -9,21 +9,13 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
-import java.util.HashMap;
 
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.PassengerRating;
-import gr.aueb.carpooling.model.Route;
-import gr.aueb.carpooling.model.view.LogIn.LogInActivity;
 import gr.aueb.carpooling.model.view.driver.DriverFrontPage;
-import gr.aueb.carpooling.model.view.driver.ExistedRoutes.ExistedRouteActivity;
-import gr.aueb.carpooling.model.view.driver.ExistedRoutes.ExistedRouteRecyclerViewAdapter;
-import gr.aueb.carpooling.model.view.driver.ExistedRoutes.ExistedRouteViewModel;
-import gr.aueb.carpooling.model.view.driver.ExistedRoutes.ExitedRouteView;
-import gr.aueb.carpooling.model.view.sign_up.SignUpActivity;
+
 
 public class RatingPassengers extends AppCompatActivity implements RatingPassengerView,RatingPassengerRecyclerViewAdapter.PassengerRatingSelectionListener {
 
@@ -36,7 +28,7 @@ public class RatingPassengers extends AppCompatActivity implements RatingPasseng
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rating_passengers);
+        setContentView(R.layout.activity_driver_rating_passengers);
 
         viewModel = new ViewModelProvider(this).get(RatingPassengersViewModel.class);
         viewModel.getPresenter().setView(this);
@@ -55,13 +47,13 @@ public class RatingPassengers extends AppCompatActivity implements RatingPasseng
 
     }
 
-    public void showErrorMessage(String title)
+    public void showErrorMessage(String title, String message)
     {
         new AlertDialog.Builder(RatingPassengers.this)
-                .setCancelable(true)
-                .setTitle(title)
-                .setPositiveButton("OK", null).create().show();
-
+            .setCancelable(true)
+            .setTitle(title)
+            .setMessage(message)
+            .setPositiveButton("OK", null).create().show();
 }
 //    @Override
 //    public HashMap<String, String> getRateDetails() {
@@ -78,9 +70,6 @@ public class RatingPassengers extends AppCompatActivity implements RatingPasseng
 
     @Override
     public void ShowPassengers() {
-//        String politiness= ((EditText)findViewById(R.id.Politeness)).getText().toString().trim();
-//        String consistency= ((EditText)findViewById(R.id.Consistency)).getText().toString().trim();
-//        String reliability= ((EditText)findViewById(R.id.Reliability)).getText().toString().trim();
         recyclerView.setVisibility(View.VISIBLE);
         emptyView.setVisibility(View.GONE);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -90,6 +79,8 @@ public class RatingPassengers extends AppCompatActivity implements RatingPasseng
 
     @Override
     public void selectRate(PassengerRating rating) {
-
+        Intent intent = new Intent(RatingPassengers.this, DriverFrontPage.class);
+        intent.putExtra("Username", username);
+        startActivity(intent);
     }
 }

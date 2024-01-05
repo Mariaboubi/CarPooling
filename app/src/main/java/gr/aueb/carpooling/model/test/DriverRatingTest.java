@@ -35,7 +35,7 @@ public class DriverRatingTest {
         ZipCode zip = new ZipCode("16562",0.0,0.0);
         Address destination = new Address("mesogeiwn", "10", "athens", zip, "greece");
         route = new Route(driver, money, LocalDateTime.of(2023, 10, 12, 10, 12), destination, 3, false);
-        driverRating = new DriverRating(driver, route, 4.5f, 3.2f, 5.0f);
+        driverRating = new DriverRating(driver, route, "4.5"," 3.2", "5.0");
     }
 
     @AfterEach
@@ -64,35 +64,35 @@ public class DriverRatingTest {
 
     @Test
     public void testSetValidRatings() {
-        driverRating.setSecurityRating(2.5f);
-        assertEquals(2.5f, driverRating.getSecurityRating());
+        driverRating.setSecurityRating("2.5");
+        assertEquals("2.5", driverRating.getSecurityRating());
 
-        driverRating.setPolitenessRating(3.0f);
-        assertEquals(3.0f, driverRating.getPolitenessRating());
+        driverRating.setPolitenessRating("3.0");
+        assertEquals("3.0", driverRating.getPolitenessRating());
 
-        driverRating.setCleanlinessRating(3.0f);
-        assertEquals(3.0f, driverRating.getCleanlinessRating());
+        driverRating.setCleanlinessRating("3.0");
+        assertEquals("3.0", driverRating.getCleanlinessRating());
 
     }
 
     @Test
     public void testSetInvalidRatings() {
         // Assert that setting ratings above the expected range is not allowed
-        assertThrows(IllegalArgumentException.class, () -> driverRating.setPolitenessRating(5.1f));
-        assertThrows(IllegalArgumentException.class, () -> driverRating.setSecurityRating(5.2f));
-        assertThrows(IllegalArgumentException.class, () -> driverRating.setCleanlinessRating(5.3f));
+        assertThrows(IllegalArgumentException.class, () -> driverRating.setPolitenessRating("5.1"));
+        assertThrows(IllegalArgumentException.class, () -> driverRating.setSecurityRating("5.2"));
+        assertThrows(IllegalArgumentException.class, () -> driverRating.setCleanlinessRating("5.3"));
 
         // Assert that setting ratings below the expected range is not allowed
-        assertThrows(IllegalArgumentException.class, () -> driverRating.setPolitenessRating(-1.0f));
-        assertThrows(IllegalArgumentException.class, () -> driverRating.setSecurityRating(-2.0f));
-        assertThrows(IllegalArgumentException.class, () -> driverRating.setCleanlinessRating(-0.5f));
+        assertThrows(IllegalArgumentException.class, () -> driverRating.setPolitenessRating("-1.0"));
+        assertThrows(IllegalArgumentException.class, () -> driverRating.setSecurityRating("-2.0"));
+        assertThrows(IllegalArgumentException.class, () -> driverRating.setCleanlinessRating("-0.5"));
 
         // Add assertions to check the exception messages
-        assertThrows(IllegalArgumentException.class, () -> driverRating.setPolitenessRating(5.1f),
+        assertThrows(IllegalArgumentException.class, () -> driverRating.setPolitenessRating("5.1"),
                 "Politeness rating must be between 0.0 and 5.0");
-        assertThrows(IllegalArgumentException.class, () -> driverRating.setSecurityRating(-1.0f),
+        assertThrows(IllegalArgumentException.class, () -> driverRating.setSecurityRating("-1.0"),
                 "Security rating must be between 0.0 and 5.0");
-        assertThrows(IllegalArgumentException.class, () -> driverRating.setCleanlinessRating(5.3f),
+        assertThrows(IllegalArgumentException.class, () -> driverRating.setCleanlinessRating("5.3"),
                 "Cleanliness rating must be between 0.0 and 5.0");
     }
 

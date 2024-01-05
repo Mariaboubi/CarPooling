@@ -14,11 +14,7 @@ import android.widget.TextView;
 
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.Subroute;
-import gr.aueb.carpooling.model.view.LogIn.LogInActivity;
-import gr.aueb.carpooling.model.view.driver.DriverFrontPage;
-import gr.aueb.carpooling.model.view.driver.ExistedRoutes.ExistedRouteActivity;
-import gr.aueb.carpooling.model.view.driver.ExistedRoutes.ExistedRouteRecyclerViewAdapter;
-import gr.aueb.carpooling.model.view.driver.ExistedRoutes.ExistedRouteViewModel;
+import gr.aueb.carpooling.model.view.log_in.LogInActivity;
 import gr.aueb.carpooling.model.view.passenger.PassengerFrontPageActivity;
 
 public class ExistedSubrouteActivity extends AppCompatActivity implements ExistedSubrouteView,ExistedSubrouteRecyclerViewAdapter.SubrouteSelectionListener {
@@ -35,7 +31,7 @@ public class ExistedSubrouteActivity extends AppCompatActivity implements Existe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_existed_subroute);
+        setContentView(R.layout.activity_passenger_existed_subroute);
 
         viewModel = new ViewModelProvider(this).get(ExistedSubrouteViewModel.class);
         viewModel.getPresenter().setView(this);

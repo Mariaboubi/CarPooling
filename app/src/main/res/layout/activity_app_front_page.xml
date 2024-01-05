@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:background="#6A47A7"
     android:fitsSystemWindows="true"
-    tools:context=".model.view.front_page.FrontPageActivity">
+    tools:context=".model.view.front_page.AppFrontPageActivity"
+    tools:ignore="MissingDefaultResource">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -16,8 +17,8 @@
         app:layout_anchorGravity="center">
 
         <LinearLayout
-            android:layout_width="403dp"
-            android:layout_height="311dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:gravity="center_horizontal|center_vertical"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"

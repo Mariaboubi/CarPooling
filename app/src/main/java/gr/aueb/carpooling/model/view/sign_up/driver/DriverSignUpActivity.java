@@ -6,18 +6,15 @@ import androidx.lifecycle.ViewModelProvider;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import gr.aueb.carpooling.R;
-import gr.aueb.carpooling.model.view.LogIn.LogInActivity;
+import gr.aueb.carpooling.model.view.log_in.LogInActivity;
 import gr.aueb.carpooling.model.view.attribute_selection.AttributeSelectionActivity;
 import gr.aueb.carpooling.model.view.driver.DriverFrontPage;
-import gr.aueb.carpooling.model.view.sign_up.SignUpActivity;
-import gr.aueb.carpooling.model.view.sign_up.SignUpViewModel;
 
 public class DriverSignUpActivity extends AppCompatActivity implements DriverSignUpView{
 
@@ -27,7 +24,7 @@ public class DriverSignUpActivity extends AppCompatActivity implements DriverSig
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_driver_sign_up);
+        setContentView(R.layout.activity_sign_up_driver);
 
         viewModel = new ViewModelProvider(this).get(DriverSignUpViewModel.class);
 
@@ -47,13 +44,7 @@ public class DriverSignUpActivity extends AppCompatActivity implements DriverSig
         txtSignIn.setOnClickListener(v -> openLogInActivity());
 
         btnSignUp = (Button) findViewById(R.id.btnSignUp);
-        btnSignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                viewModel.getPresenter().onCreateDriverAccount(username);
-
-            };
-        });
+        btnSignUp.setOnClickListener(v -> viewModel.getPresenter().onCreateDriverAccount(username));
     }
 
     private void openAttributeSelectionPage() {
@@ -97,12 +88,7 @@ public class DriverSignUpActivity extends AppCompatActivity implements DriverSig
     public void showRegistrationSuccessMessage(String title,String message) {
 
         showErrorMessage(title,message);
-        btnSignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openDriverFrontPage();
-            }
-        });
+        btnSignUp.setOnClickListener(v -> openDriverFrontPage());
     }
 
     private void openDriverFrontPage() {

@@ -1,4 +1,4 @@
-package gr.aueb.carpooling.model.view.LogIn;
+package gr.aueb.carpooling.model.view.log_in;
 
 import gr.aueb.carpooling.model.view.View;
 
@@ -17,9 +17,9 @@ public interface LogInView extends View {
      * Displays a success message when the user successfully logs into their account
      * and navigates to the Home Page activity when the OK button is pressed.
      *
-     * @param id The user ID.
+     * @param username The user's name.
      */
-    void showUserFoundMessage(int id);
+    void onAttributeSelection(String username);
 
     /**
      * This method is called when the registration button for a customer is pressed.
@@ -37,6 +37,6 @@ public interface LogInView extends View {
     /**
      * This method is called when the log in is successful and the user goes to the attribute selection page.
      */
-    void openAttributeSelectionActivity(int id);
+    void openAttributeSelectionActivity(String username);
 }
 

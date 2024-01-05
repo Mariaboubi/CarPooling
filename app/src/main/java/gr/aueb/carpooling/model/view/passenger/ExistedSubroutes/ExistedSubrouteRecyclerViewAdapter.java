@@ -56,7 +56,7 @@ public class ExistedSubrouteRecyclerViewAdapter extends RecyclerView.Adapter<Exi
     @Override
     public ExistedSubrouteRecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new ExistedSubrouteRecyclerViewAdapter.ViewHolder(LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.existed_subroute_list_item, parent, false));
+                .inflate(R.layout.activity_passenger_existed_subroute_list_item, parent, false));
     }
 
     @Override

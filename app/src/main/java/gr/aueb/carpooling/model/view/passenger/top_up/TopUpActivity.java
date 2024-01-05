@@ -12,8 +12,6 @@ import android.widget.TextView;
 
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.memoryDao.PassengerDAOmemory;
-import gr.aueb.carpooling.model.view.LogIn.LogInActivity;
-import gr.aueb.carpooling.model.view.driver.ExistedRoutes.ExistedRouteActivity;
 import gr.aueb.carpooling.model.view.passenger.PassengerFrontPageActivity;
 
 public class TopUpActivity extends AppCompatActivity implements TopUpView {

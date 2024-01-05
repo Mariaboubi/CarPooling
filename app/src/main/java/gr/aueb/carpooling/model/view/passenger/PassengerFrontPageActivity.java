@@ -12,10 +12,10 @@ import android.widget.ImageButton;
 
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.memoryDao.MemoryInitialized;
-import gr.aueb.carpooling.model.view.LogIn.LogInActivity;
+import gr.aueb.carpooling.model.view.log_in.LogInActivity;
 import gr.aueb.carpooling.model.view.passenger.ExistedSubroutes.ExistedSubrouteActivity;
 import gr.aueb.carpooling.model.view.passenger.top_up.TopUpActivity;
-import gr.aueb.carpooling.model.view.passenger.subroute.subrouteActivity;
+import gr.aueb.carpooling.model.view.subroute.subrouteActivity;
 
 public class PassengerFrontPageActivity extends AppCompatActivity implements PassengerFrontPageView {
 
@@ -35,8 +35,6 @@ public class PassengerFrontPageActivity extends AppCompatActivity implements Pas
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_passenger_front_page);
 
-        MemoryInitialized dataHelper = new MemoryInitialized();
-        dataHelper.prepareData();
 
         viewModel= new ViewModelProvider(this).get(PassengerFrontPageViewModel.class);
 
@@ -53,12 +51,7 @@ public class PassengerFrontPageActivity extends AppCompatActivity implements Pas
         CreateSubroute_button = (Button) findViewById(R.id.createRouteButton);
         ShowSubroutes_button = (Button) findViewById(R.id.showRoutesButton);
 
-        log_out_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openLogInActivity();
-            }
-        });
+        log_out_button.setOnClickListener(v -> openLogInActivity());
 
         wallet.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,11 +62,9 @@ public class PassengerFrontPageActivity extends AppCompatActivity implements Pas
             @Override
             public void onClick(View v) {openCreateRoutePage(username);}
         });
+        CreateSubroute_button.setOnClickListener(v -> openCreateRoutePage(username));
 
-        ShowSubroutes_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {openShowRoutesPage() ; }
-        });
+        ShowSubroutes_button.setOnClickListener(v -> openShowRoutesPage());
 
 
     }
@@ -85,6 +76,7 @@ public class PassengerFrontPageActivity extends AppCompatActivity implements Pas
 
     void openTopUpActivity(){
         Intent intent = new Intent(this , TopUpActivity.class);
+        intent.putExtra("Username",username);
         startActivity(intent);
     }
 

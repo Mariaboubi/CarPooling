@@ -1,4 +1,4 @@
-package gr.aueb.carpooling.model.view.LogIn;
+package gr.aueb.carpooling.model.view.log_in;
 
 import gr.aueb.carpooling.model.User;
 import gr.aueb.carpooling.model.dao.UserDAO;
@@ -25,7 +25,7 @@ public class LogInPresenter {
         if (inputUsername.isEmpty() && inputPassword.isEmpty()) {
             view.showErrorMessage("Error!", "Complete all the fields");
         }else if(user!=null){
-            view.showUserFoundMessage(user.getUserId());
+            view.onAttributeSelection(inputUsername);
         }else{
             view.showErrorMessage("Incorrect username or password.", "Try again!");
         }

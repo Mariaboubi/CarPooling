@@ -12,8 +12,7 @@ import android.widget.ImageButton;
 
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.memoryDao.MemoryInitialized;
-import gr.aueb.carpooling.model.view.LogIn.LogInActivity;
-import gr.aueb.carpooling.model.view.attribute_selection.AttributeSelectionActivity;
+import gr.aueb.carpooling.model.view.log_in.LogInActivity;
 import gr.aueb.carpooling.model.view.driver.ExistedRoutes.ExistedRouteActivity;
 import gr.aueb.carpooling.model.view.driver.createRoute.CreateRouteActivity;
 
@@ -32,8 +31,8 @@ public class DriverFrontPage extends AppCompatActivity implements DriverFrontPag
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver_front_page);
 
-        MemoryInitialized dataHelper = new MemoryInitialized();
-        dataHelper.prepareData();
+//        MemoryInitialized dataHelper = new MemoryInitialized();
+//        dataHelper.prepareData();
 
         viewModel= new ViewModelProvider(this).get(DriverFrontPageViewModel.class);
 
@@ -90,3 +89,35 @@ public class DriverFrontPage extends AppCompatActivity implements DriverFrontPag
         startActivity(intent);
     }
 }
+//    void openCreateRoutePage(String userId) {
+//        Intent intent = new Intent(this, CreateRouteActivity.class);
+//        intent.putExtra("Username", username);
+//        startActivity(intent);
+//    }
+//    void openLogInActivity() {
+//        Intent intent = new Intent(this, LogInActivity.class);
+//        startActivity(intent);
+//    }
+//
+//    void openExistedRoutePage(String username) {
+//        Intent intent = new Intent(this, ExistedRouteActivity.class);
+//        intent.putExtra("Username", username);
+//        startActivity(intent);
+//    }
+//
+//    public void openCreateRoutePage(String userId) {
+//        Intent intent = new Intent(this, CreateRouteActivity.class);
+//        intent.putExtra("Username", username);
+//        startActivity(intent);
+//    }
+//    public void openLogInActivity() {
+//        Intent intent = new Intent(this, LogInActivity.class);
+//        startActivity(intent);
+//    }
+//
+//    public void openExistedRoutePage(String username) {
+//        Intent intent = new Intent(this, ExistedRouteActivity.class);
+//        intent.putExtra("Username", username);
+//        startActivity(intent);
+//    }
+

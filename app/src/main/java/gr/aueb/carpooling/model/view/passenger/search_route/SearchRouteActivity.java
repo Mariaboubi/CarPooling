@@ -13,11 +13,7 @@ import android.widget.TextView;
 
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.Route;
-import gr.aueb.carpooling.model.view.LogIn.LogInActivity;
-import gr.aueb.carpooling.model.view.driver.DriverFrontPage;
-import gr.aueb.carpooling.model.view.driver.ExistedRoutes.ExistedRouteActivity;
 import gr.aueb.carpooling.model.view.driver.ExistedRoutes.ExistedRouteRecyclerViewAdapter;
-import gr.aueb.carpooling.model.view.driver.ExistedRoutes.ExistedRouteViewModel;
 import gr.aueb.carpooling.model.view.passenger.PassengerFrontPageActivity;
 import gr.aueb.carpooling.model.view.subroute.subrouteActivity;
 
@@ -32,7 +28,7 @@ public class SearchRouteActivity extends AppCompatActivity implements SearchRout
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_route);
+        setContentView(R.layout.activity_passenger_request_route);
 
         viewModel = new ViewModelProvider(this).get(SearchRouteViewModel.class);
         viewModel.getPresenter().setView(this);
@@ -42,7 +38,7 @@ public class SearchRouteActivity extends AppCompatActivity implements SearchRout
             //The key argument here must match that used in the other activity
         }
 
-       viewModel.getPresenter().setRouteList();
+        viewModel.getPresenter().setRouteList();
         // ui initialization
         recyclerView = findViewById(R.id.ChooseRouteRecyclerView);
         emptyView = findViewById(R.id.NoRoutes);

@@ -3,20 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="@color/white"
     android:fillViewport="true"
-    android:padding="16dp"
+
     tools:context=".model.view.driver.createRoute.CreateRouteActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
-        android:layout_marginEnd="22dp"
         android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="386dp"
+            android:layout_width="match_parent"
             android:layout_height="43dp"
             android:background="#6946A6"
             android:orientation="horizontal"
@@ -30,7 +28,7 @@
             <ImageButton
                 android:id="@+id/imageButton2"
                 android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_height="match_parent"
                 android:adjustViewBounds="true"
                 android:backgroundTint="#00FFFFFF"
                 android:contentDescription="@string/back"
@@ -63,8 +61,9 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/CreateRouteStreet"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:inputType="text"
                 android:singleLine="true"
@@ -83,8 +82,9 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/CreateRouteNumber"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:inputType="text"
                 android:singleLine="true"
@@ -104,8 +104,9 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/CreateRouteCity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:inputType="text"
                 android:singleLine="true"
@@ -115,8 +116,9 @@
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
             android:layout_marginTop="32dp"
             android:hint="@string/zipcode"
             android:textColorHint="@color/black"
@@ -144,8 +146,9 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/CreateRouteDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:inputType="text|datetime"
                 android:singleLine="true"
@@ -164,8 +167,9 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/CreateRouteEstimatedCost"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:inputType="text"
                 android:singleLine="true"
@@ -176,10 +180,11 @@
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
             android:layout_marginTop="32dp"
-            android:hint="@string/max_number_of_passenger"
+            android:hint="@string/maximum_number_of_passengers"
             android:textColorHint="@color/black"
             app:boxStrokeColor="@color/black">
 
@@ -199,39 +204,39 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp">
 
-            <ProgressBar
-                android:id="@+id/signUpProgressBar"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal"
-                android:visibility="invisible" />
-
-            <com.google.android.material.button.MaterialButton
+            <Button
                 android:id="@+id/btnCreateRoute"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="200dp"
+                android:layout_height="55dp"
+                android:background="#6845A5"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:backgroundTint="@color/black"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:paddingStart="20dp"
                 android:paddingTop="10dp"
                 android:paddingEnd="20dp"
                 android:paddingBottom="20dp"
+                android:textSize="16sp"
                 android:text="@string/create_route"
                 app:cornerRadius="10dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed-medium"
-                android:text="@string/already_have_created_route_and_don_t_want_to_create_more"
-                android:textColor="@color/black"
-                android:textSize="14sp" />
-
         </FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:layout_gravity="center"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="@string/already_have_created_route_and_don_t_want_to_create_more"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="14sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="26dp"
             android:layout_marginTop="32dp"
             android:gravity="center"
             android:orientation="horizontal">

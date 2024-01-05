@@ -4,7 +4,6 @@ import gr.aueb.carpooling.model.dao.DriverDAO;
 import gr.aueb.carpooling.model.dao.PassengerDAO;
 import gr.aueb.carpooling.model.memoryDao.DriverDAOmemory;
 import gr.aueb.carpooling.model.memoryDao.PassengerDAOmemory;
-import gr.aueb.carpooling.model.view.LogIn.LogInView;
 
 
 public class AttributeSelectionPresenter {
@@ -42,3 +41,4 @@ public class AttributeSelectionPresenter {
         return driverDAO.find(username);
     }
 }
+

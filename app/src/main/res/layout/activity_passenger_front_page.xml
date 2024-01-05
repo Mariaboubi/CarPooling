@@ -79,7 +79,7 @@
             android:layout_width="wrap_content"
             android:layout_height="180dp"
             android:layout_gravity="center_horizontal|top"
-            android:contentDescription="TODO"
+            android:contentDescription="@string/logo_photo"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
             android:src="@drawable/logo_purple" />
@@ -87,8 +87,8 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="148dp"
+        android:layout_width="410dp"
+        android:layout_height="179dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -99,10 +99,16 @@
 
         <Button
             android:id="@+id/createRouteButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+
+            android:layout_width="320dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:background="#6845A5"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
             android:text="@string/create_route"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            app:cornerRadius="10dp" />
 
         <Space
             android:layout_width="match_parent"
@@ -110,10 +116,15 @@
 
         <Button
             android:id="@+id/showRoutesButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="320dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:background="#6845A5"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
             android:text="@string/show_routes"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            app:cornerRadius="10dp" />
     </LinearLayout>
 
 

@@ -50,9 +50,9 @@ public class PassengerRatingTest {
 
     @Test
     public void testConstructorValidRatings() {
-        assertEquals(4.5f, passengerRating.getPolitenessRating(), 0.0f);
-        assertEquals(3.2f, passengerRating.getConsistencyRating(), 0.0f);
-        assertEquals(5.0f, passengerRating.getReliabilityRating(), 0.0f);
+        assertEquals("4.5", passengerRating.getPolitenessRating());
+        assertEquals("3.2", passengerRating.getConsistencyRating());
+        assertEquals("5.0", passengerRating.getReliabilityRating());
     }
 
     @Test
@@ -65,33 +65,33 @@ public class PassengerRatingTest {
 
     @Test
     public void testSetGetConsistencyRating() {
-        passengerRating.setConsistencyRating(2.5f);
-        assertEquals(2.5f, passengerRating.getConsistencyRating(), 0.0f);
+        passengerRating.setConsistencyRating("2.5");
+        assertEquals("2.5", passengerRating.getConsistencyRating());
     }
 
     @Test
     public void testSetGetPolitenessRating() {
-        passengerRating.setPolitenessRating(4.1f);
-        assertEquals(4.1f, passengerRating.getPolitenessRating(), 0.001);
+        passengerRating.setPolitenessRating("4.1");
+        assertEquals("4.1", passengerRating.getPolitenessRating());
     }
 
     @Test
     public void testSetGetReliabilityRating() {
-        passengerRating.setReliabilityRating(1.5f);
-        assertEquals(1.5f, passengerRating.getReliabilityRating(), 0.0f);
+        passengerRating.setReliabilityRating("1.5");
+        assertEquals("1.5", passengerRating.getReliabilityRating());
     }
 
     @Test
     public void testSetInvalidRatings() {
         // Assert that setting ratings above the expected range is not allowed
-        assertThrows(IllegalArgumentException.class, () -> passengerRating.setPolitenessRating(5.1f));
-        assertThrows(IllegalArgumentException.class, () -> passengerRating.setConsistencyRating(5.2f));
-        assertThrows(IllegalArgumentException.class, () -> passengerRating.setReliabilityRating(5.3f));
+        assertThrows(IllegalArgumentException.class, () -> passengerRating.setPolitenessRating("5.1"));
+        assertThrows(IllegalArgumentException.class, () -> passengerRating.setConsistencyRating("5.2"));
+        assertThrows(IllegalArgumentException.class, () -> passengerRating.setReliabilityRating("5.3"));
 
         // Assert that setting ratings below the expected range is not allowed
-        assertThrows(IllegalArgumentException.class, () -> passengerRating.setPolitenessRating(-1.0f));
-        assertThrows(IllegalArgumentException.class, () -> passengerRating.setConsistencyRating(-2.0f));
-        assertThrows(IllegalArgumentException.class, () -> passengerRating.setReliabilityRating(-0.5f));
+        assertThrows(IllegalArgumentException.class, () -> passengerRating.setPolitenessRating("-1.0"));
+        assertThrows(IllegalArgumentException.class, () -> passengerRating.setConsistencyRating("-2.0"));
+        assertThrows(IllegalArgumentException.class, () -> passengerRating.setReliabilityRating("-0.5f"));
     }
 
     @Test

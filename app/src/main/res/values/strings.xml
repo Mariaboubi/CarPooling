@@ -102,6 +102,7 @@
     <string name="reliability">Reliability</string>
     <string name="politeness">Politeness</string>
     <string name="delete">Delete</string>
+    <string name="maximum_number_of_passengers">Maximum number of passengers</string>
     <string name="balance">Balance</string>
     <string name="_10">10€</string>
     <string name="_20">20€</string>

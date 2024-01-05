@@ -13,7 +13,7 @@ import android.widget.ImageButton;
 
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.memoryDao.MemoryInitialized;
-import gr.aueb.carpooling.model.view.LogIn.LogInActivity;
+import gr.aueb.carpooling.model.view.log_in.LogInActivity;
 import gr.aueb.carpooling.model.view.driver.DriverFrontPage;
 import gr.aueb.carpooling.model.view.passenger.PassengerFrontPageActivity;
 import gr.aueb.carpooling.model.view.sign_up.driver.DriverSignUpActivity;
@@ -29,17 +29,15 @@ public class AttributeSelectionActivity extends AppCompatActivity implements Att
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_attribute);
+        setContentView(R.layout.activity_attribute_selection);
 
-        MemoryInitialized dataHelper = new MemoryInitialized();
-        dataHelper.prepareData();
 
 
         viewModel = new ViewModelProvider(this).get(AttributeSelectionViewModel.class);
 
         viewModel.getPresenter().setView(this);
 
-       Bundle extras = getIntent().getExtras();
+        Bundle extras = getIntent().getExtras();
         if (extras != null) {
             username = extras.getString("Id");
             //The key argument here must match that used in the other activity
@@ -74,13 +72,13 @@ public class AttributeSelectionActivity extends AppCompatActivity implements Att
         driver_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            boolean isDriver = viewModel.getPresenter().authenticateAttributeDriver(username);
-            showErrorMessage("Driver", String.valueOf(isDriver));
-            if (isDriver){
-                openDriverPage(username);
-            } else {
-                openFillDriverInfo();
-            }
+                boolean isDriver = viewModel.getPresenter().authenticateAttributeDriver(username);
+                showErrorMessage("Driver", String.valueOf(isDriver));
+                if (isDriver){
+                    openDriverPage(username);
+                } else {
+                    openFillDriverInfo();
+                }
             }
         });
     }

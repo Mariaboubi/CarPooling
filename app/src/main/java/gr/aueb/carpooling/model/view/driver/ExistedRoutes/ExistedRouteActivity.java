@@ -13,10 +13,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import gr.aueb.carpooling.R;
-import gr.aueb.carpooling.model.PassengerRating;
 import gr.aueb.carpooling.model.Route;
-import gr.aueb.carpooling.model.view.LogIn.LogInActivity;
-import gr.aueb.carpooling.model.view.driver.DriverFrontPage;
+import gr.aueb.carpooling.model.view.log_in.LogInActivity;
 import gr.aueb.carpooling.model.view.driver.RatingPassengers.RatingPassengers;
 
 public class ExistedRouteActivity extends AppCompatActivity implements ExitedRouteView,ExistedRouteRecyclerViewAdapter.RouteSelectionListener{
@@ -28,7 +26,7 @@ public class ExistedRouteActivity extends AppCompatActivity implements ExitedRou
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_existed_route);
+        setContentView(R.layout.activity_driver_show_existed_routes);
 
         viewModel = new ViewModelProvider(this).get(ExistedRouteViewModel.class);
         viewModel.getPresenter().setView(this);

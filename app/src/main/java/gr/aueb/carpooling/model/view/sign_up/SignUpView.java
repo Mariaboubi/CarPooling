@@ -5,10 +5,6 @@ import gr.aueb.carpooling.model.contact.EmailAddress;
 
 public interface SignUpView extends View {
 
-
-    /**
-     *Μεθόδοι για να λάβουμε τα δεδομένα που εισήχθησαν στα πεδία
-     */
     String getName();
 
     String getSurname();
@@ -40,14 +36,11 @@ public interface SignUpView extends View {
     void showErrorMessage(String s, String s1);
 
 
-    /** Μηνυμα επητυχης εγγραφης χριστη
+    /**  Successful registration message
      */
     void showRegistrationSuccessMessage();
 
 
-//    /** Καλείται για να επιστρέψουμε στο προηγούμενο Activity
-//     */
-//    void goBack();
 
 
 }

@@ -2,17 +2,14 @@ package gr.aueb.carpooling.model.view.driver;
 
 import gr.aueb.carpooling.model.dao.DriverDAO;
 import gr.aueb.carpooling.model.memoryDao.DriverDAOmemory;
-import gr.aueb.carpooling.model.memoryDao.PassengerDAOmemory;
-import gr.aueb.carpooling.model.view.attribute_selection.AttributeSelectionPresenter;
-import gr.aueb.carpooling.model.view.attribute_selection.AttributeSelectionView;
 
 public class DriverFrontPagePresenter {
     private DriverDAO driverDAO;
     DriverFrontPageView view;
 
 
-    public DriverFrontPagePresenter(DriverDAOmemory driverDAOmemoery) {
-        this.driverDAO = driverDAOmemoery;
+    public DriverFrontPagePresenter(DriverDAOmemory driverDAOmemory) {
+        this.driverDAO = driverDAOmemory;
     }
 
     public DriverFrontPageView getView() {

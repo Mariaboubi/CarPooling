@@ -24,4 +24,5 @@ public class DriverFrontPageViewModel extends ViewModel {
     public DriverFrontPagePresenter getPresenter() {
         return this.presenter;
     }
+
 }

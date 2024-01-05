@@ -3,7 +3,6 @@ package gr.aueb.carpooling.model.memoryDao;
 import java.util.ArrayList;
 import java.util.List;
 
-import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.Driver;
 import gr.aueb.carpooling.model.Route;
 import gr.aueb.carpooling.model.dao.RouteDAO;
@@ -28,7 +27,7 @@ public class RouteDAOmemory implements RouteDAO {
 
     @Override
     public List<Route> findAll() {
-        return new ArrayList<>(entities);
+        return entities;
     }
 
     @Override

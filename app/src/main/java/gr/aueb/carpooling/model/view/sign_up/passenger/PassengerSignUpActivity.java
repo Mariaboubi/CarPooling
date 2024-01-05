@@ -6,18 +6,15 @@ import androidx.lifecycle.ViewModelProvider;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import gr.aueb.carpooling.R;
-import gr.aueb.carpooling.model.view.LogIn.LogInActivity;
+import gr.aueb.carpooling.model.view.log_in.LogInActivity;
 import gr.aueb.carpooling.model.view.attribute_selection.AttributeSelectionActivity;
-import gr.aueb.carpooling.model.view.driver.DriverFrontPage;
 import gr.aueb.carpooling.model.view.passenger.PassengerFrontPageActivity;
-import gr.aueb.carpooling.model.view.sign_up.driver.DriverSignUpActivity;
 
 
 public class PassengerSignUpActivity extends AppCompatActivity implements PassengerSignUpView{
@@ -28,7 +25,7 @@ public class PassengerSignUpActivity extends AppCompatActivity implements Passen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_passenger_sign_up);
+        setContentView(R.layout.activity_sign_up_passenger);
 
         viewModel = new ViewModelProvider(this).get(PassengerSignUpViewModel.class);
 
@@ -48,13 +45,7 @@ public class PassengerSignUpActivity extends AppCompatActivity implements Passen
         txtSignIn.setOnClickListener(v -> openLogInActivity());
 
         btnSignUp = (Button) findViewById(R.id.btnSignUp);
-        btnSignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                viewModel.getPresenter().onCreatePassengerAccount(username);
-
-            };
-        });
+        btnSignUp.setOnClickListener(v -> viewModel.getPresenter().onCreatePassengerAccount(username));
     }
 
     private void openAttributeSelectionPage() {
@@ -92,12 +83,7 @@ public class PassengerSignUpActivity extends AppCompatActivity implements Passen
     @Override
     public void showRegistrationSuccessMessage(String title,String message) {
         showErrorMessage(title, message);
-        btnSignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openPassengerFrontPage();
-            }
-        });
+        btnSignUp.setOnClickListener(v -> openPassengerFrontPage());
 
     }
     private void openPassengerFrontPage() {

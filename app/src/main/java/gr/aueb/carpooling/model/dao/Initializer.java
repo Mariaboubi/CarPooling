@@ -29,7 +29,7 @@ public abstract class Initializer {
 
 
     public void prepareData() {
-        //eraseAll();
+        eraseAll();
         //// NEW USERS/////////////////////////////////////////////////////////////////
         UserDAO userDAO = getUserDAO();
         EmailAddress email1 = new EmailAddress("pappas@gmail.com");
@@ -61,20 +61,22 @@ public abstract class Initializer {
         final Currency euroCurrency = Currency.getInstance("EUR");
         Money money = new Money(10.0, euroCurrency);
         Address destination = new Address("mesogeiwn", "10", "athens", new ZipCode("16562",0.0,0.0), "greece");
+
         Route route1 = new Route(driver1, money, LocalDateTime.of(2023, 10, 12, 10, 12), destination, 3, false);
         Money money5 = new Money(5.0, euroCurrency);
         Address destination1 = new Address("mesogeiwn", "157", "athens", new ZipCode("16571",0.0,0.0), "greece");
+
         Route route2 = new Route(driver1, money5, LocalDateTime.of(2023, 10, 28, 16, 30), destination1, 2, false);
         Money money20 = new Money(20.0, euroCurrency);
-        Address destination2 = new Address("tsimiski", "50", "tessaloniki", new ZipCode("54623",0.0,0.0), "greece");
+        Address destination2 = new Address("tsimiski", "50", "thessaloniki", new ZipCode("54623",0.0,0.0), "greece");
         //Route route3 = new Route(driver2, money20, LocalDateTime.of(2023, 1, 28, 16, 30), destination2, 4, false);
         routeDAO.save(route1);
-        routeDAO.save(route2);
+        //routeDAO.save(route2);
 
-        passenger2.addRoute(route1);
-        passenger2.addRoute(route2);
+        //passenger2.addRoute(route1);
+        //passenger2.addRoute(route2);
        // routeDAO.save(route3);
-        driver1.addRoute(route1);
+        //driver1.addRoute(route1);
         //NEW PASSENGER RATING//////////////////////////////////////////////////////////////
 
         PassengerRatingDao passengerRatingDao= getPassengerRatingDAO();

@@ -22,7 +22,7 @@ public interface RatingPassengerView extends View {
     void ShowPassengers();
 
 
-    void showErrorMessage(String title);
+    void showErrorMessage(String title,String message);
 
 
 }

@@ -14,8 +14,6 @@ import android.widget.ImageButton;
 import java.util.HashMap;
 
 import gr.aueb.carpooling.R;
-import gr.aueb.carpooling.model.memoryDao.MemoryInitialized;
-import gr.aueb.carpooling.model.view.LogIn.LogInActivity;
 import gr.aueb.carpooling.model.view.driver.DriverFrontPage;
 
 public class CreateRouteActivity extends AppCompatActivity implements CreateRouteView {
@@ -25,7 +23,7 @@ public class CreateRouteActivity extends AppCompatActivity implements CreateRout
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_route);
+        setContentView(R.layout.activity_driver_create_new_route);
 
         @SuppressLint({"MissingInflatedId", "LocalSuppress"})
         ImageButton back_button = (ImageButton) findViewById(R.id.back_button);

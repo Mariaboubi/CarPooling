@@ -6,24 +6,10 @@ import android.content.Intent;
 import org.threeten.bp.LocalDateTime;
 
 import java.util.ArrayList;
-import java.util.Currency;
-import java.util.HashMap;
-import java.util.Map;
 
-import gr.aueb.carpooling.model.Driver;
-import gr.aueb.carpooling.model.Passenger;
 import gr.aueb.carpooling.model.PassengerRating;
-import gr.aueb.carpooling.model.Route;
-import gr.aueb.carpooling.model.User;
-import gr.aueb.carpooling.model.contact.Address;
-import gr.aueb.carpooling.model.contact.EmailAddress;
-import gr.aueb.carpooling.model.contact.Money;
-import gr.aueb.carpooling.model.contact.ZipCode;
+
 import gr.aueb.carpooling.model.dao.PassengerRatingDao;
-import gr.aueb.carpooling.model.dao.RouteDAO;
-import gr.aueb.carpooling.model.view.LogIn.LogInActivity;
-import gr.aueb.carpooling.model.view.driver.ExistedRoutes.ExistedRouteActivity;
-import gr.aueb.carpooling.model.view.driver.ExistedRoutes.ExitedRouteView;
 
 public class RatingPassengerPresenter {
     RatingPassengerView view;

@@ -12,7 +12,7 @@ public interface DriverSignUpView extends View {
     void showErrorMessage(String title, String message);
 
 
-    /** Μηνυμα επητυχης εγγραφης χριστη
+    /**
      */
     void showRegistrationSuccessMessage(String title,String message);
 

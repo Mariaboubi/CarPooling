@@ -56,15 +56,14 @@ public class SignUpPresenter {
         String inputIban = view.getIban();
         String inputDriverLicense = view.getDriverLicense();
         String inputCarType = view.getCarType();
-        boolean isDriver = false;
-        boolean isPassenger  = false;
+
 
         if (inputName.isEmpty() || inputSurname.isEmpty() || inputUsername.isEmpty() || inputAge.isEmpty() || !inputEmail.isValid() ||
                 inputPassword.isEmpty() || inputPasswordVerification.isEmpty() || inputPhoneNumber.isEmpty()) {
             view.showErrorMessage("Error!", "Complete all the fields");
         } else if (inputUsername.length() < 3) {
             view.showErrorMessage("Error!", "Username must have at least 3 characters.");
-        } else if (Integer.parseInt(inputAge) < 0) {
+        } else if (Integer.parseInt(inputAge) <= 0 || Integer.parseInt(inputAge) > 120) {
             view.showErrorMessage("Error!", "Age is incorrect!");
         } else if (inputPhoneNumber.length() != 10) {
             view.showErrorMessage("Error!", "Phone number must have 10 characters.");
@@ -75,86 +74,26 @@ public class SignUpPresenter {
         } else if (!inputPassword.equals(inputPasswordVerification)) {
             view.showErrorMessage("Error!", "The fields password και confirm password must match!");
         } else  {
+            User newUser = new User(inputUsername, inputName, inputSurname, inputPhoneNumber, inputEmail, inputPassword, inputAge);
+            userDao.save(newUser);
+            if((inputDriverLicense.isEmpty() && inputCarType.isEmpty() && inputIban.isEmpty()) ||
+                    (!inputDriverLicense.isEmpty() && !inputCarType.isEmpty() && !inputIban.isEmpty())) {
+                Driver driver = new Driver(newUser.getUsername(), newUser.getName(), newUser.getSurname(), newUser.getPhone(), newUser.getEmail(), newUser.getPassword(), newUser.getAge(), inputIban, inputDriverLicense, inputCarType);
+                driverDao.save(driver);
+            } else {
+                view.showErrorMessage("Error!", "Complete all the driver fields or leave them all empty");
+            }
 
+            if ((inputCardNumber.isEmpty() && inputCardHolderName.isEmpty() && inputCVV.isEmpty()) ||
+                    (!inputCardNumber.isEmpty() && !inputCardHolderName.isEmpty() && !inputCVV.isEmpty())) {
+                Passenger passenger = new Passenger(newUser.getUsername(), newUser.getName(), newUser.getSurname(), newUser.getPhone(), newUser.getEmail(), newUser.getPassword(), newUser.getAge(), inputCardNumber, inputCardHolderName, inputCVV);
+                passengerDao.save(passenger);
+            } else {
+                view.showErrorMessage("Error!", "Complete all the passenger fields or leave them all empty");
 
-//            if (inputDriverLicense.isEmpty() && inputCarType.isEmpty() && inputIban.isEmpty()) {
-//                isDriver = false;
-//                System.out.println("All inputs are empty.");
-//            } else if (!inputDriverLicense.isEmpty() && !inputCarType.isEmpty() && !inputIban.isEmpty()) {
-//               isDriver = true;
-//                view.showErrorMessage("Error!", "All inputs are non empty.");
-//                System.out.println("All inputs are non-empty.");
-//            } else {
-//                view.showErrorMessage("Error!", "All the fields of the driver must be completed.");
-//                System.out.println("Please provide values for all inputs or leave them all empty.");
-//            }
-//            if(isDriver){
-//                User newUser = new User(inputUsername, inputName, inputSurname, inputPhoneNumber, inputEmail, inputPassword, inputAge);
-//                userDao.save(newUser);
-//                Driver driver = new Driver(newUser.getUsername(), newUser.getName(), newUser.getSurname(), newUser.getPhone(), newUser.getEmail(), newUser.getPassword(), newUser.getAge(), inputIban, inputDriverLicense, inputCarType);
-//                driverDao.save(driver);
-//            }
-//
-//            if(inputCardNumber.isEmpty() && inputCardHolderName.isEmpty() && inputCVV.isEmpty()) {
-//                isPassenger = false;
-//
-//            } else if(!inputCardNumber.isEmpty() && !inputCardHolderName.isEmpty() && !inputCVV.isEmpty()) {
-//                if(inputCVV.length() != 3) {
-//                    view.showErrorMessage("Error!", "CVV must have 3 numbers.");
-//                }
-//                isPassenger = true;
-//            } else {
-//                view.showErrorMessage("Error!", "All the fields of the passenger must be completed.");
-//            }
-//
-//            if(isPassenger) {
-//                User newUser = new User(inputUsername, inputName, inputSurname, inputPhoneNumber, inputEmail, inputPassword, inputAge);
-//                userDao.save(newUser);
-//                Passenger passenger = new Passenger(newUser.getUsername(), newUser.getName(), newUser.getSurname(), newUser.getPhone(), newUser.getEmail(), newUser.getPassword(), newUser.getAge(), inputCardNumber, inputCardHolderName, inputCVV);
-//                passengerDao.save(passenger);
-//            }
-//
-//            if(isPassenger || isDriver) {
-//                view.showRegistrationSuccessMessage();
-//            }
-//            if(!isPassenger && !isDriver) {
-//                User newUser = new User(inputUsername, inputName, inputSurname, inputPhoneNumber, inputEmail, inputPassword, inputAge);
-//                userDao.save(newUser);
-//                view.showRegistrationSuccessMessage();
-//            }
+            }
 
-//            if (!((inputDriverLicense.isEmpty() && inputCarType.isEmpty() && inputIban.isEmpty()) ||
-//                    (!inputDriverLicense.isEmpty() && !inputCarType.isEmpty() && !inputIban.isEmpty()))) {
-//                view.showErrorMessage("Error!", "All the fields of the driver must be completed.");
-//            }
-//            else if(!inputDriverLicense.isEmpty() && !inputCarType.isEmpty() && !inputIban.isEmpty()){
-//                isDriver = true;
-//                User newUser = new User(inputUsername, inputName, inputSurname, inputPhoneNumber, inputEmail, inputPassword, inputAge);
-//                userDao.save(newUser);
-//                Driver driver = new Driver(newUser.getUsername(), newUser.getName(), newUser.getSurname(), newUser.getPhone(), newUser.getEmail(), newUser.getPassword(), newUser.getAge(), inputIban, inputDriverLicense, inputCarType);
-//                driverDao.save(driver);
-//                // Successful registration
-////                view.showRegistrationSuccessMessage();
-//            }
-//            if (!((inputCardNumber.isEmpty() && inputCardHolderName.isEmpty() && inputCVV.isEmpty()) ||
-//                    (!inputCardNumber.isEmpty() && !inputCardHolderName.isEmpty() && !inputCVV.isEmpty()))) {
-//                view.showErrorMessage("Error!", "All the fields of the passenger must be completed.");
-//            } else if(!inputCardNumber.isEmpty() && !inputCardHolderName.isEmpty() && !inputCVV.isEmpty()){
-//                if(inputCVV.length() < 3) {
-//                    view.showErrorMessage("Error!", "CVV must have 3 numbers.");
-//                }
-//                isPassenger = true;
-//                User newUser = new User(inputUsername, inputName, inputSurname, inputPhoneNumber, inputEmail, inputPassword, inputAge);
-//                userDao.save(newUser);
-//                Passenger passenger = new Passenger(newUser.getUsername(), newUser.getName(), newUser.getSurname(), newUser.getPhone(), newUser.getEmail(), newUser.getPassword(), newUser.getAge(), inputCardNumber, inputCardHolderName, inputCVV);
-//                passengerDao.save(passenger);
-//                // Successful registration
-//                view.showRegistrationSuccessMessage();
-//            }
-//
-//            User newUser = new User(inputUsername, inputName, inputSurname, inputPhoneNumber, inputEmail, inputPassword, inputAge);
-//            userDao.save(newUser);
-//            view.showRegistrationSuccessMessage();
+            view.showRegistrationSuccessMessage();
 
         }
 

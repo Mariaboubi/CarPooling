@@ -1,26 +1,19 @@
 package gr.aueb.carpooling.model.view.driver.ExistedRoutes;
 
-import static androidx.core.content.ContextCompat.startActivity;
-
-import android.app.AlertDialog;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
-import  android.content.Context;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.Route;
-import gr.aueb.carpooling.model.view.driver.RatingPassengers.RatingPassengerRecyclerViewAdapter;
-import gr.aueb.carpooling.model.view.driver.RatingPassengers.RatingPassengers;
 
 public class ExistedRouteRecyclerViewAdapter extends RecyclerView.Adapter<ExistedRouteRecyclerViewAdapter.ViewHolder>{
     private final List<Route> routes;
@@ -50,7 +43,7 @@ public class ExistedRouteRecyclerViewAdapter extends RecyclerView.Adapter<Existe
     @Override
     public ExistedRouteRecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new ViewHolder(LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.route_list_item, parent, false));
+                .inflate(R.layout.activity_driver_route_list_item, parent, false));
     }
 
 

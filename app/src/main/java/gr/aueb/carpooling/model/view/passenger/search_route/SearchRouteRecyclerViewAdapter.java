@@ -33,7 +33,7 @@ public class SearchRouteRecyclerViewAdapter extends RecyclerView.Adapter<SearchR
     @Override
     public SearchRouteRecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new ViewHolder(LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.subroute_list_item, parent, false));
+                .inflate(R.layout.activity_passenger_request_route_list_item, parent, false));
     }
 
     @Override

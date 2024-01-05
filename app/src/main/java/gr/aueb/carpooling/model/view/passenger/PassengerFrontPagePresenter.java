@@ -4,7 +4,7 @@ import gr.aueb.carpooling.model.dao.PassengerDAO;
 import gr.aueb.carpooling.model.memoryDao.PassengerDAOmemory;
 
 public class PassengerFrontPagePresenter {
-    private PassengerDAO passengerDAO;
+    private final PassengerDAO passengerDAO;
     PassengerFrontPageView view;
 
 
