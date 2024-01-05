@@ -12,9 +12,11 @@ import android.widget.ImageButton;
 
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.memoryDao.MemoryInitialized;
+import gr.aueb.carpooling.model.view.driver.DriverTopUp.DriverTopUp;
 import gr.aueb.carpooling.model.view.log_in.LogInActivity;
 import gr.aueb.carpooling.model.view.driver.ExistedRoutes.ExistedRouteActivity;
 import gr.aueb.carpooling.model.view.driver.createRoute.CreateRouteActivity;
+import gr.aueb.carpooling.model.view.passenger.top_up.TopUpActivity;
 
 public class DriverFrontPage extends AppCompatActivity implements DriverFrontPageView {
 
@@ -23,6 +25,8 @@ public class DriverFrontPage extends AppCompatActivity implements DriverFrontPag
     private Button create_route_button;
 
     private  DriverFrontPageViewModel viewModel;
+
+    private ImageButton wallet;
 
     private String username;
     @SuppressLint("MissingInflatedId")
@@ -71,6 +75,19 @@ public class DriverFrontPage extends AppCompatActivity implements DriverFrontPag
             }
         });
 
+        wallet = (ImageButton) findViewById(R.id.Wallet);
+
+        wallet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {openDriverTopUpActivity();}
+        });
+
+    }
+
+    void openDriverTopUpActivity(){
+        Intent intent = new Intent(this , DriverTopUp.class);
+        intent.putExtra("Username",username);
+        startActivity(intent);
     }
 
     void openCreateRoutePage(String userId) {

@@ -18,7 +18,7 @@ public class Passenger extends User implements PassengerInterface {
         passenger_id = super.getUserId();
         changeBankDetails(cardNumber, cardHolderName, CVV);
         Currency euroCurrency = Currency.getInstance("EUR");
-        this.balance = new Money(0.0, euroCurrency);
+        this.balance = super.getBalance();
         routes = new HashSet<>();
     }
 
@@ -47,12 +47,12 @@ public class Passenger extends User implements PassengerInterface {
     }
 
     public Money getBalance() {
-        return this.balance;
+        return super.getBalance();
     }
 
 
     public void resetBalance() {
-        this.balance = Money.euros(0.0);
+        super.resetBalance();
     }
 
     public boolean transaction(Money money) {
@@ -66,11 +66,7 @@ public class Passenger extends User implements PassengerInterface {
 
     // Method to top up a balance
     public void topUp(Money money) throws IllegalStateException {
-        if (money.getAmount().compareTo(0.0) > 0) {
-            this.balance = this.balance.plus(money);
-        } else {
-            throw new IllegalStateException("Invalid top-up amount");
-        }
+        super.topUp(money);
     }
 
     // Method to perform a payment

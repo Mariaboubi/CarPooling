@@ -13,11 +13,12 @@ import gr.aueb.carpooling.model.contact.Money;
 import gr.aueb.carpooling.model.contact.ZipCode;
 import gr.aueb.carpooling.model.dao.DriverDAO;
 import gr.aueb.carpooling.model.dao.RouteDAO;
+import gr.aueb.carpooling.model.memoryDao.DriverDAOmemory;
 
 public class CreateRoutePresenter {
 
     private RouteDAO routeDAO;
-    private DriverDAO driverDAO;
+    private DriverDAO driverDAO = new DriverDAOmemory();
 
     CreateRouteView view;
     private int driverId;
@@ -36,41 +37,49 @@ public class CreateRoutePresenter {
     public void setView(CreateRouteView view) {
         this.view = view;
     }
-    public void onCreateRoute() {
-        boolean isEmpty = false;
-        HashMap<String, String> details = view.getRouteDetails();
+    public void onCreateRoute(String username) {
+//
 
-        for (Map.Entry<String, String> set : details.entrySet()) {
-            if (set.getValue().isEmpty() || set.getValue() == null) {
-                isEmpty = true;
-                break;
-            }
-        }
-        if (isEmpty) {
+        driver= driverDAO.findByUsername(username);
+
+        String street = view.Streeet();
+        String number = view.Number();
+        String City = view.City();
+        String ZipCode = view.ZipCode();
+        String cost = view.EstimatedCost();
+        String numberpas = view.MaxPassengers();
+        String date= view.Date();
+        if (street.isEmpty() || number.isEmpty() || City.isEmpty() || ZipCode.isEmpty() ||
+                cost.isEmpty() || numberpas.isEmpty() || date.isEmpty()) {
             view.showErrorMessage("Σφάλμα!", "Συμπληρώστε όλα τα πεδία!.");
-        } else if (details.get("Street").length() < 2 ) {
+
+        } else if (street.length() < 2 ) {
             view.showErrorMessage("Σφάλμα!", "Συμπληρώστε απο 3 και πάνω χαρακτήρες στο Street.");
-        } else if (details.get("Street Number").length() < 0) {
-            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε Θετικό αριθμό.");
-        }else if (details.get("City").length() < 2) {
+        } else if (Integer.parseInt(number) < 0) {
+            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε Θετικό αριθμό στο νουμερο του δρομου.");
+        }else if (City.length() < 2) {
             view.showErrorMessage("Σφάλμα!", "Συμπληρώστε απο 3 και πάνω χαρακτήρες στο City");
-        } else if (details.get("ZipCode").length() < 2) {
-            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε απο 2 και πάνω ψηφία στον Ταχυδρομικό κώδικα(ZipCode).");
-        }else if (details.get("Estimated Cost").equals("0")){
+        } else if (ZipCode.length() !=5) {
+            view.showErrorMessage("Σφάλμα!", String.valueOf(ZipCode.length()));
+//            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε 5 ψηφία στον Ταχυδρομικό κώδικα(ZipCode).");
+        }else if (Integer.parseInt(cost)<0){
             view.showErrorMessage("Σφάλμα!", "Συμπληρώστε Θετικό αριθμό");
-        } else if (details.get("Max number of passengers").length()>2) {
+        } else if (Integer.parseInt(numberpas)<0) {
             view.showErrorMessage("Σφάλμα!", "Συμπληρώστε εγκυρο αριθμο συνεπιβατων");
+        }  else if (!date.contains("T")) {
+                view.showErrorMessage("Σφάλμα!", "Συμπληρώστε την ημερομηνια σθμφωνα με το παραδειγμα");
         } else {
             final Currency euroCurrency = Currency.getInstance("EUR");
-            ZipCode zipCode= new ZipCode(details.get("ZipCode"),0.0,0.0);
-            Address address= new Address(details.get("Street"),details.get("Street Number"),details.get("City"),zipCode,"Greece");
-            Money money= new Money(Double.parseDouble(details.get("Estimated Cost")),euroCurrency);
-            Route route = new Route(driver,money, LocalDateTime.parse(details.get("Date")),address,Integer. parseInt(details.get("Max number of passengers")),false);
+            ZipCode zipCode= new ZipCode(ZipCode,0.0,0.0);
+            Address address= new Address(street,number,City,zipCode,"Greece");
+            Money money= new Money(Double.parseDouble(cost),euroCurrency);
+
+            Route route = new Route(driver,money, LocalDateTime.parse(date),address,Integer. parseInt(numberpas),false);
 
             routeDAO.save(route);
             driver.addRoute(route);
             view.showRouteAddedMessage();
-        }
+      }
     }
 
     public void onBack(){

@@ -34,6 +34,30 @@
             app:srcCompat="@drawable/log_out"
             tools:ignore="RtlHardcoded" />
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.079">
+
+
+        <ImageButton
+            android:id="@+id/Wallet"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="end"
+            android:layout_weight="1"
+            android:contentDescription="@string/wallet"
+            android:cropToPadding="false"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/wallet"
+            tools:ignore="RtlHardcoded" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout3"

@@ -18,7 +18,7 @@ public interface DriverDAO {
 
     void save(Driver entity);
     boolean find(String username);
-    Driver find(String username, String password);
+    Driver findByUsername(String username);
 
     Driver find(int id);
 

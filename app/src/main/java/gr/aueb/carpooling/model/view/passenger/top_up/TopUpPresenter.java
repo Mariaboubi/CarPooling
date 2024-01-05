@@ -3,6 +3,7 @@ package gr.aueb.carpooling.model.view.passenger.top_up;
 import java.util.Currency;
 
 import gr.aueb.carpooling.model.Passenger;
+import gr.aueb.carpooling.model.User;
 import gr.aueb.carpooling.model.contact.Money;
 import gr.aueb.carpooling.model.dao.PassengerDAO;
 import gr.aueb.carpooling.model.memoryDao.PassengerDAOmemory;
@@ -46,7 +47,8 @@ public class TopUpPresenter {
     public void setLayout() {
         if (passenger!=null)
         {
-           String balance =String.valueOf(passenger.getBalance().getAmount());
+            User user=passenger;
+           String balance =String.valueOf(user.getBalance().getAmount());
            view.setBalance("Balance "+ balance + " €");
         }
         else

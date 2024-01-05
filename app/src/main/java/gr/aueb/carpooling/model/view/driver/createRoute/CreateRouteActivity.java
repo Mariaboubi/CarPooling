@@ -8,6 +8,8 @@ import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -19,37 +21,78 @@ import gr.aueb.carpooling.model.view.driver.DriverFrontPage;
 public class CreateRouteActivity extends AppCompatActivity implements CreateRouteView {
 
     private CreateRouteViewModel viewModel;
+
+    private CreateRouteView view;
     private String username;
+//    @SuppressLint("MissingInflatedId")
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver_create_new_route);
 
-        @SuppressLint({"MissingInflatedId", "LocalSuppress"})
-        ImageButton back_button = (ImageButton) findViewById(R.id.back_button);
-        back_button.setOnClickListener(v -> openDriverFrontPage());
+
         viewModel = new ViewModelProvider(this).get(CreateRouteViewModel.class);
         viewModel.getPresenter().setView(this);
-
+//
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             username = extras.getString("Username");
             //The key argument here must match that used in the other activity
         }
 
+        Button create_route_button = (Button) findViewById(R.id.btnCreateRoute);
+        create_route_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                viewModel.getPresenter().onCreateRoute(username);
+            }
+        });
+
+//        findViewById(R.id.back_button).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                openDriverFrontPage(username);
+//            }
+//        });
+
+    }
+
+
+
+    @Override
+    public String Streeet() {
+        return ((EditText)findViewById(R.id.CreateRouteStreet)).getText().toString().trim();
     }
 
     @Override
-    public HashMap<String, String> getRouteDetails() {
-        HashMap<String,String> details = new HashMap<>();
-        details.put("Street",(((EditText)findViewById(R.id.CreateRouteStreet)).getText().toString().trim()));
-        details.put("Street Number",(((EditText)findViewById(R.id.CreateRouteNumber)).getText().toString().trim()));
-        details.put("City",(((EditText)findViewById(R.id.CreateRouteCity)).getText().toString().trim()));
-        details.put("ZipCode",(((EditText)findViewById(R.id.CreateRouteZipCode)).getText().toString().trim()));
-        details.put("Date",(((EditText)findViewById(R.id.CreateRouteDate)).getText().toString().trim()));
-        details.put("Estimated Cost",(((EditText)findViewById(R.id.CreateRouteEstimatedCost)).getText().toString().trim()));
-        details.put("Max number of passenger",(((EditText)findViewById(R.id.CreateRouteMaxPassenger)).getText().toString().trim()));
-        return details;
+    public String Number() {
+        return ((EditText)findViewById(R.id.CreateRouteNumber)).getText().toString().trim();
+    }
+
+    @Override
+    public String City() {
+        return ((EditText)findViewById(R.id.CreateRouteCity)).getText().toString().trim();
+    }
+
+    @Override
+    public String ZipCode() {
+        return ((EditText)findViewById(R.id.CreateRouteZipCode)).getText().toString().trim();
+    }
+
+    @Override
+    public String EstimatedCost() {
+        return ((EditText)findViewById(R.id.CreateRouteEstimatedCost)).getText().toString().trim();
+    }
+
+    @Override
+    public String MaxPassengers() {
+        return ((EditText)findViewById(R.id.CreateRouteMaxPassenger)).getText().toString().trim();
+    }
+
+    public String Date() {
+        return ((EditText)findViewById(R.id.CreateRouteDate)).getText().toString().trim();
     }
 
     @Override
@@ -66,8 +109,9 @@ public class CreateRouteActivity extends AppCompatActivity implements CreateRout
 
     }
 
-    public void openDriverFrontPage() {
-        Intent intent = new Intent(this, DriverFrontPage.class);
+    public void openDriverFrontPage(String username) {
+        Intent intent = new Intent(CreateRouteActivity.this, DriverFrontPage.class);
+        intent.putExtra("Username", username);
         startActivity(intent);
     }
 

@@ -52,9 +52,9 @@ public class DriverDAOmemory implements DriverDAO {
     }
 
     @Override
-    public Driver find(String username, String password) {
+    public Driver findByUsername(String username) {
         for(Driver driver: entities){
-            if(username.equals(driver.getUsername()) && password.equals(driver.getPassword())){
+            if(username.equals(driver.getUsername())){
                 return driver;
             }
         }

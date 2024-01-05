@@ -7,6 +7,7 @@ public class Driver extends User implements DriverInterface {
     private String iban, license_number, car_type; // personal details
     private final Set<Route> routes; // A HashSet of Routes that the driver takes part
 
+
     private final Set<PassengerRating> passanger_rating;
     private final int driver_id;
     private DriverRating driver_rating;

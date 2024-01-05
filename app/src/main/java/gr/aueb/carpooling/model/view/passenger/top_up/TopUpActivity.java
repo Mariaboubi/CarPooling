@@ -20,7 +20,7 @@ public class TopUpActivity extends AppCompatActivity implements TopUpView {
      * Σε αυτή την σελίδα ο χρήστης μπορεί να δει και να ανανεώσει το χρηματικό του υπόλοιπο
      */
     private ImageButton back_button;
-    private int passengerId = -1;
+
     private TopUpViewModel viewModel;
     private TextView balanceText;
 
@@ -48,7 +48,7 @@ public class TopUpActivity extends AppCompatActivity implements TopUpView {
 //
         viewModel.getPresenter().setPassenger();
         viewModel.getPresenter().setLayout();
-//
+
 
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
