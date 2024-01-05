@@ -10,5 +10,7 @@ public interface TopUpView extends View {
      */
     void setBalance(String balance);
 
-    int getPassengerId();
+    String getPassengerUername();
+
+    void showErrorMessage(String title, String message);
 }

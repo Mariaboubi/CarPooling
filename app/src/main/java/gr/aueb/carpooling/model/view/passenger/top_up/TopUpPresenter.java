@@ -5,6 +5,7 @@ import java.util.Currency;
 import gr.aueb.carpooling.model.Passenger;
 import gr.aueb.carpooling.model.contact.Money;
 import gr.aueb.carpooling.model.dao.PassengerDAO;
+import gr.aueb.carpooling.model.memoryDao.PassengerDAOmemory;
 
 public class TopUpPresenter {
 
@@ -12,9 +13,12 @@ public class TopUpPresenter {
     private PassengerDAO passengerDAO;
     private Passenger passenger;
 
+
     private Money money;
 
-    public TopUpPresenter(PassengerDAO passengerDAO) { this.passengerDAO = passengerDAO;}
+    public TopUpPresenter(PassengerDAO passengerDAO) {
+        this.passengerDAO = passengerDAO;
+    }
 
     public void setView(TopUpView view) {
         this.view = view;
@@ -24,7 +28,10 @@ public class TopUpPresenter {
         return view;
     }
 
-    public void setPassenger() {passenger = passengerDAO.find(view.getPassengerId());}
+    public void setPassenger() {
+        passenger = passengerDAO.findByUsername(view.getPassengerUername());
+//        view.showErrorMessage("username", passenger.getUsername());
+    }
 
     public Passenger getPassenger() {
         return passenger;
@@ -39,8 +46,8 @@ public class TopUpPresenter {
     public void setLayout() {
         if (passenger!=null)
         {
-            String balance = String.format("%.2f",passenger.getBalance());
-            view.setBalance(balance + " €");
+           String balance =String.valueOf(passenger.getBalance().getAmount());
+           view.setBalance("Balance "+ balance + " €");
         }
         else
         {

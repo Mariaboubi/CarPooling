@@ -2,6 +2,7 @@ package gr.aueb.carpooling.model.view.passenger.top_up;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.memoryDao.PassengerDAOmemory;
+import gr.aueb.carpooling.model.view.LogIn.LogInActivity;
+import gr.aueb.carpooling.model.view.driver.ExistedRoutes.ExistedRouteActivity;
 import gr.aueb.carpooling.model.view.passenger.PassengerFrontPageActivity;
 
 public class TopUpActivity extends AppCompatActivity implements TopUpView {
@@ -32,29 +35,22 @@ public class TopUpActivity extends AppCompatActivity implements TopUpView {
         setContentView(R.layout.activity_top_up);
 
         back_button = (ImageButton) findViewById(R.id.back_button);
-        viewModel = new TopUpViewModel(new PassengerDAOmemory());
-        viewModel.getPresenter().setView(this);
         balanceText = findViewById(R.id.BalanceText);
 
+        viewModel = new TopUpViewModel(new PassengerDAOmemory());
+        viewModel.getPresenter().setView(this);
 
-        if (savedInstanceState == null)
-        {
-            Intent intent = getIntent();
-            Bundle extras = intent.getExtras();
-
-            if (extras != null) {
-                passengerId = extras.getInt("PassengerId");
-            }
-
-        }
-        viewModel.getPresenter().setPassenger();
-        viewModel.getPresenter().setLayout();
-
+//
+//
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             username = extras.getString("Username");
             //The key argument here must match that used in the other activity
         }
+//
+        viewModel.getPresenter().setPassenger();
+        viewModel.getPresenter().setLayout();
+//
 
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,11 +88,26 @@ public class TopUpActivity extends AppCompatActivity implements TopUpView {
 
     }
 
+    public void showErrorMessage (String title, String message)
+    {
+        new AlertDialog.Builder(TopUpActivity.this)
+                .setCancelable(true)
+                .setTitle(title)
+                .setMessage(message)
+                .setPositiveButton("OK", null).create().show();
+
+
+
+    }
+
     @Override
     public void setBalance(String balance) {balanceText.setText(balance);}
 
     @Override
-    public int getPassengerId() {return passengerId;}
+    public String getPassengerUername() {
+        return username;
+    }
+
 
     public void openPassengerFrontPageActivity(String username){
         Intent intent = new Intent(this, PassengerFrontPageActivity.class);
