@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,10 +13,12 @@ import android.widget.TextView;
 
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.Route;
+import gr.aueb.carpooling.model.view.LogIn.LogInActivity;
 import gr.aueb.carpooling.model.view.driver.DriverFrontPage;
 import gr.aueb.carpooling.model.view.driver.ExistedRoutes.ExistedRouteActivity;
 import gr.aueb.carpooling.model.view.driver.ExistedRoutes.ExistedRouteRecyclerViewAdapter;
 import gr.aueb.carpooling.model.view.driver.ExistedRoutes.ExistedRouteViewModel;
+import gr.aueb.carpooling.model.view.passenger.PassengerFrontPageActivity;
 import gr.aueb.carpooling.model.view.subroute.subrouteActivity;
 
 public class SearchRouteActivity extends AppCompatActivity implements SearchRouteView, SearchRouteRecyclerViewAdapter.SearchRouteSelectionListener {
@@ -39,7 +42,7 @@ public class SearchRouteActivity extends AppCompatActivity implements SearchRout
             //The key argument here must match that used in the other activity
         }
 
-        viewModel.getPresenter().setRouteList();
+       viewModel.getPresenter().setRouteList();
         // ui initialization
         recyclerView = findViewById(R.id.ChooseRouteRecyclerView);
         emptyView = findViewById(R.id.NoRoutes);
@@ -47,22 +50,27 @@ public class SearchRouteActivity extends AppCompatActivity implements SearchRout
         findViewById(R.id.back_button).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                viewModel.getPresenter().onBack();
+                openPassengerFrontPage();
             }
         });
     }
 
-    @Override
-    public void selectRoute(Route route) {
-        Intent intent = new Intent(SearchRouteActivity.this, subrouteActivity.class);
-        intent.putExtra("Username",username);
+
+
+    void openPassengerFrontPage() {
+        Intent intent = new Intent(this, PassengerFrontPageActivity.class);
+        intent.putExtra("Username", username);
         startActivity(intent);
     }
 
-    @Override
-    public void goBack() {
-
+//    @Override
+    public void selectRoute(Route route) {
+//        Intent intent = new Intent(SearchRouteActivity.this, subrouteActivity.class);
+//        intent.putExtra("Username",username);
+//        startActivity(intent);
     }
+
+
 
     @Override
     public void ShowNoRoutes() {

@@ -1,8 +1,13 @@
 package gr.aueb.carpooling.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class DriverRating extends Rating implements DriverRatingInterface {
     private float securityRating; // Rating about security issues
     private float cleanlinessRating; // Rating about cleaning issues
+
+    private final Set<Passenger> passangers;
 
     public DriverRating(Driver driver, Route route, float politenessRating,
                         float securityRating, float cleanlinessRating) {
@@ -11,12 +16,29 @@ public class DriverRating extends Rating implements DriverRatingInterface {
         validateRating(securityRating, "Security");
         this.cleanlinessRating = cleanlinessRating;
         this.securityRating = securityRating;
+        this.passangers = new HashSet<>();
     }
 
     @Override
     public void setSecurityRating(float securityRating) {
         validateRating(securityRating, "Security");
         this.securityRating = securityRating;
+    }
+
+    public void addPassenger(Passenger pas) {
+        this.passangers.add(pas);
+    }
+
+    public void removePassenger(Passenger pas) throws UnsupportedOperationException {
+        if(passangers.size() > 0) {
+            this.passangers.remove(pas);
+        } else {
+            throw new UnsupportedOperationException("Cannot remove from an empty passenger rating set.");
+        }
+    }
+
+    public HashSet<Passenger> getPassengers() {
+        return new HashSet<>(passangers); // Return a new set to avoid direct access to the internal set
     }
 
     @Override

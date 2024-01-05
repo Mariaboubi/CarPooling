@@ -83,7 +83,7 @@ public class Driver extends User implements DriverInterface {
     }
 
     public void addPassengerRating(PassengerRating rating) {
-        this.passanger_rating.add(rating);
+            this.passanger_rating.add(rating);
     }
 
     public void removeRoute(Route route) throws UnsupportedOperationException {

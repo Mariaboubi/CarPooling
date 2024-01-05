@@ -11,7 +11,6 @@ import gr.aueb.carpooling.model.Route;
 public interface PassengerRatingDao {
     void delete(PassengerRating rating);
 
-    void delete(Route route);
 
     void deleteAll();
 

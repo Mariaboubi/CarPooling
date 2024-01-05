@@ -37,7 +37,7 @@ public class PassengerRatingTest {
         Money money = new Money(10.0, euroCurrency);
         Address destination = new Address("mesogeiwn", "10", "athens", new ZipCode("16562",0.0,0.0), "greece");
         route = new Route(driver, money, LocalDateTime.of(2023, 10, 12, 10, 12), destination, 3, false);
-        passengerRating = new PassengerRating(passenger, route, 4.5f, 3.2f, 5.0f);
+        passengerRating = new PassengerRating(passenger, route, "4.5", "3.2", "5.0");
     }
 
     @AfterEach
@@ -59,7 +59,7 @@ public class PassengerRatingTest {
     public void testConstructorInvalidRatings() {
         // Assert that the constructor throws IllegalArgumentException for invalid ratings
         assertThrows(IllegalArgumentException.class, () -> {
-            new PassengerRating(passenger, route, 4.5f, 5.2f, 5.0f);
+            new PassengerRating(passenger, route, "4.5", "5.2", "5.0");
         });
     }
 

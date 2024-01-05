@@ -1,5 +1,8 @@
 package gr.aueb.carpooling.model.view.driver.RatingPassengers;
 
+import android.app.AlertDialog;
+import android.content.Intent;
+
 import org.threeten.bp.LocalDateTime;
 
 import java.util.ArrayList;
@@ -18,6 +21,8 @@ import gr.aueb.carpooling.model.contact.Money;
 import gr.aueb.carpooling.model.contact.ZipCode;
 import gr.aueb.carpooling.model.dao.PassengerRatingDao;
 import gr.aueb.carpooling.model.dao.RouteDAO;
+import gr.aueb.carpooling.model.view.LogIn.LogInActivity;
+import gr.aueb.carpooling.model.view.driver.ExistedRoutes.ExistedRouteActivity;
 import gr.aueb.carpooling.model.view.driver.ExistedRoutes.ExitedRouteView;
 
 public class RatingPassengerPresenter {
@@ -67,6 +72,9 @@ public class RatingPassengerPresenter {
     public ArrayList<PassengerRating> getPassengerRatingList() {
         return ratings;
     }
+
+
+
 
 
 }

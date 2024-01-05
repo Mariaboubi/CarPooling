@@ -22,6 +22,8 @@ public class Passenger extends User implements PassengerInterface {
         routes = new HashSet<>();
     }
 
+
+
     public void changeBankDetails(String cardNumber, String cardHolderName, String CVV) {
         this.cardNumber = cardNumber;
         this.cardHolderName = cardHolderName;

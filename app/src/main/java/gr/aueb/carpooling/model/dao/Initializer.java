@@ -78,7 +78,7 @@ public abstract class Initializer {
         //NEW PASSENGER RATING//////////////////////////////////////////////////////////////
 
         PassengerRatingDao passengerRatingDao= getPassengerRatingDAO();
-        PassengerRating pas_rating1= new PassengerRating(passenger2,route1,4.0f,5.0f,3.5f);
+        PassengerRating pas_rating1= new PassengerRating(passenger2,route1,"4.0","5.0","3.5");
         driver1.addPassengerRating(pas_rating1);
         passengerRatingDao.save(pas_rating1);
     }
