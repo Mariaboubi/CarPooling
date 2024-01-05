@@ -20,17 +20,6 @@ public class PassengerRatingDAOmemory implements PassengerRatingDao {
 
 
     @Override
-    public void delete(Route route) {
-        for (PassengerRating rating: entities){
-            if (rating.getRoute()==route){
-                entities.remove(rating);
-                break;
-            }
-        }
-
-    }
-
-    @Override
     public void deleteAll() {
         entities.clear();
     }

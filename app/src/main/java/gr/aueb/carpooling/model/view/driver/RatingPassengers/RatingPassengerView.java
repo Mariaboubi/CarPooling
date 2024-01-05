@@ -6,7 +6,7 @@ import gr.aueb.carpooling.model.view.View;
 
 public interface RatingPassengerView extends View {
 
-    HashMap<String,String> getRateDetails();
+    //HashMap<String,String> getRateDetails();
 
 
     /**
@@ -22,5 +22,7 @@ public interface RatingPassengerView extends View {
     void ShowPassengers();
 
 
-    void showErrorMessage(String title, String message);
+    void showErrorMessage(String title);
+
+
 }

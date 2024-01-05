@@ -64,9 +64,9 @@ public class SubroutePresenter {
             ZipCode zipCode= new ZipCode(details.get("ZipCode"),0.0,0.0);
             Address destination= new Address(details.get("Street"),details.get("Street Number"),details.get("City"),zipCode,"Greece");
             Address pickUpPoint = new Address(details.get("PickUp Street"),details.get("PickUp Street Number"),details.get("PickUp City"),zipCode,"Greece");
-            Subroute subroute = new Subroute(destination,pickUpPoint, LocalDateTime.parse(details.get("Date")));
+            Subroute subroute = new Subroute(destination,pickUpPoint, LocalDateTime.of(2023, 10, 28, 16, 30));
             passenger= passengerDAO.findByUsername(username);
-            subrouteDAO.save(passenger,subroute);
+            //subrouteDAO.save(passenger,subroute);
             //passenger.addRoute();
             view.showRouteAddedMessage();
         }

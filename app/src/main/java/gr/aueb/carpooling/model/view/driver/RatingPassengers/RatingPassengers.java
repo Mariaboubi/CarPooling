@@ -55,19 +55,18 @@ public class RatingPassengers extends AppCompatActivity implements RatingPasseng
 
     }
 
-    public void showErrorMessage(String title, String message)
+    public void showErrorMessage(String title)
     {
         new AlertDialog.Builder(RatingPassengers.this)
                 .setCancelable(true)
                 .setTitle(title)
-                .setMessage(message)
                 .setPositiveButton("OK", null).create().show();
 
 }
-    @Override
-    public HashMap<String, String> getRateDetails() {
-        return null;
-    }
+//    @Override
+//    public HashMap<String, String> getRateDetails() {
+//        return null;
+//    }
 
     @Override
     public void ShowNoPassengers() {
@@ -75,8 +74,13 @@ public class RatingPassengers extends AppCompatActivity implements RatingPasseng
         emptyView.setVisibility(View.VISIBLE);
     }
 
+
+
     @Override
     public void ShowPassengers() {
+//        String politiness= ((EditText)findViewById(R.id.Politeness)).getText().toString().trim();
+//        String consistency= ((EditText)findViewById(R.id.Consistency)).getText().toString().trim();
+//        String reliability= ((EditText)findViewById(R.id.Reliability)).getText().toString().trim();
         recyclerView.setVisibility(View.VISIBLE);
         emptyView.setVisibility(View.GONE);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

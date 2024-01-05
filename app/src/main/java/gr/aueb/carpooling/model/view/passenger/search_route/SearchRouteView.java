@@ -4,7 +4,7 @@ import gr.aueb.carpooling.model.view.View;
 
 public interface SearchRouteView extends View {
 
-    void goBack();
+
 
 
     /**
@@ -18,6 +18,7 @@ public interface SearchRouteView extends View {
      * απουσίας εστιατορίων
      */
     void ShowRoutes();
+
 
 }
 

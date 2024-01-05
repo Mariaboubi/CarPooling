@@ -4,18 +4,21 @@ public class PassengerRating extends Rating implements PassengerRatingInterface{
     private float consistencyRating; // Rating for consistency issues
     private float reliabilityRating; // Rating for reliability issues
 
+    private Passenger passenger;
+
     // Constructor
-    public PassengerRating(Passenger passenger, Route route, float politenessRating,
-                           float consistencyRating, float reliabilityRating) throws IllegalArgumentException {
-        super(passenger, route, politenessRating);
-        validateRating(consistencyRating, "Consistency");
-        validateRating(reliabilityRating, "Reliability");
-        this.consistencyRating = consistencyRating;
-        this.reliabilityRating = reliabilityRating;
+    public PassengerRating(Passenger passenger, Route route, String politenessRating,
+                           String consistencyRating, String reliabilityRating) throws IllegalArgumentException {
+        super(passenger, route, Float.valueOf(politenessRating));
+        validateRating(Float.valueOf(consistencyRating), "Consistency");
+        validateRating(Float.valueOf(reliabilityRating), "Reliability");
+        this.consistencyRating = Float.valueOf(consistencyRating);
+        this.reliabilityRating = Float.valueOf(reliabilityRating);
+        this.passenger=passenger;
     }
 
     public Passenger getPassenger(){
-        return (Passenger) super.getUser();
+        return passenger;
     }
 
     public void setConsistencyRating(float consistencyRating) throws IllegalArgumentException {

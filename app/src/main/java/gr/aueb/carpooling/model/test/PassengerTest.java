@@ -46,7 +46,7 @@ public class PassengerTest {
         route = new Route(driver, money, LocalDateTime.of(2023, 10, 12, 10, 12), destination, 3, false);
         route1 = new Route(driver, money, LocalDateTime.of(2023, 9, 12, 10, 12), destination, 2, false);
 
-        rate = new PassengerRating(passenger, route, 3.0f, 4.0f, 5.0f);
+        rate = new PassengerRating(passenger, route, "3.0", "4.0", "5.0");
     }
 
     @AfterEach

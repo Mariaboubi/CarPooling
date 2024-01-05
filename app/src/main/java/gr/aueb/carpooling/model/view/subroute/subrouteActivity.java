@@ -16,6 +16,7 @@ import android.widget.ImageButton;
 import java.util.HashMap;
 
 import gr.aueb.carpooling.R;
+import gr.aueb.carpooling.model.view.LogIn.LogInActivity;
 import gr.aueb.carpooling.model.view.passenger.PassengerFrontPageActivity;
 import gr.aueb.carpooling.model.view.passenger.search_route.SearchRouteActivity;
 
@@ -50,6 +51,7 @@ public class subrouteActivity extends AppCompatActivity implements SubrouteView 
             @Override
             public void onClick(View v){
                 viewModel.getPresenter().onCreateSubRoute(username);
+                openSearchRoute();
             }
         });
 
@@ -59,9 +61,15 @@ public class subrouteActivity extends AppCompatActivity implements SubrouteView 
         });
 
 
+
+
     }
 
-
+    void openSearchRoute() {
+        Intent intent = new Intent(this, SearchRouteActivity.class);
+        intent.putExtra("Username", username);
+        startActivity(intent);
+    }
 
     @Override
     public HashMap<String, String> getSubRouteDetails() {

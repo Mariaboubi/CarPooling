@@ -20,7 +20,9 @@ public class SearchRouteRecyclerViewAdapter extends RecyclerView.Adapter<SearchR
 
     private Route currentItem;
 
-    private final SearchRouteSelectionListener listener;
+    private SearchRouteViewModel viewModel;
+
+    private final SearchRouteRecyclerViewAdapter.SearchRouteSelectionListener listener;
 
     public SearchRouteRecyclerViewAdapter(List<Route> routes, SearchRouteSelectionListener listener) {
         this.routes = routes;
@@ -30,7 +32,7 @@ public class SearchRouteRecyclerViewAdapter extends RecyclerView.Adapter<SearchR
     @NonNull
     @Override
     public SearchRouteRecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new SearchRouteRecyclerViewAdapter.ViewHolder(LayoutInflater.from(parent.getContext())
+        return new ViewHolder(LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.subroute_list_item, parent, false));
     }
 
@@ -42,7 +44,7 @@ public class SearchRouteRecyclerViewAdapter extends RecyclerView.Adapter<SearchR
         holder.routeDest.setText((currentItem.getDestinationString()));
         holder.routeDate.setText((currentItem.getDate().toString()));
         holder.routeDriverName.setText((currentItem.getDriver().getName()));
-        holder.routeDriverRate.setText((currentItem.getDriver().getAverageRating()));
+        holder.routeDriverRate.setText("5.0");
     }
 
     @Override
