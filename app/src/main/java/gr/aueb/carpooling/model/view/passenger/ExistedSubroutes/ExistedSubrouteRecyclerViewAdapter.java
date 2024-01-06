@@ -61,14 +61,11 @@ public class ExistedSubrouteRecyclerViewAdapter extends RecyclerView.Adapter<Exi
 
     @Override
     public void onBindViewHolder(@NonNull ExistedSubrouteRecyclerViewAdapter.ViewHolder holder, int position) {
-//        currentSubroute = subroutes.get(position);
-//        currentItem = presenter.getRoute(currentSubroute);
-//
-//
-//        holder.subrouteDest.setText(currenSubroute.getDestination().toString());
-//        holder.subroutepickUpPoint.setText(currenSubroute.getPickupPoint().toString());
-//        holder.subrouteDate.setText((currenSubroute.getPickupTime().toString()));
-       // holder.subrouteName.setText((currentItem.getDriversName()));
+        currentSubroute = subroutes.get(position);
+
+        holder.subrouteDest.setText(currentSubroute.getDestination().toString());
+        holder.subroutepickUpPoint.setText(currentSubroute.getPickupPoint().toString());
+        holder.subrouteDate.setText((currentSubroute.getPickupTime().toString()));
 
 //        holder.Delete.setOnClickListener(new View.OnClickListener() {
 //            @Override

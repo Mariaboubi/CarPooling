@@ -16,6 +16,7 @@ import android.widget.ImageButton;
 import java.util.HashMap;
 
 import gr.aueb.carpooling.R;
+import gr.aueb.carpooling.model.Subroute;
 import gr.aueb.carpooling.model.view.passenger.PassengerFrontPageActivity;
 import gr.aueb.carpooling.model.view.passenger.search_route.SearchRouteActivity;
 
@@ -100,7 +101,8 @@ public class subrouteActivity extends AppCompatActivity implements SubrouteView 
 
 
     @Override
-    public void showRouteAddedMessage() {
+    public void showRouteAddedMessage(Subroute subroute) {
+        showErrorMessage("Subroute Destination",subroute.getDestination().toString());
         Intent intent = new Intent(this, SearchRouteActivity.class);
         intent.putExtra("Username",username);
         startActivity(intent);

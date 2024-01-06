@@ -2,6 +2,7 @@ package gr.aueb.carpooling.model.view.subroute;
 
 import java.util.HashMap;
 
+import gr.aueb.carpooling.model.Subroute;
 import gr.aueb.carpooling.model.view.View;
 
 public interface SubrouteView extends View {
@@ -12,7 +13,7 @@ public interface SubrouteView extends View {
 
 
 
-    void showRouteAddedMessage();
+    void showRouteAddedMessage(Subroute subroute);
 }
 
 

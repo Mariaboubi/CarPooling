@@ -41,7 +41,7 @@ public class RouteDAOmemory implements RouteDAO {
     }
 
     @Override
-    public List<Route> findByCustomer(Driver driver) {
+    public List<Route> findByDriver(Driver driver) {
         ArrayList<Route> result= new ArrayList<>();
         for(Route route : entities){
             if(route.getDriver()==driver){

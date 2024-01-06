@@ -4,7 +4,6 @@ import gr.aueb.carpooling.model.view.View;
 
 public interface ExistedSubrouteView extends View {
 
-    void goBack();
 
 
     /**

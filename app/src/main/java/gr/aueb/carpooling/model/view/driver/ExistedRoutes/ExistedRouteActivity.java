@@ -13,7 +13,12 @@ import android.view.View;
 import android.widget.TextView;
 
 import gr.aueb.carpooling.R;
+import gr.aueb.carpooling.model.Driver;
 import gr.aueb.carpooling.model.Route;
+import gr.aueb.carpooling.model.dao.DriverDAO;
+import gr.aueb.carpooling.model.memoryDao.DriverDAOmemory;
+import gr.aueb.carpooling.model.view.driver.DriverFrontPage;
+import gr.aueb.carpooling.model.view.driver.DriverTopUp.DriverTopUp;
 import gr.aueb.carpooling.model.view.log_in.LogInActivity;
 import gr.aueb.carpooling.model.view.driver.RatingPassengers.RatingPassengers;
 
@@ -22,6 +27,8 @@ public class ExistedRouteActivity extends AppCompatActivity implements ExitedRou
     private String username;
     private RecyclerView recyclerView;
     private TextView emptyView;
+
+    private DriverDAO driverDAO= new DriverDAOmemory();
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +43,8 @@ public class ExistedRouteActivity extends AppCompatActivity implements ExitedRou
             username = extras.getString("Username");
             //The key argument here must match that used in the other activity
         }
-        viewModel.getPresenter().setRouteList();
+        Driver driver = driverDAO.findByUsername(username);
+        viewModel.getPresenter().setRouteList(driver);
         // ui initialization
         recyclerView = findViewById(R.id.ChooseRouteRecyclerView);
         emptyView = findViewById(R.id.NoRoutes);
@@ -46,11 +54,17 @@ public class ExistedRouteActivity extends AppCompatActivity implements ExitedRou
         findViewById(R.id.back_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewModel.getPresenter().onBack();
+                openDriverFrontPage();
             }
         });
 
 
+    }
+
+    void openDriverFrontPage(){
+        Intent intent = new Intent(this , DriverFrontPage.class);
+        intent.putExtra("Username",username);
+        startActivity(intent);
     }
 
         @Override
@@ -63,10 +77,7 @@ public class ExistedRouteActivity extends AppCompatActivity implements ExitedRou
 
 
 
-        @Override
-        public void goBack () {
 
-        }
 
         @Override
         public void ShowNoRoutes () {

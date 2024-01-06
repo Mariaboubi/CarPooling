@@ -24,8 +24,7 @@ public class CreateRouteActivity extends AppCompatActivity implements CreateRout
 
     private CreateRouteView view;
     private String username;
-//    @SuppressLint("MissingInflatedId")
-    @SuppressLint("MissingInflatedId")
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,13 +48,14 @@ public class CreateRouteActivity extends AppCompatActivity implements CreateRout
                 viewModel.getPresenter().onCreateRoute(username);
             }
         });
-
-//        findViewById(R.id.back_button).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                openDriverFrontPage(username);
-//            }
-//        });
+        @SuppressLint({"MissingInflatedId", "LocalSuppress"})
+        ImageButton back_button = (ImageButton) findViewById(R.id.back_button);
+        back_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDriverFrontPage(username);
+            }
+        });
 
     }
 

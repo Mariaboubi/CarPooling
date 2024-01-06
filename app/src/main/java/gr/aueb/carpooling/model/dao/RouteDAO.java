@@ -14,6 +14,6 @@ public interface RouteDAO {
     List<Route> findAll();
 
     Route find(int id);
-    List<Route> findByCustomer(Driver driver);
+    List<Route> findByDriver(Driver driver);
     int nextId();
 }

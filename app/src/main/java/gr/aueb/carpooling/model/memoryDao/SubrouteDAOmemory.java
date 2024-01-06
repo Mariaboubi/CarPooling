@@ -14,78 +14,41 @@ import gr.aueb.carpooling.model.dao.RouteDAO;
 
 public class SubrouteDAOmemory implements SubrouteDAO {
 
-    private List<Route> routes;
-
+    protected static ArrayList<Subroute> entities = new ArrayList<>();
     @Override
     public void delete(Subroute entity) {
-        for (Route route : routes) {
-            if (route.getPassengerRoutes().containsValue(entity)) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                    route.getPassengerRoutes().entrySet().removeIf(entry -> entry.getValue().equals(entity));
-                }
-            }
-        }
+        entities.remove(entity);
     }
 
+    @Override
+    public void deleteAll() {
+        entities.clear();
+    }
 
     @Override
-    public void deleteAll() {routes.clear();}
-
-    @Override
-    public void save(Passenger passenger, Subroute entity) {
-
-        for (Route route : routes) {
-            if (route.getPassengers().contains(passenger)) {
-                route.addPassenger(passenger, entity);
-                break;
-            }
-        }
+    public void save(Subroute entity) {
+        entities.add(entity);
     }
 
     @Override
     public List<Subroute> findAll() {
-        List<Subroute> allSubroutes = new ArrayList<>();
-        for (Route route : routes) {
-            allSubroutes.addAll(route.getPassengerRoutes().values());
-        }
-        return allSubroutes;
+        return entities;
     }
 
     @Override
     public Subroute find(int id) {
-
-        for (Route route : routes) {
-            for (Subroute subroute : route.getPassengerRoutes().values()) {
-                if (subroute.getId() == id) {
-                    return subroute;
-                }
+        for(Subroute subroute: entities){
+            if(subroute.getId()==id){
+                return subroute;
             }
         }
         return null;
     }
 
-    @Override
-    public List<Subroute> findByPassenger(Passenger passenger) {
-        List<Subroute> subroutesForPassenger = new ArrayList<>();
-        for (Route route : routes) {
-            Subroute subroute = route.getSubRouteByPassenger(passenger);
-            if (subroute != null) {
-                subroutesForPassenger.add(subroute);
-            }
-        }
-        return subroutesForPassenger;
-    }
 
-    public Route findRouteBySubroute(Subroute subroute) {
-        for (Route route : routes) {
-            if (route.getPassengerRoutes().containsValue(subroute)) {
-                return route; // Return the route that contains the given subroute
-            }
-        }
-        return null;
-    }
+
     @Override
     public int nextId() {
-        return (routes.size() > 0 ? routes.get(routes.size()-1).getId()+1 : 1);
+        return (entities.size() > 0 ? entities.get(entities.size()-1).getId()+1 : 1);
     }
 }

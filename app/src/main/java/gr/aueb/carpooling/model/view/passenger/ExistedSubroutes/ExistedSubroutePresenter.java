@@ -48,12 +48,6 @@ public class ExistedSubroutePresenter {
     }
 
     /**
-     * Καλεί την μέθοδο του view που μας πηγαίνει στο προηγούμενο activity που μας κάλεσε
-     */
-    public void onBack(){
-        view.goBack();
-    }
-    /**
      * Επιστρέφει την λίστα με τις διαδρομές
      * @return η λίστα με τις διαδρομες
      */
@@ -61,9 +55,6 @@ public class ExistedSubroutePresenter {
         return subroutes;
     }
 
-    public Route getRoute(Subroute subroute){
-        return subrouteDAO.findRouteBySubroute(subroute);
-    }
 
     public void showError(boolean b) {
         view.showErrorMessage("is Completed", String.valueOf(b));

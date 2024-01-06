@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.Subroute;
+import gr.aueb.carpooling.model.view.driver.DriverFrontPage;
 import gr.aueb.carpooling.model.view.log_in.LogInActivity;
 import gr.aueb.carpooling.model.view.passenger.PassengerFrontPageActivity;
 
@@ -41,7 +42,7 @@ public class ExistedSubrouteActivity extends AppCompatActivity implements Existe
             username = extras.getString("Username");
             //The key argument here must match that used in the other activity
         }
-        //viewModel.getPresenter().setSubrouteList();
+        viewModel.getPresenter().setSubrouteList();
 
         recyclerView = findViewById(R.id.ChooseSubrouteRecyclerView);
         emptyView = findViewById(R.id.NoSubroutes);
@@ -50,7 +51,7 @@ public class ExistedSubrouteActivity extends AppCompatActivity implements Existe
         findViewById(R.id.back_button).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                viewModel.getPresenter().onBack();
+                openPessengerFrontPage();
             }
         });
 
@@ -65,9 +66,10 @@ public class ExistedSubrouteActivity extends AppCompatActivity implements Existe
 
     }
 
-    @Override
-    public void goBack() {
-
+    void openPessengerFrontPage(){
+        Intent intent = new Intent(this , PassengerFrontPageActivity.class);
+        intent.putExtra("Username",username);
+        startActivity(intent);
     }
 
     @Override

@@ -68,7 +68,7 @@ public class SubroutePresenter {
             passenger= passengerDAO.findByUsername(username);
             //subrouteDAO.save(passenger,subroute);
             //passenger.addRoute();
-            view.showRouteAddedMessage();
+            view.showRouteAddedMessage(subroute);
         }
     }
 

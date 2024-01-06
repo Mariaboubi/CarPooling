@@ -5,6 +5,7 @@ import android.content.Context;
 
 import java.util.ArrayList;
 
+import gr.aueb.carpooling.model.Driver;
 import gr.aueb.carpooling.model.Route;
 import gr.aueb.carpooling.model.dao.RouteDAO;
 
@@ -38,8 +39,8 @@ public class ExitedRoutePresenter {
     /**
      * Γεμίζει την λίστα με της διαδρομεσ του συγκεκριμενου οδηγού
      */
-    public void setRouteList() {
-        routes = (ArrayList<Route>) routeDAO.findAll();
+    public void setRouteList(Driver driver) {
+        routes = (ArrayList<Route>) routeDAO.findByDriver(driver);
     }
     /**
      *  Ελεγχουμε εαν η λίστα με τις διαδρομες είναι άδεια
@@ -56,9 +57,6 @@ public class ExitedRoutePresenter {
     /**
      * Καλεί την μέθοδο του view που μας πηγαίνει στο προηγούμενο activity που μας κάλεσε
      */
-    public void onBack(){
-        view.goBack();
-    }
     /**
      * Επιστρέφει την λίστα με τις διαδρομές
      * @return η λίστα με τις διαδρομες

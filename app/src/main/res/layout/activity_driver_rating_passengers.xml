@@ -31,20 +31,7 @@
             app:layout_constraintVertical_bias="0.0">
 
 
-            <ImageButton
-                android:id="@+id/back_button"
-                android:layout_width="50dp"
-                android:layout_height="0dp"
-                android:layout_gravity="left|end"
-                android:layout_weight="1"
-                android:adjustViewBounds="true"
-                android:backgroundTint="#00FFFFFF"
-                android:contentDescription="@string/back"
-                android:cropToPadding="false"
-                android:scaleType="centerInside"
 
-                app:srcCompat="@drawable/backbutton"
-                tools:ignore="RtlHardcoded" />
         </LinearLayout>
 
         <LinearLayout
