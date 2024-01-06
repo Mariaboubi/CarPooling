@@ -3,140 +3,167 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="10dp"
-    android:layout_marginBottom="4dp"
-    android:background="#A788DD"
-    android:outlineProvider="background"
+    android:layout_height="match_parent"
     tools:context=".model.view.passenger.DriverRating.DriverRatingActivity"
-    android:padding="5dp"
     tools:ignore="MissingDefaultResource">
 
+    <LinearLayout
+        android:id="@+id/linearLayout6"
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/DriversUserName"
-        android:layout_width="335dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="20dp"
-        android:background="#00D5C8C8"
-        android:backgroundTint="#FFFFFF"
-        android:text="@string/username2"
-        android:textAlignment="viewStart"
-        android:textColor="#1E1817"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:visibility="visible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="TextSizeCheck"
-        tools:visibility="visible" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:background="#6946A6"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="192dp"
-        android:layout_height="50dp"
-        android:hint="@string/politeness"
-        android:textColorHint="@color/black"
-        app:boxStrokeColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.052"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.362">
+        </LinearLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Politeness"
-            android:layout_width="192dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginBottom="112dp"
-            android:fontFamily="sans-serif-medium"
-            android:inputType="text"
-            android:singleLine="true"
-            android:textColor="@color/black" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
 
-    </com.google.android.material.textfield.TextInputLayout>
+            android:background="#A788DD"
+            android:orientation="vertical"
+            android:outlineProvider="background"
+            android:padding="5dp">
 
-    <Button
-        android:id="@+id/RateButton"
-        android:layout_width="137dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="212dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="8dp"
-        android:background="#6845A5"
-        android:backgroundTint="#6946A6"
-        android:text="@string/rate1"
-        android:textAllCaps="false"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+            <TextView
+                android:id="@+id/DriversUserName"
+                android:layout_width="335dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="20dp"
+                android:background="#00D5C8C8"
+                android:backgroundTint="#FFFFFF"
+                android:text="@string/username2"
+                android:textAlignment="viewStart"
+                android:textColor="#1E1817"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TextSizeCheck"
+                tools:visibility="visible" />
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.925" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="334dp"
+                android:layout_height="68dp"
+                android:layout_gravity="start"
+                android:layout_marginTop="20sp"
+                android:layout_marginBottom="5sp"
+                android:hint="@string/politeness"
+                android:orientation="vertical"
+                android:textColorHint="@color/black"
+                app:boxStrokeColor="@color/black">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout1"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="192dp"
-        android:layout_height="50dp"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/Politeness"
+                    android:layout_width="match_parent"
+                    android:layout_height="68dp"
+                    android:layout_gravity="center"
 
-        android:hint="@string/security1"
-        android:textColorHint="@color/black"
-        app:boxStrokeColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.052"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.651">
+                    android:fontFamily="sans-serif-medium"
+                    android:inputType="text"
+                    android:textSize="20sp"
+                    android:singleLine="true"
+                    android:textColor="@color/black" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Security"
-            android:layout_width="192dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:fontFamily="sans-serif-medium"
-            android:inputType="text"
-            android:singleLine="true"
-            android:textColor="@color/black"
-            android:textColorHint="#1A237E"
-            tools:ignore="TextContrastCheck"
-            tools:layout_editor_absoluteX="22dp"
-            tools:layout_editor_absoluteY="158dp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout2"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="192dp"
-        android:layout_height="50dp"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout1"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="334dp"
+                android:layout_height="68dp"
+                android:layout_marginTop="20dp"
+                android:hint="@string/security1"
+                android:textColorHint="@color/black"
+                app:boxStrokeColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.052"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.651">
 
-        android:hint="@string/cleanliness"
-        android:textColorHint="@color/black"
-        app:boxStrokeColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/RateButton"
-        app:layout_constraintHorizontal_bias="0.052"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.948">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/Security"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="sans-serif-medium"
+                    android:inputType="text"
+                    android:singleLine="true"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#1A237E"
+                    tools:ignore="TextContrastCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Cleanliness"
-            android:layout_width="192dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:fontFamily="sans-serif-medium"
-            android:inputType="text"
-            android:singleLine="true"
-            android:textColor="@color/black"
-            android:textColorHint="#1A237E"
-            tools:ignore="TextContrastCheck" />
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout2"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="334dp"
+                android:layout_height="68dp"
+                android:layout_marginTop="20sp"
+                android:hint="@string/cleanliness"
+                android:textColorHint="@color/black"
+                app:boxStrokeColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/RateButton"
+                app:layout_constraintHorizontal_bias="0.052"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.948">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/Cleanliness"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="sans-serif-medium"
+                    android:inputType="text"
+                    android:singleLine="true"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#1A237E"
+                    tools:ignore="TextContrastCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="5dp"
+                android:background="#6845A5"
+                android:backgroundTint="#6946A6"
+                android:layout_marginStart="295dp"
+                android:layout_marginBottom="8dp"
+                android:textSize="20sp"
+                android:text="@string/rate1" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
