@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="400dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="4dp"
+    android:background="#A788DD"
+    android:outlineProvider="background"
+    android:padding="5dp">
+
+    <TextView
+        android:id="@+id/TextRequest"
+        android:layout_width="match_parent"
+        android:layout_height="39dp"
+        android:text="@string/for_route_with"
+        android:textAlignment="center"
+        android:textColor="#271814"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="TextSizeCheck"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/Destination"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:background="#00D5C8C8"
+        android:backgroundTint="#FFFFFF"
+        android:text="@string/destination12"
+        android:textAlignment="viewStart"
+        android:textColor="#1E1817"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.075"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.135"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/Date"
+        android:layout_width="match_parent"
+        android:layout_height="39dp"
+        android:text="@string/date11"
+        android:textAlignment="viewStart"
+        android:textColor="#271814"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.398"
+        tools:ignore="TextSizeCheck"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/driver_name"
+        android:layout_width="match_parent"
+        android:layout_height="39dp"
+        android:text="@string/passenger_name"
+        android:textAlignment="viewStart"
+        android:textColor="#271814"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.575"
+        tools:ignore="TextSizeCheck"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/driver_rate"
+        android:layout_width="match_parent"
+        android:layout_height="39dp"
+        android:text="@string/rate"
+        android:textAlignment="viewStart"
+        android:textColor="#271814"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.743"
+        tools:ignore="TextSizeCheck"
+        tools:visibility="visible" />
+
+    <LinearLayout
+        android:layout_width="371dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="328dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/RejectButton"
+            android:layout_width="137dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="0sp"
+            android:background="#6845A5"
+            android:backgroundTint="#6946A6"
+            android:text="@string/reject"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.041"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.947" />
+
+        <Space
+            android:layout_width="100sp"
+            android:layout_height="50dp">
+
+        </Space>
+
+        <Button
+            android:id="@+id/AcceptButton"
+            android:layout_width="137dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:background="#6845A5"
+            android:backgroundTint="#6946A6"
+            android:text="@string/accept"
+            android:textAllCaps="false"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

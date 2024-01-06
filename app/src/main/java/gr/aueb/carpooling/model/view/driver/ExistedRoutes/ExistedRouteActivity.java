@@ -61,7 +61,7 @@ public class ExistedRouteActivity extends AppCompatActivity implements ExitedRou
 
     }
 
-    void openDriverFrontPage(){
+    public void openDriverFrontPage(){
         Intent intent = new Intent(this , DriverFrontPage.class);
         intent.putExtra("Username",username);
         startActivity(intent);

@@ -41,7 +41,7 @@ public class RatingPassengers extends AppCompatActivity implements RatingPasseng
             //The key argument here must match that used in the other activity
         }
 
-        viewModel.getPresenter().setPassengerRAtingList();
+        viewModel.getPresenter().setPassengerRatingList();
         recyclerView = findViewById(R.id.RatingPassengerRecyclerView);
         emptyView = findViewById(R.id.NoPassengers);
         viewModel.getPresenter().onChangeLayout();
@@ -65,6 +65,7 @@ public class RatingPassengers extends AppCompatActivity implements RatingPasseng
 //    public HashMap<String, String> getRateDetails() {
 //        return null;
 //    }
+
 
     @Override
     public void ShowNoPassengers() {

@@ -54,7 +54,7 @@ public class RouteDAOmemory implements RouteDAO {
     public List<Route> findByDriver(Driver driver) {
         ArrayList<Route> result= new ArrayList<>();
         for(Route route : entities){
-            if(route.getDriver()==driver){
+            if(route.getDriver()==driver && !route.isCompleted()){
                 result.add(route);
             }
         }

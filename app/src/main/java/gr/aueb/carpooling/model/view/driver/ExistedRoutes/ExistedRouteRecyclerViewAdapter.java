@@ -57,7 +57,9 @@ public class ExistedRouteRecyclerViewAdapter extends RecyclerView.Adapter<Existe
         currentItem = routes.get(position);
 
         holder.routeDest.setText((currentItem.getDestinationString()));
-        holder.routeDate.setText((currentItem.getDate().toString()));
+
+        String str_date = "Date : " + currentItem.getDate().toString();
+        holder.routeDate.setText(str_date);
         boolean b = currentItem.isCompleted();
 
        // holder.routeCompleted.setText((String.valueOf(b)));

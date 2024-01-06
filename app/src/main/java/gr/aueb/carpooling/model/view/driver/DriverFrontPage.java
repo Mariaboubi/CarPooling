@@ -13,6 +13,7 @@ import android.widget.ImageButton;
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.memoryDao.MemoryInitialized;
 import gr.aueb.carpooling.model.view.driver.DriverTopUp.DriverTopUp;
+import gr.aueb.carpooling.model.view.driver.show_request.ShowRequestActivity;
 import gr.aueb.carpooling.model.view.log_in.LogInActivity;
 import gr.aueb.carpooling.model.view.driver.ExistedRoutes.ExistedRouteActivity;
 import gr.aueb.carpooling.model.view.driver.createRoute.CreateRouteActivity;
@@ -23,6 +24,8 @@ public class DriverFrontPage extends AppCompatActivity implements DriverFrontPag
     private ImageButton log_out_button ;
 
     private Button create_route_button;
+
+    private Button show_request_button;
 
     private  DriverFrontPageViewModel viewModel;
 
@@ -35,9 +38,6 @@ public class DriverFrontPage extends AppCompatActivity implements DriverFrontPag
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver_front_page);
 
-//        MemoryInitialized dataHelper = new MemoryInitialized();
-//        dataHelper.prepareData();
-
         viewModel= new ViewModelProvider(this).get(DriverFrontPageViewModel.class);
 
         viewModel.getPresenter().setView(this);
@@ -47,6 +47,7 @@ public class DriverFrontPage extends AppCompatActivity implements DriverFrontPag
             username = extras.getString("Username");
             //The key argument here must match that used in the other activity
         }
+
 
         log_out_button = (ImageButton) findViewById(R.id.log_out);
 
@@ -82,26 +83,40 @@ public class DriverFrontPage extends AppCompatActivity implements DriverFrontPag
             public void onClick(View v) {openDriverTopUpActivity();}
         });
 
+        show_request_button = (Button) findViewById(R.id.button_showrequests);
+
+        show_request_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openShowRequestPage(username);
+            }
+        });
     }
 
-    void openDriverTopUpActivity(){
+    public void openDriverTopUpActivity(){
         Intent intent = new Intent(this , DriverTopUp.class);
         intent.putExtra("Username",username);
         startActivity(intent);
     }
 
-    void openCreateRoutePage(String userId) {
+    public void openCreateRoutePage(String userId) {
         Intent intent = new Intent(this, CreateRouteActivity.class);
         intent.putExtra("Username", username);
         startActivity(intent);
     }
-    void openLogInActivity() {
+    public void openLogInActivity() {
         Intent intent = new Intent(this, LogInActivity.class);
         startActivity(intent);
     }
 
-    void openExistedRoutePage(String username) {
+    public void openExistedRoutePage(String username) {
         Intent intent = new Intent(this, ExistedRouteActivity.class);
+        intent.putExtra("Username", username);
+        startActivity(intent);
+    }
+
+    public void openShowRequestPage(String username) {
+        Intent intent = new Intent(this, ShowRequestActivity.class);
         intent.putExtra("Username", username);
         startActivity(intent);
     }

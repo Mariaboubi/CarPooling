@@ -33,7 +33,7 @@ public class RatingPassengerPresenter {
         return view;
     }
 
-    public void setPassengerRAtingList() {
+    public void setPassengerRatingList() {
         ratings = (ArrayList<PassengerRating>) passengerRatingDao.findAll();
     }
     /**

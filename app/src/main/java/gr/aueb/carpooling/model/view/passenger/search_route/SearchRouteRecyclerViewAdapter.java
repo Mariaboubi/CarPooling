@@ -48,6 +48,14 @@ public class SearchRouteRecyclerViewAdapter extends RecyclerView.Adapter<SearchR
         holder.routeDriverName.setText(str_driver);
         String str_rate = "Rate :" + currentItem.getDriver().getRate();
         holder.routeDriverRate.setText(str_rate);
+
+
+        holder.RequestButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     @Override

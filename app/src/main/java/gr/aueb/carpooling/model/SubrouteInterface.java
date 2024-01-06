@@ -1,5 +1,9 @@
 package gr.aueb.carpooling.model;
 
+import static gr.aueb.carpooling.model.Request_status.APPROVED;
+import static gr.aueb.carpooling.model.Request_status.PENDING;
+import static gr.aueb.carpooling.model.Request_status.REJECTED;
+
 import org.threeten.bp.LocalDateTime;
 
 import gr.aueb.carpooling.model.contact.Address;
@@ -78,4 +82,12 @@ public interface SubrouteInterface {
      * @return The calculated cost of the subroute
      */
     Money calculateCost();
+
+
+    void setPendingStatus();
+    void setApprovedStatus() ;
+
+     void setRejectedStatus() ;
+
+    Request_status getStatus();
 }

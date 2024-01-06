@@ -1,5 +1,10 @@
 package gr.aueb.carpooling.model;
 
+import static gr.aueb.carpooling.model.Request_status.APPROVED;
+import static gr.aueb.carpooling.model.Request_status.NOT_EXIST;
+import static gr.aueb.carpooling.model.Request_status.PENDING;
+import static gr.aueb.carpooling.model.Request_status.REJECTED;
+
 import org.threeten.bp.LocalDateTime;
 import java.util.Currency;
 import java.util.Objects;
@@ -16,6 +21,8 @@ public class Subroute implements SubrouteInterface {
     private LocalDateTime pickupTime; // The Time of the pick up time
     private final Currency euroCurrency = Currency.getInstance("EUR");
 
+    private Request_status status;
+
 
     public Subroute(Address destination, Address pickupPoint, LocalDateTime pickupTime) {
         this.id = ++subroute_id;
@@ -23,9 +30,23 @@ public class Subroute implements SubrouteInterface {
         this.pickupPoint = pickupPoint;
         this.pickupTime = pickupTime;
         this.cost = new Money(0.0, euroCurrency);
+        this.status = NOT_EXIST;
     }
 
 
+    public void setPendingStatus() {
+        this.status = PENDING;
+    }
+    public void setApprovedStatus() {
+        this.status = APPROVED;
+    }
+    public void setRejectedStatus() {
+        this.status = REJECTED;
+    }
+
+    public Request_status getStatus() {
+        return this.status;
+    }
     public Address getDestination() {
         return destination;
     }

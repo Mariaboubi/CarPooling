@@ -72,12 +72,13 @@ public class RatingPassengerRecyclerViewAdapter extends RecyclerView.Adapter<Rat
             Passenger passenger = currentItem.getPassenger();
             String str_username = "Username : " + passenger.getUsername();
             holder.ratingUsername.setText(str_username);
-
+            Route rating_route = currentItem.getRoute();
             String reliability = holder.ratingReliability;
             String politeness = holder.ratingPoliteness;
             String consistency = holder.ratingConsistency;
 
-            Route route = routeDAO.find(route_id);
+            Route route = routeDAO.find(rating_route.getId());
+            route.Completed();
             currentItem.setConsistencyRating(reliability);
             currentItem.setReliabilityRating(politeness);
             currentItem.setPolitenessRating(consistency);
@@ -91,6 +92,8 @@ public class RatingPassengerRecyclerViewAdapter extends RecyclerView.Adapter<Rat
             holder.RateButton.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v){
+
+
                     listener.selectRate(currentItem);
                 }
             });
