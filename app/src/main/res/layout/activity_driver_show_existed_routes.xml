@@ -68,7 +68,7 @@
             android:id="@+id/NoRoutes"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/no_existed_route"
+            android:text="@string/no_existed_routes"
             android:textAlignment="gravity"
             android:gravity="center"
             android:textColor="#000000"

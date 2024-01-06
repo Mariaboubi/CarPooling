@@ -30,6 +30,16 @@ public class RouteDAOmemory implements RouteDAO {
         return entities;
     }
 
+    public List<Route> findExistedRoutes() {
+        ArrayList<Route> result= new ArrayList<>();
+        for(Route route: entities){
+            if(!route.isCompleted()){
+                result.add(route);
+                return result;
+            }
+        }
+        return null;
+    }
     @Override
     public Route find(int id) {
         for(Route route: entities){

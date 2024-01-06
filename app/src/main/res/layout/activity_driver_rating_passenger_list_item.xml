@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="275dp"
+    android:layout_marginTop="10dp"
     android:layout_marginBottom="4dp"
     android:background="#A788DD"
     android:outlineProvider="background"
@@ -18,14 +19,15 @@
         android:layout_marginTop="20dp"
         android:background="#00D5C8C8"
         android:backgroundTint="#FFFFFF"
-        android:text="@string/username"
+        android:text="@string/username2"
         android:textAlignment="viewStart"
         android:textColor="#1E1817"
         android:textSize="25sp"
-        android:textStyle="bold|italic"
+        android:textStyle="bold"
         android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextSizeCheck"
         tools:visibility="visible" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -61,14 +63,18 @@
         android:layout_width="137dp"
         android:layout_height="50dp"
         android:layout_marginTop="212dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:background="#6845A5"
         android:backgroundTint="#6946A6"
-        android:text="@string/rate"
+        android:text="@string/rate1"
         android:textAllCaps="false"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
 
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout1"
@@ -124,7 +130,9 @@
             android:fontFamily="sans-serif-medium"
             android:inputType="text"
             android:singleLine="true"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textColorHint="#1A237E"
+            tools:ignore="TextContrastCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
 

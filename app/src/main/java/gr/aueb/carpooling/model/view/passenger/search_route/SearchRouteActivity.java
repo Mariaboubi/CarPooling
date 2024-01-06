@@ -13,7 +13,9 @@ import android.widget.TextView;
 
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.Route;
+import gr.aueb.carpooling.model.view.driver.ExistedRoutes.ExistedRouteActivity;
 import gr.aueb.carpooling.model.view.driver.ExistedRoutes.ExistedRouteRecyclerViewAdapter;
+import gr.aueb.carpooling.model.view.log_in.LogInActivity;
 import gr.aueb.carpooling.model.view.passenger.PassengerFrontPageActivity;
 import gr.aueb.carpooling.model.view.subroute.subrouteActivity;
 
@@ -22,6 +24,8 @@ public class SearchRouteActivity extends AppCompatActivity implements SearchRout
     private SearchRouteViewModel viewModel;
 
     private RecyclerView recyclerView;
+
+    private SearchRouteView view;
     private String username;
 
     private TextView emptyView;
@@ -39,6 +43,8 @@ public class SearchRouteActivity extends AppCompatActivity implements SearchRout
         }
 
         viewModel.getPresenter().setRouteList();
+        int l = viewModel.getPresenter().getRouteList().size();
+        showErrorMessage("len",String.valueOf(l));
         // ui initialization
         recyclerView = findViewById(R.id.ChooseRouteRecyclerView);
         emptyView = findViewById(R.id.NoRoutes);
@@ -80,6 +86,16 @@ public class SearchRouteActivity extends AppCompatActivity implements SearchRout
         emptyView.setVisibility(View.GONE);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new ExistedRouteRecyclerViewAdapter(viewModel.getPresenter().getRouteList(), (ExistedRouteRecyclerViewAdapter.RouteSelectionListener) this));
+    }
+
+    public void showErrorMessage (String title, String message)
+    {
+        new AlertDialog.Builder(SearchRouteActivity.this)
+                .setCancelable(true)
+                .setTitle(title)
+                .setMessage(message)
+                .setPositiveButton("OK", null).create().show();
+
     }
 
 }

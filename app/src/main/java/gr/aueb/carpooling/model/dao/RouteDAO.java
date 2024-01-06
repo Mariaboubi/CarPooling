@@ -16,4 +16,6 @@ public interface RouteDAO {
     Route find(int id);
     List<Route> findByDriver(Driver driver);
     int nextId();
+
+    List<Route> findExistedRoutes();
 }
