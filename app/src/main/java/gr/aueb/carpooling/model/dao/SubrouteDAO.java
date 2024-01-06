@@ -15,7 +15,7 @@ public interface SubrouteDAO {
 
     List<Subroute> findAll();
 
-    Subroute find (int id);
+    Subroute find (String dest,String pick,String date);
 
 
     int nextId();

@@ -60,8 +60,7 @@ public class CreateRoutePresenter {
         }else if (City.length() < 2) {
             view.showErrorMessage("Σφάλμα!", "Συμπληρώστε απο 3 και πάνω χαρακτήρες στο City");
         } else if (ZipCode.length() !=5) {
-            view.showErrorMessage("Σφάλμα!", String.valueOf(ZipCode.length()));
-//            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε 5 ψηφία στον Ταχυδρομικό κώδικα(ZipCode).");
+           view.showErrorMessage("Σφάλμα!", "Συμπληρώστε 5 ψηφία στον Ταχυδρομικό κώδικα(ZipCode).");
         }else if (Integer.parseInt(cost)<0){
             view.showErrorMessage("Σφάλμα!", "Συμπληρώστε Θετικό αριθμό");
         } else if (Integer.parseInt(numberpas)<0) {

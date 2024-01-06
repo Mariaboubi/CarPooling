@@ -67,22 +67,27 @@ public class ExistedSubrouteRecyclerViewAdapter extends RecyclerView.Adapter<Exi
     @Override
     public void onBindViewHolder(@NonNull ExistedSubrouteRecyclerViewAdapter.ViewHolder holder, int position) {
         currentSubroute = subroutes.get(position);
-
+        currentSubroute.setStatus(Request_status.APPROVED);
         holder.subrouteDest.setText(currentSubroute.getDestination().toString());
         holder.subroutepickUpPoint.setText(currentSubroute.getPickupPoint().toString());
         holder.subrouteDate.setText((currentSubroute.getPickupTime().toString()));
         holder.subrouteStatus.setText((String.valueOf(currentSubroute.getStatus())));
 
+
+
         holder.CompletedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (currentSubroute.getStatus()== Request_status.APPROVED) {
-                    listener.selectSubroute(currentSubroute,currentSubroute.getStatus());
-                }else {
-                    viewModel.getPresenter().showMessege("You can press button complete if request status is approved.Now it is: ", String.valueOf(Request_status.APPROVED));
-                }
+                listener.selectSubroute(currentSubroute, currentSubroute.getStatus(), true);
 
+            }
 
+        });
+
+        holder.DeleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.selectSubroute(currentSubroute, currentSubroute.getStatus(), false);
             }
 
         });
@@ -106,6 +111,8 @@ public class ExistedSubrouteRecyclerViewAdapter extends RecyclerView.Adapter<Exi
 
         public final TextView subroutepickUpPoint;
         public final Button  CompletedButton;
+
+        public final Button  DeleteButton;
         public ViewHolder(View v)
         {
             super(v);
@@ -114,13 +121,14 @@ public class ExistedSubrouteRecyclerViewAdapter extends RecyclerView.Adapter<Exi
             subrouteDate = (TextView) v.findViewById(R.id.Date);
             subrouteStatus = (TextView) v.findViewById(R.id.RequestStatus);
             CompletedButton = (Button) v.findViewById(R.id.ComletedButton);
+            DeleteButton = (Button) v.findViewById(R.id.DeletedButton);
         }
 
 
 
     }
     public interface SubrouteSelectionListener {
-        void selectSubroute(Subroute subroute,Request_status status) ;
+        void selectSubroute(Subroute subroute,Request_status status,Boolean b) ;
     }
 
 }

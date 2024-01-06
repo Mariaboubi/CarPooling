@@ -3,7 +3,9 @@ package gr.aueb.carpooling.model.dao;
 import java.util.List;
 
 import gr.aueb.carpooling.model.Driver;
+import gr.aueb.carpooling.model.Passenger;
 import gr.aueb.carpooling.model.Route;
+import gr.aueb.carpooling.model.Subroute;
 
 public interface RouteDAO {
 
@@ -18,4 +20,6 @@ public interface RouteDAO {
     int nextId();
 
     List<Route> findExistedRoutes();
+
+    Route findByMap(Passenger pas, Subroute sub);
 }

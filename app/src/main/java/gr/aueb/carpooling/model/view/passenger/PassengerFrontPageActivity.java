@@ -9,9 +9,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import gr.aueb.carpooling.R;
+import gr.aueb.carpooling.model.dao.PassengerDAO;
 import gr.aueb.carpooling.model.memoryDao.MemoryInitialized;
+import gr.aueb.carpooling.model.memoryDao.PassengerDAOmemory;
 import gr.aueb.carpooling.model.view.log_in.LogInActivity;
 import gr.aueb.carpooling.model.view.passenger.ExistedSubroutes.ExistedSubrouteActivity;
 import gr.aueb.carpooling.model.view.passenger.top_up.TopUpActivity;
@@ -26,7 +29,13 @@ public class PassengerFrontPageActivity extends AppCompatActivity implements Pas
     private Button CreateSubroute_button;
     private Button ShowSubroutes_button;
 
+    private TextView rate;
+
     private  PassengerFrontPageViewModel viewModel;
+
+    private PassengerDAO passengerDAO= new PassengerDAOmemory();
+
+
 
     private String username;
     @SuppressLint("MissingInflatedId")
@@ -52,6 +61,9 @@ public class PassengerFrontPageActivity extends AppCompatActivity implements Pas
         ShowSubroutes_button = (Button) findViewById(R.id.showRoutesButton);
 
         log_out_button.setOnClickListener(v -> openLogInActivity());
+
+         rate= ((TextView)findViewById(R.id.RATE));
+         rate.setText(String.valueOf(passengerDAO.findByUsername(username).getRate()));
 
         wallet.setOnClickListener(new View.OnClickListener() {
             @Override
