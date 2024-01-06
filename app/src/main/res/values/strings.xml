@@ -129,5 +129,8 @@
     <string name="for_route_with">For route with:</string>
     <string name="date11">Date :</string>
     <string name="no_available_requests">No available requests.</string>
+    <string name="cleanliness">Cleanliness</string>
+    <string name="security">Security</string>
+    <string name="security1">Security</string>
 
 </resources>
