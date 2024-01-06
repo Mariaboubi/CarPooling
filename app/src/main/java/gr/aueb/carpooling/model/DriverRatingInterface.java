@@ -1,5 +1,7 @@
 package gr.aueb.carpooling.model;
 
+import java.util.HashMap;
+
 /**
  * The DriverRatingInterface represents the interface for rating a driver's performance.
  */
@@ -10,6 +12,10 @@ public interface DriverRatingInterface {
      * @param securityRating The security rating to be set
      */
     void setSecurityRating(String securityRating);
+
+    void addRate(Passenger pas,DriverRating rate);
+
+    HashMap<Passenger,DriverRating> getPassengersRates();
 
     /**
      * Get the security rating for the driver.

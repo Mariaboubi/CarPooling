@@ -1,5 +1,6 @@
 package gr.aueb.carpooling.model;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -7,7 +8,9 @@ public class DriverRating extends Rating implements DriverRatingInterface {
     private String securityRating; // Rating about security issues
     private String cleanlinessRating; // Rating about cleaning issues
 
-    private final Set<Passenger> passengers;
+    private Driver driver;
+
+    private final HashMap<Passenger,DriverRating> passengers_has_rate;
 
     public DriverRating(Driver driver, Route route, String politenessRating,
                         String securityRating, String cleanlinessRating) {
@@ -16,29 +19,26 @@ public class DriverRating extends Rating implements DriverRatingInterface {
 //        validateRating(securityRating, "Security");
         this.cleanlinessRating = cleanlinessRating;
         this.securityRating = securityRating;
-        this.passengers = new HashSet<>();
+        this.passengers_has_rate = new HashMap<>();
+        this.driver=driver;
     }
-
+    public Driver getDriver(){
+        return this.driver;
+    }
     @Override
     public void setSecurityRating(String securityRating) {
         //validateRating(securityRating, "Security");
         this.securityRating = securityRating;
     }
 
-    public void addPassenger(Passenger pas) {
-        this.passengers.add(pas);
+    public void addRate(Passenger pas,DriverRating rate) {
+        this.passengers_has_rate.put(pas, rate);
     }
 
-    public void removePassenger(Passenger pas) throws UnsupportedOperationException {
-        if(passengers.size() > 0) {
-            this.passengers.remove(pas);
-        } else {
-            throw new UnsupportedOperationException("Cannot remove from an empty passenger rating set.");
-        }
-    }
 
-    public HashSet<Passenger> getPassengers() {
-        return new HashSet<>(passengers); // Return a new set to avoid direct access to the internal set
+
+    public HashMap<Passenger,DriverRating> getPassengersRates() {
+        return new HashMap<>(passengers_has_rate); // Return a new set to avoid direct access to the internal set
     }
 
     @Override

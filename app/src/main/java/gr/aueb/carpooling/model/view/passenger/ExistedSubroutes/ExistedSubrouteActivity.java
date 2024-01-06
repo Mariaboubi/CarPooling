@@ -13,9 +13,14 @@ import android.view.View;
 import android.widget.TextView;
 
 import gr.aueb.carpooling.R;
+import gr.aueb.carpooling.model.Request_status;
+import gr.aueb.carpooling.model.Route;
 import gr.aueb.carpooling.model.Subroute;
 import gr.aueb.carpooling.model.view.driver.DriverFrontPage;
+import gr.aueb.carpooling.model.view.driver.ExistedRoutes.ExistedRouteActivity;
+import gr.aueb.carpooling.model.view.driver.RatingPassengers.RatingPassengers;
 import gr.aueb.carpooling.model.view.log_in.LogInActivity;
+import gr.aueb.carpooling.model.view.passenger.DriverRaiting.DriverRaitingActivity;
 import gr.aueb.carpooling.model.view.passenger.PassengerFrontPageActivity;
 
 public class ExistedSubrouteActivity extends AppCompatActivity implements ExistedSubrouteView,ExistedSubrouteRecyclerViewAdapter.SubrouteSelectionListener {
@@ -27,6 +32,7 @@ public class ExistedSubrouteActivity extends AppCompatActivity implements Existe
     private RecyclerView recyclerView;
 
     private TextView emptyView;
+
     @SuppressLint("MissingInflatedId")
 
     @Override
@@ -48,9 +54,9 @@ public class ExistedSubrouteActivity extends AppCompatActivity implements Existe
         emptyView = findViewById(R.id.NoSubroutes);
         viewModel.getPresenter().onChangeLayout();
 
-        findViewById(R.id.back_button).setOnClickListener(new View.OnClickListener(){
+        findViewById(R.id.back_button).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 openPessengerFrontPage();
             }
         });
@@ -58,17 +64,18 @@ public class ExistedSubrouteActivity extends AppCompatActivity implements Existe
     }
 
     @Override
-    public void selectSubroute(Subroute subroute) {
-        Intent intent = new Intent(ExistedSubrouteActivity.this, PassengerFrontPageActivity.class);
+    public void selectSubroute(Subroute subroute, Request_status status) {
+        if (status == Request_status.APPROVED) {
+            Intent intent = new Intent(ExistedSubrouteActivity.this, DriverRaitingActivity.class);
 //        intent.putExtra("RouteId",route.getId());
-        intent.putExtra("Username",username);
-        startActivity(intent);
-
+            intent.putExtra("Username", username);
+            startActivity(intent);
+        }
     }
 
-    void openPessengerFrontPage(){
-        Intent intent = new Intent(this , PassengerFrontPageActivity.class);
-        intent.putExtra("Username",username);
+    void openPessengerFrontPage() {
+        Intent intent = new Intent(this, PassengerFrontPageActivity.class);
+        intent.putExtra("Username", username);
         startActivity(intent);
     }
 
@@ -95,10 +102,11 @@ public class ExistedSubrouteActivity extends AppCompatActivity implements Existe
                 .setMessage(message)
                 .setPositiveButton("OK", null).create().show();
 
-        Intent intent = new Intent(ExistedSubrouteActivity.this, LogInActivity.class);
-//        intent.putExtra("Username",username);
-        startActivity(intent);
+//        Intent intent = new Intent(ExistedSubrouteActivity.this, LogInActivity.class);
+////        intent.putExtra("Username",username);
+//        startActivity(intent);
 
 
     }
+
 }

@@ -87,7 +87,7 @@ public class ExistedRouteRecyclerViewAdapter extends RecyclerView.Adapter<Existe
 //                Intent intent = new Intent(this , RatingPassengers.class);
 //                intent.putExtra("Route id",currentItem.getId());
 //                startActivity(intent);
-                //viewModel.getPresenter().showError(b);
+//                viewModel.getPresenter().showError(b);
             }
 
         });

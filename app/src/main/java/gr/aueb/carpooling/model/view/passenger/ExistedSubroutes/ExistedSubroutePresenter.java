@@ -56,8 +56,8 @@ public class ExistedSubroutePresenter {
     }
 
 
-    public void showError(boolean b) {
-        view.showErrorMessage("is Completed", String.valueOf(b));
+    public void showMessege(String title,String messege) {
+        view.showErrorMessage(title, messege);
 
     }
 

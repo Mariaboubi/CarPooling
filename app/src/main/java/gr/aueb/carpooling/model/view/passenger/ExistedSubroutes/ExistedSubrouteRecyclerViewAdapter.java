@@ -1,5 +1,6 @@
 package gr.aueb.carpooling.model.view.passenger.ExistedSubroutes;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.view.View;
@@ -14,8 +15,10 @@ import java.util.List;
 
 
 import gr.aueb.carpooling.R;
+import gr.aueb.carpooling.model.Request_status;
 import gr.aueb.carpooling.model.Route;
 import gr.aueb.carpooling.model.Subroute;
+import gr.aueb.carpooling.model.view.passenger.DriverRaiting.DriverRaitingActivity;
 
 public class ExistedSubrouteRecyclerViewAdapter extends RecyclerView.Adapter<ExistedSubrouteRecyclerViewAdapter.ViewHolder> {
 
@@ -25,9 +28,11 @@ public class ExistedSubrouteRecyclerViewAdapter extends RecyclerView.Adapter<Exi
 
     private Route currentItem;
 
-    private ExistedSubrouteView viewModel;
+    private ExistedSubrouteViewModel viewModel;
 
     private ExistedSubroutePresenter presenter;
+
+    private View view;
 
     private final ExistedSubrouteRecyclerViewAdapter.SubrouteSelectionListener listener;
 
@@ -66,28 +71,24 @@ public class ExistedSubrouteRecyclerViewAdapter extends RecyclerView.Adapter<Exi
         holder.subrouteDest.setText(currentSubroute.getDestination().toString());
         holder.subroutepickUpPoint.setText(currentSubroute.getPickupPoint().toString());
         holder.subrouteDate.setText((currentSubroute.getPickupTime().toString()));
+        holder.subrouteStatus.setText((String.valueOf(currentSubroute.getStatus())));
 
-//        holder.Delete.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                int clickedPosition = holder.getAdapterPosition();
-//                if (clickedPosition != RecyclerView.NO_POSITION) {
-//                    deleteSubroute(clickedPosition);
-//                }
-//            }
-//        });
+        holder.CompletedButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (currentSubroute.getStatus()== Request_status.APPROVED) {
+                    listener.selectSubroute(currentSubroute,currentSubroute.getStatus());
+                }else {
+                    viewModel.getPresenter().showMessege("You can press button complete if request status is approved.Now it is: ", String.valueOf(Request_status.APPROVED));
+                }
+
+
+            }
+
+        });
 
     }
 
-    private void deleteSubroute(int position) {
-        subroutes.remove(position); // Remove the item from the list
-        notifyItemRemoved(position); // Notify adapter about the item removal
-
-        // If needed, notify any listener about the deletion
-        if (listener != null) {
-            listener.selectSubroute(currentSubroute);
-        }
-    }
 
 
         @Override
@@ -101,25 +102,25 @@ public class ExistedSubrouteRecyclerViewAdapter extends RecyclerView.Adapter<Exi
         public final TextView subrouteDest;
         public final TextView subrouteDate;
 
-      //  public final TextView subrouteName;
+        public final TextView subrouteStatus;
 
         public final TextView subroutepickUpPoint;
-        public final Button  Delete;
+        public final Button  CompletedButton;
         public ViewHolder(View v)
         {
             super(v);
             subrouteDest = (TextView) v.findViewById(R.id.Destination);
             subroutepickUpPoint = (TextView) v.findViewById(R.id.pickUpPoint);
             subrouteDate = (TextView) v.findViewById(R.id.Date);
-            //subrouteName = (TextView) v.findViewById(R.id.driver_name);
-            Delete = (Button) v.findViewById(R.id.DeleteButton);
+            subrouteStatus = (TextView) v.findViewById(R.id.RequestStatus);
+            CompletedButton = (Button) v.findViewById(R.id.ComletedButton);
         }
 
 
 
     }
     public interface SubrouteSelectionListener {
-        void selectSubroute(Subroute subroute) ;
+        void selectSubroute(Subroute subroute,Request_status status) ;
     }
 
 }

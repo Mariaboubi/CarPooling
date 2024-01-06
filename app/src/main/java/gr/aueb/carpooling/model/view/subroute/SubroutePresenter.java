@@ -33,43 +33,47 @@ public class SubroutePresenter {
     }
 
     public void onCreateSubRoute(String username) {
-        boolean isEmpty = false;
-        HashMap<String, String> details = view.getSubRouteDetails();
+        String streetDest = view.StreetDest();
+        String numberDest = view.NumberDest();
+        String CityDest = view.CityDest();
+        String ZipCodeDest = view.ZipCodeDest();
+        String streetPick = view.StreetPick();
+        String numberPick = view.NumberPick();
+        String CityPick = view.CityPick();
+        String ZipCodePick = view.ZipCodePick();
 
-        for (Map.Entry<String, String> set : details.entrySet()) {
-            if (set.getValue().isEmpty() || set.getValue() == null) {
-                isEmpty = true;
-                break;
-            }
-        }
-        if (isEmpty) {
+        String date = view.Date();
+
+        if (streetDest.isEmpty() || numberDest.isEmpty() || CityDest.isEmpty() || ZipCodeDest.isEmpty() || date.isEmpty() ||
+                streetPick.isEmpty() || numberPick.isEmpty() || CityPick.isEmpty() || ZipCodePick.isEmpty()) {
             view.showErrorMessage("Σφάλμα!", "Συμπληρώστε όλα τα πεδία!.");
-        } else if (details.get("Street").length() < 2 ) {
-            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε απο 3 και πάνω χαρακτήρες στο Street.");
-        } else if (details.get("Street Number").length() < 0) {
-            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε Θετικό αριθμό.");
-        }else if (details.get("City").length() < 2) {
-            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε απο 3 και πάνω χαρακτήρες στο City");
-        } else if (details.get("ZipCode").length() < 2) {
-            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε απο 2 και πάνω ψηφία στον Ταχυδρομικό κώδικα(ZipCode).");
-        }else if (details.get("PickUp Street").length() < 2 ) {
-            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε απο 3 και πάνω χαρακτήρες στο Street.");
-        } else if (details.get("PickUp Street Number").length() < 0) {
-            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε Θετικό αριθμό.");
-        }else if (details.get("PickUp City").length() < 2) {
-            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε απο 3 και πάνω χαρακτήρες στο City");
-        } else if (details.get("PickUp ZipCode").length() < 2) {
-            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε απο 2 και πάνω ψηφία στον Ταχυδρομικό κώδικα(ZipCode).");}
-        else {
-            ZipCode zipCode= new ZipCode(details.get("ZipCode"),0.0,0.0);
-            Address destination= new Address(details.get("Street"),details.get("Street Number"),details.get("City"),zipCode,"Greece");
-            Address pickUpPoint = new Address(details.get("PickUp Street"),details.get("PickUp Street Number"),details.get("PickUp City"),zipCode,"Greece");
-            Subroute subroute = new Subroute(destination,pickUpPoint, LocalDateTime.of(2023, 10, 28, 16, 30));
-            passenger= passengerDAO.findByUsername(username);
-            //subrouteDAO.save(passenger,subroute);
-            //passenger.addRoute();
+        } else if (streetDest.length() < 2) {
+            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε απο 3 και πάνω χαρακτήρες στο Street του Destination.");
+        } else if (Integer.parseInt(numberDest) < 0) {
+            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε Θετικό αριθμό στο νουμερο του δρομου  του Destination.");
+        } else if (CityDest.length() < 2) {
+            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε απο 3 και πάνω χαρακτήρες στο City  του Destination");
+        } else if (ZipCodeDest.length() != 5) {
+            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε 5 ψηφία στον Ταχυδρομικό κώδικα(ZipCode) του Destination");
+        } else if (streetPick.length() < 2) {
+            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε απο 3 και πάνω χαρακτήρες στο Street του Pick up Point.");
+        } else if (Integer.parseInt(numberPick) < 0) {
+            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε Θετικό αριθμό στο νουμερο του δρομου του Pick up Point.");
+        } else if (CityPick.length() < 2) {
+            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε απο 3 και πάνω χαρακτήρες στο City του Pick up Point");
+        } else if (ZipCodePick.length() != 5) {
+            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε 5 ψηφία στον Ταχυδρομικό κώδικα(ZipCode) του Pick up Point");
+        } else if (!date.contains("T")) {
+            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε την ημερομηνια σθμφωνα με το παραδειγμα");
+        }else{
+            ZipCode zipCode1 = new ZipCode(ZipCodeDest, 0.0, 0.0);
+            Address destination = new Address(streetDest, numberDest, CityDest, zipCode1, "Greece");
+            ZipCode zipCode2 = new ZipCode(ZipCodePick, 0.0, 0.0);
+            Address pickUpPoint = new Address(streetPick, numberPick, CityPick, zipCode2, "Greece");
+            Subroute subroute = new Subroute(destination, pickUpPoint, LocalDateTime.parse(date));
+            subrouteDAO.save(subroute);
             view.showRouteAddedMessage(subroute);
-        }
+    }
     }
 
 

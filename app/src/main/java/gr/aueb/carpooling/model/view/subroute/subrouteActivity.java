@@ -51,7 +51,7 @@ public class subrouteActivity extends AppCompatActivity implements SubrouteView 
             @Override
             public void onClick(View v){
                 viewModel.getPresenter().onCreateSubRoute(username);
-                openSearchRoute();
+
             }
         });
 
@@ -65,28 +65,51 @@ public class subrouteActivity extends AppCompatActivity implements SubrouteView 
 
     }
 
-    void openSearchRoute() {
-        Intent intent = new Intent(this, SearchRouteActivity.class);
-        intent.putExtra("Username", username);
-        startActivity(intent);
+
+
+    @Override
+    public String  StreetDest(){
+        return ((EditText)findViewById(R.id.SubrouteStreetInput)).getText().toString().trim();
     }
 
     @Override
-    public HashMap<String, String> getSubRouteDetails() {
-        HashMap<String,String> details = new HashMap<>();
-        details.put("Street",(((EditText)findViewById(R.id.SubrouteStreetInput)).getText().toString().trim()));
-        details.put("Street Number",(((EditText)findViewById(R.id.SubrouteNumberInput1)).getText().toString().trim()));
-        details.put("City",(((EditText)findViewById(R.id.SubrouteCityInput)).getText().toString().trim()));
-        details.put("ZipCode",(((EditText)findViewById(R.id.SubrouteZipCodeInput1)).getText().toString().trim()));
-        ////PICK UP POINT///////
-        details.put("PickUp Street",(((EditText)findViewById(R.id.PickUpStreet)).getText().toString().trim()));
-        details.put("PickUp Street Number",(((EditText)findViewById(R.id.PickUpNumber)).getText().toString().trim()));
-        details.put("PickUp City",(((EditText)findViewById(R.id.PickUpCity)).getText().toString().trim()));
-        details.put("PickUp ZipCode",(((EditText)findViewById(R.id.PickUpZipCode)).getText().toString().trim()));
-        details.put("Date",(((EditText)findViewById(R.id.Date)).getText().toString().trim()));
+    public String NumberDest() {
+        return ((EditText)findViewById(R.id.SubrouteNumberInput1)).getText().toString().trim();
+    }
 
-        return details;
+    @Override
+    public String CityDest() {
+        return ((EditText)findViewById(R.id.SubrouteCityInput)).getText().toString().trim();
+    }
 
+    @Override
+    public String ZipCodeDest() {
+        return ((EditText)findViewById(R.id.SubrouteZipCodeInput1)).getText().toString().trim();
+    }
+
+    @Override
+    public String StreetPick() {
+        return ((EditText)findViewById(R.id.PickUpStreet)).getText().toString().trim();
+    }
+
+    @Override
+    public String NumberPick() {
+        return ((EditText)findViewById(R.id.PickUpNumber)).getText().toString().trim();
+    }
+
+    @Override
+    public String CityPick() {
+        return ((EditText)findViewById(R.id.PickUpCity)).getText().toString().trim();
+    }
+
+    @Override
+    public String ZipCodePick() {
+        return ((EditText)findViewById(R.id.PickUpZipCode)).getText().toString().trim();
+    }
+
+    @Override
+    public String Date() {
+        return ((EditText)findViewById(R.id.Date)).getText().toString().trim();
     }
 
     @Override
@@ -102,7 +125,6 @@ public class subrouteActivity extends AppCompatActivity implements SubrouteView 
 
     @Override
     public void showRouteAddedMessage(Subroute subroute) {
-        showErrorMessage("Subroute Destination",subroute.getDestination().toString());
         Intent intent = new Intent(this, SearchRouteActivity.class);
         intent.putExtra("Username",username);
         startActivity(intent);

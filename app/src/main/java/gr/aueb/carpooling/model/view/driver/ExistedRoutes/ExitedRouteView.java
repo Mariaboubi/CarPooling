@@ -18,5 +18,6 @@ public interface ExitedRouteView extends View {
      */
     void ShowRoutes();
 
-    void showErrorMessage(String title, String message);
+
+    void showErrorMessage(String isCompleted, String s);
 }

@@ -81,7 +81,7 @@
     <string name="title_activity_passenger_front_page" />
     <string name="For_drivers"> If you are a driver complete the following: </string>
     <string name="For_passengers"> If you are a passenger complete the following: </string>
-    <string name="pick_up_point" />
+    <string name="pick_up_point"> Pick up point </string>
     <string name="already_have_entered_route_and_don_t_want_to_enter_more" />
     <string name="no_existed_route">no existed route : (</string>
     <string name="completed">Completed</string>
@@ -131,6 +131,6 @@
     <string name="no_available_requests">No available requests.</string>
     <string name="cleanliness">Cleanliness</string>
     <string name="security">Security</string>
-    <string name="security1">Security</string>
+
 
 </resources>
