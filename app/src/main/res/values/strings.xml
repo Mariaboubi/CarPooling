@@ -116,5 +116,11 @@
     <string name="no_existed_routes">No existed routes</string>
     <string name="pick_up_point1">Pick up point</string>
     <string name="date_2024_01_01t18_44_44">Date(2024-01-01T18:44:44)</string>
+    <string name="destination12">Destination :</string>
+    <string name="pick_up_point12">Pick up point :</string>
+    <string name="name1">Name :</string>
+    <string name="date12">Date :</string>
+    <string name="complete">Complete</string>
+    <string name="name3">Name :</string>
 
 </resources>

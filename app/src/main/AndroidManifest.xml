@@ -68,6 +68,9 @@
             android:name=".model.view.passenger.top_up.TopUpActivity"
             android:exported="true" />
 
+        <activity android:name=".model.view.driver.DriverTopUp.DriverTopUp"
+            android:exported="true"/>
+
 
     </application>
 

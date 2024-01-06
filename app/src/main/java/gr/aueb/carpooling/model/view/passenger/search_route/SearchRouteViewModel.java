@@ -4,7 +4,7 @@ import gr.aueb.carpooling.model.memoryDao.RouteDAOmemory;
 
 
 public class SearchRouteViewModel extends ViewModel {
-    SearchRoutePresenter presenter;
+    private final SearchRoutePresenter presenter;
     /**
      * Αρχικοποιεί τον presenter περνώντας του σαν παραμέτρους νέα daos που θα χρησιμοποιήσει
      */

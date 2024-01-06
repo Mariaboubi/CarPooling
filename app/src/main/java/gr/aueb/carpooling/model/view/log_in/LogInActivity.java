@@ -20,8 +20,6 @@ public class LogInActivity extends AppCompatActivity implements LogInView{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
 
-//        MemoryInitialized dataHelper = new MemoryInitialized();
-//        dataHelper.prepareData();
 
         login_button = (Button) findViewById(R.id.btnLogIn);
 

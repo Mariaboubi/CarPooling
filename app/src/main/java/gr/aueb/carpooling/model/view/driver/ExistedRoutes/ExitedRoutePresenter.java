@@ -10,16 +10,15 @@ import gr.aueb.carpooling.model.Route;
 import gr.aueb.carpooling.model.dao.RouteDAO;
 
 public class ExitedRoutePresenter {
-    ExitedRouteView view;
-    private RouteDAO routeDAO;
+    private ExitedRouteView view;
+    private final RouteDAO routeDAO;
 
     private ArrayList<Route> routes;
 
 
-    public ExitedRoutePresenter(RouteDAO routeDAO)
-    {
+    public ExitedRoutePresenter(RouteDAO routeDAO) {
         this.routeDAO = routeDAO;
-        routes = new ArrayList<>();
+        this.routes = new ArrayList<>();
     }
 
     /**

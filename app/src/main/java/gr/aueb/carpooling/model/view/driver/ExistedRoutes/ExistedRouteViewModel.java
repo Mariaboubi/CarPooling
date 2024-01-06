@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel;
 import gr.aueb.carpooling.model.memoryDao.RouteDAOmemory;
 
 public class ExistedRouteViewModel extends ViewModel {
-    ExitedRoutePresenter presenter;
+    private final ExitedRoutePresenter presenter;
     /**
      * Αρχικοποιεί τον presenter περνώντας του σαν παραμέτρους νέα daos που θα χρησιμοποιήσει
      */

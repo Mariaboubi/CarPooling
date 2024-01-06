@@ -69,12 +69,14 @@ public class RatingPassengerRecyclerViewAdapter extends RecyclerView.Adapter<Rat
 //    @Override
         public void onBindViewHolder(@NonNull RatingPassengerRecyclerViewAdapter.ViewHolder holder, int position) {
             PassengerRating currentItem = ratings.get(position);
-
-            holder.ratingUsername.setText((currentItem.getPassenger().getUsername()));
             Passenger passenger = currentItem.getPassenger();
+            String str_username = "Username : " + passenger.getUsername();
+            holder.ratingUsername.setText(str_username);
+
             String reliability = holder.ratingReliability;
             String politeness = holder.ratingPoliteness;
             String consistency = holder.ratingConsistency;
+
             Route route = routeDAO.find(route_id);
             currentItem.setConsistencyRating(reliability);
             currentItem.setReliabilityRating(politeness);

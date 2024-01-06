@@ -35,8 +35,8 @@
         android:id="@+id/Date"
         android:layout_width="match_parent"
         android:layout_height="39dp"
-        android:text="@string/date1"
         android:backgroundTint="#FFFFFF"
+        android:text="@string/date1"
         android:textAlignment="viewStart"
         android:textColor="#271814"
         android:textSize="25sp"
@@ -54,6 +54,7 @@
         android:id="@+id/CompletedButton"
         android:layout_width="137dp"
         android:layout_height="50dp"
+        android:layout_marginTop="159dp"
         android:layout_marginEnd="2dp"
         android:background="#6845A5"
         android:backgroundTint="#6946A6"
@@ -62,9 +63,10 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.885"
+        app:layout_constraintHorizontal_bias="0.927"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Date"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="TextSizeCheck" />
 
 

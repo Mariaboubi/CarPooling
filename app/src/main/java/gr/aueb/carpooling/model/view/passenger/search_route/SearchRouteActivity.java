@@ -27,7 +27,6 @@ public class SearchRouteActivity extends AppCompatActivity implements SearchRout
 
     private SearchRouteView view;
     private String username;
-
     private TextView emptyView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +35,7 @@ public class SearchRouteActivity extends AppCompatActivity implements SearchRout
 
         viewModel = new ViewModelProvider(this).get(SearchRouteViewModel.class);
         viewModel.getPresenter().setView(this);
+
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             username = extras.getString("Username");
@@ -85,7 +85,7 @@ public class SearchRouteActivity extends AppCompatActivity implements SearchRout
         recyclerView.setVisibility(View.VISIBLE);
         emptyView.setVisibility(View.GONE);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new ExistedRouteRecyclerViewAdapter(viewModel.getPresenter().getRouteList(), (ExistedRouteRecyclerViewAdapter.RouteSelectionListener) this));
+        recyclerView.setAdapter(new SearchRouteRecyclerViewAdapter(viewModel.getPresenter().getRouteList(),  this));
     }
 
     public void showErrorMessage (String title, String message)

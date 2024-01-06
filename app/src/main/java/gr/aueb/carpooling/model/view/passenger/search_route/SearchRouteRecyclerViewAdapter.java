@@ -42,9 +42,12 @@ public class SearchRouteRecyclerViewAdapter extends RecyclerView.Adapter<SearchR
         currentItem = routes.get(position);
 
         holder.routeDest.setText((currentItem.getDestinationString()));
-        holder.routeDate.setText((currentItem.getDate().toString()));
-        holder.routeDriverName.setText((currentItem.getDriver().getName()));
-        holder.routeDriverRate.setText("5.0");
+        String str_date = "Date : " + currentItem.getDate().toString();
+        holder.routeDate.setText(str_date);
+        String str_driver = "Driver : " + currentItem.getDriver().getName();
+        holder.routeDriverName.setText(str_driver);
+        String str_rate = "Rate :" + currentItem.getDriver().getRate();
+        holder.routeDriverRate.setText(str_rate);
     }
 
     @Override
