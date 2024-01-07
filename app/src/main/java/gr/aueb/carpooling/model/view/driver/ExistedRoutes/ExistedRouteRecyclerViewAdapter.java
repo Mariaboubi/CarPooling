@@ -78,6 +78,7 @@ public class ExistedRouteRecyclerViewAdapter extends RecyclerView.Adapter<Existe
             public void onClick(View view) {
                 currentItem.Completed();
                 boolean b = currentItem.isCompleted();
+                System.out.print(currentItem.getDestination().toString());
 
                 // holder.routeCompleted.setText((String.valueOf(b)));
                 listener.selectRoute(currentItem);

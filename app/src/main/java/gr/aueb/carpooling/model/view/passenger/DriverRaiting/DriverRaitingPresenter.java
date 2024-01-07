@@ -43,7 +43,7 @@ public class DriverRaitingPresenter {
             DriverRating driverRating=new DriverRating(route.getDriver(),route,politiness,security,cleanliness);
             driverRatingDAO.save(driverRating);
             driverRating.addRate(pas,driverRating);
-            view.showRateAddedMessage();
+            view.showRateAddedMessage(driverRating);
 
         }
 

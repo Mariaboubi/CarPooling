@@ -63,7 +63,7 @@ public class PassengerFrontPageActivity extends AppCompatActivity implements Pas
         log_out_button.setOnClickListener(v -> openLogInActivity());
 
          rate= ((TextView)findViewById(R.id.RATE));
-         rate.setText(String.valueOf(passengerDAO.findByUsername(username).getRate()));
+         rate.setText(String.valueOf(passengerDAO.findByUsername(username).averageRating()));
 
         wallet.setOnClickListener(new View.OnClickListener() {
             @Override

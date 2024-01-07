@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import gr.aueb.carpooling.R;
+import gr.aueb.carpooling.model.DriverRating;
 import gr.aueb.carpooling.model.Route;
 import gr.aueb.carpooling.model.Subroute;
 import gr.aueb.carpooling.model.dao.PassengerDAO;
@@ -114,18 +115,9 @@ public class DriverRaitingActivity extends AppCompatActivity implements DriverRa
         return ((EditText)findViewById(R.id.Cleanliness)).getText().toString().trim();
     }
 
-    public void showRateAddedMessage() {
-        new androidx.appcompat.app.AlertDialog.Builder(this)
-                .setCancelable(true)
-                .setTitle("Επιτυχής προσθήκη κριτικής")
-                .setMessage("Η Βαθμολογία προστέθηκε με επιτυχία στην λίστα του οδηγού!")
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        finish();
-                    }
-                }).create().show();
+    public void showRateAddedMessage(DriverRating raiting) {
+        showErrorMessage(" Η βαθμολογία καταχωρήθεικε.Σε αθτη την διαδρομη εχει Μ.Ο: ",String.valueOf(raiting.averageRating()));
+
 
         Intent intent = new Intent(this, PassengerFrontPageActivity.class);
         intent.putExtra("Username", username);

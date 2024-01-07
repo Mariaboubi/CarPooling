@@ -2,8 +2,8 @@ package gr.aueb.carpooling.model.view.driver.RatingPassengers;
 
 import androidx.lifecycle.ViewModel;
 
+import gr.aueb.carpooling.model.memoryDao.PassengerDAOmemory;
 import gr.aueb.carpooling.model.memoryDao.PassengerRatingDAOmemory;
-
 
 public class RatingPassengersViewModel extends ViewModel {
     RatingPassengerPresenter presenter;
@@ -12,7 +12,7 @@ public class RatingPassengersViewModel extends ViewModel {
      */
     public RatingPassengersViewModel()
     {
-        presenter = new RatingPassengerPresenter(new PassengerRatingDAOmemory());
+        presenter = new RatingPassengerPresenter(new PassengerDAOmemory());
     }
     /**
      *
@@ -22,3 +22,5 @@ public class RatingPassengersViewModel extends ViewModel {
         return presenter;
     }
 }
+
+

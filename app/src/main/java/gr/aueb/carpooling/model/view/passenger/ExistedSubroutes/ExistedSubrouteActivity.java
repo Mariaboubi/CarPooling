@@ -80,12 +80,18 @@ public class ExistedSubrouteActivity extends AppCompatActivity implements Existe
                 startActivity(intent);
             }else if(status == Request_status.REJECTED){
                 showErrorMessage("You can press button complete if request status is aproved.Now is: ", String.valueOf(Request_status.REJECTED));
+                recyclerView = findViewById(R.id.ChooseSubrouteRecyclerView);
+                emptyView = findViewById(R.id.NoSubroutes);
+                viewModel.getPresenter().onChangeLayout();
             }else {
                 showErrorMessage("Wait for answer.Now is: ", String.valueOf(Request_status.PENDING));
             }
         }else{
             if (status == Request_status.APPROVED){
                 showErrorMessage("You can press button delete if request status is approved.Now is: ", String.valueOf(Request_status.APPROVED));
+                recyclerView = findViewById(R.id.ChooseSubrouteRecyclerView);
+                emptyView = findViewById(R.id.NoSubroutes);
+                viewModel.getPresenter().onChangeLayout();
             }else if(status == Request_status.REJECTED){
                 subrouteDAO.delete(subroute);
                 viewModel.getPresenter().setSubrouteList();

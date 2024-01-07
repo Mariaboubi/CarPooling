@@ -48,7 +48,7 @@ public class SearchRouteRecyclerViewAdapter extends RecyclerView.Adapter<SearchR
         holder.routeDate.setText(str_date);
         String str_driver = "Driver : " + currentItem.getDriver().getName();
         holder.routeDriverName.setText(str_driver);
-        String str_rate = "Rate :" + currentItem.getDriver().getRate();
+        String str_rate = "Rate :" + currentItem.getDriver().averageRating();
         holder.routeDriverRate.setText(str_rate);
 
 

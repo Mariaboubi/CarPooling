@@ -45,6 +45,11 @@ public class SubrouteDAOmemory implements SubrouteDAO {
         return null;
     }
 
+    @Override
+    public Passenger findPassengerBySubroute(Subroute subroute) {
+        return null;
+    }
+
     public Subroute find(int id) {
             for(Subroute subroute: entities){
                 if(subroute.getId()==id){

@@ -1,5 +1,6 @@
 package gr.aueb.carpooling.model.view.passenger.DriverRaiting;
 
+import gr.aueb.carpooling.model.DriverRating;
 import gr.aueb.carpooling.model.view.View;
 
 public interface DriverRaitingView extends View {
@@ -11,5 +12,5 @@ public interface DriverRaitingView extends View {
 
     String Cleanliness();
 
-    void showRateAddedMessage();
+    void showRateAddedMessage(DriverRating rating);
 }

@@ -7,21 +7,24 @@ import org.threeten.bp.LocalDateTime;
 
 import java.util.ArrayList;
 
+import gr.aueb.carpooling.model.Passenger;
 import gr.aueb.carpooling.model.PassengerRating;
 
+import gr.aueb.carpooling.model.Route;
+import gr.aueb.carpooling.model.dao.PassengerDAO;
 import gr.aueb.carpooling.model.dao.PassengerRatingDao;
 
 public class RatingPassengerPresenter {
     RatingPassengerView view;
-    private PassengerRatingDao passengerRatingDao;
+    private PassengerDAO passengerDao;
 
-    private ArrayList<PassengerRating> ratings;
+    private ArrayList<Passenger> passengers;
 
 
-    public RatingPassengerPresenter(PassengerRatingDao passengerRatingDao)
+    public RatingPassengerPresenter(PassengerDAO passengerDao)
     {
-        this.passengerRatingDao = passengerRatingDao;
-        ratings = new ArrayList<>();
+        this.passengerDao = passengerDao;
+        passengers = new ArrayList<>();
     }
 
 
@@ -33,15 +36,15 @@ public class RatingPassengerPresenter {
         return view;
     }
 
-    public void setPassengerRatingList() {
-        ratings = (ArrayList<PassengerRating>) passengerRatingDao.findAll();
+    public void setPassengerList(Route route) {
+        passengers = (ArrayList<Passenger>) passengerDao.findByRoute(route);
     }
     /**
      *  Ελεγχουμε εαν η λίστα με τις διαδρομες είναι άδεια
      *  για να τα προβάλουμε ή να δείξουμε μήνυμα οτι δεν υπάρχουν διαδρομες
      */
     public void onChangeLayout() {
-        if (ratings.isEmpty()) {
+        if (passengers.isEmpty()) {
             view.ShowNoPassengers();
         }
         else {
@@ -55,8 +58,8 @@ public class RatingPassengerPresenter {
      * Επιστρέφει την λίστα με τις διαδρομές
      * @return η λίστα με τις διαδρομες
      */
-    public ArrayList<PassengerRating> getPassengerRatingList() {
-        return ratings;
+    public ArrayList<Passenger> getPassengerList() {
+        return passengers;
     }
 
 
@@ -64,5 +67,6 @@ public class RatingPassengerPresenter {
 
 
 }
+
 
 
