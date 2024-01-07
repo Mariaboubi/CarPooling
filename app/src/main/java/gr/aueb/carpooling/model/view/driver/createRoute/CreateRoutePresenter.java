@@ -67,7 +67,7 @@ public class CreateRoutePresenter {
             view.showErrorMessage("Error!", "Incorrect date format. Please, check the example.");
         } else {
             final Currency euroCurrency = Currency.getInstance("EUR");
-            ZipCode zipCode = new ZipCode(ZipCode, 0.0, 0.0);
+            ZipCode zipCode = new ZipCode(ZipCode);
             Address address = new Address(street, number, City, zipCode, "Greece");
             Money money = new Money(Double.parseDouble(cost), euroCurrency);
             Route route = new Route(driver, money, LocalDateTime.parse(date), address, Integer.parseInt(numberpas), false);

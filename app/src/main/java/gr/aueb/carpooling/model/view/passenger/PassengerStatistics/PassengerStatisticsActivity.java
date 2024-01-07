@@ -18,11 +18,10 @@ import gr.aueb.carpooling.model.dao.DriverDAO;
 import gr.aueb.carpooling.model.dao.PassengerDAO;
 import gr.aueb.carpooling.model.memoryDao.DriverDAOmemory;
 import gr.aueb.carpooling.model.memoryDao.PassengerDAOmemory;
-import gr.aueb.carpooling.model.view.driver.DriverFrontPage;
-import gr.aueb.carpooling.model.view.driver.DriverStatistics.DriverStatisticsActivity;
+
 import gr.aueb.carpooling.model.view.driver.DriverStatistics.DriverStatisticsView;
-import gr.aueb.carpooling.model.view.driver.DriverStatistics.DriverStatisticsViewModel;
-import gr.aueb.carpooling.model.view.passenger.PassengerFrontPageActivity;
+import gr.aueb.carpooling.model.view.passenger.front_page.PassengerFrontPageActivity;
+
 
 public class PassengerStatisticsActivity extends AppCompatActivity implements PassengerStatisticsView {
     private PassengerStatisticsViewModel viewModel;

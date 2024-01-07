@@ -37,7 +37,7 @@ public class DriverTest {
         driver = new Driver("john123", "john", "pappas", "696949", email, "12345123", "19", "GRE10230910290194",
                 "112233", "mersedes");
         Money money = new Money(10.0, euroCurrency);
-        ZipCode zip = new ZipCode("16562",0.0,0.0);
+        ZipCode zip = new ZipCode("16562");
         destination = new Address("mesogeiwn", "10", "athens", zip, "greece");
 
         route = new Route(driver, money, LocalDateTime.of(2023, 10, 12, 10, 12), destination, 3, false);

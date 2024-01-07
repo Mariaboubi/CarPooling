@@ -69,6 +69,11 @@ public class ExistedRouteActivity extends AppCompatActivity implements ExitedRou
 
         @Override
         public void selectRoute (Route route){
+            route.calculateTotalCost();
+            driverDAO.findByUsername(username).topUp(route.getTotalCost());
+            showErrorMessage("cost",String.valueOf(route.getTotalCost().getAmount()));
+
+
 
             Intent intent = new Intent(ExistedRouteActivity.this, RatingPassengers.class);
 

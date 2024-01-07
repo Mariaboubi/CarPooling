@@ -44,11 +44,11 @@ public class RouteTest {
         driver1 = new Driver("maria123", "maria", "pappas", "696948", email, "12345123", "19", "GRE10230910290194",
                 "112233", "mersedes");
         money = new Money(10.0, euroCurrency);
-        destination = new Address("mesogeiwn", "10", "athens", new ZipCode("16562",0.0,0.0), "greece");
+        destination = new Address("mesogeiwn", "10", "athens", new ZipCode("16562"), "greece");
         route = new Route(driver, money, LocalDateTime.of(2023, 10, 12, 10, 12), destination, 3, false);
         money5 = new Money(5.0, euroCurrency);
 
-        pickupPoint = new Address("mesogeiwn", "16", "athens", new ZipCode("16563",0.0,0.0), "greece");
+        pickupPoint = new Address("mesogeiwn", "16", "athens", new ZipCode("16563"), "greece");
         pickupTime = LocalDateTime.of(2023, 12, 1, 12, 30);
         subroute = new Subroute(destination, pickupPoint, pickupTime);
         passenger = new Passenger("eleni3", "eleni", "pappa", "6969497297", email2, "12345183", "23", "14222",

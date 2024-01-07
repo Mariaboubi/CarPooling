@@ -1,5 +1,6 @@
 package gr.aueb.carpooling.model.view.driver.DriverTopUp;
 
+import java.text.DecimalFormat;
 import java.util.Currency;
 
 import gr.aueb.carpooling.model.Driver;
@@ -50,7 +51,7 @@ public class DriverTopUpPresenter {
         if (driver!=null)
         {
             User user=driver;
-            String balance =String.valueOf(user.getBalance().getAmount());
+            String balance =new DecimalFormat("0.00").format(user.getBalance().getAmount());
             view.setBalance("Balance "+ balance + " €");
         }
         else

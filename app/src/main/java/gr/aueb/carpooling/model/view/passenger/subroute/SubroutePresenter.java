@@ -58,9 +58,9 @@ public class SubroutePresenter {
         } else if (!date.contains("T")) {
             view.showErrorMessage("Error!", "Incorrect date format. Please, check the example.");
         } else {
-            ZipCode zipCode1 = new ZipCode(ZipCodeDest, 0.0, 0.0);
+            ZipCode zipCode1 = new ZipCode(ZipCodeDest);
             Address destination = new Address(streetDest, numberDest, CityDest, zipCode1, "Greece");
-            ZipCode zipCode2 = new ZipCode(ZipCodePick, 0.0, 0.0);
+            ZipCode zipCode2 = new ZipCode(ZipCodePick);
             Address pickUpPoint = new Address(streetPick, numberPick, CityPick, zipCode2, "Greece");
             Subroute subroute = new Subroute(destination, pickUpPoint, LocalDateTime.parse(date));
             subrouteDAO.save(subroute);

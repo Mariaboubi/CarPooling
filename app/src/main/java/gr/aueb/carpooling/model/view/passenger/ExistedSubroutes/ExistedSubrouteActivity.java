@@ -6,24 +6,30 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import java.text.DecimalFormat;
 
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.Passenger;
 import gr.aueb.carpooling.model.Request_status;
 import gr.aueb.carpooling.model.Route;
 import gr.aueb.carpooling.model.Subroute;
+import gr.aueb.carpooling.model.contact.Money;
 import gr.aueb.carpooling.model.dao.PassengerDAO;
 import gr.aueb.carpooling.model.dao.RouteDAO;
 import gr.aueb.carpooling.model.dao.SubrouteDAO;
 import gr.aueb.carpooling.model.memoryDao.PassengerDAOmemory;
 import gr.aueb.carpooling.model.memoryDao.RouteDAOmemory;
 import gr.aueb.carpooling.model.memoryDao.SubrouteDAOmemory;
+import gr.aueb.carpooling.model.view.driver.createRoute.CreateRouteActivity;
 import gr.aueb.carpooling.model.view.passenger.DriverRating.DriverRatingActivity;
 import gr.aueb.carpooling.model.view.passenger.front_page.PassengerFrontPageActivity;
+import gr.aueb.carpooling.model.view.passenger.top_up.TopUpActivity;
 
 public class ExistedSubrouteActivity extends AppCompatActivity implements ExistedSubrouteView, ExistedSubrouteRecyclerViewAdapter.SubrouteSelectionListener {
 
@@ -70,9 +76,29 @@ public class ExistedSubrouteActivity extends AppCompatActivity implements Existe
     }
 
     @Override
-    public void selectSubroute(Subroute subroute, Request_status status, Boolean b) {
-        if (b) {
-            if (status == Request_status.APPROVED) {
+
+    public void selectSubroute(Subroute subroute, Request_status status,Boolean b) {
+        showErrorMessage("Dest",subroute.getDestination().toString());
+        Money cost=subroute.calculateCost();
+        showErrorMessage("cost",String.valueOf(cost.getAmount()));
+        Boolean success= passenger.transaction(cost);
+        if(!success){
+            new androidx.appcompat.app.AlertDialog.Builder(this)
+                    .setCancelable(true)
+                    .setTitle("Η πληρωμή επέτυχε.Πρόσθεσε χρήματα.Η διαδρομη κόστησε")
+                    .setMessage(new DecimalFormat("0.00").format(cost.getAmount()))
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(ExistedSubrouteActivity.this, TopUpActivity.class);
+                            intent.putExtra("Username", username);
+                            startActivity(intent);
+                        }
+                    }).create().show();
+        }
+
+        if(b){
+            if (status == Request_status.APPROVED){
                 Intent intent = new Intent(ExistedSubrouteActivity.this, DriverRatingActivity.class);
                 intent.putExtra("Username", username);
                 intent.putExtra("SubrouteId", subroute.getId());

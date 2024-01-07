@@ -16,17 +16,17 @@ public class ZipCodeTest {
         BasicEqualTester<ZipCode> equalsTester = new BasicEqualTester<>();
 
         // Test null zip code
-        equalsTester.setObjectUnderTest(new ZipCode(null,0.0,0.0));
+        equalsTester.setObjectUnderTest(new ZipCode(null));
         equalsTester.otherObjectIsNull();
         equalsTester.otherObjectIsOfDifferentType(new Object());
-        equalsTester.bothObjectsHaveNoState(new ZipCode(null,0.0,0.0));
+        equalsTester.bothObjectsHaveNoState(new ZipCode(null));
 
         // Test valid zip code
-        ZipCode zip = new ZipCode("11111",0.0,0.0);
+        ZipCode zip = new ZipCode("11111");
         equalsTester.setObjectUnderTest(zip);
         equalsTester.otherObjectIsNull();
-        equalsTester.otherObjectsHasNoState(new ZipCode(null,0.0,0.0));
-        equalsTester.objectsHaveDifferentState(new ZipCode("222",0.0,0.0));
+        equalsTester.otherObjectsHasNoState(new ZipCode(null));
+        equalsTester.objectsHaveDifferentState(new ZipCode("222"));
         equalsTester.sameReferences(equalsTester.getObjectUnderTest());
         equalsTester.bothObjectsHaveSameState(zip);
 
@@ -50,19 +50,19 @@ public class ZipCodeTest {
     }
     @Test
     public void testIsInvalidZipCode() {
-        ZipCode zip = new ZipCode("88888", 0.0, 0.0);
+        ZipCode zip = new ZipCode("88888");
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                 () -> zip.setCode("11"));
         assertEquals("Invalid zipcode", exception.getMessage());
     }
     @Test
     public void testGetLatitude() {
-        ZipCode zip = new ZipCode("11111",0.0,0.0);
+        ZipCode zip = new ZipCode("11111");
         assertEquals(0.0, zip.getLatitude());
     }
     @Test
     public void testGetLongitude() {
-        ZipCode zip = new ZipCode("11111",0.0,0.0);
+        ZipCode zip = new ZipCode("11111");
         assertEquals(0.0, zip.getLongitude());
     }
 

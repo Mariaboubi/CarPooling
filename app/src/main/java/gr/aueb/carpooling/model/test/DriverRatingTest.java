@@ -32,7 +32,7 @@ public class DriverRatingTest {
         driver = new Driver("john123", "john", "pappas", "696949", email, "12345123", "19", "GR16272397", "GRE10230910290194"
                 , "mersedes");
         money = new Money(10.0, euroCurrency);
-        ZipCode zip = new ZipCode("16562",0.0,0.0);
+        ZipCode zip = new ZipCode("16562");
         Address destination = new Address("mesogeiwn", "10", "athens", zip, "greece");
         route = new Route(driver, money, LocalDateTime.of(2023, 10, 12, 10, 12), destination, 3, false);
         driverRating = new DriverRating(driver, route, "4.5"," 3.2", "5.0");

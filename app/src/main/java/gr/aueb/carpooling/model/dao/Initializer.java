@@ -49,7 +49,7 @@ public abstract class Initializer {
         EmailAddress email4 = new EmailAddress("eleni_zanou@gmail.com");
 
         User user1= new User("maria123","maria","pappa","6900000000",email1,"1234","25");
-        User user2= new User("marko","markos","andreopoulos","6972169794",email2,"1111","27");
+        User user2= new User("markos_andre","markos","andreopoulos","6972169794",email2,"1111","27");
         User user3= new User("kostas3","kostas","Papadopoulos","6972169794",email3,"2003","21");
         User user4= new User("eleniz","eleni","Zanou","6977292186",email4,"2003","20");
         userDAO.save(user1);
@@ -80,19 +80,19 @@ public abstract class Initializer {
         RouteDAO routeDAO= getRouteDAO();
         final Currency euroCurrency = Currency.getInstance("EUR");
         Money money = new Money(10.0, euroCurrency);
-        Address destination = new Address("mesogeiwn", "10", "athens", new ZipCode("16562",0.0,0.0), "greece");
+        Address destination = new Address("mesogeiwn", "10", "athens", new ZipCode("16562"), "greece");
         Route route1 = new Route(driver1, money, LocalDateTime.of(2024, 1, 6, 10, 12), destination, 3, false);
-        route1.Completed();
+//        route1.Completed();
 
 
         Money money5 = new Money(5.0, euroCurrency);
-        Address destination1 = new Address("mesogeiwn", "157", "athens", new ZipCode("16571",0.0,0.0), "greece");
+        Address destination1 = new Address("mesogeiwn", "157", "athens", new ZipCode("16571"), "greece");
         Route route2 = new Route(driver2, money5, LocalDateTime.of(2023, 10, 28, 16, 30), destination1, 2, false);
 
         Money money20 = new Money(20.0, euroCurrency);
-        Address destination2 = new Address("tsimiski", "50", "thessaloniki", new ZipCode("54623",0.0,0.0), "greece");
+        Address destination2 = new Address("tsimiski", "50", "thessaloniki", new ZipCode("54623"), "greece");
         Route route3 = new Route(driver1, money20, LocalDateTime.of(2024, 1, 2, 16, 30), destination2, 4, false);
-        route3.Completed();
+//        route3.Completed();
 
         routeDAO.save(route1);
         routeDAO.save(route3);
@@ -113,13 +113,13 @@ public abstract class Initializer {
         ////// NEW SUBROUTES ///////////////////////////////////////////////////////////////////
 
         SubrouteDAO subrouteDAO= getSubrouteDAO();
-        Address sub_destination1 = new Address("tsimiski", "56", "thessaloniki", new ZipCode("54626",0.0,0.0), "greece");
-        Address sub_pickuppoint1 = new Address("aetideon", "41", "athens", new ZipCode("15561",0.0,0.0), "greece");
+        Address sub_destination1 = new Address("tsimiski", "56", "thessaloniki", new ZipCode("54626"), "greece");
+        Address sub_pickuppoint1 = new Address("aetideon", "41", "athens", new ZipCode("15561"), "greece");
         Subroute subroute1= new Subroute(sub_destination1,sub_pickuppoint1,LocalDateTime.of(2023, 1, 28, 16, 30));
         subroute1.setStatus(Request_status.PENDING);
 
-        Address sub_destination2 = new Address("patision", "147", "athens", new ZipCode("11257",0.0,0.0), "greece");
-        Address sub_pickuppoint2 = new Address("kleious", "4", "athens", new ZipCode("15561",0.0,0.0), "greece");
+        Address sub_destination2 = new Address("patision", "147", "athens", new ZipCode("11257"), "greece");
+        Address sub_pickuppoint2 = new Address("kleious", "4", "athens", new ZipCode("15561"), "greece");
         Subroute subroute2= new Subroute(sub_destination2,sub_pickuppoint2,LocalDateTime.of(2024, 1, 28, 16, 30));
         subroute2.setStatus(Request_status.PENDING);
 

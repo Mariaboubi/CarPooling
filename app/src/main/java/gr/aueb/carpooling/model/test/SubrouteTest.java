@@ -28,10 +28,10 @@ public class SubrouteTest {
 
     @BeforeEach
     public void setup() {
-        destination = new Address("elpidos", "10", "larisa", new ZipCode("10952",40.7128,-74.0060), "greece");
-        destination1 = new Address("elpidos", "12", "larisa", new ZipCode("10954",0.0,0.0), "greece");
-        pickupPoint = new Address("mesogeiwn", "10", "athens", new ZipCode("16562",34.0522,-118.2437), "greece");
-        pickupPoint1 = new Address("mesogeiwn", "16", "athens", new ZipCode("16563",0.0,0.0), "greece");
+        destination = new Address("elpidos", "10", "larisa", new ZipCode("10952"), "greece");
+        destination1 = new Address("elpidos", "12", "larisa", new ZipCode("10954"), "greece");
+        pickupPoint = new Address("mesogeiwn", "10", "athens", new ZipCode("16562"), "greece");
+        pickupPoint1 = new Address("mesogeiwn", "16", "athens", new ZipCode("16563"), "greece");
         pickupTime = LocalDateTime.of(2023, 12, 1, 12, 30);
         pickupTime1 = LocalDateTime.of(2023, 12, 1, 11, 30);
         subroute = new Subroute(destination, pickupPoint, pickupTime);

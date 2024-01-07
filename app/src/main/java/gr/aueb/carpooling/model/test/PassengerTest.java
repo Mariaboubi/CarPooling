@@ -42,7 +42,7 @@ public class PassengerTest {
         driver = new Driver("maria123", "maria", "pappas", "69694559", email2, "12345124", "19", "GRE10230910290194",
                 "112233", "mersedes");
         money = new Money(0.0, euroCurrency);
-        Address destination = new Address("Veikou", "37", "Athens", new ZipCode("11146",0.0,0.0), "Greece");
+        Address destination = new Address("Veikou", "37", "Athens", new ZipCode("11146"), "Greece");
         route = new Route(driver, money, LocalDateTime.of(2023, 10, 12, 10, 12), destination, 3, false);
         route1 = new Route(driver, money, LocalDateTime.of(2023, 9, 12, 10, 12), destination, 2, false);
 

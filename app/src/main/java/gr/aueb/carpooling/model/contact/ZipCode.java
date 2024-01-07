@@ -3,6 +3,7 @@ package gr.aueb.carpooling.model.contact;
 import androidx.annotation.NonNull;
 
 import java.util.Objects;
+import java.util.Random;
 
 public class ZipCode {
     private String zipcode;
@@ -10,9 +11,11 @@ public class ZipCode {
     private  double latitude ;
     private   double longitude ;
 
-    public ZipCode(String zipcode, double latitude, double longitude) {
-        this.latitude = latitude;
-        this.longitude = longitude;
+    Random random = new Random();
+
+    public ZipCode(String zipcode) {
+        this.latitude = 35.0 +(42.0-35.0)* random.nextDouble();
+        this.longitude = 19.0 +(28.0-19.0)* random.nextDouble();
         this.zipcode = zipcode;
     }
 

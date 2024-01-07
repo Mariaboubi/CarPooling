@@ -39,7 +39,7 @@ public class PassengerStatisticsPresenter {
 
 
     public void setSubroutes(Passenger passenger) {
-            subroutes = (ArrayList<Subroute>) routeDAO.findSubroutesByPassanger(passenger);
+            subroutes = (ArrayList<Subroute>) routeDAO.findSubroutesByPassenger(passenger);
     }
 
 

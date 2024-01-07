@@ -73,13 +73,13 @@ public class AddressTest {
         Assertions.assertEquals("Greece", address.getCountry());
         equalsTester.bothObjectsHaveSameState(address2);
 
-        address.setZipCode(new ZipCode("11111",0.0,0.0));
+        address.setZipCode(new ZipCode("11111"));
         equalsTester.objectsHaveDifferentState(address2);
 
-        address2.setZipCode(new ZipCode("22222",0.0,0.0));
+        address2.setZipCode(new ZipCode("22222"));
         equalsTester.objectsHaveDifferentState(address2);
 
-        address2.setZipCode(new ZipCode("11111",0.0,0.0));
+        address2.setZipCode(new ZipCode("11111"));
         equalsTester.bothObjectsHaveSameState(address2);
 
     }
