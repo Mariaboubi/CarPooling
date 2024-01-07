@@ -85,10 +85,6 @@ public class RatingPassengerRecyclerViewAdapter extends RecyclerView.Adapter<Rat
         passengerRatingDao.save(passengerRating);
         currentItem.addRates(passengerRating);
 
-//            holder.RateButton.setOnClickListener(v -> listener.selectRate(currentItem),
-//                    routeDAO.delete(route);
-//            );
-
         holder.RateButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
