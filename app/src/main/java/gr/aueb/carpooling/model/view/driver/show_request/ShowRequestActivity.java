@@ -59,7 +59,7 @@ public class ShowRequestActivity extends AppCompatActivity implements ShowReques
 
         Driver driver = driverDAO.findByUsername(username);
 
-        routes = routeDAO.findByDriver(driver) ;
+        routes = (ArrayList<Route>) routeDAO.findByDriver(driver);
 //        showErrorMessage("Size " ,String.valueOf(routes.size()));
 
 
@@ -99,6 +99,7 @@ public class ShowRequestActivity extends AppCompatActivity implements ShowReques
         emptyView.setVisibility(View.GONE);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 //        showErrorMessage("naiiii Size " ,String.valueOf(viewModel.getPresenter().getSubrouteList().size()));
+        System.out.println("Subroute list in show requests: " + (viewModel.getPresenter().getSubrouteList().size() ));
         recyclerView.setAdapter(new ShowRequestRecyclerViewAdapter(viewModel.getPresenter().getSubrouteList(), this,routes));
     }
     public void showErrorMessage (String title, String message)

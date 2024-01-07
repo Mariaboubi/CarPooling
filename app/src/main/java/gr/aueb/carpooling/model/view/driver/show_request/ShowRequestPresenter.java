@@ -46,13 +46,12 @@ public class ShowRequestPresenter {
      *  για να τα προβάλουμε ή να δείξουμε μήνυμα οτι δεν υπάρχουν διαδρομες
      */
     public void onChangeLayout() {
+        System.out.println("Subroute size: " + subroutes.size());
         if (subroutes.isEmpty()) {
             view.ShowNoRequests();
-//            view.showErrorMessage("LIST","EMPTY");
         }
         else {
             view.ShowRequests();
-//            view.showErrorMessage("LIST"," NOTTTTT EMPTY");
         }
     }
 

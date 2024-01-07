@@ -20,12 +20,12 @@ public class ShowRequestRecyclerViewAdapter extends RecyclerView.Adapter<ShowReq
 
     private final List<Subroute> subroutes;
 
-    private List<Route> routes;
+    private ArrayList<Route> routes;
 
     private Subroute currentItem;
     private ShowRequestViewModel viewModel;
     private final ShowRequestRecyclerViewAdapter.ShowRequestListener listener;
-    public ShowRequestRecyclerViewAdapter(ArrayList<Subroute> subroutes, ShowRequestRecyclerViewAdapter.ShowRequestListener listener,List<Route> routes) {
+    public ShowRequestRecyclerViewAdapter(ArrayList<Subroute> subroutes, ShowRequestRecyclerViewAdapter.ShowRequestListener listener,ArrayList<Route> routes) {
         this.subroutes = subroutes;
         this.routes = routes;
         this.listener = listener;
@@ -40,6 +40,7 @@ public class ShowRequestRecyclerViewAdapter extends RecyclerView.Adapter<ShowReq
 
     @Override
     public void onBindViewHolder(@NonNull ShowRequestRecyclerViewAdapter.ViewHolder holder, int position) {
+
         currentItem = subroutes.get(position);
 
         holder.routeDest.setText((currentItem.getDestination().toString()));
@@ -68,7 +69,8 @@ public class ShowRequestRecyclerViewAdapter extends RecyclerView.Adapter<ShowReq
 
     @Override
     public int getItemCount() {
-        return 0;
+        return subroutes.size();
+
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder
@@ -99,7 +101,5 @@ public class ShowRequestRecyclerViewAdapter extends RecyclerView.Adapter<ShowReq
 
     public interface ShowRequestListener {
         void selectRequest();
-
-
     }
 }
