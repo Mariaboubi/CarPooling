@@ -26,7 +26,7 @@ public interface PassengerDAO {
 
     Passenger findByName(String name);
 
-    ArrayList<Passenger> findByRoute(Route route);
+    ArrayList<Passenger> findAllByRoute(Route route);
 
     Passenger find(int id);
 

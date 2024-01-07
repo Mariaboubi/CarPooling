@@ -90,8 +90,9 @@ public class RatingPassengers extends AppCompatActivity implements RatingPasseng
 
     @Override
     public void selectRate(PassengerRating rating) {
-        Intent intent = new Intent(RatingPassengers.this, DriverFrontPage.class);
-        intent.putExtra("Username", username);
+        Intent intent = new Intent(RatingPassengers.this, RatingPassengers.class);
+        intent.putExtra("RouteId",rating.getRoute().getId());
+        intent.putExtra("Driver username", username);
         startActivity(intent);
     }
 }

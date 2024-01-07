@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import gr.aueb.carpooling.model.Driver;
 import gr.aueb.carpooling.model.Passenger;
 import gr.aueb.carpooling.model.Route;
 import gr.aueb.carpooling.model.dao.PassengerDAO;
@@ -74,7 +73,7 @@ public class PassengerDAOmemory implements PassengerDAO {
     }
 
     @Override
-    public ArrayList<Passenger> findByRoute(Route route) {
+    public ArrayList<Passenger> findAllByRoute(Route route) {
         ArrayList<Passenger> result= new ArrayList<>();
         for(Passenger passenger : entities){
             if(passenger.getRoutes().contains(route)){

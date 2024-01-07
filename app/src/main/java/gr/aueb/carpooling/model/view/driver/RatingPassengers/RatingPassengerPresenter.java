@@ -1,14 +1,8 @@
 package gr.aueb.carpooling.model.view.driver.RatingPassengers;
 
-import android.app.AlertDialog;
-import android.content.Intent;
-
-import org.threeten.bp.LocalDateTime;
-
 import java.util.ArrayList;
 
 import gr.aueb.carpooling.model.Passenger;
-import gr.aueb.carpooling.model.PassengerRating;
 
 import gr.aueb.carpooling.model.Route;
 import gr.aueb.carpooling.model.dao.PassengerDAO;
@@ -18,12 +12,14 @@ public class RatingPassengerPresenter {
     RatingPassengerView view;
     private PassengerDAO passengerDao;
 
+    private PassengerRatingDao passengerRatingDao;
+
     private ArrayList<Passenger> passengers;
 
 
-    public RatingPassengerPresenter(PassengerDAO passengerDao)
-    {
+    public RatingPassengerPresenter(PassengerDAO passengerDao, PassengerRatingDao passengerRatingDao) {
         this.passengerDao = passengerDao;
+        this.passengerRatingDao = passengerRatingDao;
         passengers = new ArrayList<>();
     }
 
@@ -37,17 +33,27 @@ public class RatingPassengerPresenter {
     }
 
     public void setPassengerList(Route route) {
-        passengers = (ArrayList<Passenger>) passengerDao.findByRoute(route);
+        ArrayList<Passenger> t = (ArrayList<Passenger>) passengerDao.findAllByRoute(route);
+
+        /* filter out passengers that already have a rating */
+        for (Passenger p : t) {
+            System.out.println(passengerRatingDao.find(p));
+            if (passengerRatingDao.find(p) != null) {
+                t.remove(p);
+            }
+        }
+        System.out.println(t);
+        System.out.println(passengers);
     }
+
     /**
-     *  Ελεγχουμε εαν η λίστα με τις διαδρομες είναι άδεια
-     *  για να τα προβάλουμε ή να δείξουμε μήνυμα οτι δεν υπάρχουν διαδρομες
+     * Ελεγχουμε εαν η λίστα με τις διαδρομες είναι άδεια
+     * για να τα προβάλουμε ή να δείξουμε μήνυμα οτι δεν υπάρχουν διαδρομες
      */
     public void onChangeLayout() {
         if (passengers.isEmpty()) {
             view.ShowNoPassengers();
-        }
-        else {
+        } else {
             view.ShowPassengers();
         }
     }
@@ -56,12 +62,12 @@ public class RatingPassengerPresenter {
      */
     /**
      * Επιστρέφει την λίστα με τις διαδρομές
+     *
      * @return η λίστα με τις διαδρομες
      */
     public ArrayList<Passenger> getPassengerList() {
         return passengers;
     }
-
 
 
 }

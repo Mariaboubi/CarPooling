@@ -72,7 +72,7 @@ public class RatingPassengerRecyclerViewAdapter extends RecyclerView.Adapter<Rat
         String str_username = "Passenger: " + currentItem.getUsername();
         holder.ratingUsername.setText(str_username);
 
-        //Route rating_route = currentItem.getRoute();
+//        Route rating_route = currentItem.getRoute();
 //        String reliability = holder.ratingReliability;
 //        String politeness = holder.ratingPoliteness;
 //        String consistency = holder.ratingConsistency;
@@ -85,12 +85,12 @@ public class RatingPassengerRecyclerViewAdapter extends RecyclerView.Adapter<Rat
         //PassengerRating passengerRating = new PassengerRating(passenger,route,politeness,consistency,reliability);
 //            passengerRatingDao.save(currentItem);
 
-        PassengerRating passengerRating = new PassengerRating(currentItem,route,politeness,consistency,reliability);
-        route.addPassengerRating(passengerRating);
-        passengerRatingDao.save(passengerRating);
-        currentItem.addRates(passengerRating);
+//        PassengerRating passengerRating = new PassengerRating(currentItem,route,politeness,consistency,reliability);
+//        route.addPassengerRating(passengerRating);
+//        passengerRatingDao.save(passengerRating);
+//        currentItem.addRates(passengerRating);
 
-        holder.RateButton.setOnClickListener(new View.OnClickListener(){
+
 //        route.Completed();
 //
 //        PassengerRating passengerRating = new PassengerRating(currentItem,route,politeness,consistency,reliability);
@@ -100,7 +100,7 @@ public class RatingPassengerRecyclerViewAdapter extends RecyclerView.Adapter<Rat
 //            holder.RateButton.setOnClickListener(v -> listener.selectRate(currentItem),
 //                    routeDAO.delete(route);
 //            );
-
+//
         holder.RateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,19 +110,22 @@ public class RatingPassengerRecyclerViewAdapter extends RecyclerView.Adapter<Rat
                 String reliability = holder.ratingReliability.getText().toString().trim();
 
                 PassengerRating passengerRating = new PassengerRating(rated_passenger, route, politeness, consistency, reliability);
-                System.out.println("Rating passenger");
-                System.out.println(passengerRating.getPolitenessRating());
-                System.out.println(passengerRating.getConsistencyRating());
-                System.out.println(passengerRating.getReliabilityRating());
+//                System.out.println("Rating passenger");
+//                System.out.println(passengerRating.getPolitenessRating());
+//                System.out.println(passengerRating.getConsistencyRating());
+//                System.out.println(passengerRating.getReliabilityRating());
+                passengerRatingDao.save(passengerRating);
 
                 rated_passenger.addRating(passengerRating);
-//                passengers.remove(rated_passenger);
-                //listener.selectRate(passengerRating);
+                route.addPassengerRating(passengerRating);
+
+                passengers.remove(rated_passenger);
+                listener.selectRate(passengerRating);
+
             }
+
         });
-
     }
-
 
     @Override
     public int getItemCount() {
@@ -148,7 +151,7 @@ public class RatingPassengerRecyclerViewAdapter extends RecyclerView.Adapter<Rat
             ratingPoliteness = ((EditText) v.findViewById(R.id.Politeness));
             ratingReliability = ((EditText) v.findViewById(R.id.Reliability));
             ratingConsistency = ((EditText) v.findViewById(R.id.Consistency));
-//            System.out.println(ratingPoliteness + " " + ratingReliability + " " + ratingConsistency);
+
             RateButton = (Button) v.findViewById(R.id.RateButton);
         }
 
@@ -158,4 +161,5 @@ public class RatingPassengerRecyclerViewAdapter extends RecyclerView.Adapter<Rat
     public interface PassengerRatingSelectionListener {
         void selectRate(PassengerRating rating);
     }
+//
 }

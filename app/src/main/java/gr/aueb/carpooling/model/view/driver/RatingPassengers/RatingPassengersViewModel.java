@@ -12,7 +12,7 @@ public class RatingPassengersViewModel extends ViewModel {
      */
     public RatingPassengersViewModel()
     {
-        presenter = new RatingPassengerPresenter(new PassengerDAOmemory());
+        presenter = new RatingPassengerPresenter(new PassengerDAOmemory(), new PassengerRatingDAOmemory());
     }
     /**
      *
