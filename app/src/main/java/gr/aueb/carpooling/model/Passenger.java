@@ -43,7 +43,7 @@ public class Passenger extends User implements PassengerInterface {
         for(PassengerRating rates: rates){
             sum+= rates.averageRating();
         }
-        return (float) (sum / size);
+        return rates.size() != 0 ? (float) (sum / size) : 0;
     }
 
 
