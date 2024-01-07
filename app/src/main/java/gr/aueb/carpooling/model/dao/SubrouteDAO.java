@@ -1,5 +1,6 @@
 package gr.aueb.carpooling.model.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import gr.aueb.carpooling.model.Passenger;
@@ -19,6 +20,9 @@ public interface SubrouteDAO {
 
     Passenger findPassengerBySubroute(Subroute subroute);
     Subroute find(int id);
+
+
+
 
     int nextId();
 }

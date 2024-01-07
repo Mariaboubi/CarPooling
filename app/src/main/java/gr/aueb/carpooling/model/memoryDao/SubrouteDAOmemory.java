@@ -13,7 +13,7 @@ import gr.aueb.carpooling.model.dao.SubrouteDAO;
 import gr.aueb.carpooling.model.dao.RouteDAO;
 
 public class SubrouteDAOmemory implements SubrouteDAO {
-
+     private RouteDAO routeDAO= new RouteDAOmemory();
     protected static ArrayList<Subroute> entities = new ArrayList<>();
     @Override
     public void delete(Subroute entity) {
@@ -57,7 +57,7 @@ public class SubrouteDAOmemory implements SubrouteDAO {
                 }
             }
             return null;
-        }
+    }
 
     @Override
     public int nextId() {

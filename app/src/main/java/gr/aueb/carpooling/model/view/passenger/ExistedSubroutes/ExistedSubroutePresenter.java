@@ -3,15 +3,19 @@ package gr.aueb.carpooling.model.view.passenger.ExistedSubroutes;
 
 import java.util.ArrayList;
 
+import gr.aueb.carpooling.model.Passenger;
 import gr.aueb.carpooling.model.Route;
 import gr.aueb.carpooling.model.Subroute;
+import gr.aueb.carpooling.model.dao.RouteDAO;
 import gr.aueb.carpooling.model.dao.SubrouteDAO;
+import gr.aueb.carpooling.model.memoryDao.RouteDAOmemory;
 
 public class ExistedSubroutePresenter {
 
     ExistedSubrouteView view;
 
     private SubrouteDAO subrouteDAO;
+    private RouteDAO routeDAO= new RouteDAOmemory();
 
     private ArrayList<Subroute> subroutes;
 
@@ -31,8 +35,8 @@ public class ExistedSubroutePresenter {
     /**
      * Γεμίζει την λίστα με της διαδρομεσ του συγκεκριμενου επιβατη
      */
-    public void setSubrouteList() {
-        subroutes = (ArrayList<Subroute>) subrouteDAO.findAll();
+    public void setSubrouteList(Passenger passenger) {
+        subroutes = (ArrayList<Subroute>) routeDAO.findSubroutesByPassanger(passenger);
     }
     /**
      *  Ελεγχουμε εαν η λίστα με τις διαδρομες είναι άδεια

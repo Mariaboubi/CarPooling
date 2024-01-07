@@ -78,10 +78,6 @@ public class SearchRouteActivity extends AppCompatActivity implements SearchRout
       Passenger pass = viewModel.getPresenter().findPassenger(username);
       route.addPassenger(pass,sub);
 
-
-//        Intent intent = new Intent(SearchRouteActivity.this, subrouteActivity.class);
-//        intent.putExtra("Username",username);
-//        startActivity(intent);
     }
 
 

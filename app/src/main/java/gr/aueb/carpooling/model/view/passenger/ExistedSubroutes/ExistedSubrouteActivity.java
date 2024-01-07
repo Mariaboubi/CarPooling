@@ -13,10 +13,13 @@ import android.view.View;
 import android.widget.TextView;
 
 import gr.aueb.carpooling.R;
+import gr.aueb.carpooling.model.Passenger;
 import gr.aueb.carpooling.model.Request_status;
 import gr.aueb.carpooling.model.Route;
 import gr.aueb.carpooling.model.Subroute;
+import gr.aueb.carpooling.model.dao.PassengerDAO;
 import gr.aueb.carpooling.model.dao.SubrouteDAO;
+import gr.aueb.carpooling.model.memoryDao.PassengerDAOmemory;
 import gr.aueb.carpooling.model.memoryDao.SubrouteDAOmemory;
 import gr.aueb.carpooling.model.view.driver.DriverFrontPage;
 import gr.aueb.carpooling.model.view.driver.ExistedRoutes.ExistedRouteActivity;
@@ -36,6 +39,8 @@ public class ExistedSubrouteActivity extends AppCompatActivity implements Existe
     private TextView emptyView;
 
     SubrouteDAO subrouteDAO= new SubrouteDAOmemory();
+    private PassengerDAO passengerDAO= new PassengerDAOmemory();
+    private Passenger passenger;
 
     @SuppressLint("MissingInflatedId")
 
@@ -52,7 +57,8 @@ public class ExistedSubrouteActivity extends AppCompatActivity implements Existe
             username = extras.getString("Username");
             //The key argument here must match that used in the other activity
         }
-        viewModel.getPresenter().setSubrouteList();
+        passenger= passengerDAO.findByUsername(username);
+        viewModel.getPresenter().setSubrouteList(passenger);
 
         recyclerView = findViewById(R.id.ChooseSubrouteRecyclerView);
         emptyView = findViewById(R.id.NoSubroutes);
@@ -94,7 +100,7 @@ public class ExistedSubrouteActivity extends AppCompatActivity implements Existe
                 viewModel.getPresenter().onChangeLayout();
             }else if(status == Request_status.REJECTED){
                 subrouteDAO.delete(subroute);
-                viewModel.getPresenter().setSubrouteList();
+                viewModel.getPresenter().setSubrouteList(passenger);
 
                 recyclerView = findViewById(R.id.ChooseSubrouteRecyclerView);
                 emptyView = findViewById(R.id.NoSubroutes);

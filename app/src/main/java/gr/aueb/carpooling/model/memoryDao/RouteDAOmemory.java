@@ -64,6 +64,37 @@ public class RouteDAOmemory implements RouteDAO {
     }
 
     @Override
+    public ArrayList<Subroute> findSubroutesByPassanger(Passenger passenger) {
+        ArrayList<Subroute> result = new ArrayList<>();
+        for (Route route : entities) {
+            HashMap<Passenger, Subroute> map = route.getPassengerRoutes();
+            Set<Passenger> passengers = map.keySet();
+            for (Passenger passenger1 : passengers) {
+                if (passenger1 == passenger) {
+                    result.add(map.get(passenger1));
+                }
+            }
+        }
+        return result;
+    }
+
+
+//    public ArrayList<Subroute> findSubroutesByPassanger(Passenger passenger) {
+//        ArrayList<Subroute> result= new ArrayList<>();
+//        for(Route route: entities){
+//            result.add(route.getSubRouteByPassenger(passenger));
+//
+//        }
+//        if (result.isEmpty()){
+//            return null;
+//        }else{
+//            return result;
+//        }
+//
+//    }
+
+
+    @Override
     public Route find(int id) {
         for(Route route: entities){
             if(route.getId()==id){
@@ -123,19 +154,4 @@ public class RouteDAOmemory implements RouteDAO {
     public Passenger findPassengerByRoute(Route route) {
         return null;
     }
-
-//    @Override
-//    public ArrayList<Subroute> findSubrouteByPassenger(Passenger passenger) {
-//        ArrayList<Subroute> result = new ArrayList<>();
-//        for (Route route : entities) {
-//            HashMap<Passenger, Subroute> map = route.getPassengerRoutes();
-//            Set<Passenger> passengers = map.keySet();
-//            for (Passenger passenger1 : passengers) {
-//                if (passenger1 == passenger) {
-//                    result.add(map.get(passenger1));
-//                }
-//            }
-//        }
-//        return result;
-//    }
 }

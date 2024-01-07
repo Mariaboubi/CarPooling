@@ -78,7 +78,8 @@ public class ExistedSubrouteRecyclerViewAdapter extends RecyclerView.Adapter<Exi
         holder.CompletedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                listener.selectSubroute(currentSubroute, currentSubroute.getStatus(), true);
+                Subroute clicksubroute= subroutes.get(position);
+                listener.selectSubroute(clicksubroute, clicksubroute.getStatus(), true);
 
             }
 
@@ -87,7 +88,8 @@ public class ExistedSubrouteRecyclerViewAdapter extends RecyclerView.Adapter<Exi
         holder.DeleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                listener.selectSubroute(currentSubroute, currentSubroute.getStatus(), false);
+                Subroute clicksubroute= subroutes.get(position);
+                listener.selectSubroute(clicksubroute, clicksubroute.getStatus(), false);
             }
 
         });

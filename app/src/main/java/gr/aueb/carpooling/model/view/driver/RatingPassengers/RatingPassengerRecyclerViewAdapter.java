@@ -85,6 +85,12 @@ public class RatingPassengerRecyclerViewAdapter extends RecyclerView.Adapter<Rat
         //PassengerRating passengerRating = new PassengerRating(passenger,route,politeness,consistency,reliability);
 //            passengerRatingDao.save(currentItem);
 
+        PassengerRating passengerRating = new PassengerRating(currentItem,route,politeness,consistency,reliability);
+        route.addPassengerRating(passengerRating);
+        passengerRatingDao.save(passengerRating);
+        currentItem.addRates(passengerRating);
+
+        holder.RateButton.setOnClickListener(new View.OnClickListener(){
 //        route.Completed();
 //
 //        PassengerRating passengerRating = new PassengerRating(currentItem,route,politeness,consistency,reliability);
