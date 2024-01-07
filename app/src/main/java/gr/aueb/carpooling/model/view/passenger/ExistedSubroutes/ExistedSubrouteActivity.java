@@ -16,6 +16,8 @@ import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.Request_status;
 import gr.aueb.carpooling.model.Route;
 import gr.aueb.carpooling.model.Subroute;
+import gr.aueb.carpooling.model.dao.SubrouteDAO;
+import gr.aueb.carpooling.model.memoryDao.SubrouteDAOmemory;
 import gr.aueb.carpooling.model.view.driver.DriverFrontPage;
 import gr.aueb.carpooling.model.view.driver.ExistedRoutes.ExistedRouteActivity;
 import gr.aueb.carpooling.model.view.driver.RatingPassengers.RatingPassengers;
@@ -32,6 +34,8 @@ public class ExistedSubrouteActivity extends AppCompatActivity implements Existe
     private RecyclerView recyclerView;
 
     private TextView emptyView;
+
+    SubrouteDAO subrouteDAO= new SubrouteDAOmemory();
 
     @SuppressLint("MissingInflatedId")
 
@@ -64,13 +68,36 @@ public class ExistedSubrouteActivity extends AppCompatActivity implements Existe
     }
 
     @Override
-    public void selectSubroute(Subroute subroute, Request_status status) {
-        if (status == Request_status.APPROVED) {
-            Intent intent = new Intent(ExistedSubrouteActivity.this, DriverRaitingActivity.class);
-//        intent.putExtra("RouteId",route.getId());
-            intent.putExtra("Username", username);
-            startActivity(intent);
+    public void selectSubroute(Subroute subroute, Request_status status,Boolean b) {
+        showErrorMessage("Dest",subroute.getDestination().toString());
+        if(b){
+            if (status == Request_status.APPROVED){
+                Intent intent = new Intent(ExistedSubrouteActivity.this, DriverRaitingActivity.class);
+                intent.putExtra("Username", username);
+                intent.putExtra("SubrouteDest",subroute.getDestination().toString());
+                intent.putExtra("SubroutePick",subroute.getPickupPoint().toString());
+                intent.putExtra("SubrouteDate",subroute.getPickupTime().toString());
+                startActivity(intent);
+            }else if(status == Request_status.REJECTED){
+                showErrorMessage("You can press button complete if request status is aproved.Now is: ", String.valueOf(Request_status.REJECTED));
+            }else {
+                showErrorMessage("Wait for answer.Now is: ", String.valueOf(Request_status.PENDING));
+            }
+        }else{
+            if (status == Request_status.APPROVED){
+                showErrorMessage("You can press button delete if request status is approved.Now is: ", String.valueOf(Request_status.APPROVED));
+            }else if(status == Request_status.REJECTED){
+                subrouteDAO.delete(subroute);
+                viewModel.getPresenter().setSubrouteList();
+
+                recyclerView = findViewById(R.id.ChooseSubrouteRecyclerView);
+                emptyView = findViewById(R.id.NoSubroutes);
+                viewModel.getPresenter().onChangeLayout();
+            }else {
+                showErrorMessage("Wait for answer.Now is: ", String.valueOf(subroute.getStatus()));
+            }
         }
+
     }
 
     void openPessengerFrontPage() {

@@ -131,6 +131,7 @@
     <string name="no_available_requests">No available requests.</string>
     <string name="cleanliness">Cleanliness</string>
     <string name="security">Security</string>
+    <string name="star">star</string>
 
 
 </resources>

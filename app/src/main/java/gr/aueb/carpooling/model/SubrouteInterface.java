@@ -84,10 +84,8 @@ public interface SubrouteInterface {
     Money calculateCost();
 
 
-    void setPendingStatus();
-    void setApprovedStatus() ;
+    void setStatus(Request_status status);
 
-     void setRejectedStatus() ;
 
     Request_status getStatus();
 }

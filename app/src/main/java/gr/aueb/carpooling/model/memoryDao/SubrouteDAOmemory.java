@@ -36,9 +36,9 @@ public class SubrouteDAOmemory implements SubrouteDAO {
     }
 
     @Override
-    public Subroute find(int id) {
+    public Subroute find(String dest,String pick,String date) {
         for(Subroute subroute: entities){
-            if(subroute.getId()==id){
+            if(subroute.getDestination().toString().equals(dest) && subroute.getPickupPoint().toString().equals(pick) && subroute.getPickupTime().toString().equals(date)){
                 return subroute;
             }
         }

@@ -82,6 +82,13 @@ public class Route implements RouteInterface {
         this.passenger_routes.put(passenger, subroute);
     }
 
+    public Route getRoute(Passenger passenger, Subroute subroute) {
+        if (passenger_routes.containsKey(passenger) && Objects.equals(passenger_routes.get(passenger), subroute)) {
+            return this;
+        }
+        return null;
+    }
+
     public Subroute getSubRouteByPassenger(Passenger passenger) {
         return this.passenger_routes.get(passenger);
     }

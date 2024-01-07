@@ -34,18 +34,13 @@ public class Subroute implements SubrouteInterface {
     }
 
 
-    public void setPendingStatus() {
-        this.status = PENDING;
-    }
-    public void setApprovedStatus() {
-        this.status = APPROVED;
-    }
-    public void setRejectedStatus() {
-        this.status = REJECTED;
+    public void setStatus(Request_status status) {
+        this.status = status;
     }
     public void setStatus(Request_status stat) {
         this.status = stat;
     }
+
 
     public Request_status getStatus() {
         return this.status;

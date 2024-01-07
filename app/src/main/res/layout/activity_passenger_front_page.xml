@@ -6,38 +6,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".model.view.passenger.PassengerFrontPageActivity">
-<LinearLayout
-    android:id="@+id/linearLayout2"
-    android:layout_width="match_parent"
-    android:layout_height="53dp"
-    android:background="#6946A6"
-    android:orientation="vertical"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.0"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.0">
 
-    <ImageButton
-        android:id="@+id/log_out"
-        android:layout_width="58dp"
-        android:layout_height="0dp"
-        android:layout_gravity="end"
-        android:layout_weight="1"
-        android:adjustViewBounds="true"
-        android:backgroundTint="#00FFFFFF"
-        android:contentDescription="@string/back"
-        android:cropToPadding="false"
-        android:scaleType="centerInside"
-        app:srcCompat="@drawable/log_out"
-        tools:ignore="RtlHardcoded" />
-</LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:background="#6946A6"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageButton
+            android:id="@+id/log_out"
+            android:layout_width="58dp"
+            android:layout_height="0dp"
+            android:layout_gravity="end"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:backgroundTint="#00FFFFFF"
+            android:contentDescription="@string/back"
+            android:cropToPadding="false"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/log_out"
+            tools:ignore="RtlHardcoded" />
+    </LinearLayout>
 
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="100dp"
         android:layout_height="48dp"
+        android:layout_marginEnd="311dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,6 +61,7 @@
             app:srcCompat="@drawable/wallet"
             tools:ignore="RtlHardcoded" />
     </LinearLayout>
+
 
     <LinearLayout
         android:id="@+id/linearLayout3"
@@ -89,6 +92,7 @@
     <LinearLayout
         android:layout_width="410dp"
         android:layout_height="179dp"
+        android:layout_marginStart="1dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -125,6 +129,54 @@
             android:text="@string/show_routes"
             android:textSize="20sp"
             app:cornerRadius="10dp" />
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="620dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.850"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.943">
+
+
+        <TextView
+            android:id="@+id/RATE"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/rate"
+            android:textColor="#271814"
+            android:textSize="25sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/Image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.073">
+
+        <ImageView
+            android:id="@+id/STAR"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/star"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+            android:src="@drawable/star" />
+
     </LinearLayout>
 
 
