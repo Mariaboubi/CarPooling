@@ -41,7 +41,7 @@ public class ShowRequestActivity extends AppCompatActivity implements ShowReques
 
     private RouteDAO routeDAO  = new RouteDAOmemory();
 
-    private List<Route> routes;
+    private ArrayList<Route> routes;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,11 +59,13 @@ public class ShowRequestActivity extends AppCompatActivity implements ShowReques
 
         Driver driver = driverDAO.findByUsername(username);
 
-        routes =  routeDAO.findByDriver(driver);
+        routes = routeDAO.findByDriver(driver) ;
+//        showErrorMessage("Size " ,String.valueOf(routes.size()));
 
 
 
-        //viewModel.getPresenter().setRouteList(driver);
+       viewModel.getPresenter().setSubrouteList(routes);
+//        showErrorMessage("Size " ,String.valueOf(viewModel.getPresenter().getSubrouteList().size()));
 
         // ui initialization
         recyclerView = findViewById(R.id.ShowRequestRecyclerView);
@@ -96,6 +98,7 @@ public class ShowRequestActivity extends AppCompatActivity implements ShowReques
         recyclerView.setVisibility(View.VISIBLE);
         emptyView.setVisibility(View.GONE);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        showErrorMessage("naiiii Size " ,String.valueOf(viewModel.getPresenter().getSubrouteList().size()));
         recyclerView.setAdapter(new ShowRequestRecyclerViewAdapter(viewModel.getPresenter().getSubrouteList(), this,routes));
     }
     public void showErrorMessage (String title, String message)
