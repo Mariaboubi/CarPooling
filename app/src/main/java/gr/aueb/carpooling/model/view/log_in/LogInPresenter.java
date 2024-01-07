@@ -20,6 +20,7 @@ public class LogInPresenter {
     }
 
     public void authenticate() {
+        System.out.println("hi");
         String inputUsername = view.extractUsername();
         String inputPassword = view.extractPassword();
         User user = userDAO.find(inputUsername, inputPassword);
@@ -27,7 +28,7 @@ public class LogInPresenter {
         if (inputUsername.isEmpty() && inputPassword.isEmpty()) {
             view.showErrorMessage("Error!", "Complete all the fields");
         } else if (user != null) {
-            view.onAttributeSelection(inputUsername);
+            view.openAttributeSelectionActivity(inputUsername);
         } else {
             view.showErrorMessage("Incorrect username or password.", "Try again!");
         }

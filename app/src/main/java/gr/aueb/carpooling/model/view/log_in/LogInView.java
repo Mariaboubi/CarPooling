@@ -13,13 +13,6 @@ public interface LogInView extends View {
      */
     String extractPassword();
 
-    /**
-     * Displays a success message when the user successfully logs into their account
-     * and navigates to the Home Page activity when the OK button is pressed.
-     *
-     * @param username The user's name.
-     */
-    void onAttributeSelection(String username);
 
     /**
      * This method is called when the registration button for a customer is pressed.

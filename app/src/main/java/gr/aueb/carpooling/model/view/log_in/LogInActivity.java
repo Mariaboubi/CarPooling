@@ -42,10 +42,6 @@ public class LogInActivity extends AppCompatActivity implements LogInView{
                 .setPositiveButton("OK", null).create().show();
     }
 
-    public void onAttributeSelection(String username)
-    {
-        login_button.setOnClickListener(v -> openAttributeSelectionActivity(username));
-    }
 
     public String extractUsername()
     {
