@@ -33,7 +33,7 @@ public class PassengerFrontPageActivity extends AppCompatActivity implements Pas
 
     private  PassengerFrontPageViewModel viewModel;
 
-    private PassengerDAO passengerDAO= new PassengerDAOmemory();
+    private final PassengerDAO passengerDAO= new PassengerDAOmemory();
 
 
 

@@ -18,7 +18,6 @@ import gr.aueb.carpooling.model.Route;
 
 public class ExistedRouteRecyclerViewAdapter extends RecyclerView.Adapter<ExistedRouteRecyclerViewAdapter.ViewHolder> {
     private final List<Route> routes;
-
     private Route currentItem;
     private ExistedRouteViewModel viewModel;
     private final ExistedRouteRecyclerViewAdapter.RouteSelectionListener listener;
@@ -58,45 +57,26 @@ public class ExistedRouteRecyclerViewAdapter extends RecyclerView.Adapter<Existe
      */
     @Override
     public void onBindViewHolder(@NonNull ExistedRouteRecyclerViewAdapter.ViewHolder holder, int position) {
+        System.out.println(position);
+
         currentItem = routes.get(position);
 
         holder.routeDest.setText((currentItem.getDestinationString()));
 
         String str_date = "Date : " + currentItem.getDate().toString();
         holder.routeDate.setText(str_date);
-        boolean b = currentItem.isCompleted();
 
-        // holder.routeCompleted.setText((String.valueOf(b)));
-//        holder.routeDest.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                listener.selectRoute(currentItem);
-//            }m
-//        });
         holder.CompletedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                currentItem.Completed();
+                Route clickedRoute = routes.get(position);
+                clickedRoute.Completed();
                 boolean b = currentItem.isCompleted();
-                System.out.print(currentItem.getDestination().toString());
 
-                // holder.routeCompleted.setText((String.valueOf(b)));
-                listener.selectRoute(currentItem);
+                listener.selectRoute(clickedRoute);
 
-//                Context context = view.getContext();
-//                Intent intent = new Intent(context, RatingPassengers.class);
-//                // extras
-//                intent.putExtra("Route id",currentItem.getId());
-                //context.startActivity(intent);
-
-//                Intent intent = new Intent(this , RatingPassengers.class);
-//                intent.putExtra("Route id",currentItem.getId());
-//                startActivity(intent);
-//                viewModel.getPresenter().showError(b);
             }
-
         });
-
     }
 
     @Override

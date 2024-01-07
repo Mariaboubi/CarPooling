@@ -33,7 +33,7 @@ public class Passenger extends User implements PassengerInterface {
         this.CVV = CVV;
     }
 
-    public void addRates(PassengerRating rating) {
+    public void addRating(PassengerRating rating) {
         this.rates.add(rating);
     }
 

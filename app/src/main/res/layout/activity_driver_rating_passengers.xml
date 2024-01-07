@@ -30,6 +30,16 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0">
 
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="right|end"
+                android:adjustViewBounds="true"
+                android:backgroundTint="#00FFFFFF"
+                android:contentDescription="@string/back"
+                android:cropToPadding="false"
+                android:scaleType="centerInside"
+                android:src="@drawable/check" />
 
 
         </LinearLayout>

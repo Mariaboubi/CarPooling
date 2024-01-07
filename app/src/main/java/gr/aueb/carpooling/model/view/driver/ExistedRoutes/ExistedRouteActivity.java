@@ -69,11 +69,9 @@ public class ExistedRouteActivity extends AppCompatActivity implements ExitedRou
 
         @Override
         public void selectRoute (Route route){
-//            showErrorMessage("RouteDest",route.getDestination().toString());
+
             Intent intent = new Intent(ExistedRouteActivity.this, RatingPassengers.class);
-            intent.putExtra("RouteDate",route.getDate().toString());
-            intent.putExtra("RouteDest",route.getDestination().toString());
-            intent.putExtra("Username", username);
+
             intent.putExtra("RouteId",route.getId());
             intent.putExtra("Driver username", username);
             startActivity(intent);

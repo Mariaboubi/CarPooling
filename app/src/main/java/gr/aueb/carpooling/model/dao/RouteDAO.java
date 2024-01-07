@@ -20,6 +20,8 @@ public interface RouteDAO {
     int nextId();
 
     Passenger findPassenger(Route route, Subroute subroute);
+
+    Passenger findPassengerByRoute(Route route);
     List<Route> findExistedRoutes();
 
     Route findByMap(Passenger pas, Subroute sub);
