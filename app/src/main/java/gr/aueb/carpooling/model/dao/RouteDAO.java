@@ -1,5 +1,6 @@
 package gr.aueb.carpooling.model.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import gr.aueb.carpooling.model.Driver;
@@ -15,6 +16,21 @@ public interface RouteDAO {
     void save(Route entity);
     List<Route> findAll();
 
+    //    public ArrayList<Subroute> findSubroutesByPassanger(Passenger passenger) {
+//        ArrayList<Subroute> result= new ArrayList<>();
+//        for(Route route: entities){
+//            result.add(route.getSubRouteByPassenger(passenger));
+//
+//        }
+//        if (result.isEmpty()){
+//            return null;
+//        }else{
+//            return result;
+//        }
+//
+//    }
+    //ArrayList<Subroute> findSubrouteByPassenger(Passenger passenger);
+
     Route find(int id);
     List<Route> findByDriver(Driver driver);
     int nextId();
@@ -25,4 +41,6 @@ public interface RouteDAO {
     Route findByMap(Passenger pas, Subroute sub);
 
     Route findByDestDateDriver(String dest, String date,Driver driver);
+
+    ArrayList<Subroute> findSubroutesByPassanger(Passenger passenger);
 }

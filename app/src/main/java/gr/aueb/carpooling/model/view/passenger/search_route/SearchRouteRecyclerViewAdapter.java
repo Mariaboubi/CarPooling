@@ -55,7 +55,8 @@ public class SearchRouteRecyclerViewAdapter extends RecyclerView.Adapter<SearchR
         holder.RequestButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.selectRoute(currentItem);
+                Route clickroute= routes.get(position);
+                listener.selectRoute(clickroute);
             }
         });
     }
