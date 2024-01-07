@@ -2,18 +2,11 @@ package gr.aueb.carpooling.model.view.subroute;
 
 import org.threeten.bp.LocalDateTime;
 
-import java.util.Currency;
-import java.util.HashMap;
-import java.util.Map;
-
 import gr.aueb.carpooling.model.Passenger;
-import gr.aueb.carpooling.model.Route;
 import gr.aueb.carpooling.model.Subroute;
 import gr.aueb.carpooling.model.contact.Address;
-import gr.aueb.carpooling.model.contact.Money;
 import gr.aueb.carpooling.model.contact.ZipCode;
 import gr.aueb.carpooling.model.dao.PassengerDAO;
-
 import gr.aueb.carpooling.model.dao.SubrouteDAO;
 
 
@@ -23,12 +16,11 @@ public class SubroutePresenter {
     private PassengerDAO passengerDAO;
 
     SubrouteView view;
-    private int PasengerId;
 
     private Passenger passenger;
 
     public SubroutePresenter(PassengerDAO passengerDAO, SubrouteDAO subrouteDAO) {
-        this.passengerDAO= passengerDAO;
+        this.passengerDAO = passengerDAO;
         this.subrouteDAO = subrouteDAO;
     }
 
@@ -46,26 +38,26 @@ public class SubroutePresenter {
 
         if (streetDest.isEmpty() || numberDest.isEmpty() || CityDest.isEmpty() || ZipCodeDest.isEmpty() || date.isEmpty() ||
                 streetPick.isEmpty() || numberPick.isEmpty() || CityPick.isEmpty() || ZipCodePick.isEmpty()) {
-            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε όλα τα πεδία!.");
+            view.showErrorMessage("Error!", "Please fill all the fields.");
         } else if (streetDest.length() < 2) {
-            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε απο 3 και πάνω χαρακτήρες στο Street του Destination.");
-        } else if (Integer.parseInt(numberDest) < 0) {
-            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε Θετικό αριθμό στο νουμερο του δρομου  του Destination.");
+            view.showErrorMessage("Error!", "Destination Street can't be less than 3 characters.");
+        } else if (Integer.parseInt(numberDest) <= 0) {
+            view.showErrorMessage("Error!", "Destination Street number must be a positive number.");
         } else if (CityDest.length() < 2) {
-            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε απο 3 και πάνω χαρακτήρες στο City  του Destination");
+            view.showErrorMessage("Error!", "Destination City can't be less than 3 characters.");
         } else if (ZipCodeDest.length() != 5) {
-            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε 5 ψηφία στον Ταχυδρομικό κώδικα(ZipCode) του Destination");
+            view.showErrorMessage("Error!", "Destination Zip code must be a five digit number.");
         } else if (streetPick.length() < 2) {
-            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε απο 3 και πάνω χαρακτήρες στο Street του Pick up Point.");
-        } else if (Integer.parseInt(numberPick) < 0) {
-            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε Θετικό αριθμό στο νουμερο του δρομου του Pick up Point.");
+            view.showErrorMessage("Error!", "Pick-up Point  Street can't be less than 3 characters.");
+        } else if (Integer.parseInt(numberPick) <= 0) {
+            view.showErrorMessage("Error!", "Pick-up Point Street number must be a positive number.");
         } else if (CityPick.length() < 2) {
-            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε απο 3 και πάνω χαρακτήρες στο City του Pick up Point");
+            view.showErrorMessage("Error!", "Pick-up Point City can't be less than 3 characters");
         } else if (ZipCodePick.length() != 5) {
-            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε 5 ψηφία στον Ταχυδρομικό κώδικα(ZipCode) του Pick up Point");
+            view.showErrorMessage("Error!", "Pick-up Point Zip code must be a five digit number.");
         } else if (!date.contains("T")) {
-            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε την ημερομηνια σθμφωνα με το παραδειγμα");
-        }else{
+            view.showErrorMessage("Error!", "Incorrect date format. Please, check the example.");
+        } else {
             ZipCode zipCode1 = new ZipCode(ZipCodeDest, 0.0, 0.0);
             Address destination = new Address(streetDest, numberDest, CityDest, zipCode1, "Greece");
             ZipCode zipCode2 = new ZipCode(ZipCodePick, 0.0, 0.0);
@@ -73,26 +65,22 @@ public class SubroutePresenter {
             Subroute subroute = new Subroute(destination, pickUpPoint, LocalDateTime.parse(date));
             subrouteDAO.save(subroute);
             view.showRouteAddedMessage(subroute);
-    }
+        }
     }
 
-
-    public void setPassenger(int id){
-        passenger= passengerDAO.find(id);
+    public void setPassenger(int id) {
+        passenger = passengerDAO.find(id);
     }
 
     public void setView(SubrouteView view) {
         this.view = view;
     }
 
-    public SubrouteView getView(){
+    public SubrouteView getView() {
         return this.view;
     }
 
-    public Passenger getPassenger(){
+    public Passenger getPassenger() {
         return this.passenger;
     }
-
-
-
 }
