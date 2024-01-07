@@ -108,16 +108,6 @@ public abstract class Initializer {
 
         PassengerRatingDao passengerRatingDao= getPassengerRatingDAO();
 
-        PassengerRating pas_rating1= new PassengerRating(passenger1,route1,"4.0","5.0","3.5");
-        passengerRatingDao.save(pas_rating1);
-        route1.addPassengerRating(pas_rating1);
-        passenger1.addRating(pas_rating1);
-
-        PassengerRating pas_rating2= new PassengerRating(passenger2,route1,"4.0","5.0","4.5");
-        passengerRatingDao.save(pas_rating2);
-        route2.addPassengerRating(pas_rating2);
-        passenger2.addRating(pas_rating2);
-
         ////// NEW SUBROUTES ///////////////////////////////////////////////////////////////////
 
         SubrouteDAO subrouteDAO= getSubrouteDAO();
