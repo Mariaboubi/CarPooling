@@ -81,7 +81,7 @@ public class Route implements RouteInterface {
     }
 
 
-    public void addPassenger(Passenger passenger, Subroute subroute) {
+    public void addPassengerRoute(Passenger passenger, Subroute subroute) {
         this.passenger_routes.put(passenger, subroute);
     }
 
@@ -99,7 +99,14 @@ public class Route implements RouteInterface {
     public void removePassenger(Passenger passenger) {
         passenger_routes.remove(passenger);
     }
-
+    public void removeSubroute(Subroute subroute) {
+        for (Passenger passenger : passenger_routes.keySet()) {
+            if (passenger_routes.get(passenger) == subroute) {
+                passenger_routes.remove(passenger);
+                break;
+            }
+        }
+    }
     public Money getPassengerCost(Passenger passenger) {
         return this.passenger_routes.get(passenger).calculateCost();
     }
@@ -117,7 +124,7 @@ public class Route implements RouteInterface {
     }
 
     public String getDestinationString() {
-        return this.destination.toString();
+        return this.destination.toString2();
     }
 
     public void setDestination(Address destination) {

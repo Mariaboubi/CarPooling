@@ -8,23 +8,29 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import gr.aueb.carpooling.R;
+import gr.aueb.carpooling.model.Passenger;
+import gr.aueb.carpooling.model.Request_status;
 import gr.aueb.carpooling.model.Route;
 import gr.aueb.carpooling.model.Subroute;
+import gr.aueb.carpooling.model.dao.RouteDAO;
+import gr.aueb.carpooling.model.memoryDao.RouteDAOmemory;
 
 
 public class ShowRequestRecyclerViewAdapter extends RecyclerView.Adapter<ShowRequestRecyclerViewAdapter.ViewHolder> {
 
-    private final List<Subroute> subroutes;
+    private final ArrayList<Subroute> subroutes;
 
     private ArrayList<Route> routes;
 
-    private Subroute currentItem;
     private ShowRequestViewModel viewModel;
     private final ShowRequestRecyclerViewAdapter.ShowRequestListener listener;
+    private final RouteDAO routeDAO = new RouteDAOmemory();
     public ShowRequestRecyclerViewAdapter(ArrayList<Subroute> subroutes, ShowRequestRecyclerViewAdapter.ShowRequestListener listener,ArrayList<Route> routes) {
         this.subroutes = subroutes;
         this.routes = routes;
@@ -41,28 +47,39 @@ public class ShowRequestRecyclerViewAdapter extends RecyclerView.Adapter<ShowReq
     @Override
     public void onBindViewHolder(@NonNull ShowRequestRecyclerViewAdapter.ViewHolder holder, int position) {
 
-        currentItem = subroutes.get(position);
+        Subroute currentSubroute = subroutes.get(position);
+        String str_destination = "Destination address: " + currentSubroute.getDestination().toString2();
+        holder.routeDest.setText(str_destination);
 
-        holder.routeDest.setText((currentItem.getDestination().toString()));
-        String str_date = currentItem.getPickupTime().toString();
+        String str_date = "Date: " + currentSubroute.getPickupTime().toString();
         holder.routeDate.setText(str_date);
 
-        //routes.findPassengerBySubroute(currentItem);
-        //holder.passengerName
-//        holder.passengerName = currentItem.
+        Passenger passenger = routeDAO.findPassengerBySubroute(currentSubroute);
 
+        String str_name = "Passenger name: " + passenger.getName();
+        holder.passengerName.setText(str_name);
+
+        String str_rate = "Passenger rating: " + new DecimalFormat("0.00").format(passenger.averageRating());
+        holder.passengerRate.setText(str_rate);
 
         holder.acceptButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                currentSubroute.setStatus(Request_status.APPROVED);
+//                System.out.println("ACCEPTED");
+//                System.out.println(currentSubroute.getStatus().toString());
+                listener.refreshRequests();
             }
         });
 
         holder.rejectButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                currentSubroute.setStatus(Request_status.REJECTED);
 
+//                System.out.println("ACCEPTED");
+//                System.out.println(currentSubroute.getStatus().toString());
+                listener.refreshRequests();
             }
         });
     }
@@ -100,6 +117,6 @@ public class ShowRequestRecyclerViewAdapter extends RecyclerView.Adapter<ShowReq
     }
 
     public interface ShowRequestListener {
-        void selectRequest();
+        void refreshRequests();
     }
 }

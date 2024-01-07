@@ -10,7 +10,6 @@ public class AttributeSelectionPresenter {
 
     private PassengerDAO passengerDAO;
     private DriverDAO driverDAO;
-
     AttributeSelectionView view;
 
     public AttributeSelectionPresenter(DriverDAOmemory driverDAOmemory, PassengerDAOmemory passengerDAOmemory) {
@@ -26,18 +25,10 @@ public class AttributeSelectionPresenter {
     }
 
     public boolean authenticateAttributePassenger(String username) {
-//        view.showErrorMessage("Id in passenger", String.valueOf(id));
-//        boolean b = passengerDAO.find(username);
-//        String str = String.valueOf(b);
-//        view.showErrorMessage("Id in passenger", String.valueOf(b));
         return passengerDAO.find(username);
     }
 
     public boolean authenticateAttributeDriver(String username) {
-//        view.showErrorMessage("Id in driver", String.valueOf(id));
-//        boolean b = driverDAO.find(username);
-//        String str = String.valueOf(b);
-//        view.showErrorMessage("Id in driver", username);
         return driverDAO.find(username);
     }
 }

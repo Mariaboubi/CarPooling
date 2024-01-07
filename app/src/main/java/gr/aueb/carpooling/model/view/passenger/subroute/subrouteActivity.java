@@ -1,11 +1,9 @@
-package gr.aueb.carpooling.model.view.subroute;
+package gr.aueb.carpooling.model.view.passenger.subroute;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,11 +11,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-import java.util.HashMap;
-
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.Subroute;
-import gr.aueb.carpooling.model.view.passenger.PassengerFrontPageActivity;
+import gr.aueb.carpooling.model.view.passenger.front_page.PassengerFrontPageActivity;
 import gr.aueb.carpooling.model.view.passenger.search_route.SearchRouteActivity;
 
 public class subrouteActivity extends AppCompatActivity implements SubrouteView {
@@ -28,7 +24,6 @@ public class subrouteActivity extends AppCompatActivity implements SubrouteView 
 
     private SubrouteViewModel viewModel;
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

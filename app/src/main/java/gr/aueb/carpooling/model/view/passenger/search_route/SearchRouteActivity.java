@@ -17,11 +17,7 @@ import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.Passenger;
 import gr.aueb.carpooling.model.Route;
 import gr.aueb.carpooling.model.Subroute;
-import gr.aueb.carpooling.model.view.driver.ExistedRoutes.ExistedRouteActivity;
-import gr.aueb.carpooling.model.view.driver.ExistedRoutes.ExistedRouteRecyclerViewAdapter;
-import gr.aueb.carpooling.model.view.log_in.LogInActivity;
-import gr.aueb.carpooling.model.view.passenger.PassengerFrontPageActivity;
-import gr.aueb.carpooling.model.view.subroute.subrouteActivity;
+import gr.aueb.carpooling.model.view.passenger.front_page.PassengerFrontPageActivity;
 
 public class SearchRouteActivity extends AppCompatActivity implements SearchRouteView, SearchRouteRecyclerViewAdapter.SearchRouteSelectionListener {
 
@@ -33,6 +29,7 @@ public class SearchRouteActivity extends AppCompatActivity implements SearchRout
     private String username;
     private int subroute_id;
     private TextView emptyView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,24 +42,24 @@ public class SearchRouteActivity extends AppCompatActivity implements SearchRout
         if (extras != null) {
             username = extras.getString("Username");
             subroute_id = extras.getInt("Subroute");
-            //The key argument here must match that used in the other activity
         }
 
-        viewModel.getPresenter().setRouteList();
+        Subroute subroute = viewModel.getPresenter().findSubroute(subroute_id);
+        Passenger currentPassenger = viewModel.getPresenter().findPassenger(username);
+        viewModel.getPresenter().findSameDestinationCityRoutes(currentPassenger, subroute.getDestination().getCity());
         int l = viewModel.getPresenter().getRouteList().size();
-        showErrorMessage("len",String.valueOf(l));
+        showErrorMessage("len", String.valueOf(l));
         // ui initialization
         recyclerView = findViewById(R.id.ChooseRouteRecyclerView);
         emptyView = findViewById(R.id.NoRoutes);
         viewModel.getPresenter().onChangeLayout();
-        findViewById(R.id.back_button).setOnClickListener(new View.OnClickListener(){
+        findViewById(R.id.back_button).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 openPassengerFrontPage();
             }
         });
     }
-
 
 
     void openPassengerFrontPage() {
@@ -71,15 +68,19 @@ public class SearchRouteActivity extends AppCompatActivity implements SearchRout
         startActivity(intent);
     }
 
-//    @Override
+    //    @Override
     public void selectRoute(Route route) {
-      Subroute sub = viewModel.getPresenter().findSubroute(subroute_id);
-      sub.setStatus(PENDING);
-      Passenger pass = viewModel.getPresenter().findPassenger(username);
-      route.addPassenger(pass,sub);
+        Subroute sub = viewModel.getPresenter().findSubroute(subroute_id);
+        sub.setStatus(PENDING);
+        Passenger pass = viewModel.getPresenter().findPassenger(username);
+        route.addPassengerRoute(pass, sub);
 
+        /* Redirect to same page in order to request another route */
+        Intent intent = new Intent(this, this.getClass());
+        intent.putExtra("Username", username);
+        intent.putExtra("Subroute", sub.getId());
+        startActivity(intent);
     }
-
 
 
     @Override
@@ -93,11 +94,10 @@ public class SearchRouteActivity extends AppCompatActivity implements SearchRout
         recyclerView.setVisibility(View.VISIBLE);
         emptyView.setVisibility(View.GONE);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new SearchRouteRecyclerViewAdapter(viewModel.getPresenter().getRouteList(),  this));
+        recyclerView.setAdapter(new SearchRouteRecyclerViewAdapter(viewModel.getPresenter().getRouteList(), this));
     }
 
-    public void showErrorMessage (String title, String message)
-    {
+    public void showErrorMessage(String title, String message) {
         new AlertDialog.Builder(SearchRouteActivity.this)
                 .setCancelable(true)
                 .setTitle(title)

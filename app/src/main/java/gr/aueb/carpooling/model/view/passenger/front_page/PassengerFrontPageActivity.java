@@ -1,4 +1,4 @@
-package gr.aueb.carpooling.model.view.passenger;
+package gr.aueb.carpooling.model.view.passenger.front_page;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -18,8 +18,10 @@ import gr.aueb.carpooling.model.memoryDao.PassengerDAOmemory;
 import gr.aueb.carpooling.model.view.log_in.LogInActivity;
 import gr.aueb.carpooling.model.view.passenger.ExistedSubroutes.ExistedSubrouteActivity;
 import gr.aueb.carpooling.model.view.passenger.PassengerStatistics.PassengerStatisticsActivity;
+import gr.aueb.carpooling.model.view.passenger.front_page.PassengerFrontPageView;
+import gr.aueb.carpooling.model.view.passenger.front_page.PassengerFrontPageViewModel;
 import gr.aueb.carpooling.model.view.passenger.top_up.TopUpActivity;
-import gr.aueb.carpooling.model.view.subroute.subrouteActivity;
+import gr.aueb.carpooling.model.view.passenger.subroute.subrouteActivity;
 
 public class PassengerFrontPageActivity extends AppCompatActivity implements PassengerFrontPageView {
 
@@ -32,7 +34,7 @@ public class PassengerFrontPageActivity extends AppCompatActivity implements Pas
 
     private TextView rate;
 
-    private  PassengerFrontPageViewModel viewModel;
+    private PassengerFrontPageViewModel viewModel;
 
     private final PassengerDAO passengerDAO= new PassengerDAOmemory();
 

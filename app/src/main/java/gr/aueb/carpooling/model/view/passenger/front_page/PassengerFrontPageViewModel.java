@@ -1,10 +1,10 @@
-package gr.aueb.carpooling.model.view.passenger;
+package gr.aueb.carpooling.model.view.passenger.front_page;
 
 import androidx.lifecycle.ViewModel;
 
 
 import gr.aueb.carpooling.model.memoryDao.PassengerDAOmemory;
-import gr.aueb.carpooling.model.view.driver.DriverFrontPagePresenter;
+import gr.aueb.carpooling.model.view.passenger.front_page.PassengerFrontPagePresenter;
 
 public class PassengerFrontPageViewModel extends ViewModel {
     PassengerFrontPagePresenter presenter;

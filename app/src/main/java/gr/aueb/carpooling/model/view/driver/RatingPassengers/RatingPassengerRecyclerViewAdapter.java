@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -125,6 +126,8 @@ public class RatingPassengerRecyclerViewAdapter extends RecyclerView.Adapter<Rat
             }
 
         });
+
+
     }
 
     @Override
@@ -145,13 +148,13 @@ public class RatingPassengerRecyclerViewAdapter extends RecyclerView.Adapter<Rat
         public final EditText ratingConsistency;
         public final Button RateButton;
 
+
         public ViewHolder(View v) {
             super(v);
             ratingUsername = (TextView) v.findViewById(R.id.PassengerUserName);
             ratingPoliteness = ((EditText) v.findViewById(R.id.Politeness));
             ratingReliability = ((EditText) v.findViewById(R.id.Reliability));
             ratingConsistency = ((EditText) v.findViewById(R.id.Consistency));
-
             RateButton = (Button) v.findViewById(R.id.RateButton);
         }
 
@@ -160,6 +163,7 @@ public class RatingPassengerRecyclerViewAdapter extends RecyclerView.Adapter<Rat
 
     public interface PassengerRatingSelectionListener {
         void selectRate(PassengerRating rating);
+
     }
-//
+
 }

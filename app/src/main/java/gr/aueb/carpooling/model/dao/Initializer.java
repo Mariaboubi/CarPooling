@@ -2,7 +2,7 @@ package gr.aueb.carpooling.model.dao;
 
 import gr.aueb.carpooling.model.DriverRating;
 import gr.aueb.carpooling.model.Passenger;
-import gr.aueb.carpooling.model.PassengerRating;
+import gr.aueb.carpooling.model.Request_status;
 import gr.aueb.carpooling.model.Subroute;
 import gr.aueb.carpooling.model.User;
 import gr.aueb.carpooling.model.Driver;
@@ -49,7 +49,7 @@ public abstract class Initializer {
         EmailAddress email4 = new EmailAddress("eleni_zanou@gmail.com");
 
         User user1= new User("maria123","maria","pappa","6900000000",email1,"1234","25");
-        User user2= new User("markos_andre","markos","andreopoulos","6972169794",email2,"1111","27");
+        User user2= new User("marko","markos","andreopoulos","6972169794",email2,"1111","27");
         User user3= new User("kostas3","kostas","Papadopoulos","6972169794",email3,"2003","21");
         User user4= new User("eleniz","eleni","Zanou","6977292186",email4,"2003","20");
         userDAO.save(user1);
@@ -116,16 +116,18 @@ public abstract class Initializer {
         Address sub_destination1 = new Address("tsimiski", "56", "thessaloniki", new ZipCode("54626",0.0,0.0), "greece");
         Address sub_pickuppoint1 = new Address("aetideon", "41", "athens", new ZipCode("15561",0.0,0.0), "greece");
         Subroute subroute1= new Subroute(sub_destination1,sub_pickuppoint1,LocalDateTime.of(2023, 1, 28, 16, 30));
+        subroute1.setStatus(Request_status.PENDING);
 
         Address sub_destination2 = new Address("patision", "147", "athens", new ZipCode("11257",0.0,0.0), "greece");
         Address sub_pickuppoint2 = new Address("kleious", "4", "athens", new ZipCode("15561",0.0,0.0), "greece");
         Subroute subroute2= new Subroute(sub_destination2,sub_pickuppoint2,LocalDateTime.of(2024, 1, 28, 16, 30));
+        subroute2.setStatus(Request_status.PENDING);
 
         subrouteDAO.save(subroute1);
         subrouteDAO.save(subroute2);
 
-        route1.addPassenger(passenger1,subroute2);
-        route3.addPassenger(passenger2,subroute1);
+        route1.addPassengerRoute(passenger1,subroute2);
+        route3.addPassengerRoute(passenger2,subroute1);
 
         // NEW DRIVER RAITING//////////////////////////////////////////////////////////////////////
         DriverRatingDAO driverRatingDAO=getDriverRatingDAO();

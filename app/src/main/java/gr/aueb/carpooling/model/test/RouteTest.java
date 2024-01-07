@@ -116,27 +116,27 @@ public class RouteTest {
 
     @Test
     public void testAddPassenger() {
-        route.addPassenger(passenger, subroute);
+        route.addPassengerRoute(passenger, subroute);
         assertNotNull(route.getSubRouteByPassenger(passenger));
         assertNotNull(route.getPassengerRoutes());
     }
 
     @Test
     public void testGetPassenger() {
-        route.addPassenger(passenger, subroute);
+        route.addPassengerRoute(passenger, subroute);
         assertTrue(route.getPassengers().contains(passenger));
     }
 
     @Test
     public void testRemovePassenger() {
-        route.addPassenger(passenger, subroute);
+        route.addPassengerRoute(passenger, subroute);
         route.removePassenger(passenger);
         assertFalse(route.getPassengers().contains(passenger));
     }
 
     @Test
     public void testCalculateCost() {
-        route.addPassenger(passenger,subroute);
+        route.addPassengerRoute(passenger,subroute);
         // Calculate the expected distance between the addresses (you may need to adjust this)
         double expectedDistance = destination.calculateDistance( pickupPoint);
 

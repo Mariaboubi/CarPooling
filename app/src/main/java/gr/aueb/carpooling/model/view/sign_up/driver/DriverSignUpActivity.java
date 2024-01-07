@@ -37,8 +37,7 @@ public class DriverSignUpActivity extends AppCompatActivity implements DriverSig
             //The key argument here must match that used in the other activity
         }
 
-        ImageButton back_button = (ImageButton) findViewById(R.id.back_button);
-        back_button.setOnClickListener(v -> openAttributeSelectionPage());
+
 
         TextView txtSignIn = (TextView) findViewById(R.id.txtSignIn);
         txtSignIn.setOnClickListener(v -> openLogInActivity());
@@ -47,10 +46,6 @@ public class DriverSignUpActivity extends AppCompatActivity implements DriverSig
         btnSignUp.setOnClickListener(v -> viewModel.getPresenter().onCreateDriverAccount(username));
     }
 
-    private void openAttributeSelectionPage() {
-        Intent intent = new Intent(DriverSignUpActivity.this, AttributeSelectionActivity.class);
-        startActivity(intent);
-    }
 
     private void openLogInActivity() {
         Intent intent = new Intent(this, LogInActivity.class);

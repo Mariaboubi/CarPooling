@@ -24,5 +24,4 @@ public interface RatingPassengerView extends View {
 
     void showErrorMessage(String title,String message);
 
-
 }

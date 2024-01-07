@@ -1,4 +1,4 @@
-package gr.aueb.carpooling.model.view.subroute;
+package gr.aueb.carpooling.model.view.passenger.subroute;
 
 import org.threeten.bp.LocalDateTime;
 

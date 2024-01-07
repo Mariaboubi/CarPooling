@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,17 +17,15 @@ import gr.aueb.carpooling.model.Request_status;
 import gr.aueb.carpooling.model.Route;
 import gr.aueb.carpooling.model.Subroute;
 import gr.aueb.carpooling.model.dao.PassengerDAO;
+import gr.aueb.carpooling.model.dao.RouteDAO;
 import gr.aueb.carpooling.model.dao.SubrouteDAO;
 import gr.aueb.carpooling.model.memoryDao.PassengerDAOmemory;
+import gr.aueb.carpooling.model.memoryDao.RouteDAOmemory;
 import gr.aueb.carpooling.model.memoryDao.SubrouteDAOmemory;
-import gr.aueb.carpooling.model.view.driver.DriverFrontPage;
-import gr.aueb.carpooling.model.view.driver.ExistedRoutes.ExistedRouteActivity;
-import gr.aueb.carpooling.model.view.driver.RatingPassengers.RatingPassengers;
-import gr.aueb.carpooling.model.view.log_in.LogInActivity;
-import gr.aueb.carpooling.model.view.passenger.DriverRaiting.DriverRaitingActivity;
-import gr.aueb.carpooling.model.view.passenger.PassengerFrontPageActivity;
+import gr.aueb.carpooling.model.view.passenger.DriverRating.DriverRatingActivity;
+import gr.aueb.carpooling.model.view.passenger.front_page.PassengerFrontPageActivity;
 
-public class ExistedSubrouteActivity extends AppCompatActivity implements ExistedSubrouteView,ExistedSubrouteRecyclerViewAdapter.SubrouteSelectionListener {
+public class ExistedSubrouteActivity extends AppCompatActivity implements ExistedSubrouteView, ExistedSubrouteRecyclerViewAdapter.SubrouteSelectionListener {
 
     private ExistedSubrouteViewModel viewModel;
 
@@ -38,12 +35,11 @@ public class ExistedSubrouteActivity extends AppCompatActivity implements Existe
 
     private TextView emptyView;
 
-    SubrouteDAO subrouteDAO= new SubrouteDAOmemory();
-    private PassengerDAO passengerDAO= new PassengerDAOmemory();
+    SubrouteDAO subrouteDAO = new SubrouteDAOmemory();
+    private PassengerDAO passengerDAO = new PassengerDAOmemory();
     private Passenger passenger;
 
-    @SuppressLint("MissingInflatedId")
-
+    private RouteDAO routeDAO = new RouteDAOmemory();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +53,7 @@ public class ExistedSubrouteActivity extends AppCompatActivity implements Existe
             username = extras.getString("Username");
             //The key argument here must match that used in the other activity
         }
-        passenger= passengerDAO.findByUsername(username);
+        passenger = passengerDAO.findByUsername(username);
         viewModel.getPresenter().setSubrouteList(passenger);
 
         recyclerView = findViewById(R.id.ChooseSubrouteRecyclerView);
@@ -67,52 +63,37 @@ public class ExistedSubrouteActivity extends AppCompatActivity implements Existe
         findViewById(R.id.back_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openPessengerFrontPage();
+                openPassengerFrontPage();
             }
         });
 
     }
 
     @Override
-    public void selectSubroute(Subroute subroute, Request_status status,Boolean b) {
-        showErrorMessage("Dest",subroute.getDestination().toString());
-        if(b){
-            if (status == Request_status.APPROVED){
-                Intent intent = new Intent(ExistedSubrouteActivity.this, DriverRaitingActivity.class);
+    public void selectSubroute(Subroute subroute, Request_status status, Boolean b) {
+        if (b) {
+            if (status == Request_status.APPROVED) {
+                Intent intent = new Intent(ExistedSubrouteActivity.this, DriverRatingActivity.class);
                 intent.putExtra("Username", username);
-                intent.putExtra("SubrouteDest",subroute.getDestination().toString());
-                intent.putExtra("SubroutePick",subroute.getPickupPoint().toString());
-                intent.putExtra("SubrouteDate",subroute.getPickupTime().toString());
+                intent.putExtra("SubrouteId", subroute.getId());
                 startActivity(intent);
-            }else if(status == Request_status.REJECTED){
-                showErrorMessage("You can press button complete if request status is aproved.Now is: ", String.valueOf(Request_status.REJECTED));
-                recyclerView = findViewById(R.id.ChooseSubrouteRecyclerView);
-                emptyView = findViewById(R.id.NoSubroutes);
-                viewModel.getPresenter().onChangeLayout();
-            }else {
-                showErrorMessage("Wait for answer.Now is: ", String.valueOf(Request_status.PENDING));
+            } else if (status == Request_status.REJECTED) {
+                showErrorMessage("You can press button complete if request status is approved. Current status ", String.valueOf(Request_status.REJECTED));
+            } else {
+                showErrorMessage("Wait for driver's answer. Current status: ", String.valueOf(Request_status.PENDING));
             }
-        }else{
-            if (status == Request_status.APPROVED){
-                showErrorMessage("You can press button delete if request status is approved.Now is: ", String.valueOf(Request_status.APPROVED));
-                recyclerView = findViewById(R.id.ChooseSubrouteRecyclerView);
-                emptyView = findViewById(R.id.NoSubroutes);
-                viewModel.getPresenter().onChangeLayout();
-            }else if(status == Request_status.REJECTED){
-                subrouteDAO.delete(subroute);
-                viewModel.getPresenter().setSubrouteList(passenger);
-
-                recyclerView = findViewById(R.id.ChooseSubrouteRecyclerView);
-                emptyView = findViewById(R.id.NoSubroutes);
-                viewModel.getPresenter().onChangeLayout();
-            }else {
-                showErrorMessage("Wait for answer.Now is: ", String.valueOf(subroute.getStatus()));
-            }
+        } else {
+            Route route = routeDAO.findRouteBySubroute(subroute);
+            route.removeSubroute(subroute);
+            subrouteDAO.delete(subroute);
+            Intent intent = new Intent(this, this.getClass());
+            intent.putExtra("Username", username);
+            startActivity(intent);
         }
 
     }
 
-    void openPessengerFrontPage() {
+    void openPassengerFrontPage() {
         Intent intent = new Intent(this, PassengerFrontPageActivity.class);
         intent.putExtra("Username", username);
         startActivity(intent);

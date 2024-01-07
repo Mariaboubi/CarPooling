@@ -1,5 +1,7 @@
 package gr.aueb.carpooling.model.view.driver.RatingPassengers;
 
+import android.content.Intent;
+
 import java.util.ArrayList;
 
 import gr.aueb.carpooling.model.Passenger;

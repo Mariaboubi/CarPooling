@@ -1,33 +1,31 @@
-package gr.aueb.carpooling.model.view.passenger.DriverRaiting;
+package gr.aueb.carpooling.model.view.passenger.DriverRating;
 
 import gr.aueb.carpooling.model.DriverRating;
 import gr.aueb.carpooling.model.Passenger;
 import gr.aueb.carpooling.model.Route;
-import gr.aueb.carpooling.model.Subroute;
 import gr.aueb.carpooling.model.dao.DriverRatingDAO;
 import gr.aueb.carpooling.model.dao.PassengerDAO;
 import gr.aueb.carpooling.model.dao.RouteDAO;
 import gr.aueb.carpooling.model.memoryDao.PassengerDAOmemory;
 import gr.aueb.carpooling.model.memoryDao.RouteDAOmemory;
-import gr.aueb.carpooling.model.view.driver.createRoute.CreateRouteView;
 
-public class DriverRaitingPresenter {
+public class DriverRatingPresenter {
     private DriverRatingDAO driverRatingDAO;
 
     private RouteDAO routeDAO =new RouteDAOmemory();
 
     private PassengerDAO passengerDAO =new PassengerDAOmemory();
 
-    DriverRaitingView view;
-     public DriverRaitingPresenter(DriverRatingDAO driverRatingDAO){
+    DriverRatingView view;
+     public DriverRatingPresenter(DriverRatingDAO driverRatingDAO){
          this.driverRatingDAO=driverRatingDAO;
      }
 
-    public void setView(DriverRaitingView view) {
+    public void setView(DriverRatingView view) {
         this.view = view;
     }
 
-    public DriverRaitingView getView(){
+    public DriverRatingView getView(){
         return this.view;
     }
 

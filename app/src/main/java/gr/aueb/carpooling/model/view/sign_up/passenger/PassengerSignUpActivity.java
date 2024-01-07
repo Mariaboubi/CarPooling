@@ -8,13 +8,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.view.log_in.LogInActivity;
-import gr.aueb.carpooling.model.view.attribute_selection.AttributeSelectionActivity;
-import gr.aueb.carpooling.model.view.passenger.PassengerFrontPageActivity;
+import gr.aueb.carpooling.model.view.passenger.front_page.PassengerFrontPageActivity;
 
 
 public class PassengerSignUpActivity extends AppCompatActivity implements PassengerSignUpView{
@@ -38,19 +36,12 @@ public class PassengerSignUpActivity extends AppCompatActivity implements Passen
             //The key argument here must match that used in the other activity
         }
 
-        ImageButton back_button = (ImageButton) findViewById(R.id.back_button);
-        back_button.setOnClickListener(v -> openAttributeSelectionPage());
 
         TextView txtSignIn = (TextView) findViewById(R.id.txtSignIn);
         txtSignIn.setOnClickListener(v -> openLogInActivity());
 
         btnSignUp = (Button) findViewById(R.id.btnSignUp);
         btnSignUp.setOnClickListener(v -> viewModel.getPresenter().onCreatePassengerAccount(username));
-    }
-
-    private void openAttributeSelectionPage() {
-        Intent intent = new Intent(PassengerSignUpActivity.this, AttributeSelectionActivity.class);
-        startActivity(intent);
     }
 
     private void openLogInActivity() {

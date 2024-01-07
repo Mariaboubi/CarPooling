@@ -12,10 +12,9 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import gr.aueb.carpooling.R;
-import gr.aueb.carpooling.model.memoryDao.MemoryInitialized;
 import gr.aueb.carpooling.model.view.log_in.LogInActivity;
 import gr.aueb.carpooling.model.view.driver.DriverFrontPage;
-import gr.aueb.carpooling.model.view.passenger.PassengerFrontPageActivity;
+import gr.aueb.carpooling.model.view.passenger.front_page.PassengerFrontPageActivity;
 import gr.aueb.carpooling.model.view.sign_up.driver.DriverSignUpActivity;
 import gr.aueb.carpooling.model.view.sign_up.passenger.PassengerSignUpActivity;
 
@@ -40,7 +39,6 @@ public class AttributeSelectionActivity extends AppCompatActivity implements Att
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             username = extras.getString("Id");
-            //The key argument here must match that used in the other activity
         }
 
 
@@ -60,7 +58,6 @@ public class AttributeSelectionActivity extends AppCompatActivity implements Att
             @Override
             public void onClick(View v) {
                 boolean isPassenger = viewModel.getPresenter().authenticateAttributePassenger(username);
-                showErrorMessage("Passenger", String.valueOf(isPassenger));
                 if (isPassenger){
                     openPassengerPage(username);
                 } else {
@@ -73,7 +70,6 @@ public class AttributeSelectionActivity extends AppCompatActivity implements Att
             @Override
             public void onClick(View v) {
                 boolean isDriver = viewModel.getPresenter().authenticateAttributeDriver(username);
-                showErrorMessage("Driver", String.valueOf(isDriver));
                 if (isDriver){
                     openDriverPage(username);
                 } else {

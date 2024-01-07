@@ -31,6 +31,7 @@
             app:layout_constraintVertical_bias="0.0">
 
             <ImageButton
+                android:id="@+id/confirm_ratings"
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="right|end"

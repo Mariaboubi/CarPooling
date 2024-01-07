@@ -29,6 +29,7 @@ public class RatingPassengers extends AppCompatActivity implements RatingPasseng
     private RecyclerView recyclerView;
     private TextView emptyView;
 
+    public ImageButton confirmButton;
     private int routeId;
 
 //        private PassengerDAO passengerDAO = new PassengerDAOmemory();
@@ -59,6 +60,13 @@ public class RatingPassengers extends AppCompatActivity implements RatingPasseng
         recyclerView = findViewById(R.id.RatingPassengerRecyclerView);
         emptyView = findViewById(R.id.NoPassengers);
         viewModel.getPresenter().onChangeLayout();
+        confirmButton = ((ImageButton) findViewById(R.id.confirm_ratings));
+        confirmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                confirmRatings();
+            }
+        });
 
     }
 
@@ -90,9 +98,15 @@ public class RatingPassengers extends AppCompatActivity implements RatingPasseng
 
     @Override
     public void selectRate(PassengerRating rating) {
-        Intent intent = new Intent(RatingPassengers.this, RatingPassengers.class);
+        Intent intent = new Intent(this, RatingPassengers.class);
         intent.putExtra("RouteId",rating.getRoute().getId());
         intent.putExtra("Driver username", username);
+        startActivity(intent);
+    }
+
+    public void confirmRatings() {
+        Intent intent = new Intent(this, DriverFrontPage.class);
+        intent.putExtra("Username", username);
         startActivity(intent);
     }
 }

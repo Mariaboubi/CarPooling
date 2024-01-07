@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import gr.aueb.carpooling.model.Driver;
 import gr.aueb.carpooling.model.Passenger;
+import gr.aueb.carpooling.model.Request_status;
 import gr.aueb.carpooling.model.Route;
 import gr.aueb.carpooling.model.Subroute;
 import gr.aueb.carpooling.model.dao.RouteDAO;
@@ -18,7 +19,7 @@ public class ShowRequestPresenter {
     private final SubrouteDAO subrouteDAO;
 
     private ArrayList<Subroute> subroutes;
-//    private ArrayList<Route> subroutes;
+
 
 
     public ShowRequestPresenter(SubrouteDAO subrouteDAO) {
@@ -61,7 +62,9 @@ public class ShowRequestPresenter {
             HashMap<Passenger, Subroute> passengerSubrouteMap = route.getPassengerRoutes();
 
             // Add all subroutes to the subroutes_exist list
-            subroutes.addAll(passengerSubrouteMap.values());
+            // print status
+            System.out.println("subroute status: " + passengerSubrouteMap.values().stream().map(Subroute::getStatus).toList());
+            subroutes.addAll(passengerSubrouteMap.values().stream().filter(subroute -> subroute.getStatus() == Request_status.PENDING).toList());
         }
 
     }

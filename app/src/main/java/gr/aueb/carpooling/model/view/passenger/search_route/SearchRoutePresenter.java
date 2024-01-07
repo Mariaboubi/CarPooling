@@ -50,8 +50,18 @@ public class SearchRoutePresenter {
     /**
      * Γεμίζει την λίστα με της διαδρομεσ του συγκεκριμενου οδηγού
      */
-    public void setRouteList() {
+    public void findSameDestinationCityRoutes(Passenger currentPassenger, String city) {
         this.routes = (ArrayList<Route>) routeDAO.findAll();
+        ArrayList<Route> routes_to_remove = new ArrayList<>();
+        for (Route route : routes) {
+            if (!route.getDestination().getCity().equalsIgnoreCase(city)) {
+                routes_to_remove.add(route);
+            }
+            if (route.getSubRouteByPassenger(currentPassenger) != null) {
+                routes_to_remove.add(route);
+            }
+        }
+        routes.removeAll(routes_to_remove);
     }
 
     /**
@@ -76,7 +86,7 @@ public class SearchRoutePresenter {
     }
 
     public Subroute findSubroute(int subroute_id) {
-        return subrouteDAO.find(subroute_id);
+        return subrouteDAO.findById(subroute_id);
     }
     public Passenger findPassenger(String username) {
         return passengerDAO.findByUsername(username);

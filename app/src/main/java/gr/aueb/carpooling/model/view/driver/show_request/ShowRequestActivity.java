@@ -26,7 +26,7 @@ import gr.aueb.carpooling.model.memoryDao.SubrouteDAOmemory;
 import gr.aueb.carpooling.model.view.driver.DriverFrontPage;
 
 
-public class ShowRequestActivity extends AppCompatActivity implements ShowRequestView,ShowRequestRecyclerViewAdapter.ShowRequestListener{
+public class ShowRequestActivity extends AppCompatActivity implements ShowRequestView, ShowRequestRecyclerViewAdapter.ShowRequestListener {
 
     private ShowRequestViewModel viewModel;
 
@@ -37,9 +37,9 @@ public class ShowRequestActivity extends AppCompatActivity implements ShowReques
 
     private SubrouteDAO subrouteDAO = new SubrouteDAOmemory();
 
-    private  DriverDAO driverDAO = new DriverDAOmemory();
+    private DriverDAO driverDAO = new DriverDAOmemory();
 
-    private RouteDAO routeDAO  = new RouteDAOmemory();
+    private RouteDAO routeDAO = new RouteDAOmemory();
 
     private ArrayList<Route> routes;
     @Override
@@ -60,12 +60,8 @@ public class ShowRequestActivity extends AppCompatActivity implements ShowReques
         Driver driver = driverDAO.findByUsername(username);
 
         routes = (ArrayList<Route>) routeDAO.findByDriver(driver);
-//        showErrorMessage("Size " ,String.valueOf(routes.size()));
 
-
-
-       viewModel.getPresenter().setSubrouteList(routes);
-//        showErrorMessage("Size " ,String.valueOf(viewModel.getPresenter().getSubrouteList().size()));
+        viewModel.getPresenter().setSubrouteList(routes);
 
         // ui initialization
         recyclerView = findViewById(R.id.ShowRequestRecyclerView);
@@ -82,44 +78,43 @@ public class ShowRequestActivity extends AppCompatActivity implements ShowReques
 
     }
 
-
-    public void selectRequest() {
-
+    @Override
+    public void refreshRequests() {
+        Intent intent = new Intent(ShowRequestActivity.this, ShowRequestActivity.class);
+        intent.putExtra("Username", username);
+        startActivity(intent);
     }
 
     @Override
-    public void ShowNoRequests () {
+    public void ShowNoRequests() {
         recyclerView.setVisibility(View.GONE);
         emptyView.setVisibility(View.VISIBLE);
     }
 
     @Override
-    public void ShowRequests () {
+    public void ShowRequests() {
         recyclerView.setVisibility(View.VISIBLE);
         emptyView.setVisibility(View.GONE);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 //        showErrorMessage("naiiii Size " ,String.valueOf(viewModel.getPresenter().getSubrouteList().size()));
-        System.out.println("Subroute list in show requests: " + (viewModel.getPresenter().getSubrouteList().size() ));
-        recyclerView.setAdapter(new ShowRequestRecyclerViewAdapter(viewModel.getPresenter().getSubrouteList(), this,routes));
+        recyclerView.setAdapter(new ShowRequestRecyclerViewAdapter(viewModel.getPresenter().getSubrouteList(), this, routes));
     }
-    public void showErrorMessage (String title, String message)
-    {
+
+    public void showErrorMessage(String title, String message) {
         new AlertDialog.Builder(ShowRequestActivity.this)
                 .setCancelable(true)
                 .setTitle(title)
                 .setMessage(message)
                 .setPositiveButton("OK", null).create().show();
 
-//        Intent intent = new Intent(ExistedRouteActivity.this, LogInActivity.class);
-////        intent.putExtra("Username",username);
-//        startActivity(intent);
-
     }
 
     @Override
     public void openDriverFrontPage(String username) {
-        Intent intent = new Intent(this , DriverFrontPage.class);
-        intent.putExtra("Username",username);
+        Intent intent = new Intent(this, DriverFrontPage.class);
+        intent.putExtra("Username", username);
         startActivity(intent);
     }
+
+
 }

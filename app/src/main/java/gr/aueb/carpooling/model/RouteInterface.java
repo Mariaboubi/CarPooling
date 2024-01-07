@@ -84,7 +84,7 @@ public interface RouteInterface {
      * @param passenger The passenger to add
      * @param subroute  The subroute for the passenger
      */
-    void addPassenger(Passenger passenger, Subroute subroute);
+    void addPassengerRoute(Passenger passenger, Subroute subroute);
 
 
     /**

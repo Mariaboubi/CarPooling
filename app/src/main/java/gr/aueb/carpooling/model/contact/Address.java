@@ -134,4 +134,10 @@ public class Address implements AddressInterface {
                 street, number, city, zip, country
         );
     }
+    public String toString2() {
+        return String.format(
+                "%s %s, %s, %s, %s",
+                street, number, city, zip, country
+        );
+    }
 }

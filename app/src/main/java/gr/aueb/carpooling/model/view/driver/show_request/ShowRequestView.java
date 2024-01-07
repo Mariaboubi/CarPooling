@@ -20,5 +20,4 @@ public interface ShowRequestView  extends View {
 
     void openDriverFrontPage(String username);
 
-    void selectRequest();
 }

@@ -96,7 +96,7 @@ public class Driver extends User implements DriverInterface {
         for(DriverRating rates: rates){
             sum+= rates.averageRating();
         }
-        return (float) (sum / size);
+        return rates.size() != 0 ? (float) (sum / size) : 0;
     }
 
 //    public void addPassengerRating(PassengerRating rating) {

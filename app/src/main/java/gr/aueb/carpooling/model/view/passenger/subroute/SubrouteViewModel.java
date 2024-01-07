@@ -1,11 +1,8 @@
-package gr.aueb.carpooling.model.view.subroute;
+package gr.aueb.carpooling.model.view.passenger.subroute;
 
 import androidx.lifecycle.ViewModel;
 
-import gr.aueb.carpooling.model.Passenger;
-import gr.aueb.carpooling.model.memoryDao.DriverDAOmemory;
 import gr.aueb.carpooling.model.memoryDao.PassengerDAOmemory;
-import gr.aueb.carpooling.model.memoryDao.RouteDAOmemory;
 import gr.aueb.carpooling.model.memoryDao.SubrouteDAOmemory;
 
 

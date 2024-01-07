@@ -46,5 +46,9 @@ public interface RouteDAO {
 
     ArrayList<Route> findByDriverIsCompleted(Driver driver);
 
-    ArrayList<Subroute> findSubroutesByPassanger(Passenger passenger);
+    ArrayList<Subroute> findSubroutesByPassenger(Passenger passenger);
+
+    Passenger findPassengerBySubroute(Subroute currentItem);
+
+    Route findRouteBySubroute(Subroute subroute);
 }
