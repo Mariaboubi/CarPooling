@@ -81,7 +81,8 @@ public abstract class Initializer {
         final Currency euroCurrency = Currency.getInstance("EUR");
         Money money = new Money(10.0, euroCurrency);
         Address destination = new Address("mesogeiwn", "10", "athens", new ZipCode("16562",0.0,0.0), "greece");
-        Route route1 = new Route(driver1, money, LocalDateTime.of(2023, 10, 12, 10, 12), destination, 3, false);
+        Route route1 = new Route(driver1, money, LocalDateTime.of(2024, 1, 6, 10, 12), destination, 3, false);
+        route1.Completed();
 
 
         Money money5 = new Money(5.0, euroCurrency);
@@ -90,7 +91,8 @@ public abstract class Initializer {
 
         Money money20 = new Money(20.0, euroCurrency);
         Address destination2 = new Address("tsimiski", "50", "thessaloniki", new ZipCode("54623",0.0,0.0), "greece");
-        Route route3 = new Route(driver1, money20, LocalDateTime.of(2023, 1, 28, 16, 30), destination2, 4, false);
+        Route route3 = new Route(driver1, money20, LocalDateTime.of(2024, 1, 2, 16, 30), destination2, 4, false);
+        route3.Completed();
 
         routeDAO.save(route1);
         routeDAO.save(route3);

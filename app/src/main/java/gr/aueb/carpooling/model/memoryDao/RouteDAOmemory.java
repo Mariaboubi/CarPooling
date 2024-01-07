@@ -114,18 +114,16 @@ public class RouteDAOmemory implements RouteDAO {
         }
         return  result;
     }
+    public ArrayList<Route> findByDriverIsCompleted(Driver driver) {
+        ArrayList<Route> result= new ArrayList<>();
+        for(Route route : entities){
+            if(route.getDriver()==driver){
+                result.add(route);
+            }
+        }
+        return  result;
+    }
 
-//    public Passenger findPassenger(Route route, Subroute subroute) {
-//        HashMap<Passenger, Subroute> map ;
-//        for(Route route1 : entities){
-//            if (route1 == route) {
-//                map = route.getPassengerRoutes();
-//            }
-//
-//        }
-////        for()
-//        return null;
-//    }
 
     public Passenger findPassengerBySubroute(Subroute subroute) {
         HashMap<Passenger, Subroute> map ;

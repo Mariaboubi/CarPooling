@@ -132,6 +132,16 @@
     <string name="cleanliness">Cleanliness</string>
     <string name="security">Security</string>
     <string name="star">star</string>
+    <string name="statistics">Statistics</string>
+    <string name="monthly_total_number_of_routes">Monthly total number of routes</string>
+    <string name="yearly_total_number_of_routes">Yearly total number of routes</string>
+    <string name="result">result</string>
+    <string name="monthly_average_fullness_in_the_routes">Monthly Average fullness in the routes</string>
+    <string name="yearly_average_fullness_in_the_routes">Yearly Average fullness in the routes</string>
+    <string name="monthly_income">Monthly income</string>
+    <string name="yearly_income">Yearly income</string>
+    <string name="yearly_expenses">Yearly expenses</string>
+    <string name="monthly_expenses">Monthly expenses</string>
 
 
 </resources>

@@ -17,6 +17,7 @@ import gr.aueb.carpooling.model.memoryDao.MemoryInitialized;
 import gr.aueb.carpooling.model.memoryDao.PassengerDAOmemory;
 import gr.aueb.carpooling.model.view.log_in.LogInActivity;
 import gr.aueb.carpooling.model.view.passenger.ExistedSubroutes.ExistedSubrouteActivity;
+import gr.aueb.carpooling.model.view.passenger.PassengerStatistics.PassengerStatisticsActivity;
 import gr.aueb.carpooling.model.view.passenger.top_up.TopUpActivity;
 import gr.aueb.carpooling.model.view.subroute.subrouteActivity;
 
@@ -70,6 +71,15 @@ public class PassengerFrontPageActivity extends AppCompatActivity implements Pas
             public void onClick(View v) {openTopUpActivity();}
         });
 
+        Button statistics_button = (Button) findViewById(R.id.statistics);
+
+        statistics_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openStatisticsPage( );
+            }
+        });
+
         CreateSubroute_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {openCreateRoutePage(username);}
@@ -88,6 +98,12 @@ public class PassengerFrontPageActivity extends AppCompatActivity implements Pas
 
     void openTopUpActivity(){
         Intent intent = new Intent(this , TopUpActivity.class);
+        intent.putExtra("Username",username);
+        startActivity(intent);
+    }
+
+    void openStatisticsPage(){
+        Intent intent = new Intent(this , PassengerStatisticsActivity.class);
         intent.putExtra("Username",username);
         startActivity(intent);
     }

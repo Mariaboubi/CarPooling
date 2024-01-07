@@ -114,15 +114,15 @@
 
     <LinearLayout
         android:layout_width="410dp"
-        android:layout_height="179dp"
+        android:layout_height="290dp"
         android:layout_marginStart="1dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.636"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.613">
+        app:layout_constraintVertical_bias="0.716">
 
         <Button
             android:id="@+id/createRouteButton"
@@ -150,6 +150,25 @@
             android:fontFamily="sans-serif-medium"
             android:gravity="center"
             android:text="@string/show_routes"
+            android:textSize="20sp"
+            app:cornerRadius="10dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+        <Button
+            android:id="@+id/statistics"
+            android:layout_width="320dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:background="#6845A5"
+            android:fontFamily="sans-serif-medium"
+            android:paddingStart="0dp"
+            android:paddingTop="0dp"
+            android:paddingEnd="0dp"
+            android:paddingBottom="0dp"
+            android:text="@string/statistics"
             android:textSize="20sp"
             app:cornerRadius="10dp" />
     </LinearLayout>

@@ -17,6 +17,7 @@ import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.dao.DriverDAO;
 import gr.aueb.carpooling.model.memoryDao.DriverDAOmemory;
 import gr.aueb.carpooling.model.memoryDao.MemoryInitialized;
+import gr.aueb.carpooling.model.view.driver.DriverStatistics.DriverStatisticsActivity;
 import gr.aueb.carpooling.model.view.driver.DriverTopUp.DriverTopUp;
 import gr.aueb.carpooling.model.view.driver.show_request.ShowRequestActivity;
 import gr.aueb.carpooling.model.view.log_in.LogInActivity;
@@ -41,6 +42,8 @@ public class DriverFrontPage extends AppCompatActivity implements DriverFrontPag
     private String username;
 
     private DriverDAO driverDAO = new DriverDAOmemory();
+
+    private Button statistics_button;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -104,12 +107,26 @@ public class DriverFrontPage extends AppCompatActivity implements DriverFrontPag
             }
         });
 
+        statistics_button = (Button) findViewById(R.id.statistics);
+
+        statistics_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openStatisticsPage( );
+            }
+        });
+
         rate = ((TextView) findViewById(R.id.RATE));
         rate.setText(new DecimalFormat("0.00").format(driverDAO.findByUsername(username).averageRating()));
     }
 
     public void openDriverTopUpActivity() {
         Intent intent = new Intent(this, DriverTopUp.class);
+        intent.putExtra("Username", username);
+        startActivity(intent);
+    }
+    public void openStatisticsPage() {
+        Intent intent = new Intent(this, DriverStatisticsActivity.class);
         intent.putExtra("Username", username);
         startActivity(intent);
     }

@@ -44,5 +44,7 @@ public interface RouteDAO {
 
     Route findByDestDateDriver(String dest, String date,Driver driver);
 
+    ArrayList<Route> findByDriverIsCompleted(Driver driver);
+
     ArrayList<Subroute> findSubroutesByPassanger(Passenger passenger);
 }
