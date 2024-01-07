@@ -1,10 +1,13 @@
 package gr.aueb.carpooling.model.memoryDao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import gr.aueb.carpooling.model.Driver;
+import gr.aueb.carpooling.model.Passenger;
 import gr.aueb.carpooling.model.Route;
+import gr.aueb.carpooling.model.Subroute;
 import gr.aueb.carpooling.model.dao.RouteDAO;
 
 public class RouteDAOmemory implements RouteDAO {
@@ -61,6 +64,17 @@ public class RouteDAOmemory implements RouteDAO {
         return  result;
     }
 
+    public Passenger findPassenger(Route route, Subroute subroute) {
+        HashMap<Passenger, Subroute> map ;
+        for(Route route1 : entities){
+            if (route1 == route) {
+                map = route.getPassengerRoutes();
+            }
+
+        }
+//        for()
+        return null;
+    }
     @Override
     public int nextId() {
         return (entities.size() > 0 ? entities.get(entities.size()-1).getId()+1 : 1);

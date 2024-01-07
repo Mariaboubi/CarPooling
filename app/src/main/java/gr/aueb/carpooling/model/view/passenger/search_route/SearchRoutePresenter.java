@@ -2,19 +2,30 @@ package gr.aueb.carpooling.model.view.passenger.search_route;
 
 import java.util.ArrayList;
 
+import gr.aueb.carpooling.model.Passenger;
 import gr.aueb.carpooling.model.Route;
+import gr.aueb.carpooling.model.Subroute;
+import gr.aueb.carpooling.model.dao.PassengerDAO;
 import gr.aueb.carpooling.model.dao.RouteDAO;
+import gr.aueb.carpooling.model.dao.SubrouteDAO;
 import gr.aueb.carpooling.model.memoryDao.RouteDAOmemory;
+import gr.aueb.carpooling.model.memoryDao.SubrouteDAOmemory;
 
 public class SearchRoutePresenter {
     private SearchRouteView view;
     private final RouteDAO routeDAO ;
 
+    private final SubrouteDAO subrouteDAO;
+
+    private final PassengerDAO passengerDAO;
+
     private ArrayList<Route> routes;
 
 
-    public SearchRoutePresenter(RouteDAOmemory routeDAO) {
+    public SearchRoutePresenter(RouteDAOmemory routeDAO, SubrouteDAOmemory subrouteDAO, PassengerDAO passengerDAO) {
         this.routeDAO = routeDAO;
+        this.subrouteDAO = subrouteDAO;
+        this.passengerDAO = passengerDAO;
         this.routes = new ArrayList<>();
     }
 
@@ -64,5 +75,11 @@ public class SearchRoutePresenter {
         return this.routes;
     }
 
+    public Subroute findSubroute(int subroute_id) {
+        return subrouteDAO.find(subroute_id);
+    }
+    public Passenger findPassenger(String username) {
+        return passengerDAO.findByUsername(username);
+    }
 
 }

@@ -8,4 +8,6 @@
     <item name="show_requests" type="id" />
     <item name="SubrouteProgressBar" type="id" />
     <item name="btnCreateSubroute" type="id" />
+    <item name="passenger_name" type="id" />
+    <item name="passenger_rate" type="id" />
 </resources>

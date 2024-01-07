@@ -58,7 +58,7 @@ public class SignUpPresenter {
         String inputCarType = view.getCarType();
 
 
-        if (inputName.isEmpty() || inputSurname.isEmpty() || inputUsername.isEmpty() || inputAge.isEmpty() || !inputEmail.isValid() ||
+        if (inputName.isEmpty() || inputSurname.isEmpty() || inputUsername.isEmpty() || inputAge.isEmpty() || inputEmail.toString().isEmpty() ||
                 inputPassword.isEmpty() || inputPasswordVerification.isEmpty() || inputPhoneNumber.isEmpty()) {
             view.showErrorMessage("Error!", "Complete all the fields");
         } else if (inputUsername.length() < 3) {
@@ -72,16 +72,20 @@ public class SignUpPresenter {
         } else if (inputPassword.length() < 8) {
             view.showErrorMessage("Error!", "Το password must have at least 8 characters.");
         } else if (!inputPassword.equals(inputPasswordVerification)) {
-            view.showErrorMessage("Error!", "The fields password και confirm password must match!");
-        } else  {
+            view.showErrorMessage("Error!", "The fields password and confirm password must match!");
+        } else {
+
             User newUser = new User(inputUsername, inputName, inputSurname, inputPhoneNumber, inputEmail, inputPassword, inputAge);
             userDao.save(newUser);
-            if((inputDriverLicense.isEmpty() && inputCarType.isEmpty() && inputIban.isEmpty()) ||
+
+            if ((inputDriverLicense.isEmpty() && inputCarType.isEmpty() && inputIban.isEmpty()) ||
                     (!inputDriverLicense.isEmpty() && !inputCarType.isEmpty() && !inputIban.isEmpty())) {
                 Driver driver = new Driver(newUser.getUsername(), newUser.getName(), newUser.getSurname(), newUser.getPhone(), newUser.getEmail(), newUser.getPassword(), newUser.getAge(), inputIban, inputDriverLicense, inputCarType);
                 driverDao.save(driver);
+
             } else {
                 view.showErrorMessage("Error!", "Complete all the driver fields or leave them all empty");
+                return;
             }
 
             if ((inputCardNumber.isEmpty() && inputCardHolderName.isEmpty() && inputCVV.isEmpty()) ||
@@ -90,9 +94,8 @@ public class SignUpPresenter {
                 passengerDao.save(passenger);
             } else {
                 view.showErrorMessage("Error!", "Complete all the passenger fields or leave them all empty");
-
+                return;
             }
-
             view.showRegistrationSuccessMessage();
 
         }

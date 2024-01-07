@@ -43,6 +43,9 @@ public class Subroute implements SubrouteInterface {
     public void setRejectedStatus() {
         this.status = REJECTED;
     }
+    public void setStatus(Request_status stat) {
+        this.status = stat;
+    }
 
     public Request_status getStatus() {
         return this.status;

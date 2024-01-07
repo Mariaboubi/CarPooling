@@ -4,7 +4,7 @@ public class PassengerRating extends Rating implements PassengerRatingInterface{
     private String consistencyRating; // Rating for consistency issues
     private  String reliabilityRating; // Rating for reliability issues
 
-    private Passenger passenger;
+    private final Passenger passenger;
 
     // Constructor
     public PassengerRating(Passenger passenger, Route route, String politenessRating,

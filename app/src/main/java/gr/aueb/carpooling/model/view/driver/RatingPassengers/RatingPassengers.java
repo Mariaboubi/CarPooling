@@ -18,7 +18,7 @@ import gr.aueb.carpooling.model.PassengerRating;
 import gr.aueb.carpooling.model.view.driver.DriverFrontPage;
 
 
-public class RatingPassengers extends AppCompatActivity implements RatingPassengerView,RatingPassengerRecyclerViewAdapter.PassengerRatingSelectionListener {
+public class RatingPassengers extends AppCompatActivity implements RatingPassengerView, RatingPassengerRecyclerViewAdapter.PassengerRatingSelectionListener {
 
     private RatingPassengersViewModel viewModel;
 
@@ -27,6 +27,7 @@ public class RatingPassengers extends AppCompatActivity implements RatingPasseng
     private TextView emptyView;
 
     private int route_id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,10 +38,11 @@ public class RatingPassengers extends AppCompatActivity implements RatingPasseng
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            username = extras.getString("Username");
+            username = extras.getString("Driver username");
+            route_id = extras.getInt("Route id");
             //The key argument here must match that used in the other activity
         }
-
+        System.out.println("route id is " + route_id);
         viewModel.getPresenter().setPassengerRatingList();
         recyclerView = findViewById(R.id.RatingPassengerRecyclerView);
         emptyView = findViewById(R.id.NoPassengers);
@@ -48,19 +50,16 @@ public class RatingPassengers extends AppCompatActivity implements RatingPasseng
         //showErrorMessage("in passenger rating page", "in");
 
 
-
     }
 
 
-
-    public void showErrorMessage(String title, String message)
-    {
+    public void showErrorMessage(String title, String message) {
         new AlertDialog.Builder(RatingPassengers.this)
-            .setCancelable(true)
-            .setTitle(title)
-            .setMessage(message)
-            .setPositiveButton("OK", null).create().show();
-}
+                .setCancelable(true)
+                .setTitle(title)
+                .setMessage(message)
+                .setPositiveButton("OK", null).create().show();
+    }
 //    @Override
 //    public HashMap<String, String> getRateDetails() {
 //        return null;
@@ -72,7 +71,6 @@ public class RatingPassengers extends AppCompatActivity implements RatingPasseng
         recyclerView.setVisibility(View.GONE);
         emptyView.setVisibility(View.VISIBLE);
     }
-
 
 
     @Override

@@ -90,7 +90,7 @@
                 android:layout_width="334dp"
                 android:layout_height="68dp"
                 android:layout_marginTop="20dp"
-                android:hint="@string/security1"
+                android:hint="@string/security"
                 android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
