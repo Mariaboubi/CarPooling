@@ -22,4 +22,6 @@ public interface RouteDAO {
     List<Route> findExistedRoutes();
 
     Route findByMap(Passenger pas, Subroute sub);
+
+    Route findByDestDateDriver(String dest, String date,Driver driver);
 }

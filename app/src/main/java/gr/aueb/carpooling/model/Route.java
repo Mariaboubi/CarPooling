@@ -20,6 +20,8 @@ public class Route implements RouteInterface {
     private final Currency euroCurrency = Currency.getInstance("EUR");
     public Money total_cost; // Total cost of the Route
 
+    private final Set<PassengerRating> passanger_rating;
+
     public Route(Driver driver, Money estimated_cost, LocalDateTime date, Address destination, int max_passengers,
                  boolean completed) {
         this.id = ++ route_id;
@@ -31,6 +33,7 @@ public class Route implements RouteInterface {
         this.max_passengers = max_passengers;
         this.completed = false;
         this.total_cost = null;
+        this.passanger_rating = new HashSet<>();
     }
 
     public boolean isCompleted() {
@@ -132,5 +135,25 @@ public class Route implements RouteInterface {
             total_cost = total_cost.plus(sub_route.calculateCost());
         }
         this.total_cost = total_cost;
+    }
+
+    public void addPassengerRating(PassengerRating rating) {
+        this.passanger_rating.add(rating);
+    }
+
+    public void removePassengerRating(PassengerRating rating) throws UnsupportedOperationException {
+        if(passanger_rating.size() > 0) {
+            this.passanger_rating.remove(rating);
+        } else {
+            throw new UnsupportedOperationException("Cannot remove from an empty passenger rating set.");
+        }
+    }
+
+    public boolean hasPassengerRating(PassengerRating rating) {
+        return passanger_rating.contains(rating);
+    }
+
+    public HashSet<PassengerRating> getPassengerRating() {
+        return new HashSet<>(passanger_rating); // Return a new set to avoid direct access to the internal set
     }
 }

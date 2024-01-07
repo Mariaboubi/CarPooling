@@ -53,6 +53,15 @@ public class RouteDAOmemory implements RouteDAO {
 
     }
 
+    public Route findByDestDateDriver(String dest,String date,Driver driver) {
+        for(Route route: entities){
+            if(route.getDestination().toString().equals(dest)  && route.getDate().toString().equals(date) && route.getDriver().equals(driver)){
+                return route;
+            }
+        }
+        return null;
+    }
+
     @Override
     public Route find(int id) {
         for(Route route: entities){

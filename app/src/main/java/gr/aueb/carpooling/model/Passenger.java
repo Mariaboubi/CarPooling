@@ -11,6 +11,8 @@ public class Passenger extends User implements PassengerInterface {
     private final Set<Route> routes; // A HashSet of routes that the Passenger takes part
 
     private final int passenger_id;
+
+    private Set<PassengerRating> rates;
     // Constructor
     public Passenger(String username, String name, String surname, String phone, EmailAddress email,
                      String password, String age, String cardNumber, String cardHolderName, String CVV) {
@@ -20,6 +22,7 @@ public class Passenger extends User implements PassengerInterface {
         Currency euroCurrency = Currency.getInstance("EUR");
         this.balance = super.getBalance();
         routes = new HashSet<>();
+        this.rates = new HashSet<>();
     }
 
 
@@ -29,6 +32,20 @@ public class Passenger extends User implements PassengerInterface {
         this.cardHolderName = cardHolderName;
         this.CVV = CVV;
     }
+
+    public void addRates(PassengerRating rating) {
+        this.rates.add(rating);
+    }
+
+    public float averageRating(){
+        int size= rates.size();
+        float sum=0;
+        for(PassengerRating rates: rates){
+            sum+= rates.averageRating();
+        }
+        return (float) (sum / size);
+    }
+
 
     public int getPassengerId() {
         return passenger_id;

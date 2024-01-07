@@ -76,7 +76,7 @@ public interface DriverInterface {
      */
     void addRoute(Route route);
 
-    void addPassengerRating(PassengerRating rating);
+    //void addPassengerRating(PassengerRating rating);
 
     /**
      * Remove a route from the driver's set of routes.
@@ -85,7 +85,7 @@ public interface DriverInterface {
      */
     void removeRoute(Route route);
 
-    void removePassengerRating(PassengerRating rating) ;
+    //void removePassengerRating(PassengerRating rating) ;
 
     /**
      * Check if the driver has a specific route.
@@ -95,7 +95,7 @@ public interface DriverInterface {
      */
     boolean hasRoute(Route route);
 
-    boolean hasPassengerRating(PassengerRating rating);
+    //boolean hasPassengerRating(PassengerRating rating);
 
     /**
      * Get the set of routes associated with the driver.
@@ -104,7 +104,7 @@ public interface DriverInterface {
      */
     HashSet<Route> getRoutes();
 
-    HashSet<PassengerRating> getPassengerRating();
+    //HashSet<PassengerRating> getPassengerRating();
 
     String getAverageRating();
 }
