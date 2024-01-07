@@ -84,19 +84,43 @@ public class RouteDAOmemory implements RouteDAO {
         return  result;
     }
 
-    public Passenger findPassenger(Route route, Subroute subroute) {
+//    public Passenger findPassenger(Route route, Subroute subroute) {
+//        HashMap<Passenger, Subroute> map ;
+//        for(Route route1 : entities){
+//            if (route1 == route) {
+//                map = route.getPassengerRoutes();
+//            }
+//
+//        }
+////        for()
+//        return null;
+//    }
+
+    public Passenger findPassengerBySubroute(Subroute subroute) {
         HashMap<Passenger, Subroute> map ;
         for(Route route1 : entities){
-            if (route1 == route) {
-                map = route.getPassengerRoutes();
+            map = route1.getPassengerRoutes();
+            Set<Passenger> passengers = map.keySet();
+            for(Passenger passenger : passengers){
+                if(map.get(passenger) == subroute){
+                    return passenger;
+                }
             }
-
         }
-//        for()
         return null;
     }
     @Override
     public int nextId() {
         return (entities.size() > 0 ? entities.get(entities.size()-1).getId()+1 : 1);
+    }
+
+    @Override
+    public Passenger findPassenger(Route route, Subroute subroute) {
+        return null;
+    }
+
+    @Override
+    public Passenger findPassengerByRoute(Route route) {
+        return null;
     }
 }
