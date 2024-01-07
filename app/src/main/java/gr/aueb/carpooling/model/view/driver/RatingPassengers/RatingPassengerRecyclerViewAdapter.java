@@ -119,7 +119,7 @@ public class RatingPassengerRecyclerViewAdapter extends RecyclerView.Adapter<Rat
                 rated_passenger.addRating(passengerRating);
                 route.addPassengerRating(passengerRating);
 
-                passengers.remove(rated_passenger);
+//                passengers.remove(rated_passenger);
                 listener.selectRate(passengerRating);
 
             }

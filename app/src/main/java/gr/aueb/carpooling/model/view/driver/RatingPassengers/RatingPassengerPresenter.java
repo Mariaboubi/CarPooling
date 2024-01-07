@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import gr.aueb.carpooling.model.Passenger;
 
+import gr.aueb.carpooling.model.PassengerRating;
 import gr.aueb.carpooling.model.Route;
 import gr.aueb.carpooling.model.dao.PassengerDAO;
 import gr.aueb.carpooling.model.dao.PassengerRatingDao;
@@ -33,17 +34,13 @@ public class RatingPassengerPresenter {
     }
 
     public void setPassengerList(Route route) {
-        ArrayList<Passenger> t = (ArrayList<Passenger>) passengerDao.findAllByRoute(route);
+        passengers = passengerDao.findAllByRoute(route);
+        ArrayList<PassengerRating> route_ratings = passengerRatingDao.findAllByRoute(route);
 
-        /* filter out passengers that already have a rating */
-        for (Passenger p : t) {
-            System.out.println(passengerRatingDao.find(p));
-            if (passengerRatingDao.find(p) != null) {
-                t.remove(p);
-            }
+        /* filter out passengers that already have a rating in the route*/
+        for (PassengerRating rating : route_ratings) {
+            passengers.remove(rating.getPassenger());
         }
-        System.out.println(t);
-        System.out.println(passengers);
     }
 
     /**
