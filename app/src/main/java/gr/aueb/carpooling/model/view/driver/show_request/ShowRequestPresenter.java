@@ -1,8 +1,10 @@
 package gr.aueb.carpooling.model.view.driver.show_request;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import gr.aueb.carpooling.model.Driver;
+import gr.aueb.carpooling.model.Passenger;
 import gr.aueb.carpooling.model.Route;
 import gr.aueb.carpooling.model.Subroute;
 import gr.aueb.carpooling.model.dao.RouteDAO;
@@ -16,6 +18,7 @@ public class ShowRequestPresenter {
     private final SubrouteDAO subrouteDAO;
 
     private ArrayList<Subroute> subroutes;
+//    private ArrayList<Route> subroutes;
 
 
     public ShowRequestPresenter(SubrouteDAO subrouteDAO) {
@@ -45,19 +48,31 @@ public class ShowRequestPresenter {
     public void onChangeLayout() {
         if (subroutes.isEmpty()) {
             view.ShowNoRequests();
+//            view.showErrorMessage("LIST","EMPTY");
         }
         else {
             view.ShowRequests();
+//            view.showErrorMessage("LIST"," NOTTTTT EMPTY");
         }
     }
 
-    public void setSubrouteList() {
-        subroutes = (ArrayList<Subroute>) subrouteDAO.findAll();
+    public void setSubrouteList(ArrayList<Route> routes) {
+
+        for(Route route:routes){
+            HashMap<Passenger, Subroute> passengerSubrouteMap = route.getPassengerRoutes();
+
+            // Add all subroutes to the subroutes_exist list
+            subroutes.addAll(passengerSubrouteMap.values());
+        }
+
     }
 
     public ArrayList<Subroute> getSubrouteList() {
         return subroutes;
     }
+//    public ArrayList<Route> getSubrouteList() {
+//    return subroutes;
+//}
     public void showError(boolean b) {
         view.showErrorMessage("is Completed", String.valueOf(b));
 
