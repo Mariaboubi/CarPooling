@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,28 +16,31 @@ import java.util.List;
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.Route;
 
-public class ExistedRouteRecyclerViewAdapter extends RecyclerView.Adapter<ExistedRouteRecyclerViewAdapter.ViewHolder>{
+public class ExistedRouteRecyclerViewAdapter extends RecyclerView.Adapter<ExistedRouteRecyclerViewAdapter.ViewHolder> {
     private final List<Route> routes;
 
     private Route currentItem;
     private ExistedRouteViewModel viewModel;
     private final ExistedRouteRecyclerViewAdapter.RouteSelectionListener listener;
+
     /**
      * Αρχικοποιεί την λίστα με τις διαθέσιμες διαδρομές
      * Αρχικοποιεί το αντικείμενο Listener που θα χρησιμοποιηθεί όταν ο οδηγός πατήσει επάνω σε κάποια διαδρομή
-     * @param routes διαθέσιμες διαδρομές
+     *
+     * @param routes   διαθέσιμες διαδρομές
      * @param listener το αντικείμενο item selection listener που θα χρησιμοποιήσουμε
      */
-    public ExistedRouteRecyclerViewAdapter(ArrayList<Route> routes, RouteSelectionListener listener){
+    public ExistedRouteRecyclerViewAdapter(ArrayList<Route> routes, RouteSelectionListener listener) {
         this.routes = routes;
-        this.listener=listener;
+        this.listener = listener;
     }
+
     /**
      * Περνάει στον adapter το layout που θέλουμε να εμφανιστούν τα αντικείμενα της λίστας μας
-     * @param parent The ViewGroup into which the new View will be added after it is bound to
-     *               an adapter position.
-     * @param viewType The view type of the new View.
      *
+     * @param parent   The ViewGroup into which the new View will be added after it is bound to
+     *                 an adapter position.
+     * @param viewType The view type of the new View.
      * @return νέο αντικείμενο view holder με το custom layout των διαδρομών
      */
     @NonNull
@@ -62,7 +66,7 @@ public class ExistedRouteRecyclerViewAdapter extends RecyclerView.Adapter<Existe
         holder.routeDate.setText(str_date);
         boolean b = currentItem.isCompleted();
 
-       // holder.routeCompleted.setText((String.valueOf(b)));
+        // holder.routeCompleted.setText((String.valueOf(b)));
 //        holder.routeDest.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -75,7 +79,7 @@ public class ExistedRouteRecyclerViewAdapter extends RecyclerView.Adapter<Existe
                 currentItem.Completed();
                 boolean b = currentItem.isCompleted();
 
-               // holder.routeCompleted.setText((String.valueOf(b)));
+                // holder.routeCompleted.setText((String.valueOf(b)));
                 listener.selectRoute(currentItem);
 
 //                Context context = view.getContext();
@@ -102,15 +106,14 @@ public class ExistedRouteRecyclerViewAdapter extends RecyclerView.Adapter<Existe
     /**
      * Αρχικοποιεί τα Text Views που χρησιμοποιούμε στην παραπάνω μέθοδο
      */
-    public static class ViewHolder extends RecyclerView.ViewHolder
-    {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         public final TextView routeDest;
         public final TextView routeDate;
 
         //public final TextView routeCompleted;
         public final Button CompletedButton;
-        public ViewHolder(View v)
-        {
+
+        public ViewHolder(View v) {
             super(v);
             routeDest = (TextView) v.findViewById(R.id.Destination);
             routeDate = (TextView) v.findViewById(R.id.Date);

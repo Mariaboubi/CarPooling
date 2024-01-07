@@ -68,7 +68,7 @@
         tools:visibility="visible" />
 
     <TextView
-        android:id="@+id/driver_name"
+        android:id="@+id/passenger_name"
         android:layout_width="match_parent"
         android:layout_height="39dp"
         android:text="@string/passenger_name"
@@ -86,7 +86,7 @@
         tools:visibility="visible" />
 
     <TextView
-        android:id="@+id/driver_rate"
+        android:id="@+id/passenger_rate"
         android:layout_width="match_parent"
         android:layout_height="39dp"
         android:text="@string/rate"

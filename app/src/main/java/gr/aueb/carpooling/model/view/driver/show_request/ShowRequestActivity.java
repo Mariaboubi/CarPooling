@@ -11,11 +11,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.Driver;
+import gr.aueb.carpooling.model.Route;
 import gr.aueb.carpooling.model.dao.DriverDAO;
+import gr.aueb.carpooling.model.dao.RouteDAO;
 import gr.aueb.carpooling.model.dao.SubrouteDAO;
 import gr.aueb.carpooling.model.memoryDao.DriverDAOmemory;
+import gr.aueb.carpooling.model.memoryDao.RouteDAOmemory;
 import gr.aueb.carpooling.model.memoryDao.SubrouteDAOmemory;
 import gr.aueb.carpooling.model.view.driver.DriverFrontPage;
 
@@ -32,6 +38,10 @@ public class ShowRequestActivity extends AppCompatActivity implements ShowReques
     private SubrouteDAO subrouteDAO = new SubrouteDAOmemory();
 
     private  DriverDAO driverDAO = new DriverDAOmemory();
+
+    private RouteDAO routeDAO  = new RouteDAOmemory();
+
+    private List<Route> routes;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +58,10 @@ public class ShowRequestActivity extends AppCompatActivity implements ShowReques
 
 
         Driver driver = driverDAO.findByUsername(username);
+
+        routes =  routeDAO.findByDriver(driver);
+
+
 
         //viewModel.getPresenter().setRouteList(driver);
 
@@ -82,7 +96,7 @@ public class ShowRequestActivity extends AppCompatActivity implements ShowReques
         recyclerView.setVisibility(View.VISIBLE);
         emptyView.setVisibility(View.GONE);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new ShowRequestRecyclerViewAdapter(viewModel.getPresenter().getSubrouteList(), this));
+        recyclerView.setAdapter(new ShowRequestRecyclerViewAdapter(viewModel.getPresenter().getSubrouteList(), this,routes));
     }
     public void showErrorMessage (String title, String message)
     {

@@ -45,7 +45,14 @@ public class SubrouteDAOmemory implements SubrouteDAO {
         return null;
     }
 
-
+    public Subroute find(int id) {
+            for(Subroute subroute: entities){
+                if(subroute.getId()==id){
+                    return subroute;
+                }
+            }
+            return null;
+        }
 
     @Override
     public int nextId() {

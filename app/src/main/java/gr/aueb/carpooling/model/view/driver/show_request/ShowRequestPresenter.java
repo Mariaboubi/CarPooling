@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import gr.aueb.carpooling.model.Driver;
 import gr.aueb.carpooling.model.Route;
 import gr.aueb.carpooling.model.Subroute;
+import gr.aueb.carpooling.model.dao.RouteDAO;
 import gr.aueb.carpooling.model.dao.SubrouteDAO;
+import gr.aueb.carpooling.model.memoryDao.RouteDAOmemory;
 
 public class ShowRequestPresenter {
 
@@ -14,6 +16,7 @@ public class ShowRequestPresenter {
     private final SubrouteDAO subrouteDAO;
 
     private ArrayList<Subroute> subroutes;
+
 
     public ShowRequestPresenter(SubrouteDAO subrouteDAO) {
         this.subrouteDAO = subrouteDAO;
@@ -59,4 +62,5 @@ public class ShowRequestPresenter {
         view.showErrorMessage("is Completed", String.valueOf(b));
 
     }
+
 }

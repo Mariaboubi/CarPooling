@@ -127,6 +127,7 @@ public class subrouteActivity extends AppCompatActivity implements SubrouteView 
     public void showRouteAddedMessage(Subroute subroute) {
         Intent intent = new Intent(this, SearchRouteActivity.class);
         intent.putExtra("Username",username);
+        intent.putExtra("Subroute",subroute.getId());
         startActivity(intent);
 
     }

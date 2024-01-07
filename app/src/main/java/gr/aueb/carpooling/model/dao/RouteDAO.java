@@ -19,6 +19,7 @@ public interface RouteDAO {
     List<Route> findByDriver(Driver driver);
     int nextId();
 
+    Passenger findPassenger(Route route, Subroute subroute);
     List<Route> findExistedRoutes();
 
     Route findByMap(Passenger pas, Subroute sub);

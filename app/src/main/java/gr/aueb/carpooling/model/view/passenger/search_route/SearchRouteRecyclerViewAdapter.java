@@ -13,12 +13,14 @@ import java.util.List;
 
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.Route;
+import gr.aueb.carpooling.model.Subroute;
 
 
 public class SearchRouteRecyclerViewAdapter extends RecyclerView.Adapter<SearchRouteRecyclerViewAdapter.ViewHolder>{
     private final List<Route> routes;
 
     private Route currentItem;
+
 
     private SearchRouteViewModel viewModel;
 
@@ -53,7 +55,7 @@ public class SearchRouteRecyclerViewAdapter extends RecyclerView.Adapter<SearchR
         holder.RequestButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                listener.selectRoute(currentItem);
             }
         });
     }

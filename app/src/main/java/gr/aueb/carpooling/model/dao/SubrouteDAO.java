@@ -17,6 +17,8 @@ public interface SubrouteDAO {
 
     Subroute find (String dest,String pick,String date);
 
+    Passenger findPassengerBySubroute(Subroute subroute);
+    Subroute find(int id);
 
     int nextId();
 }

@@ -1,5 +1,7 @@
 package gr.aueb.carpooling.model.view.passenger.search_route;
 
+import static gr.aueb.carpooling.model.Request_status.PENDING;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,7 +14,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import gr.aueb.carpooling.R;
+import gr.aueb.carpooling.model.Passenger;
 import gr.aueb.carpooling.model.Route;
+import gr.aueb.carpooling.model.Subroute;
 import gr.aueb.carpooling.model.view.driver.ExistedRoutes.ExistedRouteActivity;
 import gr.aueb.carpooling.model.view.driver.ExistedRoutes.ExistedRouteRecyclerViewAdapter;
 import gr.aueb.carpooling.model.view.log_in.LogInActivity;
@@ -27,6 +31,7 @@ public class SearchRouteActivity extends AppCompatActivity implements SearchRout
 
     private SearchRouteView view;
     private String username;
+    private int subroute_id;
     private TextView emptyView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +44,7 @@ public class SearchRouteActivity extends AppCompatActivity implements SearchRout
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             username = extras.getString("Username");
+            subroute_id = extras.getInt("Subroute");
             //The key argument here must match that used in the other activity
         }
 
@@ -67,6 +73,12 @@ public class SearchRouteActivity extends AppCompatActivity implements SearchRout
 
 //    @Override
     public void selectRoute(Route route) {
+      Subroute sub = viewModel.getPresenter().findSubroute(subroute_id);
+      sub.setStatus(PENDING);
+      Passenger pass = viewModel.getPresenter().findPassenger(username);
+      route.addPassenger(pass,sub);
+
+
 //        Intent intent = new Intent(SearchRouteActivity.this, subrouteActivity.class);
 //        intent.putExtra("Username",username);
 //        startActivity(intent);
