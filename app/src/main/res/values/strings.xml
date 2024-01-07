@@ -91,7 +91,7 @@
     <string name="no_routes_found">No routes found : (</string>
     <string name="search_route">Search route</string>
     <string name="no_available_routes">No available routes</string>
-    <string name="rate">Rating :</string>
+    <string name="rate">0.00</string>
     <string name="request">Request</string>
     <string name="if_you_want_to_be_also_a_driver_complete_the_following">If you want to be also a driver, complete the following :</string>
     <string name="if_you_want_to_be_also_a_passenger_complete_the_following">if you want to be also a passenger, complete the following :</string>
