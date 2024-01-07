@@ -37,9 +37,7 @@ public class Subroute implements SubrouteInterface {
     public void setStatus(Request_status status) {
         this.status = status;
     }
-    public void setStatus(Request_status stat) {
-        this.status = stat;
-    }
+
 
 
     public Request_status getStatus() {
