@@ -1,7 +1,7 @@
 package gr.aueb.carpooling.model.dao;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 
 import gr.aueb.carpooling.model.Passenger;
@@ -23,4 +23,6 @@ public interface PassengerRatingDao {
     PassengerRating find(Passenger passenger);
 
     PassengerRating find(Route route);
+
+    ArrayList<PassengerRating> findAllByRoute(Route route);
 }

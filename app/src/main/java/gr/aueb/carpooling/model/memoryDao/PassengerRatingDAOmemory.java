@@ -3,7 +3,6 @@ package gr.aueb.carpooling.model.memoryDao;
 import java.util.ArrayList;
 import java.util.List;
 
-import gr.aueb.carpooling.model.Driver;
 import gr.aueb.carpooling.model.Passenger;
 import gr.aueb.carpooling.model.PassengerRating;
 import gr.aueb.carpooling.model.Route;
@@ -52,5 +51,14 @@ public class PassengerRatingDAOmemory implements PassengerRatingDao {
         }
         return null;
     }
-
+    @Override
+    public ArrayList<PassengerRating> findAllByRoute(Route route) {
+        ArrayList<PassengerRating> ratings = new ArrayList<>();
+        for(PassengerRating rating: entities){
+            if(route.equals(rating.getRoute())){
+                ratings.add(rating);
+            }
+        }
+        return ratings;
+    }
 }

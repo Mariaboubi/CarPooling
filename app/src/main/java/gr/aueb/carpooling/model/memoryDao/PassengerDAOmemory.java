@@ -83,7 +83,17 @@ public class PassengerDAOmemory implements PassengerDAO {
         return  result;
     }
 
-
+//    @Override
+//    public ArrayList<Passenger> findAllUnratedByRoute(Route route) {
+//        ArrayList<Passenger> result= new ArrayList<>();
+//        for(Passenger passenger : entities){
+//            if(passenger.getRoutes().contains(route)){
+//                if (route.getPassengerRating().stream().iterator().==null)
+//                    result.add(passenger);
+//            }
+//        }
+//        return  result;
+//    }
     @Override
     public Passenger find(int id) {
         for(Passenger passenger: entities){

@@ -32,13 +32,13 @@ public interface RouteDAO {
     //ArrayList<Subroute> findSubrouteByPassenger(Passenger passenger);
 
     Route find(int id);
-    List<Route> findByDriver(Driver driver);
+    ArrayList<Route> findByDriver(Driver driver);
     int nextId();
 
     Passenger findPassenger(Route route, Subroute subroute);
 
     Passenger findPassengerByRoute(Route route);
-    List<Route> findExistedRoutes();
+    ArrayList<Route> findExistedRoutes();
 
     Route findByMap(Passenger pas, Subroute sub);
 
