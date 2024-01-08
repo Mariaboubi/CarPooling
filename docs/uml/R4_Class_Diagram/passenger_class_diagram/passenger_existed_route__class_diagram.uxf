@@ -1,0 +1,60 @@
+<diagram program="umletino" version="15.1"><zoom_level>11</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>539</x><y>594</y><w>451</w><h>209</h></coordinates><panel_attributes>ExistedSubroutePresenter 
+--
+- viewModel: ExistedSubrouteView             
+- listener: SubrouteSelectionListener
+--
++ ExistedSubrouteRecyclerViewAdapter(subroutes: ArrayList&lt;Subroute&gt;, listener: SubrouteSelectionListener) 
++ onCreateViewHolder(parent: ViewGroup, viewType: int): ViewHolder
++ onBindViewHolder(holder: ViewHolder, position: int): void 
++ deleteSubroute(position: int): void 
++ getItemCount(): int 
++ ViewHolder(itemView: View)
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>660</x><y>429</y><w>286</w><h>88</h></coordinates><panel_attributes>ExistedSubrouteViewModel   
+--
++ ExistedSubrouteViewModel() 
++ getPresenter(): ExistedSubroutePresenter </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>55</x><y>330</y><w>462</w><h>220</h></coordinates><panel_attributes>ExistedSubrouteActivity 
+--
+- viewModel: ExistedSubrouteViewModel 
+- username: String 
+- recyclerView: RecyclerView 
+- emptyView: TextView 
+--
+#onCreate(savedInstanceState: Bundle): void
++ selectSubroute(subroute: Subroute): void 
++ openPessengerFrontPage(): void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>374</x><y>242</y><w>33</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>308</x><y>220</y><w>165</w><h>33</h></coordinates><panel_attributes>AppCompatActivity</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>506</x><y>429</y><w>176</w><h>55</h></coordinates><panel_attributes>lt=&lt;-
+-viewModel
+m1=1</panel_attributes><additional_attributes>140;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>781</x><y>506</y><w>99</w><h>110</h></coordinates><panel_attributes>lt=&lt;-
+-presenter
+m1=1</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>781</x><y>319</y><w>33</w><h>132</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>264</x><y>539</y><w>33</w><h>66</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;40;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>132</x><y>583</y><w>286</w><h>66</h></coordinates><panel_attributes>&lt;&lt;layout&gt;&gt;
+activity_passenger_existed_subroute</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>627</x><y>297</y><w>220</w><h>33</h></coordinates><panel_attributes>androidx.lifecycle.ViewModel</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>792</x><y>792</y><w>121</w><h>220</h></coordinates><panel_attributes>lt=&lt;-
+-SubrouteDAO
+m1=1</panel_attributes><additional_attributes>10;180;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>121</x><y>176</y><w>33</w><h>176</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;140</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>33</y><w>396</w><h>154</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+ ExistedSubrouteView  
+--
+ + ShowNoSubroutes(): void 
++ ShowSubroutes(): void 
++ showErrorMessage(title: String, message: String): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1166</x><y>352</y><w>121</w><h>44</h></coordinates><panel_attributes>Subroutes</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>979</x><y>363</y><w>209</w><h>385</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>170;10;10;330</additional_attributes></element><element><id>UMLClass</id><coordinates><x>638</x><y>990</y><w>308</w><h>220</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+SubrouteDAO 
+--
+
+--
++ delete(entity: Subroute): void 
++ deleteAll(): void 
++ save(entity: Subroute): void 
++ findAll(): List&lt;Subroute&gt; 
++ find(id: int): Subroute 
++ nextId(): int </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>605</x><y>0</y><w>462</w><h>220</h></coordinates><panel_attributes>ExistedSubrouteRecyclerViewAdapter            
+--
+- viewModel: ExistedSubrouteViewModel 
+- username: String 
+- recyclerView: RecyclerView 
+- emptyView: TextView 
+--
++ ExistedSubrouteRecyclerViewAdapter(subroutes: ArrayList&lt;Subroute&gt;, listener: SubrouteSelectionListener) 
++ onCreateViewHolder(parent: ViewGroup, viewType: int): ViewHolder 
++ onBindViewHolder(holder: ViewHolder, position: int): void 
++ deleteSubroute(position: int): void 
++ getItemCount(): int </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>506</x><y>209</y><w>121</w><h>143</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>90;10;10;110</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1177</x><y>198</y><w>121</w><h>44</h></coordinates><panel_attributes>Routes</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1056</x><y>77</y><w>143</w><h>165</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>110;130;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1056</x><y>187</y><w>132</w><h>198</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>100;160;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>968</x><y>209</y><w>33</w><h>407</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;350;10;10</additional_attributes></element></diagram>

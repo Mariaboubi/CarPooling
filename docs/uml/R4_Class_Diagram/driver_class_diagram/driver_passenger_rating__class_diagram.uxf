@@ -1,0 +1,88 @@
+<diagram program="umletino" version="15.1"><zoom_level>8</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>480</x><y>312</y><w>208</w><h>64</h></coordinates><panel_attributes>RatingPassengersViewModel         
+--
++RatingPassengersViewModel()          
++ getPresenter() : RatingPassengerPresenter  </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>40</x><y>240</y><w>336</w><h>160</h></coordinates><panel_attributes>RatingPassengers  
+--
+- viewModel: RatingPassengersViewModel 
+- username: String                     
+- recyclerView: RecyclerView           
+- emptyView: TextView                  
+- route_id: int   
+--
+# onCreate(savedInstanceState: Bundle)  
++ selectRate(rating: PassengerRating) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>272</x><y>176</y><w>24</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>224</x><y>160</y><w>120</w><h>24</h></coordinates><panel_attributes>AppCompatActivity</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>368</x><y>312</y><w>128</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+-viewModel
+m1=1</panel_attributes><additional_attributes>140;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>568</x><y>368</y><w>72</w><h>80</h></coordinates><panel_attributes>lt=&lt;-
+-presenter
+m1=1</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>568</x><y>232</y><w>24</w><h>96</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>192</x><y>392</y><w>24</w><h>48</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;40;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>96</x><y>424</y><w>208</w><h>48</h></coordinates><panel_attributes>&lt;&lt;layout&gt;&gt;
+activity_driver_rating_passengers</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>456</x><y>216</y><w>160</w><h>24</h></coordinates><panel_attributes>androidx.lifecycle.ViewModel</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>88</x><y>128</y><w>24</w><h>128</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;140</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>24</y><w>288</w><h>112</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+ RatingPassengerView 
+--
++ ShowNoPassengers() : void
++ ShowPassengers() : void
++ showErrorMessage(title: String, message: String) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>440</x><y>0</y><w>336</w><h>160</h></coordinates><panel_attributes>ExistedRouteRecyclerViewAdapter     
+--
+- routes: List&lt;Route&gt; 
+- viewModel: ExistedRouteViewModel
+- listener: RouteSelectionListener
+
+--
++ ExistedRouteRecyclerViewAdapter(ArrayList&lt;Route&gt;, RouteSelectionListener) |
++ onCreateViewHolder(ViewGroup, int): ViewHolder
++ onBindViewHolder(ViewHolder, int)              
++ getItemCount(): int  </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>368</x><y>152</y><w>88</w><h>104</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>90;10;10;110</additional_attributes></element><element><id>UMLClass</id><coordinates><x>864</x><y>48</y><w>88</w><h>32</h></coordinates><panel_attributes>Routes</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>768</x><y>56</y><w>112</w><h>24</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>120;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>704</x><y>152</y><w>24</w><h>296</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;350;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>376</x><y>432</y><w>336</w><h>160</h></coordinates><panel_attributes>RatingPassengerPresenter    
+--
+- view: RatingPassengerView 
+
+--
++ RatingPassengerPresenter(passengerRatingDao: PassengerRatingDao) 
++ setView(view: RatingPassengerView)   
++ getView() : RatingPassengerView      
++ setPassengerRatingList()             
++ onChangeLayout()                     
++ getPassengerRatingList() : ArrayList&lt;PassengerRating&gt;  </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>672</x><y>712</y><w>280</w><h>176</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+RouteDAO
+--
+
+--
++ delete(entity: Route) : void     
++ deleteAll() : void               
++ save(entity: Route) : void       
++ findAll() : List&lt;Route&gt;          
++ find(id: int) : Route            
++ findByDriver(driver: Driver) : List&lt;Route&gt; 
++ nextId() : int                   
++ findExistedRoutes() : List&lt;Route&gt; </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>688</x><y>584</y><w>72</w><h>144</h></coordinates><panel_attributes>lt=&lt;-
+-RouteDAO
+m1=1</panel_attributes><additional_attributes>10;160;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>336</x><y>744</y><w>280</w><h>176</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+PassengerRatingDao  
+--
+
+--
++ delete(rating: PassengerRating) : void 
++ deleteAll() : void            
++ findAll() : List&lt;PassengerRating&gt; 
+ + save(entity: PassengerRating) : void 
++ find(passenger: Passenger) : PassengerRating 
++ find(route: Route) : PassengerRating</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>384</x><y>584</y><w>120</w><h>176</h></coordinates><panel_attributes>lt=&lt;-
+-PassengerRatingDAO
+m1=1</panel_attributes><additional_attributes>10;200;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>816</x><y>272</y><w>256</w><h>168</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+PassengerDAO
+--
+
+--
++ delete(entity: Passenger) : void|
++ delete(id: int) : void          
++ deleteAll() : void              
++ findAll() : List&lt;Passenger&gt;     
++ save(entity: Passenger) : void  
++ find(username: String) : boolean
++ find(username: String, password: String) : Passenger 
++ findByUsername(username: String) : Passenger 
++ findByName(name: String) : Passenger 
++ find(id: int) : Passenger 
++ findPassenger(id: int) : boolean|
++ findRoute(id: int) : Set&lt;Route&gt; 
++ nextId() : int </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>768</x><y>128</y><w>128</w><h>160</h></coordinates><panel_attributes>lt=&lt;-
+-PassengerDAO
+m1=1</panel_attributes><additional_attributes>100;180;10;10</additional_attributes></element></diagram>
