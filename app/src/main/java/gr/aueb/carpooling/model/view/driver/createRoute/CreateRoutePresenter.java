@@ -28,9 +28,6 @@ public class CreateRoutePresenter {
         this.routeDAO = routeDAO;
     }
 
-    public void setDriver(int id) {
-        driver = driverDAO.find(id);
-    }
 
     public void setView(CreateRouteView view) {
         this.view = view;

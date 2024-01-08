@@ -40,24 +40,8 @@ public class DriverDAOmemory implements DriverDAO {
         return null;
     }
 
-    @Override
-    public Driver find(int id) {
-        for(Driver driver: entities){
-            if(driver.getUserId()==id){
-                return driver;
-            }
-        }
-        return null;
-    }
 
-    public boolean findDriver(int id) {
-        for(Driver driver: entities){
-            if(driver.getDriverId()==id){
-                return true;
-            }
-        }
-        return false;
-    }
+
 
     public ArrayList<Driver> findAll() {
         return entities;
