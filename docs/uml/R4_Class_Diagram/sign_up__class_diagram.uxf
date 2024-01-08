@@ -1,96 +1,94 @@
-<diagram program="umletino" version="15.1"><zoom_level>8</zoom_level><element><id>UMLClass</id><coordinates><x>608</x><y>448</y><w>304</w><h>240</h></coordinates><panel_attributes>PlaceOrderPresenter
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>500</x><y>620</y><w>470</w><h>170</h></coordinates><panel_attributes>SignUpPresenter
 --
--view:PlaceOrderView
+- view: SignUpView     
 --
-+setView(view:PlaceOrderView)
-+getView():PlaceOrderView
-+getDishes(: ArrayList&lt;Dish&gt;
-+addOrderLine(quantity:int,dish:Dish)
-+setRestaurant(restaurantId:int)
-+onChangeLayout()
-+onPlaceOrder() 
-+getTotalCost():double
-+createOrder(tableNumber:int) 
-+setCustomer(customerId:int)
-+getOrder():Order
-+getCustomer():Customer 
-+onCart()
-+setOrderLines(modifiedOrderLines:ArrayList&lt;OrderLine&gt;)
-+getRestaurant():Restaurant
-
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>536</x><y>312</y><w>208</w><h>64</h></coordinates><panel_attributes>PlaceOrderViewModel
++ SignUpPresenter(userDao: UserDAO,    
+    driverDao: DriverDAO,               
+passengerDao: PassengerDAO)         
++ setView(v: SignUpView) : void        
++ getView() : SignUpView               
++ onCreateUserAccount() : void   
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>610</x><y>460</y><w>260</w><h>80</h></coordinates><panel_attributes>SignUpViewModel 
 --
-
++ SignUpViewModel()                 
++ getPresenter() : SignUpPresenter</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>60</x><y>370</y><w>420</w><h>140</h></coordinates><panel_attributes>SignUpActivity 
 --
-+ getPresenter():PlaceOrderPresenter</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>208</x><y>568</y><w>352</w><h>128</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
-PlaceOrderView
+- viewModel: SignUpViewModel         
+- btnSignUp: Button   
 --
-+ShowConfirmationButton(confirmationListener : ConfirmationListener)
-+insufficientFundsMessage()
-+showNumberPickerPopup(dish:Dish)
-+showEmptyList()
-+showDishList()
-+redirectToCart()
-+goBack()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>48</x><y>192</y><w>336</w><h>136</h></coordinates><panel_attributes>PlaceOrderActivity
---
--cartActivityResultLauncher:ActivityResultLauncher&lt;Intent&gt; 
--customerId: int
--restaurantId: int
--tableNumber:int
--recyclerView:RecyclerView 
--emptyView:TextView
--placeOrderButton:Button
---
-#onCreate(SavedState : Bundle)
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>280</x><y>40</y><w>24</w><h>168</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;190</additional_attributes></element><element><id>UMLClass</id><coordinates><x>232</x><y>24</y><w>120</w><h>24</h></coordinates><panel_attributes>AppCompatActivity</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>376</x><y>280</y><w>176</w><h>64</h></coordinates><panel_attributes>lt=&lt;-
+#  onCreate(savedInstanceState)  
+- openLogInActivity()    </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>350</x><y>290</y><w>30</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>290</x><y>270</y><w>150</w><h>30</h></coordinates><panel_attributes>AppCompatActivity</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>470</x><y>460</y><w>160</w><h>50</h></coordinates><panel_attributes>lt=&lt;-
 -viewModel
-m1=1</panel_attributes><additional_attributes>200;60;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>704</x><y>368</y><w>72</w><h>96</h></coordinates><panel_attributes>lt=&lt;-
+m1=1</panel_attributes><additional_attributes>140;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>530</y><w>90</w><h>110</h></coordinates><panel_attributes>lt=&lt;-
 -presenter
-m1=1</panel_attributes><additional_attributes>10;100;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>624</x><y>232</y><w>24</w><h>96</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>200</x><y>320</y><w>24</w><h>72</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>160</x><y>376</y><w>120</w><h>40</h></coordinates><panel_attributes>&lt;&lt;layout&gt;&gt;
-activity_place_order</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>512</x><y>216</y><w>160</w><h>24</h></coordinates><panel_attributes>androidx.lifecycle.ViewModel</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>968</x><y>456</y><w>88</w><h>32</h></coordinates><panel_attributes>Customer</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>968</x><y>512</y><w>88</w><h>32</h></coordinates><panel_attributes>Order</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>904</x><y>456</y><w>80</w><h>64</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>80;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>904</x><y>504</y><w>80</w><h>40</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>80;30;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>904</x><y>512</y><w>80</w><h>88</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>80;90;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>968</x><y>576</y><w>88</w><h>32</h></coordinates><panel_attributes>Restaurant</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>464</x><y>680</y><w>192</w><h>96</h></coordinates><panel_attributes>lt=&lt;-
--customerDAO
-m1=1</panel_attributes><additional_attributes>10;100;220;10</additional_attributes></element><element><id>Relation</id><coordinates><x>800</x><y>680</y><w>200</w><h>96</h></coordinates><panel_attributes>lt=&lt;-
--orderDAO
-m1=1</panel_attributes><additional_attributes>230;100;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>704</x><y>680</y><w>96</w><h>96</h></coordinates><panel_attributes>lt=&lt;-
--restaurantDAO
-m1=1</panel_attributes><additional_attributes>10;100;20;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>384</x><y>760</y><w>256</w><h>168</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
-CustomerDAO
+m1=1</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>360</y><w>30</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>250</x><y>500</y><w>30</w><h>140</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;120;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>160</x><y>620</y><w>190</w><h>60</h></coordinates><panel_attributes>&lt;&lt;layout&gt;&gt;
+activity_sign_up</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>580</x><y>340</y><w>200</w><h>30</h></coordinates><panel_attributes>androidx.lifecycle.ViewModel</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>410</x><y>780</y><w>200</w><h>120</h></coordinates><panel_attributes>lt=&lt;-
+-PassengerDAO
+m1=1</panel_attributes><additional_attributes>10;100;180;10</additional_attributes></element><element><id>Relation</id><coordinates><x>110</x><y>290</y><w>30</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>0</y><w>280</w><h>300</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+SignUpView 
+--
++ getName() : String                  
++ getSurname() : String               
++ getAge() : String                   
++ getEmail() : String                 
++ getPhoneNumber() : String           
++ getCardNumber() : String            
++ getCardHolderName() : String        
++ getCVV() : String                   
++ getUsername() : String              
++ getPassword() : String              
++ getPasswordVerification() : String  
++ getDriverLicense() : String         
++ getCarType() : String               
++ getIban() : String                 
++ showErrorMessage(s: String, s1: String) : void 
++ showRegistrationSuccessMessage() : void 
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>270</x><y>880</y><w>320</w><h>210</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+PassengerDAO
 --
 
 --
-+delete(entity:Customer);
++ delete(entity: Passenger) : void|
++ delete(id: int) : void          
++ deleteAll() : void              
++ findAll() : List&lt;Passenger&gt;     
++ save(entity: Passenger) : void  
++ find(username: String) : boolean
++ find(username: String, password: String) : Passenger 
++ findByUsername(username: String) : Passenger 
++ findByName(name: String) : Passenger 
++ find(id: int) : Passenger 
++ findPassenger(id: int) : boolean|
++ findRoute(id: int) : Set&lt;Route&gt; 
++ nextId() : int </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>640</x><y>880</y><w>320</w><h>210</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+UserDAO
+--
+
+--
++delete(entity:User);
 +delete(id:int);
 +deleteAll()
-+findAll():List&lt;Customer&gt; 
-+save(entity:Customer);
++findAll():List&lt;User&gt; 
++save(entity:User);
 +find(username:String, password:String):Customer
-+find(id:int):Customer
-+find(username:String):Customer
-+nextId():int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>656</x><y>760</y><w>280</w><h>176</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
-RestaurantDAO
++find(id:int):User
++find(username:String):User
++nextId():int</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>780</x><y>780</y><w>80</w><h>120</h></coordinates><panel_attributes>lt=&lt;-
+-userDAO
+m1=1</panel_attributes><additional_attributes>10;100;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1020</x><y>880</y><w>320</w><h>210</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+DriverDAO
 --
 
 --
-+delete(entity:Restaurant);
-+delete(id:int);
-+deleteAll()
-+findAll():List&lt;Restaurant&gt; 
-+save(entity:Restaurant);
-+find(id:int):Restaurant
-+find(username:String):Restaurant
-+nextId():int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>944</x><y>760</y><w>264</w><h>176</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
-OrderDAO
---
-
---
-+delete(entity:Order);
-+delete(id:int);
-+deleteAll()
-+findAll():List&lt;Order&gt; 
-+save(entity:Order);
-+find(id:int):Order
-+findByCustomer(customer:Customer):List&lt;Order&gt;
-+nextId():int</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>48</x><y>320</y><w>24</w><h>136</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;150;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>8</x><y>440</y><w>168</w><h>64</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
-DishSelectionListener
---
-+selectDish(currentDish:Dish)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>280</x><y>320</y><w>24</w><h>264</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;310;10;10</additional_attributes></element></diagram>
++ delete(entity: Driver) : void  
++ delete(id: int) : void          
++ deleteAll() : void              
++ findAll() : List&lt;Driver&gt;        
++ save(entity: Driver) : void    
++ find(username: String) : boolean
++ findByUsername(username: String) : Driver 
++ find(id: int) : Driver         
++ findDriver(id: int) : boolean  
++ nextId() : int  </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>910</x><y>780</y><w>240</w><h>120</h></coordinates><panel_attributes>lt=&lt;-
+-DriverDAO
+m1=1</panel_attributes><additional_attributes>220;100;10;10</additional_attributes></element></diagram>
