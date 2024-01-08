@@ -1,7 +1,6 @@
 package gr.aueb.carpooling.model.view.sign_up;
 
 import gr.aueb.carpooling.model.view.View;
-import gr.aueb.carpooling.model.contact.EmailAddress;
 
 public interface SignUpView extends View {
 
@@ -36,7 +35,8 @@ public interface SignUpView extends View {
     void showErrorMessage(String s, String s1);
 
 
-    /**  Successful registration message
+    /**
+     * Successful registration message
      */
     void showRegistrationSuccessMessage();
 

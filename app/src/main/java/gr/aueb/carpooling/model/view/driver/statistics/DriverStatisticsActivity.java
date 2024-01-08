@@ -1,14 +1,13 @@
 package gr.aueb.carpooling.model.view.driver.statistics;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.ImageButton;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageButton;
-import android.widget.TextView;
 
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.Driver;
@@ -20,13 +19,11 @@ import gr.aueb.carpooling.model.view.driver.front_page.DriverFrontPage;
 public class DriverStatisticsActivity extends AppCompatActivity implements DriverStatisticsView {
     private DriverStatisticsViewModel viewModel;
 
-    private DriverStatisticsView view;
     private String username;
 
-    private DriverDAO driverDAO= new DriverDAOmemory();
+    private final DriverDAO driverDAO= new DriverDAOmemory();
 
 
-    private Driver driver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,18 +40,13 @@ public class DriverStatisticsActivity extends AppCompatActivity implements Drive
             username = extras.getString("Username");
 
         }
-        driver=driverDAO.findByUsername(username);
+        Driver driver = driverDAO.findByUsername(username);
 
         viewModel.getPresenter().setRouteList(driver);
         viewModel.getPresenter().calculateStats();
 
         ImageButton back_button = (ImageButton) findViewById(R.id.back_button);
-        back_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openDriverFrontPage();
-            }
-        });
+        back_button.setOnClickListener(v -> openDriverFrontPage());
     }
     public void openDriverFrontPage() {
         Intent intent = new Intent(DriverStatisticsActivity.this, DriverFrontPage.class);

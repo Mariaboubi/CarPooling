@@ -1,14 +1,12 @@
 package gr.aueb.carpooling.model;
 
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
 
 public class DriverRating extends Rating implements DriverRatingInterface {
     private String securityRating; // Rating about security issues
     private String cleanlinessRating; // Rating about cleaning issues
 
-    private Driver driver;
+    private final Driver driver;
 
     private final HashMap<Passenger,DriverRating> passengers_has_rate;
 

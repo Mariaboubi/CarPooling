@@ -6,7 +6,7 @@ public interface TopUpView extends View {
 
 
     /**
-     * Σετάρουμε το textView να δείχνει το απαραίτητο χρηματικό υπόλοιπο
+     * Set the textView to display the necessary financial balance.
      */
     void setBalance(String balance);
 

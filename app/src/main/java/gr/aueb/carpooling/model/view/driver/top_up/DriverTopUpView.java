@@ -6,7 +6,7 @@ public interface DriverTopUpView extends View {
 
     void setBalance(String balance);
 
-    String getDriverUername();
+    String getDriverUsername();
 
     void showErrorMessage(String title, String message);
 }

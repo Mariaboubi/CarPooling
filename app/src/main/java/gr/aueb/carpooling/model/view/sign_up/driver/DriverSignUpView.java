@@ -11,9 +11,6 @@ public interface DriverSignUpView extends View {
 
     void showErrorMessage(String title, String message);
 
-
-    /**
-     */
     void showRegistrationSuccessMessage(String title,String message);
 
 }

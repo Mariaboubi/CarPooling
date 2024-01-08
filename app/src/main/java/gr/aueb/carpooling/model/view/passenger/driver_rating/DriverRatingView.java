@@ -1,6 +1,5 @@
-package gr.aueb.carpooling.model.view.passenger.DriverRating;
+package gr.aueb.carpooling.model.view.passenger.driver_rating;
 
-import gr.aueb.carpooling.model.DriverRating;
 import gr.aueb.carpooling.model.view.View;
 
 public interface DriverRatingView extends View {

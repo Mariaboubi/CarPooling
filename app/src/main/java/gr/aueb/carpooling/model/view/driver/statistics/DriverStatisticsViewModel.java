@@ -8,14 +8,15 @@ public class DriverStatisticsViewModel extends ViewModel {
 
     DriverStatisticsPresenter presenter;
     /**
-     * Αρχικοποιεί τον presenter και του περνάει ένα νέο αντικείμενο τύπου owner doa και restaurant dao για να χρησιμποιήσει
+     * Initializes the presenter and passes a new instance of owner DAO and restaurant DAO for use.
      */
     public DriverStatisticsViewModel(){
         presenter = new DriverStatisticsPresenter(new RouteDAOmemory());
     }
     /**
-     * Επιστρέφει τον presenter στις κλάσεις όπου περιέχει τις πληροφορίες
-     * @return το instance του presenter που δημιουργήσαμε παραπάνω
+     * Returns the presenter in classes where it contains the information.
+     *
+     * @return the instance of the presenter created above
      */
     public DriverStatisticsPresenter getPresenter()
     {

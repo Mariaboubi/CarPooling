@@ -1,8 +1,7 @@
-package gr.aueb.carpooling.model.view.passenger.PassengerStatistics;
+package gr.aueb.carpooling.model.view.passenger.statistics;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -14,22 +13,19 @@ import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.Passenger;
 import gr.aueb.carpooling.model.dao.PassengerDAO;
 import gr.aueb.carpooling.model.memoryDao.PassengerDAOmemory;
-
 import gr.aueb.carpooling.model.view.passenger.front_page.PassengerFrontPageActivity;
 
 
 public class PassengerStatisticsActivity extends AppCompatActivity implements PassengerStatisticsView {
-    private PassengerStatisticsViewModel viewModel;
     private String username;
-    private PassengerDAO passengerDAO= new PassengerDAOmemory();
+    private final PassengerDAO passengerDAO= new PassengerDAOmemory();
 
-    private Passenger passenger;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_passenger_statics);
 
-        viewModel = new ViewModelProvider(this).get(PassengerStatisticsViewModel.class);
+        PassengerStatisticsViewModel viewModel = new ViewModelProvider(this).get(PassengerStatisticsViewModel.class);
 
         viewModel.getPresenter().setView(this);
 
@@ -39,18 +35,13 @@ public class PassengerStatisticsActivity extends AppCompatActivity implements Pa
             username = extras.getString("Username");
 
         }
-        passenger=passengerDAO.findByUsername(username);
+        Passenger passenger = passengerDAO.findByUsername(username);
 
         viewModel.getPresenter().setSubroutes(passenger);
         viewModel.getPresenter().calculateStats();
 
         ImageButton back_button = (ImageButton) findViewById(R.id.back_button);
-        back_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openPassengerFrontPage();
-            }
-        });
+        back_button.setOnClickListener(v -> openPassengerFrontPage());
     }
 
     private void openPassengerFrontPage() {

@@ -1,4 +1,4 @@
-package gr.aueb.carpooling.model.view.passenger.ExistedSubroutes;
+package gr.aueb.carpooling.model.view.passenger.existed_subroutes;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -25,7 +25,7 @@ import gr.aueb.carpooling.model.dao.SubrouteDAO;
 import gr.aueb.carpooling.model.memoryDao.PassengerDAOmemory;
 import gr.aueb.carpooling.model.memoryDao.RouteDAOmemory;
 import gr.aueb.carpooling.model.memoryDao.SubrouteDAOmemory;
-import gr.aueb.carpooling.model.view.passenger.DriverRating.DriverRatingActivity;
+import gr.aueb.carpooling.model.view.passenger.driver_rating.DriverRatingActivity;
 import gr.aueb.carpooling.model.view.passenger.front_page.PassengerFrontPageActivity;
 import gr.aueb.carpooling.model.view.passenger.top_up.TopUpActivity;
 
@@ -57,7 +57,6 @@ public class ExistedSubrouteActivity extends AppCompatActivity implements Existe
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             username = extras.getString("Username");
-            //The key argument here must match that used in the other activity
         }
         passenger = passengerDAO.findByUsername(username);
         viewModel.getPresenter().setSubrouteList(passenger);
@@ -141,7 +140,6 @@ public class ExistedSubrouteActivity extends AppCompatActivity implements Existe
                 .setTitle(title)
                 .setMessage(message)
                 .setPositiveButton("OK", null).create().show();
-
 
     }
 

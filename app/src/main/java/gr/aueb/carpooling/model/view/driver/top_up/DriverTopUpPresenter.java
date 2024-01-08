@@ -10,11 +10,8 @@ import gr.aueb.carpooling.model.dao.DriverDAO;
 public class DriverTopUpPresenter {
 
     private DriverTopUpView view;
-    private DriverDAO driverDAO;
+    private final DriverDAO driverDAO;
     private Driver driver;
-
-
-    private Money money;
 
     public DriverTopUpPresenter(DriverDAO driverDAO) {
         this.driverDAO = driverDAO;
@@ -29,8 +26,7 @@ public class DriverTopUpPresenter {
     }
 
     public void setDriver() {
-        driver = driverDAO.findByUsername(view.getDriverUername());
-//        view.showErrorMessage("username", passenger.getUsername());
+        driver = driverDAO.findByUsername(view.getDriverUsername());
     }
 
     public Driver getDriver() {
@@ -39,10 +35,9 @@ public class DriverTopUpPresenter {
 
 
     /**
-     * Εαν το instance του επιβατη δεν είναι null εμφανίζουμε το χρηματικό του υπόλοιπο
-     * αλλιως εμφανίζουμε Error
+     * If the instance of the driver is not null, display the monetary balance;
+     * otherwise, display an error.
      */
-
     public void setLayout() {
         if (driver!=null)
         {
@@ -56,19 +51,4 @@ public class DriverTopUpPresenter {
         }
 
     }
-
-    /**
-     * Εαν το instance του επιβατη δεν είναι null
-     * του προσθέτουμε ένα χρηματικό ποσό και
-     * καλούμε SetLayout() για να ανανεώσουμε
-     * το υπολοιπο που φαίνεται στην οθόνη
-     */
-//    public void onTopUp(double amount) {
-//        if(d!=null) {
-//            money = new Money(amount, Currency.getInstance("EUR"));
-//            passenger.topUp(money);
-//            setLayout();
-//        }
-//    }
-
 }

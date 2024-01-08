@@ -1,4 +1,4 @@
-package gr.aueb.carpooling.model.view.passenger.DriverRating;
+package gr.aueb.carpooling.model.view.passenger.driver_rating;
 
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -13,8 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import gr.aueb.carpooling.R;
-import gr.aueb.carpooling.model.Driver;
-import gr.aueb.carpooling.model.DriverRating;
 import gr.aueb.carpooling.model.Passenger;
 import gr.aueb.carpooling.model.Route;
 import gr.aueb.carpooling.model.Subroute;
@@ -35,16 +33,12 @@ public class DriverRatingActivity extends AppCompatActivity implements DriverRat
 
     public TextView DriverUsername;
 
-    private Button rate_button;
-
-    private ImageButton confirm_ratings;
-
     // DAOs
-    private PassengerDAO passengerDAO = new PassengerDAOmemory();
+    private final PassengerDAO passengerDAO = new PassengerDAOmemory();
 
-    private RouteDAO routeDAO = new RouteDAOmemory();
+    private final RouteDAO routeDAO = new RouteDAOmemory();
 
-    private SubrouteDAO subrouteDAO = new SubrouteDAOmemory();
+    private final SubrouteDAO subrouteDAO = new SubrouteDAOmemory();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,27 +59,19 @@ public class DriverRatingActivity extends AppCompatActivity implements DriverRat
         String  driver_username = route.getDriver().getUsername();
 
         // Buttons and TxtViews
-        rate_button = (Button) findViewById(R.id.RateButton);
+        Button rate_button = (Button) findViewById(R.id.RateButton);
 
         DriverUsername = ((TextView) findViewById(R.id.DriversUserName));
         DriverUsername.setText(driver_username);
 
-        rate_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                viewModel.getPresenter().onCreateRate(passenger, route);
-            }
-        });
+        rate_button.setOnClickListener(v -> viewModel.getPresenter().onCreateRate(passenger, route));
 
-        confirm_ratings = (ImageButton) findViewById(R.id.confirm_ratings);
+        ImageButton confirm_ratings = (ImageButton) findViewById(R.id.confirm_ratings);
 
-        confirm_ratings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                boolean check = viewModel.getPresenter().checkButtonCanBePressed();
-                if(check) {
-                    openPassengerFrontPage(username);
-                }
+        confirm_ratings.setOnClickListener(v -> {
+            boolean check = viewModel.getPresenter().checkButtonCanBePressed();
+            if(check) {
+                openPassengerFrontPage(username);
             }
         });
 

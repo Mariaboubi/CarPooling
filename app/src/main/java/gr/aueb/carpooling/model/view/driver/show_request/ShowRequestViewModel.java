@@ -7,15 +7,14 @@ import gr.aueb.carpooling.model.memoryDao.SubrouteDAOmemory;
 public class ShowRequestViewModel extends ViewModel {
     private final ShowRequestPresenter presenter;
     /**
-     * Αρχικοποιεί τον presenter περνώντας του σαν παραμέτρους νέα daos που θα χρησιμοποιήσει
+     * Initializes the presenter by passing new daos as parameters
      */
     public ShowRequestViewModel()
     {
         presenter = new ShowRequestPresenter(new SubrouteDAOmemory());
     }
     /**
-     *
-     * @return επιστρέφει τον presenter που έχουμε αποθηκεύσει τα δεδομένα
+     * @return returns the presenter that stores the data
      */
     public ShowRequestPresenter getPresenter() {
         return presenter;

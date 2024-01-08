@@ -1,4 +1,4 @@
-package gr.aueb.carpooling.model.view.passenger.ExistedSubroutes;
+package gr.aueb.carpooling.model.view.passenger.existed_subroutes;
 
 
 import java.util.ArrayList;
@@ -13,33 +13,31 @@ public class ExistedSubroutePresenter {
 
     ExistedSubrouteView view;
 
-    private SubrouteDAO subrouteDAO;
-    private RouteDAO routeDAO= new RouteDAOmemory();
+    private final RouteDAO routeDAO= new RouteDAOmemory();
 
     private ArrayList<Subroute> subroutes;
 
     public ExistedSubroutePresenter(SubrouteDAO subrouteDAO){
-        this.subrouteDAO = subrouteDAO;
         subroutes = new ArrayList<>();
     }
 
     /**
-     *Σετάρει το αντικείμενο view μας για να χρησιμοποιήσουμε τις μεθόδους του interface του
-     * @param view Ένα instance του view
+     * Sets our view object to use the methods of its interface.
+     * @param view An instance of the view.
      */
     public void setView(ExistedSubrouteView view) {
         this.view = view;
     }
 
     /**
-     * Γεμίζει την λίστα με της διαδρομεσ του συγκεκριμενου επιβατη
+     * Fills the list with the subroutes of the specific passenger.
      */
     public void setSubrouteList(Passenger passenger) {
         subroutes = (ArrayList<Subroute>) routeDAO.findSubroutesByPassenger(passenger);
     }
+
     /**
-     *  Ελεγχουμε εαν η λίστα με τις διαδρομες είναι άδεια
-     *  για να τα προβάλουμε ή να δείξουμε μήνυμα οτι δεν υπάρχουν διαδρομες
+     * Checks if the list of subroutes is empty to display them or show a message that there are no subroutes.
      */
     public void onChangeLayout() {
         if (subroutes.isEmpty()) {
@@ -51,18 +49,13 @@ public class ExistedSubroutePresenter {
     }
 
     /**
-     * Επιστρέφει την λίστα με τις διαδρομές
-     * @return η λίστα με τις διαδρομες
+     * Returns the list of subroutes.
+     * @return The list of subroutes.
      */
     public ArrayList<Subroute> getSubrouteList() {
         return subroutes;
     }
 
-
-    public void showMessege(String title,String messege) {
-        view.showErrorMessage(title, messege);
-
-    }
 
 
 }

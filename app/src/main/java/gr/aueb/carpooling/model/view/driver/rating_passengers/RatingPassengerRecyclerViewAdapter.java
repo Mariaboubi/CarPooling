@@ -17,7 +17,6 @@ import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.Passenger;
 import gr.aueb.carpooling.model.PassengerRating;
 import gr.aueb.carpooling.model.Route;
-import gr.aueb.carpooling.model.dao.PassengerDAO;
 import gr.aueb.carpooling.model.dao.PassengerRatingDao;
 import gr.aueb.carpooling.model.dao.RouteDAO;
 import gr.aueb.carpooling.model.memoryDao.PassengerRatingDAOmemory;
@@ -26,13 +25,9 @@ import gr.aueb.carpooling.model.memoryDao.RouteDAOmemory;
 public class RatingPassengerRecyclerViewAdapter extends RecyclerView.Adapter<RatingPassengerRecyclerViewAdapter.ViewHolder> {
     private final List<Passenger> passengers;
 
-    private PassengerDAO passengerDAO;
     private final PassengerRatingDao passengerRatingDao = new PassengerRatingDAOmemory();
     private final RouteDAO routeDAO = new RouteDAOmemory();
 
-    private RatingPassengersViewModel viewModel;
-
-    private RatingPassengerView view;
     private final RatingPassengerRecyclerViewAdapter.PassengerRatingSelectionListener listener;
 
     private final int routeId;
@@ -45,12 +40,12 @@ public class RatingPassengerRecyclerViewAdapter extends RecyclerView.Adapter<Rat
 
 
     /**
-     * Περνάει στον adapter το layout που θέλουμε να εμφανιστούν τα αντικείμενα της λίστας μας
+     * Inflates the layout to be used for displaying the items in our list
      *
      * @param parent   The ViewGroup into which the new View will be added after it is bound to
      *                 an adapter position.
      * @param viewType The view type of the new View.
-     * @return νέο αντικείμενο view holder με το custom layout των διαδρομών
+     * @return a new view holder object with the custom layout of passenger ratings
      */
     @NonNull
     @Override
@@ -65,7 +60,7 @@ public class RatingPassengerRecyclerViewAdapter extends RecyclerView.Adapter<Rat
      *        item at the given position in the data set.
      * @param position The position of the item within the adapter's data set.
      */
-//    @Override
+    @Override
     public void onBindViewHolder(@NonNull RatingPassengerRecyclerViewAdapter.ViewHolder holder, int position) {
         Passenger currentItem = passengers.get(position);
 
@@ -74,29 +69,24 @@ public class RatingPassengerRecyclerViewAdapter extends RecyclerView.Adapter<Rat
 
         Route route = routeDAO.find(routeId);
 
-        holder.RateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Passenger rated_passenger = passengers.get(position);
-                String politeness = holder.ratingPoliteness.getText().toString().trim();
-                String consistency = holder.ratingConsistency.getText().toString().trim();
-                String reliability = holder.ratingReliability.getText().toString().trim();
+        holder.RateButton.setOnClickListener(v -> {
+            Passenger rated_passenger = passengers.get(position);
+            String politeness = holder.ratingPoliteness.getText().toString().trim();
+            String consistency = holder.ratingConsistency.getText().toString().trim();
+            String reliability = holder.ratingReliability.getText().toString().trim();
 
-                boolean result = listener.validateRates(rated_passenger, politeness, consistency, reliability, route);
-                if (!result) {
-                    return;
-                }
-                PassengerRating passengerRating = new PassengerRating(rated_passenger, route, politeness, consistency, reliability);
-
-                passengerRatingDao.save(passengerRating);
-
-                rated_passenger.addRating(passengerRating);
-                route.addPassengerRating(passengerRating);
-
-//                passengers.remove(rated_passenger);
-                listener.selectRate(passengerRating);
-
+            boolean result = listener.validateRates(rated_passenger, politeness, consistency, reliability, route);
+            if (!result) {
+                return;
             }
+            PassengerRating passengerRating = new PassengerRating(rated_passenger, route, politeness, consistency, reliability);
+
+            passengerRatingDao.save(passengerRating);
+
+            rated_passenger.addRating(passengerRating);
+            route.addPassengerRating(passengerRating);
+
+            listener.selectRate(passengerRating);
 
         });
 
@@ -109,7 +99,7 @@ public class RatingPassengerRecyclerViewAdapter extends RecyclerView.Adapter<Rat
     }
 
     /**
-     * Αρχικοποιεί τα Text Views που χρησιμοποιούμε στην παραπάνω μέθοδο
+     * Initializes the Text Views and Buttons used in the above method
      */
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public final TextView ratingUsername;

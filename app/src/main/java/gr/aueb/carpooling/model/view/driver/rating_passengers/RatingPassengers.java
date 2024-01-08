@@ -33,7 +33,7 @@ public class RatingPassengers extends AppCompatActivity implements RatingPasseng
     public ImageButton confirmButton;
     private int routeId;
 
-    private RouteDAO routeDAO = new RouteDAOmemory();
+    private final RouteDAO routeDAO = new RouteDAOmemory();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,12 +58,7 @@ public class RatingPassengers extends AppCompatActivity implements RatingPasseng
         viewModel.getPresenter().onChangeLayout();
 
         confirmButton = ((ImageButton) findViewById(R.id.confirm_ratings));
-        confirmButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                goToDriverFrontPage();
-            }
-        });
+        confirmButton.setOnClickListener(v -> goToDriverFrontPage());
 
     }
 
@@ -107,13 +102,13 @@ public class RatingPassengers extends AppCompatActivity implements RatingPasseng
         double cons = 0;
         double rel = 0;
         if(!politeness.isEmpty()){
-            pol = Double.valueOf(politeness);
+            pol = Double.parseDouble(politeness);
         }
         if(!consistency.isEmpty()){
-            cons = Double.valueOf(consistency);
+            cons = Double.parseDouble(consistency);
         }
         if(!reliability.isEmpty()){
-            rel = Double.valueOf(reliability);
+            rel = Double.parseDouble(reliability);
         }
         if(politeness.isEmpty() || consistency.isEmpty() || reliability.isEmpty()) {
             showErrorMessage("Error", "Please fill all the fields");

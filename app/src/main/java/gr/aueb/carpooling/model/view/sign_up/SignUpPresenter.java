@@ -7,7 +7,6 @@ import gr.aueb.carpooling.model.contact.EmailAddress;
 import gr.aueb.carpooling.model.dao.DriverDAO;
 import gr.aueb.carpooling.model.dao.PassengerDAO;
 import gr.aueb.carpooling.model.dao.UserDAO;
-import gr.aueb.carpooling.model.contact.EmailAddress;
 
 public class SignUpPresenter {
 
@@ -33,14 +32,13 @@ public class SignUpPresenter {
     }
 
     /**
-     * Η μέθοδος αυτή καλείται όταν πατηθεί το κουμπί δημιουργίας του account απο τον ιδιοκτήτη
-     * αφου πρώτα έχουν περαστεί όλα τα στοιχεία του
-     * Κάνουμε ελέγχους σε κάθε πεδίο για το άν θεωρείται αποδεκτό , και εάν δεν είναι εμφανίζεται μήνυμα ειδοποίησης την οθόνη του ιδιοκτήτη
-     * που τον ειδοποιεί για να κάνει τις απαραίτητες αλλαγές
-     * Εάν τα στοιχεία είναι σωστά , εμφανίζεται κατάλληλο μήνυμα και προστίθεται ο ιδιοκτήτης στην εφαρμογή
+     * This method is called when the account creation button is pressed by the user
+     * after all their details have been entered.
+     * We perform checks on each field to determine if it is acceptable, and if not, we display a notification message to the user's screen
+     * prompting them to make the necessary changes.
+     * If the details are correct, an appropriate message is displayed, and the user is added to the application.
      */
     public void onCreateUserAccount() {
-        // Θα αποθηκευσουμε τα δεδομένα που εισήχθησαν στα πεδία
 
         String inputName = view.getName();
         String inputSurname = view.getSurname();

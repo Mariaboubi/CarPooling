@@ -1,4 +1,4 @@
-package gr.aueb.carpooling.model.view.passenger.PassengerStatistics;
+package gr.aueb.carpooling.model.view.passenger.statistics;
 
 import android.os.Build;
 
@@ -6,8 +6,6 @@ import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Currency;
-import java.util.HashSet;
-import java.util.Set;
 
 import gr.aueb.carpooling.model.Passenger;
 import gr.aueb.carpooling.model.Subroute;
@@ -16,7 +14,7 @@ import gr.aueb.carpooling.model.dao.RouteDAO;
 
 public class PassengerStatisticsPresenter {
 
-    private RouteDAO routeDAO;
+    private final RouteDAO routeDAO;
 
     private PassengerStatisticsView view;
 

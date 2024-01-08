@@ -1,4 +1,4 @@
-package gr.aueb.carpooling.model.view.passenger.PassengerStatistics;
+package gr.aueb.carpooling.model.view.passenger.statistics;
 
 import gr.aueb.carpooling.model.view.View;
 

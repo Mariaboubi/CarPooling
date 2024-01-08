@@ -7,16 +7,17 @@ import gr.aueb.carpooling.model.memoryDao.PassengerRatingDAOmemory;
 
 public class RatingPassengersViewModel extends ViewModel {
     RatingPassengerPresenter presenter;
+
     /**
-     * Αρχικοποιεί τον presenter περνώντας του σαν παραμέτρους νέα daos που θα χρησιμοποιήσει
+     * Initializes the presenter by passing new daos as parameters
      */
     public RatingPassengersViewModel()
     {
         presenter = new RatingPassengerPresenter(new PassengerDAOmemory(), new PassengerRatingDAOmemory());
     }
+
     /**
-     *
-     * @return επιστρέφει τον presenter που έχουμε αποθηκεύσει τα δεδομένα
+     * @return returns the presenter that stores the data
      */
     public RatingPassengerPresenter getPresenter() {
         return presenter;

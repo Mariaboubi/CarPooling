@@ -13,7 +13,7 @@ import gr.aueb.carpooling.model.contact.Money;
 import gr.aueb.carpooling.model.dao.RouteDAO;
 
 public class DriverStatisticsPresenter {
-    private RouteDAO routeDAO;
+    private final RouteDAO routeDAO;
 
     private DriverStatisticsView view;
 
@@ -159,7 +159,7 @@ public class DriverStatisticsPresenter {
         float calcYearlyAverageFullness = calcYearlyAverageFullness();
         float calcMonthlyAverageFullness=calcMonthAverageFullness();
         Money calcMonthlyIncome = calcMonthIncome();
-        Money calcYearlylyIncome = calcYearlyIncome();
+        Money calcYearlyIncome = calcYearlyIncome();
 
 
 
@@ -176,7 +176,7 @@ public class DriverStatisticsPresenter {
 
         view.setcalcMonthlyIncome(new DecimalFormat("0.00").format(calcMonthlyIncome.getAmount()));
 
-        view.setcalcYearlyIncome(new DecimalFormat("0.00").format(calcYearlylyIncome.getAmount()));
+        view.setcalcYearlyIncome(new DecimalFormat("0.00").format(calcYearlyIncome.getAmount()));
     }
     public DriverStatisticsView getView(){
         return this.view;

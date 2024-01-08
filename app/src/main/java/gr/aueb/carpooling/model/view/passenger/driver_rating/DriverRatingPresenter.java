@@ -1,14 +1,10 @@
-package gr.aueb.carpooling.model.view.passenger.DriverRating;
+package gr.aueb.carpooling.model.view.passenger.driver_rating;
 
 import gr.aueb.carpooling.model.Driver;
 import gr.aueb.carpooling.model.DriverRating;
 import gr.aueb.carpooling.model.Passenger;
 import gr.aueb.carpooling.model.Route;
 import gr.aueb.carpooling.model.dao.DriverRatingDAO;
-import gr.aueb.carpooling.model.dao.PassengerDAO;
-import gr.aueb.carpooling.model.dao.RouteDAO;
-import gr.aueb.carpooling.model.memoryDao.PassengerDAOmemory;
-import gr.aueb.carpooling.model.memoryDao.RouteDAOmemory;
 
 public class DriverRatingPresenter {
 
@@ -37,13 +33,13 @@ public class DriverRatingPresenter {
          double sec = 0;
          double clean = 0;
          if(!politeness.isEmpty()){
-             pol = Double.valueOf(politeness);
+             pol = Double.parseDouble(politeness);
          }
         if(!security.isEmpty()){
-            sec = Double.valueOf(security);
+            sec = Double.parseDouble(security);
         }
         if(!cleanliness.isEmpty()){
-            clean = Double.valueOf(cleanliness);
+            clean = Double.parseDouble(cleanliness);
         }
 
         if (politeness.isEmpty() || security.isEmpty() || cleanliness.isEmpty()) {
@@ -77,9 +73,6 @@ public class DriverRatingPresenter {
         String security = view.security();
         String cleanliness = view.cleanliness();
 
-        if (politeness.isEmpty() && security.isEmpty() && cleanliness.isEmpty()) {
-            return true;
-        }
-        return false;
+        return politeness.isEmpty() && security.isEmpty() && cleanliness.isEmpty();
     }
 }
