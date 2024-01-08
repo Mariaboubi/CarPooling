@@ -1,8 +1,6 @@
 package gr.aueb.carpooling.model.memoryDao;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
 
 import gr.aueb.carpooling.model.Passenger;
 import gr.aueb.carpooling.model.Route;
@@ -11,18 +9,6 @@ import gr.aueb.carpooling.model.dao.PassengerDAO;
 public class PassengerDAOmemory implements PassengerDAO {
 
     protected static ArrayList<Passenger> entities = new ArrayList<>();
-//    @Override
-//    public void delete(Passenger entity) {entities.remove(entity);}
-
-//    @Override
-//    public void delete(int id) {
-//        for (Passenger passenger: entities){
-//            if (passenger.getUserId()==id){
-//                entities.remove(passenger);
-//                break;
-//            }
-//        }
-//    }
 
     @Override
     public void deleteAll() {entities.clear();}
@@ -78,6 +64,10 @@ public class PassengerDAOmemory implements PassengerDAO {
             }
         }
         return false;
+    }
+
+    public ArrayList<Passenger> findAll() {
+        return entities;
     }
 
 }

@@ -1,11 +1,8 @@
 package gr.aueb.carpooling.model.memoryDao;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
 
 import gr.aueb.carpooling.model.Driver;
-import gr.aueb.carpooling.model.Route;
 import gr.aueb.carpooling.model.dao.DriverDAO;
 
 public class DriverDAOmemory implements DriverDAO {
@@ -60,5 +57,9 @@ public class DriverDAOmemory implements DriverDAO {
             }
         }
         return false;
+    }
+
+    public ArrayList<Driver> findAll() {
+        return entities;
     }
 }

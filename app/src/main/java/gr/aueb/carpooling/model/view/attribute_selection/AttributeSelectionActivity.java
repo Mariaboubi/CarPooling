@@ -13,7 +13,7 @@ import android.widget.ImageButton;
 
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.view.log_in.LogInActivity;
-import gr.aueb.carpooling.model.view.driver.DriverFrontPage;
+import gr.aueb.carpooling.model.view.driver.front_page.DriverFrontPage;
 import gr.aueb.carpooling.model.view.passenger.front_page.PassengerFrontPageActivity;
 import gr.aueb.carpooling.model.view.sign_up.driver.DriverSignUpActivity;
 import gr.aueb.carpooling.model.view.sign_up.passenger.PassengerSignUpActivity;

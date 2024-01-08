@@ -19,9 +19,7 @@ import gr.aueb.carpooling.model.Driver;
 import gr.aueb.carpooling.model.Route;
 import gr.aueb.carpooling.model.dao.DriverDAO;
 import gr.aueb.carpooling.model.memoryDao.DriverDAOmemory;
-import gr.aueb.carpooling.model.view.driver.DriverFrontPage;
-import gr.aueb.carpooling.model.view.driver.DriverTopUp.DriverTopUp;
-import gr.aueb.carpooling.model.view.log_in.LogInActivity;
+import gr.aueb.carpooling.model.view.driver.front_page.DriverFrontPage;
 import gr.aueb.carpooling.model.view.driver.RatingPassengers.RatingPassengers;
 
 public class ExistedRouteActivity extends AppCompatActivity implements ExitedRouteView,ExistedRouteRecyclerViewAdapter.RouteSelectionListener{

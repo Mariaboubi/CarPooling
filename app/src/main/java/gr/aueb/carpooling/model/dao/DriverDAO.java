@@ -1,11 +1,9 @@
 package gr.aueb.carpooling.model.dao;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.Collection;
 
 import gr.aueb.carpooling.model.Driver;
-import gr.aueb.carpooling.model.Route;
 
 /**
  * The DriverDAO interface defines the contract for classes that
@@ -56,5 +54,13 @@ public interface DriverDAO {
      * @return true if the driver with the given driver ID exists; otherwise, false.
      */
     boolean findDriver(int id);
+
+    /**
+     * Retrieves and returns a list containing all Driver entities stored in the storage.
+     *
+     * @return An ArrayList containing all Driver entities.
+     */
+    ArrayList<Driver> findAll();
+
 }
 

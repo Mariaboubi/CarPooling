@@ -19,7 +19,7 @@ import gr.aueb.carpooling.model.PassengerRating;
 import gr.aueb.carpooling.model.Route;
 import gr.aueb.carpooling.model.dao.RouteDAO;
 import gr.aueb.carpooling.model.memoryDao.RouteDAOmemory;
-import gr.aueb.carpooling.model.view.driver.DriverFrontPage;
+import gr.aueb.carpooling.model.view.driver.front_page.DriverFrontPage;
 
 
 public class RatingPassengers extends AppCompatActivity implements RatingPassengerView, RatingPassengerRecyclerViewAdapter.PassengerRatingSelectionListener {

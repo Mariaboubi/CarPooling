@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.memoryDao.DriverDAOmemory;
-import gr.aueb.carpooling.model.view.driver.DriverFrontPage;
+import gr.aueb.carpooling.model.view.driver.front_page.DriverFrontPage;
 
 public class DriverTopUp extends AppCompatActivity implements DriverTopUpView {
 

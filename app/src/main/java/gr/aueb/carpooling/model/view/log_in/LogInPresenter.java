@@ -22,7 +22,7 @@ public class LogInPresenter {
     public void authenticate() {
         String inputUsername = view.extractUsername();
         String inputPassword = view.extractPassword();
-        User user = userDAO.findByUsername(inputUsername, inputPassword);
+        User user = userDAO.findByUsernameAndPassword(inputUsername, inputPassword);
 
         if (inputUsername.isEmpty() && inputPassword.isEmpty()) {
             view.showErrorMessage("Error!", "Complete all the fields");

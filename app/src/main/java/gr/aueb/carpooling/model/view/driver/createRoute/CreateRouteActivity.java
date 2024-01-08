@@ -13,10 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-import java.util.HashMap;
-
 import gr.aueb.carpooling.R;
-import gr.aueb.carpooling.model.view.driver.DriverFrontPage;
+import gr.aueb.carpooling.model.view.driver.front_page.DriverFrontPage;
 
 public class CreateRouteActivity extends AppCompatActivity implements CreateRouteView {
 

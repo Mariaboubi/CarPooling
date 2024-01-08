@@ -1,19 +1,12 @@
 package gr.aueb.carpooling.model.memoryDao;
 
-import android.os.Build;
-
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
-import gr.aueb.carpooling.model.Passenger;
-import gr.aueb.carpooling.model.Route;
 import gr.aueb.carpooling.model.Subroute;
 import gr.aueb.carpooling.model.dao.SubrouteDAO;
-import gr.aueb.carpooling.model.dao.RouteDAO;
 
 public class SubrouteDAOmemory implements SubrouteDAO {
-     private RouteDAO routeDAO= new RouteDAOmemory();
+
     protected static ArrayList<Subroute> entities = new ArrayList<>();
     @Override
     public void delete(Subroute entity) {
@@ -30,15 +23,6 @@ public class SubrouteDAOmemory implements SubrouteDAO {
         entities.add(entity);
     }
 
-    @Override
-    public List<Subroute> findAll() {
-        return entities;
-    }
-
-
-
-
-
     public Subroute findById(int id) {
             for(Subroute subroute: entities){
                 if(subroute.getId()==id){
@@ -49,7 +33,8 @@ public class SubrouteDAOmemory implements SubrouteDAO {
     }
 
     @Override
-    public int nextId() {
-        return (entities.size() > 0 ? entities.get(entities.size()-1).getId()+1 : 1);
+    public ArrayList<Subroute> findAll() {
+        return entities;
     }
+
 }

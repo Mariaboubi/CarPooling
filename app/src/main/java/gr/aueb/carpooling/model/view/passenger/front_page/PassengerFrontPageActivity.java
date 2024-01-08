@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.dao.PassengerDAO;
 import gr.aueb.carpooling.model.memoryDao.MemoryInitialized;
@@ -38,8 +40,6 @@ public class PassengerFrontPageActivity extends AppCompatActivity implements Pas
 
     private final PassengerDAO passengerDAO= new PassengerDAOmemory();
 
-
-
     private String username;
     @SuppressLint("MissingInflatedId")
     @Override
@@ -55,7 +55,6 @@ public class PassengerFrontPageActivity extends AppCompatActivity implements Pas
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             username = extras.getString("Username");
-            //The key argument here must match that used in the other activity
         }
 
         log_out_button = (ImageButton) findViewById(R.id.log_out);
@@ -66,7 +65,9 @@ public class PassengerFrontPageActivity extends AppCompatActivity implements Pas
         log_out_button.setOnClickListener(v -> openLogInActivity());
 
          rate= ((TextView)findViewById(R.id.RATE));
-         rate.setText(String.valueOf(passengerDAO.findByUsername(username).averageRating()));
+
+        String avg_rating = new DecimalFormat("0.00").format(passengerDAO.findByUsername(username).averageRating());
+         rate.setText(avg_rating);
 
         wallet.setOnClickListener(new View.OnClickListener() {
             @Override

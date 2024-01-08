@@ -1,12 +1,9 @@
 package gr.aueb.carpooling.model.dao;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Collection;
 
-import gr.aueb.carpooling.model.Driver;
 import gr.aueb.carpooling.model.DriverRating;
-import gr.aueb.carpooling.model.Passenger;
-import gr.aueb.carpooling.model.PassengerRating;
-import gr.aueb.carpooling.model.Route;
 
 /**
  * The DriverRatingDAO interface defines the contract for classes that
@@ -25,4 +22,13 @@ public interface DriverRatingDAO {
      * @param entity The DriverRating entity to be saved.
      */
     void save(DriverRating entity);
+
+
+    /**
+     * Retrieves and returns a list containing all DriverRating entities stored in the storage.
+     *
+     * @return An ArrayList containing all DriverRating entities.
+     */
+    ArrayList<DriverRating> findAll();
+
 }

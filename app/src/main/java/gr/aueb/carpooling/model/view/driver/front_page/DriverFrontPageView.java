@@ -1,4 +1,4 @@
-package gr.aueb.carpooling.model.view.driver;
+package gr.aueb.carpooling.model.view.driver.front_page;
 
 import gr.aueb.carpooling.model.view.View;
 

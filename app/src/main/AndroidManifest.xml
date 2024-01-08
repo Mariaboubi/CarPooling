@@ -28,7 +28,7 @@
             android:name=".model.view.driver.createRoute.CreateRouteActivity"
             android:exported="false" />
         <activity
-            android:name=".model.view.driver.DriverFrontPage"
+            android:name=".model.view.driver.front_page.DriverFrontPage"
             android:exported="true" />
         <activity
             android:name=".model.view.passenger.front_page.PassengerFrontPageActivity"

@@ -1,10 +1,8 @@
-package gr.aueb.carpooling.model.view.driver;
+package gr.aueb.carpooling.model.view.driver.front_page;
 
 import androidx.lifecycle.ViewModel;
 
 import gr.aueb.carpooling.model.memoryDao.DriverDAOmemory;
-import gr.aueb.carpooling.model.memoryDao.PassengerDAOmemory;
-import gr.aueb.carpooling.model.view.attribute_selection.AttributeSelectionPresenter;
 
 public class DriverFrontPageViewModel extends ViewModel {
     DriverFrontPagePresenter presenter;

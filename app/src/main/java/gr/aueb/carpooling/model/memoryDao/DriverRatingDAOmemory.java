@@ -1,13 +1,8 @@
 package gr.aueb.carpooling.model.memoryDao;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import gr.aueb.carpooling.model.Driver;
 import gr.aueb.carpooling.model.DriverRating;
-import gr.aueb.carpooling.model.Passenger;
-import gr.aueb.carpooling.model.PassengerRating;
-import gr.aueb.carpooling.model.Route;
 import gr.aueb.carpooling.model.dao.DriverRatingDAO;
 
 public class DriverRatingDAOmemory implements DriverRatingDAO {
@@ -24,4 +19,8 @@ public class DriverRatingDAOmemory implements DriverRatingDAO {
         entities.add(entity);
     }
 
+    @Override
+    public ArrayList<DriverRating> findAll() {
+        return entities;
+    }
 }

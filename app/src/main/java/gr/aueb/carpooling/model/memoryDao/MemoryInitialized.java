@@ -10,19 +10,14 @@ import gr.aueb.carpooling.model.dao.SubrouteDAO;
 import gr.aueb.carpooling.model.dao.UserDAO;
 
 public class MemoryInitialized extends Initializer {
-    @Override
-    public UserDAO getUserDAO() {
+    // Initializes memory DAO'S
 
-        return new UserDAOmemory();
-    }
+    @Override
+    public UserDAO getUserDAO() {return new UserDAOmemory();}
 
     @Override
     public DriverDAO getDriverDAO() {
         return new DriverDAOmemory();
-    }
-
-    public RouteDAO geRouteDAO() {
-        return new RouteDAOmemory();
     }
 
     @Override
@@ -31,7 +26,6 @@ public class MemoryInitialized extends Initializer {
     public PassengerRatingDao getPassengerRatingDAO() {return new PassengerRatingDAOmemory();}
 
     public DriverRatingDAO getDriverRatingDAO() {return new DriverRatingDAOmemory();}
-
     @Override
     public RouteDAO getRouteDAO() {
         return new RouteDAOmemory();

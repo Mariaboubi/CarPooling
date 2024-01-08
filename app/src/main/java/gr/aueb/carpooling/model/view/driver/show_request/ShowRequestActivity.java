@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.Driver;
@@ -23,7 +22,7 @@ import gr.aueb.carpooling.model.dao.SubrouteDAO;
 import gr.aueb.carpooling.model.memoryDao.DriverDAOmemory;
 import gr.aueb.carpooling.model.memoryDao.RouteDAOmemory;
 import gr.aueb.carpooling.model.memoryDao.SubrouteDAOmemory;
-import gr.aueb.carpooling.model.view.driver.DriverFrontPage;
+import gr.aueb.carpooling.model.view.driver.front_page.DriverFrontPage;
 
 
 public class ShowRequestActivity extends AppCompatActivity implements ShowRequestView, ShowRequestRecyclerViewAdapter.ShowRequestListener {

@@ -14,7 +14,7 @@ import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.Driver;
 import gr.aueb.carpooling.model.dao.DriverDAO;
 import gr.aueb.carpooling.model.memoryDao.DriverDAOmemory;
-import gr.aueb.carpooling.model.view.driver.DriverFrontPage;
+import gr.aueb.carpooling.model.view.driver.front_page.DriverFrontPage;
 
 
 public class DriverStatisticsActivity extends AppCompatActivity implements DriverStatisticsView {

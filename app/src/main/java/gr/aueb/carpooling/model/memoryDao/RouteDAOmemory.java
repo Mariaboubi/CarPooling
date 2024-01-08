@@ -16,7 +16,6 @@ public class RouteDAOmemory implements RouteDAO {
 
     protected static ArrayList<Route> entities = new ArrayList<>();
 
-
     @Override
     public void deleteAll() {
         entities.clear();
@@ -136,6 +135,4 @@ public class RouteDAOmemory implements RouteDAO {
         }
         return null;
     }
-
-
 }

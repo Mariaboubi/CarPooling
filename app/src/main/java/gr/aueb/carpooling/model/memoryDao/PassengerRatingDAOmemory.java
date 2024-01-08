@@ -1,9 +1,7 @@
 package gr.aueb.carpooling.model.memoryDao;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import gr.aueb.carpooling.model.Passenger;
 import gr.aueb.carpooling.model.PassengerRating;
 import gr.aueb.carpooling.model.Route;
 import gr.aueb.carpooling.model.dao.PassengerRatingDao;
@@ -12,20 +10,10 @@ public class PassengerRatingDAOmemory implements PassengerRatingDao {
 
     protected static ArrayList<PassengerRating> entities = new ArrayList<>();
 
-//    @Override
-//    public void delete(PassengerRating rating) {
-//        entities.remove(rating);
-//    }
-
-
     @Override
     public void deleteAll() {
         entities.clear();
     }
-
-    @Override
-    public List<PassengerRating> findAll() {
-        return new ArrayList<>(entities);}
 
     @Override
     public void save(PassengerRating entity) {
@@ -40,5 +28,10 @@ public class PassengerRatingDAOmemory implements PassengerRatingDao {
             }
         }
         return ratings;
+    }
+
+    @Override
+    public ArrayList<PassengerRating> findAll() {
+        return entities;
     }
 }
