@@ -1,4 +1,4 @@
-package gr.aueb.carpooling.model.view.driver.ExistedRoutes;
+package gr.aueb.carpooling.model.view.driver.existed_routes;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,16 +18,14 @@ import gr.aueb.carpooling.model.Route;
 
 public class ExistedRouteRecyclerViewAdapter extends RecyclerView.Adapter<ExistedRouteRecyclerViewAdapter.ViewHolder> {
     private final List<Route> routes;
-    private Route currentItem;
-    private ExistedRouteViewModel viewModel;
     private final ExistedRouteRecyclerViewAdapter.RouteSelectionListener listener;
 
     /**
-     * Αρχικοποιεί την λίστα με τις διαθέσιμες διαδρομές
-     * Αρχικοποιεί το αντικείμενο Listener που θα χρησιμοποιηθεί όταν ο οδηγός πατήσει επάνω σε κάποια διαδρομή
+     * Initializes the list of available routes
+     * Initializes the Listener object to be used when the driver clicks on a route
      *
-     * @param routes   διαθέσιμες διαδρομές
-     * @param listener το αντικείμενο item selection listener που θα χρησιμοποιήσουμε
+     * @param routes   available routes
+     * @param listener the item selection listener object to be used
      */
     public ExistedRouteRecyclerViewAdapter(ArrayList<Route> routes, RouteSelectionListener listener) {
         this.routes = routes;
@@ -35,12 +33,12 @@ public class ExistedRouteRecyclerViewAdapter extends RecyclerView.Adapter<Existe
     }
 
     /**
-     * Περνάει στον adapter το layout που θέλουμε να εμφανιστούν τα αντικείμενα της λίστας μας
+     * Inflates the layout to be used for displaying the items in our list
      *
      * @param parent   The ViewGroup into which the new View will be added after it is bound to
      *                 an adapter position.
      * @param viewType The view type of the new View.
-     * @return νέο αντικείμενο view holder με το custom layout των διαδρομών
+     * @return a new view holder object with the custom layout of routes
      */
     @NonNull
     @Override
@@ -59,23 +57,19 @@ public class ExistedRouteRecyclerViewAdapter extends RecyclerView.Adapter<Existe
     public void onBindViewHolder(@NonNull ExistedRouteRecyclerViewAdapter.ViewHolder holder, int position) {
         System.out.println(position);
 
-        currentItem = routes.get(position);
+        Route currentItem = routes.get(position);
 
         holder.routeDest.setText((currentItem.getDestinationString()));
 
         String str_date = "Date : " + currentItem.getDate().toString();
         holder.routeDate.setText(str_date);
 
-        holder.CompletedButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Route clickedRoute = routes.get(position);
-                clickedRoute.Completed();
-                boolean b = currentItem.isCompleted();
+        holder.CompletedButton.setOnClickListener(view -> {
+            Route clickedRoute = routes.get(position);
+            clickedRoute.Completed();
 
-                listener.selectRoute(clickedRoute);
+            listener.selectRoute(clickedRoute);
 
-            }
         });
     }
 
@@ -85,7 +79,7 @@ public class ExistedRouteRecyclerViewAdapter extends RecyclerView.Adapter<Existe
     }
 
     /**
-     * Αρχικοποιεί τα Text Views που χρησιμοποιούμε στην παραπάνω μέθοδο
+     * Initializes the Text Views used in the above method
      */
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public final TextView routeDest;

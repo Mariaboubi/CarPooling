@@ -8,8 +8,8 @@ import gr.aueb.carpooling.model.memoryDao.PassengerDAOmemory;
 
 public class AttributeSelectionPresenter {
 
-    private PassengerDAO passengerDAO;
-    private DriverDAO driverDAO;
+    private final PassengerDAO passengerDAO;
+    private final DriverDAO driverDAO;
     AttributeSelectionView view;
 
     public AttributeSelectionPresenter(DriverDAOmemory driverDAOmemory, PassengerDAOmemory passengerDAOmemory) {

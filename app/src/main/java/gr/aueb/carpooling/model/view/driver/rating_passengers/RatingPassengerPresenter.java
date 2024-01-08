@@ -1,6 +1,4 @@
-package gr.aueb.carpooling.model.view.driver.RatingPassengers;
-
-import android.content.Intent;
+package gr.aueb.carpooling.model.view.driver.rating_passengers;
 
 import java.util.ArrayList;
 
@@ -13,9 +11,9 @@ import gr.aueb.carpooling.model.dao.PassengerRatingDao;
 
 public class RatingPassengerPresenter {
     RatingPassengerView view;
-    private PassengerDAO passengerDao;
+    private final PassengerDAO passengerDao;
 
-    private PassengerRatingDao passengerRatingDao;
+    private final PassengerRatingDao passengerRatingDao;
 
     private ArrayList<Passenger> passengers;
 
@@ -46,8 +44,8 @@ public class RatingPassengerPresenter {
     }
 
     /**
-     * Ελεγχουμε εαν η λίστα με τις διαδρομες είναι άδεια
-     * για να τα προβάλουμε ή να δείξουμε μήνυμα οτι δεν υπάρχουν διαδρομες
+     * Checks if the list of passengers is empty
+     * to display or show a message that there are no passengers
      */
     public void onChangeLayout() {
         if (passengers.isEmpty()) {
@@ -56,18 +54,15 @@ public class RatingPassengerPresenter {
             view.ShowPassengers();
         }
     }
+
     /**
-     * Καλεί την μέθοδο του view που μας πηγαίνει στο προηγούμενο activity που μας κάλεσε
-     */
-    /**
-     * Επιστρέφει την λίστα με τις διαδρομές
+     * Returns the list of passengers
      *
-     * @return η λίστα με τις διαδρομες
+     * @return The list of passengers
      */
     public ArrayList<Passenger> getPassengerList() {
         return passengers;
     }
-
 
 }
 

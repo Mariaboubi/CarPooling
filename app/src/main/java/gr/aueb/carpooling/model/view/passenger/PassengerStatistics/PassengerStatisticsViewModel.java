@@ -3,7 +3,6 @@ package gr.aueb.carpooling.model.view.passenger.PassengerStatistics;
 import androidx.lifecycle.ViewModel;
 
 import gr.aueb.carpooling.model.memoryDao.RouteDAOmemory;
-import gr.aueb.carpooling.model.view.driver.DriverStatistics.DriverStatisticsPresenter;
 
 public class PassengerStatisticsViewModel extends ViewModel {
 

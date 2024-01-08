@@ -1,17 +1,14 @@
-package gr.aueb.carpooling.model.view.driver.createRoute;
+package gr.aueb.carpooling.model.view.driver.create_route;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
-
-import android.annotation.SuppressLint;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
 
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.view.driver.front_page.DriverFrontPage;
@@ -19,8 +16,6 @@ import gr.aueb.carpooling.model.view.driver.front_page.DriverFrontPage;
 public class CreateRouteActivity extends AppCompatActivity implements CreateRouteView {
 
     private CreateRouteViewModel viewModel;
-
-    private CreateRouteView view;
     private String username;
 
     @Override
@@ -31,33 +26,19 @@ public class CreateRouteActivity extends AppCompatActivity implements CreateRout
 
         viewModel = new ViewModelProvider(this).get(CreateRouteViewModel.class);
         viewModel.getPresenter().setView(this);
-//
+
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             username = extras.getString("Username");
-            //The key argument here must match that used in the other activity
         }
 
         Button create_route_button = (Button) findViewById(R.id.btnCreateRoute);
-        create_route_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        create_route_button.setOnClickListener(v -> viewModel.getPresenter().onCreateRoute(username));
 
-                viewModel.getPresenter().onCreateRoute(username);
-            }
-        });
-        @SuppressLint({"MissingInflatedId", "LocalSuppress"})
         ImageButton back_button = (ImageButton) findViewById(R.id.back_button);
-        back_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openDriverFrontPage(username);
-            }
-        });
+        back_button.setOnClickListener(v -> openDriverFrontPage(username));
 
     }
-
-
 
     @Override
     public String Streeet() {
@@ -102,10 +83,6 @@ public class CreateRouteActivity extends AppCompatActivity implements CreateRout
                 .setPositiveButton("OK", null).create().show();
     }
 
-    @Override
-    public void goBack() {
-
-    }
 
     public void openDriverFrontPage(String username) {
         Intent intent = new Intent(CreateRouteActivity.this, DriverFrontPage.class);
@@ -117,14 +94,11 @@ public class CreateRouteActivity extends AppCompatActivity implements CreateRout
     public void showRouteAddedMessage() {
         new AlertDialog.Builder(CreateRouteActivity.this)
                 .setCancelable(true)
-                .setTitle("Επιτυχής προσθήκη διαδρομης")
-                .setMessage("Η διαδρομή προστέθηκε με επιτυχία στην λίστα του οδηγού!")
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        finish();
-                    }
+                .setTitle("Successfully added route")
+                .setMessage("Route successfully added to driver list!")
+                .setPositiveButton("OK", (dialog, which) -> {
+                    dialog.dismiss();
+                    finish();
                 }).create().show();
     }
 }

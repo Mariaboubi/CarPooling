@@ -1,4 +1,4 @@
-package gr.aueb.carpooling.model.view.driver.createRoute;
+package gr.aueb.carpooling.model.view.driver.create_route;
 
 import org.threeten.bp.LocalDateTime;
 
@@ -15,21 +15,16 @@ import gr.aueb.carpooling.model.memoryDao.DriverDAOmemory;
 
 public class CreateRoutePresenter {
 
-    private RouteDAO routeDAO;
-    private DriverDAO driverDAO = new DriverDAOmemory();
+    private final RouteDAO routeDAO;
+    private final DriverDAO driverDAO ;
 
     CreateRouteView view;
-    private int driverId;
 
     private Driver driver;
 
     public CreateRoutePresenter(DriverDAO driverDAO, RouteDAO routeDAO) {
         this.driverDAO = driverDAO;
         this.routeDAO = routeDAO;
-    }
-
-    public void setDriver(int id) {
-        driver = driverDAO.find(id);
     }
 
     public void setView(CreateRouteView view) {
@@ -45,11 +40,11 @@ public class CreateRoutePresenter {
         String City = view.City();
         String ZipCode = view.ZipCode();
         String cost = view.EstimatedCost();
-        String numberpas = view.MaxPassengers();
+        String number_pas = view.MaxPassengers();
         String date = view.Date();
         if (street.isEmpty() || number.isEmpty() || City.isEmpty() || ZipCode.isEmpty() ||
-                cost.isEmpty() || numberpas.isEmpty() || date.isEmpty()) {
-            view.showErrorMessage("Error!", "Συμπληρώστε όλα τα πεδία!.");
+                cost.isEmpty() || number_pas.isEmpty() || date.isEmpty()) {
+            view.showErrorMessage("Error!", "Complete all the fields!.");
 
         } else if (street.length() < 2) {
             view.showErrorMessage("Error!", "Street can't be less than 3 characters.");
@@ -61,7 +56,7 @@ public class CreateRoutePresenter {
             view.showErrorMessage("Error!", "Zip code must be a five digit number.");
         } else if (Integer.parseInt(cost) <= 0) {
             view.showErrorMessage("Error!", "Please provide a valid cost for your route.");
-        } else if (Integer.parseInt(numberpas) <= 0) {
+        } else if (Integer.parseInt(number_pas) <= 0) {
             view.showErrorMessage("Error!", "Please provide a valid maximum number of passengers.");
         } else if (!date.contains("T")) {
             view.showErrorMessage("Error!", "Incorrect date format. Please, check the example.");
@@ -70,16 +65,12 @@ public class CreateRoutePresenter {
             ZipCode zipCode = new ZipCode(ZipCode);
             Address address = new Address(street, number, City, zipCode, "Greece");
             Money money = new Money(Double.parseDouble(cost), euroCurrency);
-            Route route = new Route(driver, money, LocalDateTime.parse(date), address, Integer.parseInt(numberpas), false);
+            Route route = new Route(driver, money, LocalDateTime.parse(date), address, Integer.parseInt(number_pas), false);
 
             routeDAO.save(route);
             driver.addRoute(route);
             view.showRouteAddedMessage();
         }
-    }
-
-    public void onBack() {
-        view.goBack();
     }
 
     public CreateRouteView getView() {

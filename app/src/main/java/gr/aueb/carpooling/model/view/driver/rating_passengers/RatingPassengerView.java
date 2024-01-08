@@ -1,23 +1,27 @@
-package gr.aueb.carpooling.model.view.driver.ExistedRoutes;
+package gr.aueb.carpooling.model.view.driver.rating_passengers;
 
 import gr.aueb.carpooling.model.view.View;
 
-public interface ExitedRouteView extends View {
+public interface RatingPassengerView extends View {
 
+    //HashMap<String,String> getRateDetails();
 
 
     /**
      * Κρυβουμε το recyclerView και κάνουμε ορατό μήνυμα ενημέρωσης για την
      * απουσία εστιατορίων
      */
-    void ShowNoRoutes();
+    void ShowNoPassengers();
 
     /**
      * Εμφανίζουμαι και σετάρουμε το recyclerView και κάνουμε κρύβουμε το μηνυμα
      * απουσίας εστιατορίων
      */
-    void ShowRoutes();
+    void ShowPassengers();
 
 
-    void showErrorMessage(String isCompleted, String s);
+    void showErrorMessage(String title,String message);
+
+    void goToDriverFrontPage();
+
 }

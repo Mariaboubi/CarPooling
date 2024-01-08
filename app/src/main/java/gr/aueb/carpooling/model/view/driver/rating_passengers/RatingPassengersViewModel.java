@@ -1,4 +1,4 @@
-package gr.aueb.carpooling.model.view.driver.RatingPassengers;
+package gr.aueb.carpooling.model.view.driver.rating_passengers;
 
 import androidx.lifecycle.ViewModel;
 

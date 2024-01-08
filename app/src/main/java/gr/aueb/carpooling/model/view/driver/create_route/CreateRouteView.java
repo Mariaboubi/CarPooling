@@ -1,6 +1,4 @@
-package gr.aueb.carpooling.model.view.driver.createRoute;
-
-import java.util.HashMap;
+package gr.aueb.carpooling.model.view.driver.create_route;
 
 import gr.aueb.carpooling.model.view.View;
 
@@ -18,10 +16,7 @@ public interface CreateRouteView extends View {
 
     String MaxPassengers();
     String Date();
-
     void showErrorMessage(String title, String message);
-
-    void goBack();
 
     void showRouteAddedMessage();
 }

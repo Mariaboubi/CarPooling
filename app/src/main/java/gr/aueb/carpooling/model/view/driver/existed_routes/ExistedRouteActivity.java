@@ -1,4 +1,4 @@
-package gr.aueb.carpooling.model.view.driver.ExistedRoutes;
+package gr.aueb.carpooling.model.view.driver.existed_routes;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -20,15 +20,15 @@ import gr.aueb.carpooling.model.Route;
 import gr.aueb.carpooling.model.dao.DriverDAO;
 import gr.aueb.carpooling.model.memoryDao.DriverDAOmemory;
 import gr.aueb.carpooling.model.view.driver.front_page.DriverFrontPage;
-import gr.aueb.carpooling.model.view.driver.RatingPassengers.RatingPassengers;
+import gr.aueb.carpooling.model.view.driver.rating_passengers.RatingPassengers;
 
-public class ExistedRouteActivity extends AppCompatActivity implements ExitedRouteView,ExistedRouteRecyclerViewAdapter.RouteSelectionListener{
+public class ExistedRouteActivity extends AppCompatActivity implements ExistedRouteView,ExistedRouteRecyclerViewAdapter.RouteSelectionListener{
     private ExistedRouteViewModel viewModel;
     private String username;
     private RecyclerView recyclerView;
     private TextView emptyView;
 
-    private DriverDAO driverDAO= new DriverDAOmemory();
+    private final DriverDAO driverDAO= new DriverDAOmemory();
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,23 +41,17 @@ public class ExistedRouteActivity extends AppCompatActivity implements ExitedRou
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             username = extras.getString("Username");
-            //The key argument here must match that used in the other activity
         }
+
         Driver driver = driverDAO.findByUsername(username);
         viewModel.getPresenter().setRouteList(driver);
+
         // ui initialization
         recyclerView = findViewById(R.id.ChooseRouteRecyclerView);
         emptyView = findViewById(R.id.NoRoutes);
         viewModel.getPresenter().onChangeLayout();
 
-
-        findViewById(R.id.back_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openDriverFrontPage();
-            }
-        });
-
+        findViewById(R.id.back_button).setOnClickListener(v -> openDriverFrontPage());
 
     }
 
@@ -82,9 +76,6 @@ public class ExistedRouteActivity extends AppCompatActivity implements ExitedRou
             intent.putExtra("Driver username", username);
             startActivity(intent);
         }
-
-
-
 
 
         @Override

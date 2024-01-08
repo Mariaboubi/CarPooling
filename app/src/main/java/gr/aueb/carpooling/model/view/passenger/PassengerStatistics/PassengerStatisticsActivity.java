@@ -1,6 +1,5 @@
 package gr.aueb.carpooling.model.view.passenger.PassengerStatistics;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,15 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import gr.aueb.carpooling.R;
-import gr.aueb.carpooling.model.Driver;
 import gr.aueb.carpooling.model.Passenger;
-import gr.aueb.carpooling.model.dao.DriverDAO;
 import gr.aueb.carpooling.model.dao.PassengerDAO;
-import gr.aueb.carpooling.model.memoryDao.DriverDAOmemory;
 import gr.aueb.carpooling.model.memoryDao.PassengerDAOmemory;
 
-import gr.aueb.carpooling.model.view.driver.DriverStatistics.DriverStatisticsView;
-import gr.aueb.carpooling.model.view.passenger.ExistedSubroutes.ExistedSubrouteActivity;
 import gr.aueb.carpooling.model.view.passenger.front_page.PassengerFrontPageActivity;
 
 

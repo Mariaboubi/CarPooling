@@ -1,4 +1,4 @@
-package gr.aueb.carpooling.model.view.driver.DriverStatistics;
+package gr.aueb.carpooling.model.view.driver.statistics;
 
 import androidx.lifecycle.ViewModel;
 

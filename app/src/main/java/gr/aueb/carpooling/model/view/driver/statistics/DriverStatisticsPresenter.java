@@ -1,4 +1,4 @@
-package gr.aueb.carpooling.model.view.driver.DriverStatistics;
+package gr.aueb.carpooling.model.view.driver.statistics;
 
 import android.os.Build;
 
@@ -6,8 +6,6 @@ import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Currency;
-import java.util.HashSet;
-import java.util.Set;
 
 import gr.aueb.carpooling.model.Driver;
 import gr.aueb.carpooling.model.Route;

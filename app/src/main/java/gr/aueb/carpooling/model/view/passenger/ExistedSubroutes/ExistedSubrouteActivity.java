@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -26,7 +25,6 @@ import gr.aueb.carpooling.model.dao.SubrouteDAO;
 import gr.aueb.carpooling.model.memoryDao.PassengerDAOmemory;
 import gr.aueb.carpooling.model.memoryDao.RouteDAOmemory;
 import gr.aueb.carpooling.model.memoryDao.SubrouteDAOmemory;
-import gr.aueb.carpooling.model.view.driver.createRoute.CreateRouteActivity;
 import gr.aueb.carpooling.model.view.passenger.DriverRating.DriverRatingActivity;
 import gr.aueb.carpooling.model.view.passenger.front_page.PassengerFrontPageActivity;
 import gr.aueb.carpooling.model.view.passenger.top_up.TopUpActivity;

@@ -1,15 +1,11 @@
-package gr.aueb.carpooling.model.view.driver.DriverTopUp;
+package gr.aueb.carpooling.model.view.driver.top_up;
 
 import java.text.DecimalFormat;
-import java.util.Currency;
 
 import gr.aueb.carpooling.model.Driver;
-import gr.aueb.carpooling.model.Passenger;
 import gr.aueb.carpooling.model.User;
 import gr.aueb.carpooling.model.contact.Money;
 import gr.aueb.carpooling.model.dao.DriverDAO;
-import gr.aueb.carpooling.model.dao.PassengerDAO;
-import gr.aueb.carpooling.model.view.passenger.top_up.TopUpView;
 
 public class DriverTopUpPresenter {
 

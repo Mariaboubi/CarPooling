@@ -1,36 +1,29 @@
 package gr.aueb.carpooling.model.view.attribute_selection;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
+
 import gr.aueb.carpooling.R;
-import gr.aueb.carpooling.model.view.log_in.LogInActivity;
 import gr.aueb.carpooling.model.view.driver.front_page.DriverFrontPage;
+import gr.aueb.carpooling.model.view.log_in.LogInActivity;
 import gr.aueb.carpooling.model.view.passenger.front_page.PassengerFrontPageActivity;
 import gr.aueb.carpooling.model.view.sign_up.driver.DriverSignUpActivity;
 import gr.aueb.carpooling.model.view.sign_up.passenger.PassengerSignUpActivity;
 
 public class AttributeSelectionActivity extends AppCompatActivity implements AttributeSelectionView {
 
-    private ImageButton log_out_button;
-    private Button passenger_button;
-    private Button driver_button;
     private AttributeSelectionViewModel viewModel;
     private String username;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attribute_selection);
-
-
 
         viewModel = new ViewModelProvider(this).get(AttributeSelectionViewModel.class);
 
@@ -41,40 +34,27 @@ public class AttributeSelectionActivity extends AppCompatActivity implements Att
             username = extras.getString("Id");
         }
 
+        ImageButton log_out_button = (ImageButton) findViewById(R.id.log_out);
+        Button passenger_button = (Button) findViewById(R.id.button_passenger);
+        Button driver_button = (Button) findViewById(R.id.button_driver);
 
+        log_out_button.setOnClickListener(v -> openLogInActivity());
 
-        log_out_button = (ImageButton) findViewById(R.id.log_out);
-        passenger_button = (Button) findViewById(R.id.button_passenger);
-        driver_button = (Button) findViewById(R.id.button_driver);
-
-        log_out_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openLogInActivity();
+        passenger_button.setOnClickListener(v -> {
+            boolean isPassenger = viewModel.getPresenter().authenticateAttributePassenger(username);
+            if (isPassenger){
+                openPassengerPage(username);
+            } else {
+                openFillPassengerInfo();
             }
         });
 
-        passenger_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                boolean isPassenger = viewModel.getPresenter().authenticateAttributePassenger(username);
-                if (isPassenger){
-                    openPassengerPage(username);
-                } else {
-                    openFillPassengerInfo();
-                }
-            }
-        });
-
-        driver_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                boolean isDriver = viewModel.getPresenter().authenticateAttributeDriver(username);
-                if (isDriver){
-                    openDriverPage(username);
-                } else {
-                    openFillDriverInfo();
-                }
+        driver_button.setOnClickListener(v -> {
+            boolean isDriver = viewModel.getPresenter().authenticateAttributeDriver(username);
+            if (isDriver){
+                openDriverPage(username);
+            } else {
+                openFillDriverInfo();
             }
         });
     }

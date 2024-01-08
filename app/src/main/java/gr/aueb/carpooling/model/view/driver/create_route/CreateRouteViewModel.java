@@ -1,4 +1,4 @@
-package gr.aueb.carpooling.model.view.driver.createRoute;
+package gr.aueb.carpooling.model.view.driver.create_route;
 
 import androidx.lifecycle.ViewModel;
 

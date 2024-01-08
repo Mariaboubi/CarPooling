@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:padding="0dp"
-    tools:context=".model.view.driver.RatingPassengers.RatingPassengers"
+    tools:context=".model.view.driver.rating_passengers.RatingPassengers"
     tools:ignore="ScrollViewCount">
 
     <LinearLayout

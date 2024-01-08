@@ -1,4 +1,4 @@
-package gr.aueb.carpooling.model.view.driver.DriverTopUp;
+package gr.aueb.carpooling.model.view.driver.top_up;
 
 import androidx.appcompat.app.AppCompatActivity;
 
