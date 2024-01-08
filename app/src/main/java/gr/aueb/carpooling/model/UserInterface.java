@@ -1,6 +1,7 @@
 package gr.aueb.carpooling.model;
 
 import gr.aueb.carpooling.model.contact.EmailAddress;
+import gr.aueb.carpooling.model.contact.Money;
 
 /**
  * The UserInterface represents the interface for a user in a carpooling system.
@@ -95,4 +96,6 @@ public interface UserInterface {
      * @param pass The new password
      */
     void changePassword(String pass);
+
+    void setBalance(Money balance);
 }

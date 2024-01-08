@@ -40,7 +40,9 @@ public class User implements UserInterface {
         return this.balance;
     }
 
-
+    public void setBalance(Money balance) {
+        this.balance = balance;
+    }
     public void resetBalance() {
         this.balance = Money.euros(0.0);
     }

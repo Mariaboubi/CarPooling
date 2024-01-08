@@ -90,11 +90,11 @@ public interface PassengerInterface {
      */
     boolean hasRoute(Route route);
 
-//    /**
-//     * Get the set of routes associated with the passenger.
-//     *
-//     * @return The set of routes associated with the passenger.
-//     */
-//    HashSet<Route> getRoutes();
+    /**
+     * Get the set of routes associated with the passenger.
+     *
+     * @return The set of routes associated with the passenger.
+     */
+    HashSet<Route> getRoutes();
 }
 

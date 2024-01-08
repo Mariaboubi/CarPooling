@@ -75,7 +75,7 @@ public class Passenger extends User implements PassengerInterface {
     public boolean transaction(Money money) {
         boolean success = false;
         if (this.getBalance().getAmount().compareTo(money.getAmount()) >= 0) {
-            this.balance = this.balance.minus(money);
+            this.setBalance(this.getBalance().minus(money));
             success = true;
         }
         return success;
@@ -85,7 +85,6 @@ public class Passenger extends User implements PassengerInterface {
     public void topUp(Money money) {
         super.topUp(money);
     }
-
 
 
     // Methods for managing routes
@@ -104,7 +103,7 @@ public class Passenger extends User implements PassengerInterface {
         return routes.contains(route);
     }
 
-//    public HashSet<Route> getRoutes() {
-//        return new HashSet<>(routes);
-//    }
+    public HashSet<Route> getRoutes() {
+        return new HashSet<>(routes);
+    }
 }
