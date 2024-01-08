@@ -16,7 +16,6 @@
 + getPresenter(): TopUpPresenter 
 # onCleared(): void </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>50</x><y>270</y><w>420</w><h>190</h></coordinates><panel_attributes>TopUpActivity 
 --
-- back_button: ImageButton   
 - viewModel: TopUpViewModel 
 - balanceText: TextView     
 - username: String 
@@ -29,11 +28,10 @@
 m1=1</panel_attributes><additional_attributes>140;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>710</x><y>460</y><w>90</w><h>80</h></coordinates><panel_attributes>lt=&lt;-
 -presenter
 m1=1</panel_attributes><additional_attributes>10;60;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>710</x><y>260</y><w>30</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>240</x><y>450</y><w>30</w><h>70</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;50;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>160</x><y>500</y><w>180</w><h>60</h></coordinates><panel_attributes>&lt;&lt;layout&gt;&gt;
-activity_top_up</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>570</x><y>240</y><w>200</w><h>30</h></coordinates><panel_attributes>androidx.lifecycle.ViewModel</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1010</x><y>580</y><w>110</w><h>40</h></coordinates><panel_attributes>Passenger</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>950</x><y>590</y><w>80</w><h>30</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>60;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>620</x><y>700</y><w>120</w><h>180</h></coordinates><panel_attributes>lt=&lt;-
--PassengerDAO
-m1=1</panel_attributes><additional_attributes>10;160;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>110</x><y>140</y><w>30</w><h>150</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;130</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>0</y><w>260</w><h>150</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+activity_top_up</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>570</x><y>240</y><w>200</w><h>30</h></coordinates><panel_attributes>androidx.lifecycle.ViewModel</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1010</x><y>580</y><w>110</w><h>40</h></coordinates><panel_attributes>Passenger</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>950</x><y>590</y><w>80</w><h>30</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>60;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>620</x><y>700</y><w>110</w><h>180</h></coordinates><panel_attributes>lt=&lt;-
+PassengerDAO
+m1=1</panel_attributes><additional_attributes>10;160;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>110</x><y>190</y><w>30</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>50</y><w>260</w><h>150</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
 TopUpView 
---
 
 --
 + setBalance(balance: String): void 
@@ -41,17 +39,8 @@ TopUpView
 PassengerDAO
 --
 
---
-+ delete(entity: Passenger) : void|
-+ delete(id: int) : void          
 + deleteAll() : void              
 + findAll() : List&lt;Passenger&gt;     
 + save(entity: Passenger) : void  
-+ find(username: String) : boolean
-+ find(username: String, password: String) : Passenger 
 + findByUsername(username: String) : Passenger 
-+ findByName(name: String) : Passenger 
-+ find(id: int) : Passenger 
-+ findPassenger(id: int) : boolean|
-+ findRoute(id: int) : Set&lt;Route&gt; 
-+ nextId() : int </panel_attributes><additional_attributes></additional_attributes></element></diagram>
++ findAllByRoute(route: Route): ArrayList&lt;Passenger&gt;</panel_attributes><additional_attributes></additional_attributes></element></diagram>

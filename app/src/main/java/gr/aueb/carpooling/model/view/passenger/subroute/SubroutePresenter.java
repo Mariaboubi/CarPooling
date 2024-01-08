@@ -12,7 +12,7 @@ import gr.aueb.carpooling.model.dao.SubrouteDAO;
 public class SubroutePresenter {
     private final SubrouteDAO subrouteDAO;
 
-    SubrouteView view;
+    private SubrouteView view;
 
     public SubroutePresenter(PassengerDAO passengerDAO, SubrouteDAO subrouteDAO) {
         this.subrouteDAO = subrouteDAO;

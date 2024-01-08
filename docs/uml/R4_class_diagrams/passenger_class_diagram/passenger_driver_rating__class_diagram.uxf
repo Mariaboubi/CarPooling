@@ -29,60 +29,49 @@ activity_passenger_rating_driver</panel_attributes><additional_attributes></addi
 + Politiness() : String         
 + Security() : String           
 + Cleanliness() : String        
-+ showRateAddedMessage(rating: DriverRating) : void </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>376</x><y>408</y><w>336</w><h>160</h></coordinates><panel_attributes>DriverRaitingPresenter           
++ RateAdded(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>376</x><y>408</y><w>336</w><h>160</h></coordinates><panel_attributes>DriverRaitingPresenter           
 --
 - view: DriverRaitingView  
 --
 + DriverRaitingPresenter(driverRatingDAO: DriverRatingDAO) 
 + setView(view: DriverRaitingView)   
 + getView() : DriverRaitingView       
-+ onCreateRate(username: String, route: Route) : void   </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>672</x><y>688</y><w>280</w><h>176</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
++ onCreateRate(username: String, route: Route) : void   </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>672</x><y>688</y><w>440</w><h>216</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
 RouteDAO
 --
 
---
-+ delete(entity: Route) : void     
 + deleteAll() : void               
 + save(entity: Route) : void       
 + findAll() : List&lt;Route&gt;          
 + find(id: int) : Route            
-+ findByDriver(driver: Driver) : List&lt;Route&gt; 
-+ nextId() : int                   
-+ findExistedRoutes() : List&lt;Route&gt; </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>688</x><y>560</y><w>72</w><h>144</h></coordinates><panel_attributes>lt=&lt;-
++ findByDriver(driver: Driver) : List&lt;Route&gt;                
++ findExistedRoutes() : List&lt;Route&gt; 
++ findRouteBySubroute(Subroute subroute): Route
++ findPassengerBySubroute(Subroute subroute): Passenger
++ findByDriverIsCompleted(Driver driver): ArrayList&lt;Route&gt;
++ findSubroutesByPassengerIsCompleted(Passenger passenger): ArrayList&lt;Subroute&gt;
++ findSubroutesByPassenger(Passenger passenger): ArrayList&lt;Subroute&gt;
++ findRouteByPassAndSub(Passenger pas, Subroute sub): Route</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>688</x><y>560</y><w>72</w><h>144</h></coordinates><panel_attributes>lt=&lt;-
 -RouteDAO
 m1=1</panel_attributes><additional_attributes>10;160;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>352</x><y>696</y><w>256</w><h>168</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
 PassengerDAO
 --
 
---
-+ delete(entity: Passenger) : void|
-+ delete(id: int) : void          
 + deleteAll() : void              
 + findAll() : List&lt;Passenger&gt;     
 + save(entity: Passenger) : void  
-+ find(username: String) : boolean
-+ find(username: String, password: String) : Passenger 
 + findByUsername(username: String) : Passenger 
-+ findByName(name: String) : Passenger 
-+ find(id: int) : Passenger 
-+ findPassenger(id: int) : boolean|
-+ findRoute(id: int) : Set&lt;Route&gt; 
-+ nextId() : int </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>384</x><y>560</y><w>96</w><h>152</h></coordinates><panel_attributes>lt=&lt;-
++ findAllByRoute(route: Route): ArrayList&lt;Passenger&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>384</x><y>560</y><w>96</w><h>152</h></coordinates><panel_attributes>lt=&lt;-
 -PassengerDAO
 m1=1</panel_attributes><additional_attributes>10;170;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>784</x><y>408</y><w>256</w><h>168</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
 DriverDAO
 --
 
---
-+ delete(entity: Driver) : void  
-+ delete(id: int) : void          
+
 + deleteAll() : void              
-+ findAll() : List&lt;Driver&gt;        
++ findAll() : ArrayList&lt;Driver&gt;        
 + save(entity: Driver) : void    
 + find(username: String) : boolean
-+ findByUsername(username: String) : Driver 
-+ find(id: int) : Driver         
-+ findDriver(id: int) : boolean  
-+ nextId() : int  </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>704</x><y>464</y><w>96</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
--DriverDAO
++ findByUsername(username: String) : Driver </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>704</x><y>464</y><w>96</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+DriverDAO
 m1=1</panel_attributes><additional_attributes>100;20;10;20</additional_attributes></element></diagram>

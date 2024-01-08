@@ -9,4 +9,6 @@ public interface DriverTopUpView extends View {
     String getDriverUsername();
 
     void showErrorMessage(String title, String message);
+
+    void openDriverFrontPageActivity(String username);
 }

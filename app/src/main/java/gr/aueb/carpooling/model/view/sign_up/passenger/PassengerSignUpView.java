@@ -12,7 +12,10 @@ public interface PassengerSignUpView extends View {
     void showErrorMessage(String s, String s1);
 
 
-    /** Μηνυμα επητυχης εγγραφης χριστη
+    /**
+     * Success message for passenger registration
+     * @param title , @param message
+     *
      */
     void showRegistrationSuccessMessage(String title,String message);
 }

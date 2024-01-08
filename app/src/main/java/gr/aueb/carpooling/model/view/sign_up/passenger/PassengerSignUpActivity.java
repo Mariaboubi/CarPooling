@@ -33,7 +33,6 @@ public class PassengerSignUpActivity extends AppCompatActivity implements Passen
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             username = extras.getString("Username");
-            //The key argument here must match that used in the other activity
         }
 
 

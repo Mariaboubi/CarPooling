@@ -1,0 +1,65 @@
+<diagram program="umletino" version="15.1"><zoom_level>11</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>297</x><y>319</y><w>341</w><h>264</h></coordinates><panel_attributes> AttributeSelectionActivity  
+
+--
+- viewModel: AttributeSelectionViewModel 
+- username: String 
+# onCreate(savedInstanceState: Bundle) : void 
++ openLogInActivity() : void       
++ openPassengerPage(username: String) : void 
++ openDriverPage(username: String) : void 
++ openFillDriverInfo() : void     
++ openFillPassengerInfo() : void </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>253</x><y>33</y><w>418</w><h>132</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+        AttributeSelectionView           
+
+--
++ showErrorMessage(title: String, message: String) : void
+
+
+
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>440</x><y>154</y><w>33</w><h>187</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;150</additional_attributes></element><element><id>Relation</id><coordinates><x>154</x><y>418</y><w>165</w><h>33</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;130;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>407</y><w>165</w><h>44</h></coordinates><panel_attributes>AppCompatActivity</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>429</x><y>572</y><w>33</w><h>121</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>308</x><y>671</y><w>275</w><h>66</h></coordinates><panel_attributes>&lt;&lt;layout&gt;&gt;
+activity_attribute_selection</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>627</x><y>220</y><w>220</w><h>121</h></coordinates><panel_attributes>lt=&lt;-
+viewModel
+m1=1</panel_attributes><additional_attributes>180;10;10;90</additional_attributes></element><element><id>UMLClass</id><coordinates><x>825</x><y>110</y><w>275</w><h>121</h></coordinates><panel_attributes>AttributeSelectionViewModel      
+--
+- presenter: AttributeSelectionPresenter
+
+--
+ + AttributeSelectionViewModel()    
+ + getPresenter() : AttributeSelectionPresenter </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>946</x><y>22</y><w>33</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>858</x><y>0</y><w>220</w><h>33</h></coordinates><panel_attributes>androidx.lifecycle.ViewModel</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>847</x><y>341</y><w>429</w><h>176</h></coordinates><panel_attributes>AttributeSelectionPresenter
+--
+- view: AttributeSelectionView  
+- passengerDAO: PassengerDAO
+--
++ AttributeSelectionPresenter(driverDAO: DriverDAO, passengerDAO: PassengerDAO) 
++ getView() : AttributeSelectionView
++ setView(view: AttributeSelectionView) : void 
++ authenticateAttributePassenger(username: String) : boolean 
++ authenticateAttributeDriver(username: String) : boolean
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>968</x><y>220</y><w>99</w><h>143</h></coordinates><panel_attributes>lt=&lt;-
+presenter
+m1=1</panel_attributes><additional_attributes>20;110;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>803</x><y>506</y><w>231</w><h>143</h></coordinates><panel_attributes>lt=&lt;-
+PassengerDAO
+m1=1</panel_attributes><additional_attributes>10;110;190;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>638</x><y>627</y><w>352</w><h>231</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+PassengerDAO
+--
+     
++ deleteAll() : void              
++ findAll() : List&lt;Passenger&gt;     
++ save(entity: Passenger) : void  
++ findByUsername(username: String) : Passenger 
++ findAllByRoute(route: Route): ArrayList&lt;Passenger&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1012</x><y>627</y><w>341</w><h>231</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+DriverDAO
+--
+    
++ deleteAll() : void              
++ findAll() : ArrayList&lt;Driver&gt;        
++ save(entity: Driver) : void    
++ find(username: String) : boolean
++ findByUsername(username: String) : Driver 
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1166</x><y>506</y><w>99</w><h>143</h></coordinates><panel_attributes>lt=&lt;-
+DriverDAO
+m1=1</panel_attributes><additional_attributes>10;110;10;10</additional_attributes></element></diagram>

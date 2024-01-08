@@ -52,55 +52,69 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
 
     }
 
+    @Override
     public String getName() {
         return ((EditText)findViewById(R.id.SignUpName)).getText().toString().trim();
     }
 
+    @Override
     public String getSurname() {
         return ((EditText)findViewById(R.id.SignUpSurname)).getText().toString().trim();
     }
 
+    @Override
     public String getAge() {
         EditText et_age = findViewById(R.id.SignUpAge);
         return et_age.getText().toString().trim();
     }
 
+    @Override
     public String getEmail() {
         EditText et_email = findViewById(R.id.SignUpEmail);
         return et_email.getText().toString().trim();
     }
 
+    @Override
     public String getPhoneNumber() {
         EditText et_phone = findViewById(R.id.SignUpPhone);
         return et_phone.getText().toString().trim();
     }
 
+    @Override
     public String getCardNumber() {
         return ((EditText)findViewById(R.id.SignUpCardNumber)).getText().toString().trim();
     }
+
+    @Override
     public String getCardHolderName() {
         return ((EditText)findViewById(R.id.SignUpCardHolderName)).getText().toString().trim();
     }
+
+    @Override
     public String getCVV() {
         EditText et_credit_card = findViewById(R.id.SignUpCVV);
         return et_credit_card.getText().toString().trim();
     }
 
+    @Override
     public String getUsername() {
         EditText et_username = findViewById(R.id.SignUpUsername);
         return et_username.getText().toString().trim();
     }
 
+    @Override
     public String getPassword() {
         EditText et_password = findViewById(R.id.password);
         return et_password.getText().toString().trim();
     }
 
+    @Override
     public String getPasswordVerification() {
         EditText et_password_verification = findViewById(R.id.SignUpConfirmPassword);
         return et_password_verification.getText().toString().trim();
     }
 
+    @Override
     public String getDriverLicense() {
         EditText et_driver_license = findViewById(R.id.SignUpLicenseNumber);
         return et_driver_license.getText().toString().trim();
@@ -112,6 +126,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
         return et_car_type.getText().toString().trim();
     }
 
+    @Override
     public String getIban() {
         EditText et_iban = findViewById(R.id.SignUpIban);
         return et_iban.getText().toString().trim();
