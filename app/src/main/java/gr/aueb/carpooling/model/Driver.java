@@ -42,10 +42,6 @@ public class Driver extends User implements DriverInterface {
         this.car_type = car_type;
     }
 
-    public String getAverageRating() {
-        float rating = driver_rating.averageRating();
-        return String.valueOf(rating);
-    }
     public int getDriverId() {
         return driver_id;
     }

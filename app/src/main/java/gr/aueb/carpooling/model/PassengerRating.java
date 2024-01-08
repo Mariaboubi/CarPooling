@@ -8,10 +8,8 @@ public class PassengerRating extends Rating implements PassengerRatingInterface{
 
     // Constructor
     public PassengerRating(Passenger passenger, Route route, String politenessRating,
-                           String consistencyRating, String reliabilityRating) throws IllegalArgumentException {
+                           String consistencyRating, String reliabilityRating)  {
         super(passenger, route, politenessRating);
-//        validateRating(consistencyRating, "Consistency");
-//        validateRating(reliabilityRating, "Reliability");
         this.consistencyRating = consistencyRating;
         this.reliabilityRating = reliabilityRating;
         this.passenger=passenger;
@@ -21,8 +19,7 @@ public class PassengerRating extends Rating implements PassengerRatingInterface{
         return passenger;
     }
 
-    public void setConsistencyRating(String consistencyRating) throws IllegalArgumentException {
-        //validateRating(consistencyRating, "Consistency");
+    public void setConsistencyRating(String consistencyRating)  {
         this.consistencyRating = consistencyRating;
     }
 
@@ -30,8 +27,7 @@ public class PassengerRating extends Rating implements PassengerRatingInterface{
         return consistencyRating;
     }
 
-    public void setReliabilityRating(String reliabilityRating) throws IllegalArgumentException {
-        //validateRating(reliabilityRating, "Reliability");
+    public void setReliabilityRating(String reliabilityRating)  {
         this.reliabilityRating = reliabilityRating;
     }
 
@@ -47,14 +43,4 @@ public class PassengerRating extends Rating implements PassengerRatingInterface{
         return sum / 3;
     }
 
-    // Validates a user rating to ensure it falls within the specified range.
-    private void validateRating(String rating, String ratingName) throws IllegalArgumentException {
-        float r = Float.parseFloat(rating);
-        // Check if the given rating is outside the valid range defined by AppGlobals
-        if (r < AppGlobals.MIN_RATING || r > AppGlobals.MAX_RATING) {
-            // If the rating is outside the valid range, throw an exception with a descriptive error message.
-            throw new IllegalArgumentException(
-                    ratingName + " rating must be between " + AppGlobals.MIN_RATING + " and " + AppGlobals.MAX_RATING);
-        }
-    }
 }

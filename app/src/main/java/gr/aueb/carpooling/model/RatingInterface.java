@@ -18,6 +18,6 @@ public interface RatingInterface {
      * @param politenessRating The politeness rating to be set
      * @throws IllegalArgumentException If the rating is not within the valid range
      */
-    void setPolitenessRating(String politenessRating) throws IllegalArgumentException;
+    void setPolitenessRating(String politenessRating);
 }
 

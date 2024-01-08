@@ -104,7 +104,4 @@ public interface DriverInterface {
      */
     HashSet<Route> getRoutes();
 
-    //HashSet<PassengerRating> getPassengerRating();
-
-    String getAverageRating();
 }

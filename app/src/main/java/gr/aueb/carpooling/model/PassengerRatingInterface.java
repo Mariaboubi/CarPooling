@@ -10,7 +10,7 @@ public interface PassengerRatingInterface {
      * @param consistencyRating The consistency rating to be set
      * @throws IllegalArgumentException If the rating is not within the valid range
      */
-    void setConsistencyRating(String consistencyRating) throws IllegalArgumentException;
+    void setConsistencyRating(String consistencyRating) ;
 
     /**
      * Get the consistency rating for the passenger.
@@ -25,7 +25,7 @@ public interface PassengerRatingInterface {
      * @param reliabilityRating The reliability rating to be set
      * @throws IllegalArgumentException If the rating is not within the valid range
      */
-    void setReliabilityRating(String reliabilityRating) throws IllegalArgumentException;
+    void setReliabilityRating(String reliabilityRating) ;
 
     /**
      * Get the reliability rating for the passenger.

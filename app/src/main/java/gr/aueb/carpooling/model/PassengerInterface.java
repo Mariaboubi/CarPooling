@@ -66,12 +66,6 @@ public interface PassengerInterface {
      */
     void topUp(Money money) throws IllegalStateException;
 
-    /**
-     * Make a payment using the passenger's account balance.
-     *
-     * @param cost The cost of the payment
-     */
-    void payment(Money cost) throws UnsupportedOperationException;
 
     /**
      * Add a route to the passenger's set of routes.
@@ -96,11 +90,11 @@ public interface PassengerInterface {
      */
     boolean hasRoute(Route route);
 
-    /**
-     * Get the set of routes associated with the passenger.
-     *
-     * @return The set of routes associated with the passenger.
-     */
-    HashSet<Route> getRoutes();
+//    /**
+//     * Get the set of routes associated with the passenger.
+//     *
+//     * @return The set of routes associated with the passenger.
+//     */
+//    HashSet<Route> getRoutes();
 }
 

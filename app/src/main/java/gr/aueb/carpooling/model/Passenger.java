@@ -86,13 +86,7 @@ public class Passenger extends User implements PassengerInterface {
         super.topUp(money);
     }
 
-    // Method to perform a payment
-    public void payment(Money cost) throws UnsupportedOperationException {
-        boolean success = this.transaction(cost);
-        if (!success) {
-            throw new UnsupportedOperationException("The transaction was unsuccessful. Put more money in the card");
-        }
-    }
+
 
     // Methods for managing routes
     public boolean addRoute(Route route) {
@@ -110,7 +104,7 @@ public class Passenger extends User implements PassengerInterface {
         return routes.contains(route);
     }
 
-    public HashSet<Route> getRoutes() {
-        return new HashSet<>(routes);
-    }
+//    public HashSet<Route> getRoutes() {
+//        return new HashSet<>(routes);
+//    }
 }

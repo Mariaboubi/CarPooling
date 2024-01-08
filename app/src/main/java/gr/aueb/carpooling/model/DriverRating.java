@@ -15,8 +15,6 @@ public class DriverRating extends Rating implements DriverRatingInterface {
     public DriverRating(Driver driver, Route route, String politenessRating,
                         String securityRating, String cleanlinessRating) {
         super(driver, route, politenessRating); // Assuming the base class constructor
-//        validateRating(cleanlinessRating, "Cleanliness");
-//        validateRating(securityRating, "Security");
         this.cleanlinessRating = cleanlinessRating;
         this.securityRating = securityRating;
         this.passengers_has_rate = new HashMap<>();
@@ -27,7 +25,6 @@ public class DriverRating extends Rating implements DriverRatingInterface {
     }
     @Override
     public void setSecurityRating(String securityRating) {
-        //validateRating(securityRating, "Security");
         this.securityRating = securityRating;
     }
 
@@ -50,7 +47,6 @@ public class DriverRating extends Rating implements DriverRatingInterface {
 
     @Override
     public void setCleanlinessRating(String cleanlinessRating) {
-        //validateRating(cleanlinessRating, "Cleanliness");
         this.cleanlinessRating = cleanlinessRating;
     }
 
@@ -66,17 +62,6 @@ public class DriverRating extends Rating implements DriverRatingInterface {
         float clean_rating = Float.parseFloat(this.cleanlinessRating);
         float sum = sec_rating + pol_rating + clean_rating;
         return (float) (sum / 3);
-    }
-
-    // Validates a user rating to ensure it falls within the specified range.
-    private void validateRating(String rating, String ratingName) throws IllegalArgumentException {
-        float r = Float.parseFloat(rating);
-        // Check if the given rating is outside the valid range defined by AppGlobals
-        if (r < AppGlobals.MIN_RATING || r > AppGlobals.MAX_RATING) {
-            // If the rating is outside the valid range, throw an exception with a descriptive error message.
-            throw new IllegalArgumentException(
-                    ratingName + " rating must be between " + AppGlobals.MIN_RATING + " and " + AppGlobals.MAX_RATING);
-        }
     }
 
 }
