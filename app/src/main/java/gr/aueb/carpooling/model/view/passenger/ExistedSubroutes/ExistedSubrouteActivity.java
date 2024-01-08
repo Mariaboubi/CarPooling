@@ -41,7 +41,10 @@ public class ExistedSubrouteActivity extends AppCompatActivity implements Existe
 
     private TextView emptyView;
 
-    SubrouteDAO subrouteDAO = new SubrouteDAOmemory();
+    private  Passenger passenger;
+
+    // DAOs
+    private final SubrouteDAO subrouteDAO = new SubrouteDAOmemory();
     private final PassengerDAO passengerDAO = new PassengerDAOmemory();
 
     private final RouteDAO routeDAO = new RouteDAOmemory();
@@ -58,7 +61,7 @@ public class ExistedSubrouteActivity extends AppCompatActivity implements Existe
             username = extras.getString("Username");
             //The key argument here must match that used in the other activity
         }
-        Passenger passenger = passengerDAO.findByUsername(username);
+        passenger = passengerDAO.findByUsername(username);
         viewModel.getPresenter().setSubrouteList(passenger);
 
         recyclerView = findViewById(R.id.ChooseSubrouteRecyclerView);
@@ -72,28 +75,10 @@ public class ExistedSubrouteActivity extends AppCompatActivity implements Existe
     @Override
 
     public void selectSubroute(Subroute subroute, Request_status status,Boolean b) {
-        //showErrorMessage("Dest",subroute.getDestination().toString());
-//        Money cost=subroute.calculateCost();
-//        showErrorMessage("cost",String.valueOf(cost.getAmount()));
-//        Boolean success= passenger.transaction(cost);
-//        if(!success){
-//            new androidx.appcompat.app.AlertDialog.Builder(this)
-//                    .setCancelable(true)
-//                    .setTitle("Η πληρωμή επέτυχε.Πρόσθεσε χρήματα.Η διαδρομη κόστησε")
-//                    .setMessage(new DecimalFormat("0.00").format(cost.getAmount()))
-//                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialog, int which) {
-//                            Intent intent = new Intent(ExistedSubrouteActivity.this, TopUpActivity.class);
-//                            intent.putExtra("Username", username);
-//                            startActivity(intent);
-//                        }
-//                    }).create().show();
-//        }
 
         if(b){
             if (status == Request_status.APPROVED){
-                boolean success=payment(subroute);
+                boolean success = payment(subroute);
                 if(success){
                     subroute.setStatus(Request_status.COMPLETED);
                     Intent intent = new Intent(ExistedSubrouteActivity.this, DriverRatingActivity.class);
@@ -111,11 +96,11 @@ public class ExistedSubrouteActivity extends AppCompatActivity implements Existe
             } else if(status == Request_status.PENDING){
                 showErrorMessage("Wait for driver's answer. Current status: ", String.valueOf(Request_status.PENDING));
             } else if(status == Request_status.COMPLETED) {
-                showErrorMessage("You have already completed this subroute. Current status: ", String.valueOf(Request_status.COMPLETED));
+                showErrorMessage("You have already completed this route. Current status: ", String.valueOf(Request_status.COMPLETED));
             }
         } else {
             if (status == Request_status.APPROVED) {
-                showErrorMessage("You cann't press button delete if request status is approved.Now is: ", String.valueOf(Request_status.APPROVED));
+                showErrorMessage("You can't press button delete if request status is approved.Now is: ", String.valueOf(Request_status.APPROVED));
             }else{
                     Route route = routeDAO.findRouteBySubroute(subroute);
                     route.removeSubroute(subroute);
@@ -159,24 +144,32 @@ public class ExistedSubrouteActivity extends AppCompatActivity implements Existe
                 .setMessage(message)
                 .setPositiveButton("OK", null).create().show();
 
-//        Intent intent = new Intent(ExistedSubrouteActivity.this, LogInActivity.class);
-////        intent.putExtra("Username",username);
-//        startActivity(intent);
-
 
     }
 
     @Override
     public boolean payment(Subroute subroute) {
-        showErrorMessage("Balance",new DecimalFormat("0.00").format(passenger.getBalance()));
-        Money cost=subroute.calculateCost();
-        boolean success= passenger.transaction(cost);
+
+//        Money pass_balance = passenger.getBalance();
+//        // money to double
+//        double pass_money = pass_balance.getAmount();
+//        // money to string
+//        String pass_moneyString = String.valueOf(pass_money);
+
+
+        // Cost of the subroute
+        Money cost_of_ride = subroute.calculateCost();
+        // money to double
+        double money = cost_of_ride.getAmount();
+        // money to string
+        String moneyString = String.valueOf(money);
+
+        boolean success = passenger.transaction(cost_of_ride);
         if(!success){
-            showErrorMessage("Η πληρωμή επέτυχε.Πρόσθεσε χρήματα.Η διαδρομη κόστησε",new DecimalFormat("0.00").format(cost.getAmount()));
+            showErrorMessage("Payment failed, please put money in the app. The ride costs:",moneyString);
+        }else{
+            showErrorMessage("Payment successful. The ride costs:",moneyString);
         }
-
         return success;
-
     }
-
 }

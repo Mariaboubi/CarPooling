@@ -74,7 +74,7 @@ public class Passenger extends User implements PassengerInterface {
 
     public boolean transaction(Money money) {
         boolean success = false;
-        if (this.balance.getAmount().compareTo(money.getAmount()) >= 0) {
+        if (this.getBalance().getAmount().compareTo(money.getAmount()) >= 0) {
             this.balance = this.balance.minus(money);
             success = true;
         }
