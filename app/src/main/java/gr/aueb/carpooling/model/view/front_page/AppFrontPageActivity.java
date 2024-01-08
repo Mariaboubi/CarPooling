@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import gr.aueb.carpooling.R;
-import gr.aueb.carpooling.model.memoryDao.MemoryInitialized;
+import gr.aueb.carpooling.model.memoryDao.MemoryInitializer;
 import gr.aueb.carpooling.model.view.log_in.LogInActivity;
 
 public class AppFrontPageActivity extends Activity{
@@ -16,7 +16,7 @@ public class AppFrontPageActivity extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_front_page);
 
-        MemoryInitialized dataHelper = new MemoryInitialized();
+        MemoryInitializer dataHelper = new MemoryInitializer();
         dataHelper.prepareData();
 
         handler=new Handler();
