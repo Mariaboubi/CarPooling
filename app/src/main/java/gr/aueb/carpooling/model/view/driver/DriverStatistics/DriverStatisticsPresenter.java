@@ -13,7 +13,6 @@ import gr.aueb.carpooling.model.Driver;
 import gr.aueb.carpooling.model.Route;
 import gr.aueb.carpooling.model.contact.Money;
 import gr.aueb.carpooling.model.dao.RouteDAO;
-import gr.aueb.carpooling.model.memoryDao.RouteDAOmemory;
 
 public class DriverStatisticsPresenter {
     private RouteDAO routeDAO;
@@ -103,7 +102,6 @@ public class DriverStatisticsPresenter {
             now = LocalDateTime.now();
         }
         float sum=0;
-        Set<Integer> monthsWithRoutes = new HashSet<>();
 
         for (Route route : routes) {
 
@@ -144,7 +142,6 @@ public class DriverStatisticsPresenter {
     public Money calcMonthIncome(){
         Money sum= new Money(0.0, Currency.getInstance("EUR"));
         LocalDateTime now = null;
-        Set<Integer> monthsWithRoutes = new HashSet<>();
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             now = LocalDateTime.now();
             for(Route route:routes){

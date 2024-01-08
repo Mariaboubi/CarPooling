@@ -48,6 +48,8 @@ public interface RouteDAO {
 
     ArrayList<Subroute> findSubroutesByPassenger(Passenger passenger);
 
+    ArrayList<Subroute> findSubroutesByPassengerIsCompleted(Passenger passenger);
+
     Passenger findPassengerBySubroute(Subroute currentItem);
 
     Route findRouteBySubroute(Subroute subroute);
