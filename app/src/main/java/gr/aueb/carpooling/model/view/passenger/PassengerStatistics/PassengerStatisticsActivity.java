@@ -26,12 +26,8 @@ import gr.aueb.carpooling.model.view.passenger.front_page.PassengerFrontPageActi
 
 public class PassengerStatisticsActivity extends AppCompatActivity implements PassengerStatisticsView {
     private PassengerStatisticsViewModel viewModel;
-
-    private DriverStatisticsView view;
     private String username;
-
     private PassengerDAO passengerDAO= new PassengerDAOmemory();
-
 
     private Passenger passenger;
     @Override
@@ -44,7 +40,6 @@ public class PassengerStatisticsActivity extends AppCompatActivity implements Pa
         viewModel.getPresenter().setView(this);
 
 
-        //
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             username = extras.getString("Username");
@@ -55,16 +50,16 @@ public class PassengerStatisticsActivity extends AppCompatActivity implements Pa
         viewModel.getPresenter().setSubroutes(passenger);
         viewModel.getPresenter().calculateStats();
 
-        @SuppressLint({"MissingInflatedId", "LocalSuppress"})
         ImageButton back_button = (ImageButton) findViewById(R.id.back_button);
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openDriverFrontPage();
+                openPassengerFrontPage();
             }
         });
     }
-    public void openDriverFrontPage() {
+
+    private void openPassengerFrontPage() {
         Intent intent = new Intent(this, PassengerFrontPageActivity.class);
         intent.putExtra("Username", username);
         startActivity(intent);
