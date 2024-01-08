@@ -122,7 +122,7 @@ public abstract class Initializer {
         Address sub_destination2 = new Address("patision", "147", "athens", new ZipCode("11257"), "greece");
         Address sub_pickuppoint2 = new Address("kleious", "4", "athens", new ZipCode("15561"), "greece");
         Subroute subroute2= new Subroute(sub_destination2,sub_pickuppoint2,LocalDateTime.of(2024, 1, 28, 16, 30));
-        subroute2.setStatus(Request_status.PENDING);
+        subroute2.setStatus(Request_status.APPROVED);
 
         subrouteDAO.save(subroute1);
         subrouteDAO.save(subroute2);

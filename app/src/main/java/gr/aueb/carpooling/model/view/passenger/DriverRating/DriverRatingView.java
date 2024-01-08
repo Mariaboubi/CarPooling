@@ -6,11 +6,11 @@ import gr.aueb.carpooling.model.view.View;
 public interface DriverRatingView extends View {
     void showErrorMessage(String title,String message);
 
-    String Politiness();
+    String politeness();
 
-    String Security();
+    String security();
 
-    String Cleanliness();
+    String cleanliness();
 
     void showRateAddedMessage(DriverRating rating);
 }

@@ -1,5 +1,6 @@
 package gr.aueb.carpooling.model.view.passenger.DriverRating;
 
+import gr.aueb.carpooling.model.Driver;
 import gr.aueb.carpooling.model.DriverRating;
 import gr.aueb.carpooling.model.Passenger;
 import gr.aueb.carpooling.model.Route;
@@ -10,15 +11,13 @@ import gr.aueb.carpooling.model.memoryDao.PassengerDAOmemory;
 import gr.aueb.carpooling.model.memoryDao.RouteDAOmemory;
 
 public class DriverRatingPresenter {
-    private DriverRatingDAO driverRatingDAO;
 
-    private RouteDAO routeDAO =new RouteDAOmemory();
-
-    private PassengerDAO passengerDAO =new PassengerDAOmemory();
+    private final DriverRatingDAO driverRatingDAO;
 
     DriverRatingView view;
+
      public DriverRatingPresenter(DriverRatingDAO driverRatingDAO){
-         this.driverRatingDAO=driverRatingDAO;
+         this.driverRatingDAO = driverRatingDAO;
      }
 
     public void setView(DriverRatingView view) {
@@ -29,22 +28,39 @@ public class DriverRatingPresenter {
         return this.view;
     }
 
-    public void onCreateRate(String username,Route route) {
-         String politiness= view.Politiness();
-         String security= view.Security();
-         String cleanliness= view.Cleanliness();
-        Passenger pas= passengerDAO.findByUsername(username);
+    public void onCreateRate(Passenger passenger,Route route) {
+         String politeness = view.politeness();
+         String security = view.security();
+         String cleanliness = view.cleanliness();
 
-        if (politiness.isEmpty() || security.isEmpty() || cleanliness.isEmpty()) {
-            view.showErrorMessage("Σφάλμα!", "Συμπληρώστε όλα τα πεδία!.");
+        if (politeness.isEmpty() || security.isEmpty() || cleanliness.isEmpty()) {
+            view.showErrorMessage("Error!", "Complete all the fields or press check button.");
         }else {
-            DriverRating driverRating=new DriverRating(route.getDriver(),route,politiness,security,cleanliness);
+
+
+            Driver driver = route.getDriver();
+            DriverRating driverRating = new DriverRating(driver,route,politeness,security,cleanliness);
+
+            driverRating.addRate(passenger ,driverRating);
+
+            driver.addRates(driverRating);
+
             driverRatingDAO.save(driverRating);
-            driverRating.addRate(pas,driverRating);
-            route.getDriver().addRates(driverRating);
+
             view.showRateAddedMessage(driverRating);
 
         }
 
+    }
+
+    public boolean checkIfCanBePressed() {
+        String politeness = view.politeness();
+        String security = view.security();
+        String cleanliness = view.cleanliness();
+
+        if (politeness.isEmpty() || security.isEmpty() || cleanliness.isEmpty()) {
+            return false;
+        }
+        return true;
     }
 }

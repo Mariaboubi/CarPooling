@@ -6,13 +6,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import gr.aueb.carpooling.R;
+import gr.aueb.carpooling.model.Driver;
 import gr.aueb.carpooling.model.DriverRating;
+import gr.aueb.carpooling.model.Passenger;
 import gr.aueb.carpooling.model.Route;
 import gr.aueb.carpooling.model.Subroute;
 import gr.aueb.carpooling.model.dao.PassengerDAO;
@@ -27,15 +30,16 @@ public class DriverRatingActivity extends AppCompatActivity implements DriverRat
 
     private DriverRatingViewModel viewModel;
 
-    private String username;
-    private int subroute_id;
+    private String username; //passenger username
+    private int subroute_id;   //subroute id
 
     public TextView DriverUsername;
 
     private Button rate_button;
 
-    private Subroute subroute;
+    private ImageButton confirm_ratings;
 
+    // DAOs
     private PassengerDAO passengerDAO = new PassengerDAOmemory();
 
     private RouteDAO routeDAO = new RouteDAOmemory();
@@ -55,22 +59,43 @@ public class DriverRatingActivity extends AppCompatActivity implements DriverRat
             username = extras.getString("Username");
             subroute_id = extras.getInt("SubrouteId");
         }
-        subroute = subrouteDAO.findById(subroute_id);
+        Subroute subroute = subrouteDAO.findById(subroute_id);
+        Passenger passenger = passengerDAO.findByUsername(username);
+        Route route = routeDAO.findRouteByPassAndSub(passenger, subroute);
+        String  driver_username = route.getDriver().getUsername();
 
+        // Buttons and TxtViews
         rate_button = (Button) findViewById(R.id.RateButton);
-        Route route = routeDAO.findRouteByPassAndSub(passengerDAO.findByUsername(username), subroute);
+
         DriverUsername = ((TextView) findViewById(R.id.DriversUserName));
-        DriverUsername.setText(route.getDriver().getUsername());
+        DriverUsername.setText(driver_username);
 
         rate_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewModel.getPresenter().onCreateRate(username, route);
+                viewModel.getPresenter().onCreateRate(passenger, route);
+            }
+        });
 
+        confirm_ratings = (ImageButton) findViewById(R.id.confirm_ratings);
+
+        confirm_ratings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean check = viewModel.getPresenter().checkIfCanBePressed();
+                if(check) {
+                    openPassengerFrontPage(username);
+                }
             }
         });
 
 
+    }
+
+    private void openPassengerFrontPage(String username) {
+        Intent intent = new Intent(this, PassengerFrontPageActivity.class);
+        intent.putExtra("Username", username);
+        startActivity(intent);
     }
 
 
@@ -83,17 +108,17 @@ public class DriverRatingActivity extends AppCompatActivity implements DriverRat
     }
 
     @Override
-    public String Politiness() {
+    public String politeness() {
         return ((EditText) findViewById(R.id.Politeness)).getText().toString().trim();
     }
 
     @Override
-    public String Security() {
+    public String security() {
         return ((EditText) findViewById(R.id.Security)).getText().toString().trim();
     }
 
     @Override
-    public String Cleanliness() {
+    public String cleanliness() {
         return ((EditText) findViewById(R.id.Cleanliness)).getText().toString().trim();
     }
 

@@ -4,5 +4,6 @@ public enum Request_status {
     NOT_EXIST,
     PENDING,
     APPROVED,
-    REJECTED
+    REJECTED,
+    COMPLETED
 }

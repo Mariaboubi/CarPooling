@@ -6,13 +6,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import java.text.DecimalFormat;
 
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.Passenger;
@@ -26,10 +25,10 @@ import gr.aueb.carpooling.model.dao.SubrouteDAO;
 import gr.aueb.carpooling.model.memoryDao.PassengerDAOmemory;
 import gr.aueb.carpooling.model.memoryDao.RouteDAOmemory;
 import gr.aueb.carpooling.model.memoryDao.SubrouteDAOmemory;
-import gr.aueb.carpooling.model.view.driver.createRoute.CreateRouteActivity;
+
 import gr.aueb.carpooling.model.view.passenger.DriverRating.DriverRatingActivity;
 import gr.aueb.carpooling.model.view.passenger.front_page.PassengerFrontPageActivity;
-import gr.aueb.carpooling.model.view.passenger.top_up.TopUpActivity;
+
 
 public class ExistedSubrouteActivity extends AppCompatActivity implements ExistedSubrouteView, ExistedSubrouteRecyclerViewAdapter.SubrouteSelectionListener {
 
@@ -42,10 +41,9 @@ public class ExistedSubrouteActivity extends AppCompatActivity implements Existe
     private TextView emptyView;
 
     SubrouteDAO subrouteDAO = new SubrouteDAOmemory();
-    private PassengerDAO passengerDAO = new PassengerDAOmemory();
-    private Passenger passenger;
+    private final PassengerDAO passengerDAO = new PassengerDAOmemory();
 
-    private RouteDAO routeDAO = new RouteDAOmemory();
+    private final RouteDAO routeDAO = new RouteDAOmemory();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,56 +57,55 @@ public class ExistedSubrouteActivity extends AppCompatActivity implements Existe
             username = extras.getString("Username");
             //The key argument here must match that used in the other activity
         }
-        passenger = passengerDAO.findByUsername(username);
+        Passenger passenger = passengerDAO.findByUsername(username);
         viewModel.getPresenter().setSubrouteList(passenger);
 
         recyclerView = findViewById(R.id.ChooseSubrouteRecyclerView);
         emptyView = findViewById(R.id.NoSubroutes);
         viewModel.getPresenter().onChangeLayout();
 
-        findViewById(R.id.back_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openPassengerFrontPage();
-            }
-        });
+        findViewById(R.id.back_button).setOnClickListener(v -> openPassengerFrontPage());
 
     }
 
     @Override
 
     public void selectSubroute(Subroute subroute, Request_status status,Boolean b) {
-        showErrorMessage("Dest",subroute.getDestination().toString());
+        //showErrorMessage("Dest",subroute.getDestination().toString());
         Money cost=subroute.calculateCost();
-        showErrorMessage("cost",String.valueOf(cost.getAmount()));
-        Boolean success= passenger.transaction(cost);
-        if(!success){
-            new androidx.appcompat.app.AlertDialog.Builder(this)
-                    .setCancelable(true)
-                    .setTitle("Η πληρωμή επέτυχε.Πρόσθεσε χρήματα.Η διαδρομη κόστησε")
-                    .setMessage(new DecimalFormat("0.00").format(cost.getAmount()))
-                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Intent intent = new Intent(ExistedSubrouteActivity.this, TopUpActivity.class);
-                            intent.putExtra("Username", username);
-                            startActivity(intent);
-                        }
-                    }).create().show();
-        }
+        //showErrorMessage("cost",String.valueOf(cost.getAmount()));
+//        Boolean success= passenger.transaction(cost);
+//        if(!success){
+//            new androidx.appcompat.app.AlertDialog.Builder(this)
+//                    .setCancelable(true)
+//                    .setTitle("Η πληρωμή επέτυχε.Πρόσθεσε χρήματα.Η διαδρομη κόστησε")
+//                    .setMessage(new DecimalFormat("0.00").format(cost.getAmount()))
+//                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            Intent intent = new Intent(ExistedSubrouteActivity.this, TopUpActivity.class);
+//                            intent.putExtra("Username", username);
+//                            startActivity(intent);
+//                        }
+//                    }).create().show();
+//        }
 
         if(b){
             if (status == Request_status.APPROVED){
+                subroute.setStatus(Request_status.COMPLETED);
                 Intent intent = new Intent(ExistedSubrouteActivity.this, DriverRatingActivity.class);
                 intent.putExtra("Username", username);
                 intent.putExtra("SubrouteId", subroute.getId());
                 startActivity(intent);
             } else if (status == Request_status.REJECTED) {
                 showErrorMessage("You can press button complete if request status is approved. Current status ", String.valueOf(Request_status.REJECTED));
-            } else {
+            } else if(status == Request_status.PENDING){
                 showErrorMessage("Wait for driver's answer. Current status: ", String.valueOf(Request_status.PENDING));
+            } else if(status == Request_status.COMPLETED) {
+                showErrorMessage("You have already completed this subroute. Current status: ", String.valueOf(Request_status.COMPLETED));
             }
         } else {
+
             Route route = routeDAO.findRouteBySubroute(subroute);
             route.removeSubroute(subroute);
             subrouteDAO.delete(subroute);
