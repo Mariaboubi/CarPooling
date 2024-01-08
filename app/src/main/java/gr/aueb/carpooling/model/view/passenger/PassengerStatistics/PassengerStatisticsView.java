@@ -15,4 +15,5 @@ public interface PassengerStatisticsView extends View {
     void setMonthlyExpenses(String MonthlyIncome);
 
     void setYearlyExpenses(String YearlyIncome);
+
 }

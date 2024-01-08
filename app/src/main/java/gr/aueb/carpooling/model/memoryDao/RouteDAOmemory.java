@@ -7,6 +7,7 @@ import java.util.Set;
 
 import gr.aueb.carpooling.model.Driver;
 import gr.aueb.carpooling.model.Passenger;
+import gr.aueb.carpooling.model.Request_status;
 import gr.aueb.carpooling.model.Route;
 import gr.aueb.carpooling.model.Subroute;
 import gr.aueb.carpooling.model.dao.RouteDAO;
@@ -79,6 +80,27 @@ public class RouteDAOmemory implements RouteDAO {
         return result;
     }
 
+    @Override
+    public ArrayList<Subroute> findSubroutesByPassengerIsCompleted(Passenger passenger) {
+        ArrayList<Subroute> subroutes = new ArrayList<>();
+        for (Route route : entities) {
+            HashMap<Passenger, Subroute> map = route.getPassengerRoutes();
+            Set<Passenger> passengers = map.keySet();
+            for (Passenger passenger1 : passengers) {
+                if (passenger1 == passenger) {
+                    subroutes.add(map.get(passenger1));
+                }
+            }
+        }
+        ArrayList<Subroute> result = new ArrayList<>();
+        for(Subroute sub : subroutes){
+            if(sub.getStatus()== Request_status.COMPLETED){
+                result.add(sub);
+            }
+        }
+        return result;
+    }
+
 
 //    public ArrayList<Subroute> findSubroutesByPassanger(Passenger passenger) {
 //        ArrayList<Subroute> result= new ArrayList<>();
@@ -118,7 +140,7 @@ public class RouteDAOmemory implements RouteDAO {
     public ArrayList<Route> findByDriverIsCompleted(Driver driver) {
         ArrayList<Route> result= new ArrayList<>();
         for(Route route : entities){
-            if(route.getDriver()==driver){
+            if(route.getDriver()==driver  && route.isCompleted()){
                 result.add(route);
             }
         }

@@ -2,19 +2,17 @@ package gr.aueb.carpooling.model.view.passenger.PassengerStatistics;
 
 import android.os.Build;
 
+import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Currency;
 import java.util.HashSet;
 import java.util.Set;
 
-import gr.aueb.carpooling.model.Driver;
 import gr.aueb.carpooling.model.Passenger;
-import gr.aueb.carpooling.model.Route;
 import gr.aueb.carpooling.model.Subroute;
 import gr.aueb.carpooling.model.contact.Money;
 import gr.aueb.carpooling.model.dao.RouteDAO;
-import gr.aueb.carpooling.model.view.driver.DriverStatistics.DriverStatisticsView;
 
 public class PassengerStatisticsPresenter {
 
@@ -39,7 +37,7 @@ public class PassengerStatisticsPresenter {
 
 
     public void setSubroutes(Passenger passenger) {
-            subroutes = (ArrayList<Subroute>) routeDAO.findSubroutesByPassenger(passenger);
+            subroutes = (ArrayList<Subroute>) routeDAO.findSubroutesByPassengerIsCompleted(passenger);
     }
 
 
@@ -59,83 +57,68 @@ public class PassengerStatisticsPresenter {
         return number;
     }
 
-    public float calcMonthlyRoutes(){
+    public float calcMonthRoutes(){
         LocalDateTime now = null;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             now = LocalDateTime.now();
         }
         int number=0;
-        Set<Integer> monthsWithRoutes = new HashSet<>();
 
         for (Subroute subroute:subroutes) {
             org.threeten.bp.LocalDateTime routeDate = subroute.getPickupTime();
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                if (routeDate.getYear() == now.getYear() ) {
+                if (routeDate.getYear() == now.getYear( )&& routeDate.getMonthValue() == now.getMonthValue())  {
                     number ++ ;
-                    int month = routeDate.getMonthValue();
-                    monthsWithRoutes.add(month);
                 }
             }
         }
-        int totalMonths = monthsWithRoutes.size();
-        if(totalMonths!=0) {
-            return (float) number / totalMonths;
-        }else{
-            return 0;
-        }
+
+            return number;
+
     }
 
 
 
     public Money calcYearlyExpenses(){
         Money sum= new Money(0.0, Currency.getInstance("EUR"));
-        LocalDateTime now = null;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            now = LocalDateTime.now();
-            for(Subroute subroute:subroutes){
-
-                if(subroute.getPickupTime().getYear()== now.getYear()){
-                    sum=sum.plus(subroute.calculateCost());
-
-
-                }
-            }
-        }
+//        LocalDateTime now = null;
+//        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+//            now = LocalDateTime.now();
+//            for(Subroute subroute:subroutes){
+//
+//                if(subroute.getPickupTime().getYear()== now.getYear()){
+//                    //sum=sum.plus(subroute.calculateCost());
+//
+//
+//                }
+//            }
+//        }
 
         return sum;
     }
 
-    public Money calcMonthlyExpenses(){
+    public Money calcMonthExpenses(){
         Money sum= new Money(0.0, Currency.getInstance("EUR"));
         LocalDateTime now = null;
-        Set<Integer> monthsWithRoutes = new HashSet<>();
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             now = LocalDateTime.now();
             for(Subroute subroute:subroutes){
                 org.threeten.bp.LocalDateTime routeDate = subroute.getPickupTime();
-                if(routeDate.getYear()== now.getYear()){
-                    sum=sum.plus(subroute.calculateCost());
-                    int month = routeDate.getMonthValue();
-                    monthsWithRoutes.add(month);
+                if(routeDate.getYear()== now.getYear() && routeDate.getMonthValue() == now.getMonthValue()){
+                    //sum=sum.plus(subroute.calculateCost());
 
                 }
             }
         }
-        int totalMonths = monthsWithRoutes.size();
-        if(totalMonths!=0) {
-            return sum.divide((double) totalMonths);
-        }else{
-            return new Money(0.0, Currency.getInstance("EUR"));
-        }
+        return sum;
     }
 
 
     public void calculateStats(){
         int calcYearlyRoutes= calcYearlyRoutes();
-        float calcMonthlyRoutes = calcMonthlyRoutes();
-        // Money calcMonthlyExpenses= calcMonthlyExpenses();
-//        Money calcYearlylyExpenses = calcYearlyExpenses();
-
+        float calcMonthlyRoutes = calcMonthRoutes();
+//         Money calcMonthlyExpenses= calcMonthExpenses();
+         Money calcYearlylyExpenses = calcYearlyExpenses();
 
 
         view.setcalcYearlyRoutes(String.valueOf(calcYearlyRoutes));
@@ -143,10 +126,10 @@ public class PassengerStatisticsPresenter {
 
         view.setMonthlyRoutes(String.valueOf(calcMonthlyRoutes));
 
-
-        //view.setcalcMonthlyIncome(String.valueOf(calcMonthlyIncome));
-
-//        view.setcalcYearlyIncome(String.valueOf(calcYearlylyIncome));
+        //view.showErrorMessage("Cost",new DecimalFormat("0.00").format(sum));
+//        view.setMonthlyExpenses(new DecimalFormat("0.00").format(calcMonthlyExpenses));
+//
+        view.setYearlyExpenses(new DecimalFormat("0.00").format(calcYearlylyExpenses));
     }
     public PassengerStatisticsView getView(){
         return this.view;

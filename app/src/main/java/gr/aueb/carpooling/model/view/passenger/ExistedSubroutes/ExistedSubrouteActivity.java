@@ -99,7 +99,7 @@ public class ExistedSubrouteActivity extends AppCompatActivity implements Existe
 
         if(b){
             if (status == Request_status.APPROVED){
-                boolean success=payment(subroute);
+                boolean success= true;
                 if(success){
                     subroute.setStatus(Request_status.COMPLETED);
                     Intent intent = new Intent(ExistedSubrouteActivity.this, DriverRatingActivity.class);
