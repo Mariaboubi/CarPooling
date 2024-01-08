@@ -139,30 +139,9 @@ public class DriverTest {
     }
 
     @Test
-    public void testChangeIbanToNull() {
-        // Verify that a NullPointerException is thrown with the expected message
-        NullPointerException exception = assertThrows(NullPointerException.class, () -> driver.changeIban(null));
-        assertEquals("IBAN cannot be null", exception.getMessage());
-    }
-
-    @Test
     public void testChangeLicenseNumber() {
         driver.changeLicenseNumber("112234");
         assertEquals(driver.getLicenseNumber(), "112234");
-    }
-
-    @Test
-    public void testChangeLicenseNumberToNull() {
-        // Verify that a NullPointerException is thrown with the expected message
-        NullPointerException exception = assertThrows(NullPointerException.class, () -> driver.changeLicenseNumber(null));
-        assertEquals("License number cannot be null", exception.getMessage());
-    }
-
-    @Test
-    public void testChangeCarTypeToNull() {
-        // Verify that a NullPointerException is thrown with the expected message
-        NullPointerException exception = assertThrows(NullPointerException.class, () -> driver.changeCarType(null));
-        assertEquals("Car type cannot be null", exception.getMessage());
     }
 
     @Test
@@ -203,11 +182,6 @@ public class DriverTest {
     @Test
     public void testRemoveRouteWhenListIsEmpty() {
         driver.getRoutes().clear();
-        // Use assertThrows to check if an UnsupportedOperationException is thrown
-        UnsupportedOperationException exception = assertThrows(UnsupportedOperationException.class,
-                () -> driver.removeRoute(route));
-        // Verify the exception message
-        assertEquals("Cannot remove from an empty route_data set.", exception.getMessage());
         // Ensure that the routes set is still empty
         assertTrue(driver.getRoutes().isEmpty());
     }

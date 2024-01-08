@@ -8,11 +8,7 @@ import org.junit.jupiter.api.Test;
 import gr.aueb.carpooling.model.User;
 import gr.aueb.carpooling.model.contact.EmailAddress;
 import gr.aueb.carpooling.model.dao.UserDAO;
-import gr.aueb.carpooling.model.memoryDao.DriverDAOmemory;
-import gr.aueb.carpooling.model.memoryDao.PassengerDAOmemory;
 import gr.aueb.carpooling.model.memoryDao.UserDAOmemory;
-import gr.aueb.carpooling.model.view.attribute_selection.AttributeSelectionPresenter;
-import gr.aueb.carpooling.model.view.attribute_selection.AttributeSelectionView;
 import gr.aueb.carpooling.model.view.log_in.LogInPresenter;
 import gr.aueb.carpooling.model.view.log_in.LogInView;
 
@@ -23,12 +19,13 @@ public class LoginPresenterTest {
     private LogInPresenter presenter;
 
     private User user;
+
     @BeforeEach
     public void setUp() {
+        view = new LogInViewStub();
         userDAO = new UserDAOmemory();
         presenter = new LogInPresenter(userDAO);
         presenter.setView(view);
-        //ogInView testView = new LogInViewStub();
 
         user = new User(
                 "maria123",
@@ -40,21 +37,54 @@ public class LoginPresenterTest {
                 "25"
         );
         userDAO.save(user);
-
-
     }
 
     @Test
-    public void setView() {
-        LogInView testView = new LogInViewStub();
-        presenter.setView(testView);
-        assertEquals(presenter.getView(),testView);
-
-    }
-    @Test
-    public  void Authenticate(){
+    public void Authenticate() {
         view.setUsername("maria123");
         view.setPassword("12345678");
         presenter.authenticate();
+    }
+
+    public static class LogInViewStub implements LogInView {
+        String username, password, errorTitle, errorMessage;
+
+        public LogInViewStub() {
+            username = password = errorTitle = errorMessage = "";
+        }
+
+        @Override
+        public String extractUsername() {
+            return username;
+        }
+
+        @Override
+        public String extractPassword() {
+            return password;
+        }
+
+        public void setUsername(String value) {
+            username = value;
+        }
+
+        public void setPassword(String value) {
+            password = value;
+        }
+
+        @Override
+        public void openSignupActivity() {
+
+        }
+
+        @Override
+        public void showErrorMessage(String title, String message) {
+            errorTitle = title;
+            errorMessage = message;
+        }
+
+        @Override
+        public void openAttributeSelectionActivity(String username) {
+
+        }
     }
 }

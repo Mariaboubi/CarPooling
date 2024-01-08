@@ -13,16 +13,17 @@ public class ExistedSubroutePresenter {
 
     ExistedSubrouteView view;
 
-    private final RouteDAO routeDAO= new RouteDAOmemory();
+    private final RouteDAO routeDAO = new RouteDAOmemory();
 
     private ArrayList<Subroute> subroutes;
 
-    public ExistedSubroutePresenter(SubrouteDAO subrouteDAO){
+    public ExistedSubroutePresenter(SubrouteDAO subrouteDAO) {
         subroutes = new ArrayList<>();
     }
 
     /**
      * Sets our view object to use the methods of its interface.
+     *
      * @param view An instance of the view.
      */
     public void setView(ExistedSubrouteView view) {
@@ -42,20 +43,19 @@ public class ExistedSubroutePresenter {
     public void onChangeLayout() {
         if (subroutes.isEmpty()) {
             view.ShowNoSubroutes();
-        }
-        else {
+        } else {
             view.ShowSubroutes();
         }
     }
 
     /**
      * Returns the list of subroutes.
+     *
      * @return The list of subroutes.
      */
     public ArrayList<Subroute> getSubrouteList() {
         return subroutes;
     }
-
 
 
 }
