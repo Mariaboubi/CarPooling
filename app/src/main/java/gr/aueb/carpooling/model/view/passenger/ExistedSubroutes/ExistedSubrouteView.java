@@ -1,5 +1,6 @@
 package gr.aueb.carpooling.model.view.passenger.ExistedSubroutes;
 
+import gr.aueb.carpooling.model.Subroute;
 import gr.aueb.carpooling.model.view.View;
 
 public interface ExistedSubrouteView extends View {
@@ -19,5 +20,7 @@ public interface ExistedSubrouteView extends View {
     void ShowSubroutes();
 
     void showErrorMessage(String title, String message);
+
+    boolean payment(Subroute sub);
 
 }

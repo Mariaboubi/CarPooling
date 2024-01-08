@@ -2,6 +2,7 @@ package gr.aueb.carpooling.model.view.driver.DriverStatistics;
 
 import android.os.Build;
 
+import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Currency;
@@ -56,30 +57,22 @@ public class DriverStatisticsPresenter {
         return number;
     }
 
-    public float calcMonthlyRoutes(){
+    public int calcMonthRoutes(){
         LocalDateTime now = null;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             now = LocalDateTime.now();
         }
         int number=0;
-        Set<Integer> monthsWithRoutes = new HashSet<>();
 
         for (Route route : routes) {
             org.threeten.bp.LocalDateTime routeDate = route.getDate();
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                if (routeDate.getYear() == now.getYear() ) {
+                if (routeDate.getYear() == now.getYear()  && routeDate.getMonthValue() == now.getMonthValue()) {
                     number ++ ;
-                    int month = routeDate.getMonthValue();
-                    monthsWithRoutes.add(month);
                 }
             }
         }
-        int totalMonths = monthsWithRoutes.size();
-        if(totalMonths!=0) {
-            return (float) number / totalMonths;
-        }else{
-            return 0;
-        }
+        return number;
     }
 
     public float calcYearlyAverageFullness(){
@@ -104,7 +97,7 @@ public class DriverStatisticsPresenter {
         }
     }
 
-    public float calcMonthlyAverageFullness(){
+    public float calcMonthAverageFullness(){
         LocalDateTime now = null;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             now = LocalDateTime.now();
@@ -118,17 +111,14 @@ public class DriverStatisticsPresenter {
             int actual_number_of_passengers =route.getPassengerRoutes().size();
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
-                if (routeDate.getYear() == now.getYear()) {
+                if (routeDate.getYear() == now.getYear()&& routeDate.getMonthValue() == now.getMonthValue()) {
                     sum= (float) actual_number_of_passengers /route.getMaxPassengers();
-                    int month = routeDate.getMonthValue();
-                    monthsWithRoutes.add(month);
                 }
             }
 
         }
-        int totalMonths = monthsWithRoutes.size();
-        if(totalMonths!=0 && routes.size()!=0) {
-            return (float) (sum / routes.size()) / totalMonths;
+        if(routes.size()!=0) {
+            return (float) sum / routes.size();
         }else{
             return 0;
         }
@@ -144,7 +134,6 @@ public class DriverStatisticsPresenter {
                 if(route.getDate().getYear()== now.getYear()){
                     sum=sum.plus(route.getTotalCost());
 
-
                 }
             }
         }
@@ -152,7 +141,7 @@ public class DriverStatisticsPresenter {
         return sum;
     }
 
-    public Money calcMonthlyIncome(){
+    public Money calcMonthIncome(){
         Money sum= new Money(0.0, Currency.getInstance("EUR"));
         LocalDateTime now = null;
         Set<Integer> monthsWithRoutes = new HashSet<>();
@@ -160,30 +149,22 @@ public class DriverStatisticsPresenter {
             now = LocalDateTime.now();
             for(Route route:routes){
                 org.threeten.bp.LocalDateTime routeDate = route.getDate();
-                if(route.getDate().getYear()== now.getYear()){
+                if(route.getDate().getYear()== now.getYear()&& routeDate.getMonthValue() == now.getMonthValue()) {
                     sum=sum.plus(route.getTotalCost());
-                    int month = routeDate.getMonthValue();
-                    monthsWithRoutes.add(month);
-
                 }
             }
         }
-        int totalMonths = monthsWithRoutes.size();
-        if(totalMonths!=0) {
-            return sum.divide((double) totalMonths);
-        }else{
-            return new Money(0.0, Currency.getInstance("EUR"));
-        }
+        return sum;
     }
 
 
     public void calculateStats(){
         int calcYearlyRoutes= calcYearlyRoutes();
-        float calcMonthlyRoutes = calcMonthlyRoutes();
+        int calcMonthlyRoutes = calcMonthRoutes();
         float calcYearlyAverageFullness = calcYearlyAverageFullness();
-        float calcMonthlyAverageFullness=calcMonthlyAverageFullness();
-       // Money calcMonthlyIncome = calcMonthlyIncome();
-//        Money calcYearlylyIncome = calcYearlyIncome();
+        float calcMonthlyAverageFullness=calcMonthAverageFullness();
+        Money calcMonthlyIncome = calcMonthIncome();
+        Money calcYearlylyIncome = calcYearlyIncome();
 
 
 
@@ -198,9 +179,9 @@ public class DriverStatisticsPresenter {
 
         view.setMonthlyAverageFullness(String.valueOf(calcMonthlyAverageFullness));
 
-        //view.setcalcMonthlyIncome(String.valueOf(calcMonthlyIncome));
+        view.setcalcMonthlyIncome(new DecimalFormat("0.00").format(calcMonthlyIncome.getAmount()));
 
-//        view.setcalcYearlyIncome(String.valueOf(calcYearlylyIncome));
+        view.setcalcYearlyIncome(new DecimalFormat("0.00").format(calcYearlylyIncome.getAmount()));
     }
     public DriverStatisticsView getView(){
         return this.view;

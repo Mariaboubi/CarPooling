@@ -53,6 +53,8 @@ public class ExistedSubrouteRecyclerViewAdapter extends RecyclerView.Adapter<Exi
     @Override
     public void onBindViewHolder(@NonNull ExistedSubrouteRecyclerViewAdapter.ViewHolder holder, int position) {
         Subroute currentSubroute = subroutes.get(position);
+
+        currentSubroute.setStatus(Request_status.APPROVED);
         String str_dest = "Destination address: " + currentSubroute.getDestination().toString2();
         holder.subrouteDest.setText(str_dest);
 
@@ -64,6 +66,8 @@ public class ExistedSubrouteRecyclerViewAdapter extends RecyclerView.Adapter<Exi
 
         String date = "Date: " + currentSubroute.getPickupTime().toString();
         holder.subrouteDate.setText(date);
+
+
 
 
 

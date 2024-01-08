@@ -45,11 +45,10 @@ public class User implements UserInterface {
         this.balance = Money.euros(0.0);
     }
 
-    public void topUp(Money money) throws IllegalStateException {
+    public void topUp(Money money) {
         if (money.getAmount().compareTo(0.0) > 0) {
             this.balance = this.balance.plus(money);
-        } else {
-            throw new IllegalStateException("Invalid top-up amount");
+
         }
     }
 
