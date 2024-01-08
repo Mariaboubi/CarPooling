@@ -124,9 +124,29 @@ public class RouteDAOTest {
     }
 
     @Test
+    public void testFindSubroutesByPassenger() {
+        ArrayList<Subroute> subroutesByPassenger = routeDAO.findSubroutesByPassenger(passenger);
+        assertTrue(subroutesByPassenger.contains(subroute1));
+    }
+
+    @Test
     public void testFindRouteByPassAndSub() {
         Route foundRoute = routeDAO.findRouteByPassAndSub(passenger, subroute1);
 
+        assertNotNull(foundRoute);
+        assertEquals(route, foundRoute);
+    }
+
+    @Test
+    public void testFindPassengerBySubroute() {
+        Passenger foundPassenger = routeDAO.findPassengerBySubroute(subroute1);
+        assertNotNull(foundPassenger);
+        assertEquals(passenger, foundPassenger);
+    }
+
+    @Test
+    public void testFindRouteBySubroute() {
+        Route foundRoute = routeDAO.findRouteBySubroute(subroute1);
         assertNotNull(foundRoute);
         assertEquals(route, foundRoute);
     }
