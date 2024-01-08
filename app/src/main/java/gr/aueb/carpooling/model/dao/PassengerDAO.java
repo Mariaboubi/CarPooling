@@ -8,9 +8,6 @@ import gr.aueb.carpooling.model.Passenger;
 import gr.aueb.carpooling.model.Route;
 
 public interface PassengerDAO {
-    void delete(Passenger entity);
-
-    void delete(int id);
 
     void deleteAll();
 
@@ -20,11 +17,9 @@ public interface PassengerDAO {
 
     boolean find(String username);
 
-    Passenger find(String username, String password);
 
     Passenger findByUsername(String username);
 
-    Passenger findByName(String name);
 
     ArrayList<Passenger> findAllByRoute(Route route);
 
@@ -32,8 +27,5 @@ public interface PassengerDAO {
 
     boolean findPassenger(int id);
 
-    Set<Route> findRoute(int id);
-
-    int nextId();
 
 }

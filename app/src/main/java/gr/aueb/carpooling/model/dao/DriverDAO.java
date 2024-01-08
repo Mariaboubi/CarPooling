@@ -8,9 +8,6 @@ import gr.aueb.carpooling.model.Driver;
 import gr.aueb.carpooling.model.Route;
 
 public interface DriverDAO {
-    void delete(Driver entity);
-
-    void delete(int id);
 
     void deleteAll();
 
@@ -24,6 +21,5 @@ public interface DriverDAO {
 
     boolean findDriver(int id);
 
-    int nextId();
 
 }

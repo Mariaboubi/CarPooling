@@ -12,10 +12,10 @@ public class PassengerRatingDAOmemory implements PassengerRatingDao {
 
     protected static ArrayList<PassengerRating> entities = new ArrayList<>();
 
-    @Override
-    public void delete(PassengerRating rating) {
-        entities.remove(rating);
-    }
+//    @Override
+//    public void delete(PassengerRating rating) {
+//        entities.remove(rating);
+//    }
 
 
     @Override
@@ -30,26 +30,6 @@ public class PassengerRatingDAOmemory implements PassengerRatingDao {
     @Override
     public void save(PassengerRating entity) {
         entities.add(entity);
-    }
-
-    @Override
-    public PassengerRating find(Passenger passenger) {
-        for(PassengerRating rating: entities){
-            if(passenger.equals(rating.getPassenger())){
-                return rating;
-            }
-        }
-        return null;
-    }
-
-    @Override
-    public PassengerRating find(Route route) {
-        for(PassengerRating rating: entities){
-            if(route.equals(rating.getRoute())){
-                return rating;
-            }
-        }
-        return null;
     }
     @Override
     public ArrayList<PassengerRating> findAllByRoute(Route route) {

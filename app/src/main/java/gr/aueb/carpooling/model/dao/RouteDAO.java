@@ -10,30 +10,14 @@ import gr.aueb.carpooling.model.Subroute;
 
 public interface RouteDAO {
 
-    void delete(Route entity);
 
     void deleteAll();
     void save(Route entity);
     List<Route> findAll();
 
-    //    public ArrayList<Subroute> findSubroutesByPassanger(Passenger passenger) {
-//        ArrayList<Subroute> result= new ArrayList<>();
-//        for(Route route: entities){
-//            result.add(route.getSubRouteByPassenger(passenger));
-//
-//        }
-//        if (result.isEmpty()){
-//            return null;
-//        }else{
-//            return result;
-//        }
-//
-//    }
-    //ArrayList<Subroute> findSubrouteByPassenger(Passenger passenger);
-
     Route find(int id);
     ArrayList<Route> findByDriver(Driver driver);
-    int nextId();
+
 
     Route findRouteByPassAndSub(Passenger pas, Subroute sub);
 

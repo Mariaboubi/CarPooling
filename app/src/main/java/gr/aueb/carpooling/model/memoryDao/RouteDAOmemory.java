@@ -16,10 +16,6 @@ public class RouteDAOmemory implements RouteDAO {
 
     protected static ArrayList<Route> entities = new ArrayList<>();
 
-    @Override
-    public void delete(Route entity) {
-        entities.remove(entity);
-    }
 
     @Override
     public void deleteAll() {
@@ -141,9 +137,5 @@ public class RouteDAOmemory implements RouteDAO {
         return null;
     }
 
-    @Override
-    public int nextId() {
-        return (entities.size() > 0 ? entities.get(entities.size() - 1).getId() + 1 : 1);
-    }
 
 }

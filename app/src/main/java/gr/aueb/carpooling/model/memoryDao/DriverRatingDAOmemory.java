@@ -14,10 +14,10 @@ public class DriverRatingDAOmemory implements DriverRatingDAO {
 
     protected static ArrayList<DriverRating> entities = new ArrayList<>();
 
-    @Override
-    public void delete(DriverRating entity) {
-        entities.remove(entity);
-    }
+//    @Override
+//    public void delete(DriverRating entity) {
+//        entities.remove(entity);
+//    }
 
     @Override
     public void deleteAll() {
@@ -34,10 +34,6 @@ public class DriverRatingDAOmemory implements DriverRatingDAO {
         return new ArrayList<>(entities);
     }
 
-    @Override
-    public DriverRating findByPassenger(Passenger passenger) {
-        return null;
-    }
 
     @Override
     public DriverRating find(Route route) {
@@ -49,13 +45,4 @@ public class DriverRatingDAOmemory implements DriverRatingDAO {
         return null;
     }
 
-    @Override
-    public DriverRating findByDriver(Driver driver) {
-        for(DriverRating rating: entities){
-            if(driver.equals(rating.getDriver())){
-                return rating;
-            }
-        }
-        return null;
-    }
 }
