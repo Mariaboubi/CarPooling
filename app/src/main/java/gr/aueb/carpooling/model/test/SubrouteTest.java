@@ -9,6 +9,7 @@ import org.threeten.bp.LocalDateTime;
 import java.util.Currency;
 
 import gr.aueb.carpooling.model.AppGlobals;
+import gr.aueb.carpooling.model.Request_status;
 import gr.aueb.carpooling.model.Subroute;
 import gr.aueb.carpooling.model.contact.Address;
 import gr.aueb.carpooling.model.contact.Money;
@@ -80,6 +81,12 @@ public class SubrouteTest {
         assertEquals(subroute.getCost().getAmount(), money_expected_cost.getAmount(), 0.001);
         // Compare the expected distance with the calculated distance
         assertEquals(expected_cost, cost.getAmount(), 0.001); // Adjust the tolerance as needed
+    }
+
+    @Test
+    public void testStatus(){
+        subroute.setStatus(Request_status.APPROVED);
+        assertEquals(Request_status.APPROVED, subroute.getStatus());
     }
 
 

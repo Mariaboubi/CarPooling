@@ -35,14 +35,8 @@ public interface RouteDAO {
     ArrayList<Route> findByDriver(Driver driver);
     int nextId();
 
-    Passenger findPassenger(Route route, Subroute subroute);
-
-    Passenger findPassengerByRoute(Route route);
-    ArrayList<Route> findExistedRoutes();
-
     Route findRouteByPassAndSub(Passenger pas, Subroute sub);
 
-    Route findByDestDateDriver(String dest, String date,Driver driver);
 
     ArrayList<Route> findByDriverIsCompleted(Driver driver);
 

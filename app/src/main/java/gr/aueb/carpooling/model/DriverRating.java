@@ -64,4 +64,8 @@ public class DriverRating extends Rating implements DriverRatingInterface {
         return (float) (sum / 3);
     }
 
+    public boolean hasRate(DriverRating rate) {
+        return passengers_has_rate.containsValue(rate);
+    }
+
 }

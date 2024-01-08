@@ -148,13 +148,6 @@ public class Route implements RouteInterface {
         this.passanger_rating.add(rating);
     }
 
-    public void removePassengerRating(PassengerRating rating) throws UnsupportedOperationException {
-        if(passanger_rating.size() > 0) {
-            this.passanger_rating.remove(rating);
-        } else {
-            throw new UnsupportedOperationException("Cannot remove from an empty passenger rating set.");
-        }
-    }
 
     public boolean hasPassengerRating(PassengerRating rating) {
         return passanger_rating.contains(rating);

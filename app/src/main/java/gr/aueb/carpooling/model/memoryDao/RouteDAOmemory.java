@@ -36,17 +36,6 @@ public class RouteDAOmemory implements RouteDAO {
         return entities;
     }
 
-    public ArrayList<Route> findExistedRoutes() {
-        ArrayList<Route> result = new ArrayList<>();
-        for (Route route : entities) {
-            if (!route.isCompleted()) {
-                result.add(route);
-                return result;
-            }
-        }
-        return null;
-    }
-
     @Override
     public Route findRouteByPassAndSub(Passenger pas, Subroute sub) {
         for (Route route : entities) {
@@ -54,15 +43,6 @@ public class RouteDAOmemory implements RouteDAO {
         }
         return null;
 
-    }
-
-    public Route findByDestDateDriver(String dest, String date, Driver driver) {
-        for (Route route : entities) {
-            if (route.getDestination().toString().equals(dest) && route.getDate().toString().equals(date) && route.getDriver().equals(driver)) {
-                return route;
-            }
-        }
-        return null;
     }
 
     @Override
@@ -100,21 +80,6 @@ public class RouteDAOmemory implements RouteDAO {
         }
         return result;
     }
-
-
-//    public ArrayList<Subroute> findSubroutesByPassanger(Passenger passenger) {
-//        ArrayList<Subroute> result= new ArrayList<>();
-//        for(Route route: entities){
-//            result.add(route.getSubRouteByPassenger(passenger));
-//
-//        }
-//        if (result.isEmpty()){
-//            return null;
-//        }else{
-//            return result;
-//        }
-//
-//    }
 
 
     @Override
@@ -181,13 +146,4 @@ public class RouteDAOmemory implements RouteDAO {
         return (entities.size() > 0 ? entities.get(entities.size() - 1).getId() + 1 : 1);
     }
 
-    @Override
-    public Passenger findPassenger(Route route, Subroute subroute) {
-        return null;
-    }
-
-    @Override
-    public Passenger findPassengerByRoute(Route route) {
-        return null;
-    }
 }

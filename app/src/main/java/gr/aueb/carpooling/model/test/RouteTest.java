@@ -2,7 +2,9 @@ package gr.aueb.carpooling.model.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -14,6 +16,7 @@ import java.util.Currency;
 import gr.aueb.carpooling.model.AppGlobals;
 import gr.aueb.carpooling.model.Driver;
 import gr.aueb.carpooling.model.Passenger;
+import gr.aueb.carpooling.model.PassengerRating;
 import gr.aueb.carpooling.model.Route;
 import gr.aueb.carpooling.model.Subroute;
 import gr.aueb.carpooling.model.contact.Address;
@@ -29,9 +32,13 @@ public class RouteTest {
     private Driver driver1;
     private Money money5;
     private Passenger passenger;
+
+    private Passenger passenger2;
     private Address destination2;
     private Subroute subroute;
     private Address pickupPoint;
+
+    private PassengerRating rate;
     private LocalDateTime pickupTime;
     private final Currency euroCurrency = Currency.getInstance("EUR");
 
@@ -53,6 +60,10 @@ public class RouteTest {
         subroute = new Subroute(destination, pickupPoint, pickupTime);
         passenger = new Passenger("eleni3", "eleni", "pappa", "6969497297", email2, "12345183", "23", "14222",
                 "eleni", "352");
+        passenger2 = new Passenger("eleni32", "eleni", "pappa", "6969497297", email2, "12345183", "23", "14222",
+                "eleni", "352");
+
+       rate = new PassengerRating(passenger, route, "4.5", "3.2", "5.0");
     }
 
     @Test
@@ -150,4 +161,26 @@ public class RouteTest {
         assertEquals(money_expected_cost.getAmount(),route.getPassengerCost(passenger).getAmount());
         assertEquals(route.getTotalCost().getAmount(), money_expected_cost.getAmount(), 0.001);
     }
+
+    @Test
+    public void testAddRates() {
+        route.addPassengerRating(rate);
+        assertTrue(route.hasPassengerRating(rate));
+        assertTrue(route.getPassengerRating().contains(rate));
+    }
+    @Test
+    public void testAddSubroutes() {
+        route.addPassengerRoute(passenger,subroute);
+        assertTrue(route.getPassengerRoutes().containsKey(passenger));
+        assertEquals(route, route.getRoute(passenger,subroute));
+        assertNotEquals(route,route.getRoute(passenger2,subroute));
+    }
+    @Test
+    public void testRemoveSubroutes() {
+        route.addPassengerRoute(passenger, subroute);
+        route.removeSubroute(subroute);
+        assertFalse(route.getPassengers().contains(passenger));
+    }
+
+
 }
