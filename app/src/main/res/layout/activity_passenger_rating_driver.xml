@@ -10,8 +10,9 @@
     <LinearLayout
         android:id="@+id/linearLayout6"
         android:layout_width="match_parent"
-        android:layout_height="550dp"
+        android:layout_height="400dp"
         android:orientation="vertical"
+
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
@@ -59,8 +60,8 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="334dp"
-                android:layout_height="68dp"
+                android:layout_width="192dp"
+                android:layout_height="60dp"
                 android:layout_gravity="start"
                 android:layout_marginTop="20sp"
                 android:layout_marginBottom="5sp"
@@ -72,7 +73,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/Politeness"
                     android:layout_width="match_parent"
-                    android:layout_height="68dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
 
                     android:fontFamily="sans-serif-medium"
@@ -87,8 +88,8 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout1"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="334dp"
-                android:layout_height="68dp"
+                android:layout_width="192dp"
+                android:layout_height="60dp"
                 android:layout_marginTop="20dp"
                 android:hint="@string/security"
                 android:textColorHint="@color/black"
@@ -114,48 +115,56 @@
                     tools:ignore="TextContrastCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout2"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="334dp"
-                android:layout_height="68dp"
-                android:layout_marginTop="20sp"
-                android:hint="@string/cleanliness"
-                android:textColorHint="@color/black"
-                app:boxStrokeColor="@color/black"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/RateButton"
-                app:layout_constraintHorizontal_bias="0.052"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.948">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/Cleanliness"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayout2"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="192dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="20sp"
+                    android:hint="@string/cleanliness"
+                    android:textColorHint="@color/black"
+                    app:boxStrokeColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/RateButton"
+                    app:layout_constraintHorizontal_bias="0.052"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.948">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/Cleanliness"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="sans-serif-medium"
+                        android:inputType="text"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textColorHint="#1A237E"
+                        android:textSize="20sp"
+                        tools:ignore="TextContrastCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/RateButton"
+                    android:layout_width="137dp"
+                    android:layout_height="50dp"
                     android:layout_gravity="center"
-                    android:fontFamily="sans-serif-medium"
-                    android:inputType="text"
-                    android:singleLine="true"
-                    android:textSize="20sp"
-                    android:textColor="@color/black"
-                    android:textColorHint="#1A237E"
-                    tools:ignore="TextContrastCheck" />
-            </com.google.android.material.textfield.TextInputLayout>
 
-            <Button
-                android:id="@+id/RateButton"
-                android:layout_width="112dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="295dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="8dp"
-                android:background="#6845A5"
-                android:backgroundTint="#6946A6"
-                android:text="@string/rate1"
-                android:textSize="20sp" />
+                    android:layout_marginStart="50dp"
+
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="0dp"
+                    android:background="#6845A5"
+                    android:backgroundTint="#6946A6"
+                    android:text="@string/rate1"
+                    android:textSize="20sp" />
+            </LinearLayout>
 
 
         </LinearLayout>

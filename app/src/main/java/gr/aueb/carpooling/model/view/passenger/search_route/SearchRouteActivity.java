@@ -17,6 +17,7 @@ import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.Passenger;
 import gr.aueb.carpooling.model.Route;
 import gr.aueb.carpooling.model.Subroute;
+import gr.aueb.carpooling.model.dao.RouteDAO;
 import gr.aueb.carpooling.model.view.passenger.front_page.PassengerFrontPageActivity;
 
 public class SearchRouteActivity extends AppCompatActivity implements SearchRouteView, SearchRouteRecyclerViewAdapter.SearchRouteSelectionListener {
@@ -47,6 +48,7 @@ public class SearchRouteActivity extends AppCompatActivity implements SearchRout
         Subroute subroute = viewModel.getPresenter().findSubroute(subroute_id);
         Passenger currentPassenger = viewModel.getPresenter().findPassenger(username);
         viewModel.getPresenter().findSameDestinationCityRoutes(currentPassenger, subroute.getDestination().getCity());
+
         int l = viewModel.getPresenter().getRouteList().size();
         showErrorMessage("len", String.valueOf(l));
         // ui initialization

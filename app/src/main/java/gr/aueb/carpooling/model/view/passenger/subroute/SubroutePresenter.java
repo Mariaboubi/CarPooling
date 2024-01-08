@@ -11,7 +11,6 @@ import gr.aueb.carpooling.model.dao.SubrouteDAO;
 
 
 public class SubroutePresenter {
-
     private SubrouteDAO subrouteDAO;
     private PassengerDAO passengerDAO;
 
@@ -62,6 +61,7 @@ public class SubroutePresenter {
             Address destination = new Address(streetDest, numberDest, CityDest, zipCode1, "Greece");
             ZipCode zipCode2 = new ZipCode(ZipCodePick);
             Address pickUpPoint = new Address(streetPick, numberPick, CityPick, zipCode2, "Greece");
+
             Subroute subroute = new Subroute(destination, pickUpPoint, LocalDateTime.parse(date));
             subrouteDAO.save(subroute);
             view.showRouteAddedMessage(subroute);

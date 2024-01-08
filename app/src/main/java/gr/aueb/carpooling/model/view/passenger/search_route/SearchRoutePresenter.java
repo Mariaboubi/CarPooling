@@ -1,6 +1,7 @@
 package gr.aueb.carpooling.model.view.passenger.search_route;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import gr.aueb.carpooling.model.Passenger;
 import gr.aueb.carpooling.model.Route;
@@ -51,9 +52,15 @@ public class SearchRoutePresenter {
      * Γεμίζει την λίστα με της διαδρομεσ του συγκεκριμενου οδηγού
      */
     public void findSameDestinationCityRoutes(Passenger currentPassenger, String city) {
-        this.routes = (ArrayList<Route>) routeDAO.findAll();
+        /* IMPORTANT: ALWAYS DEEP COPY A COLLECTION TAKEN FROM DAO IF YOU WANT TO MODIFY IT */
+        ArrayList<Route> dao_routes = (ArrayList<Route>) routeDAO.findAll();
+        ArrayList<Route> temp_routes = new ArrayList<>(dao_routes.size());
+        temp_routes.addAll(Collections.nCopies(dao_routes.size(), null));
+
+        Collections.copy(temp_routes, dao_routes);
         ArrayList<Route> routes_to_remove = new ArrayList<>();
-        for (Route route : routes) {
+
+        for (Route route : temp_routes) {
             if (!route.getDestination().getCity().equalsIgnoreCase(city)) {
                 routes_to_remove.add(route);
             }
@@ -61,7 +68,8 @@ public class SearchRoutePresenter {
                 routes_to_remove.add(route);
             }
         }
-        routes.removeAll(routes_to_remove);
+        temp_routes.removeAll(routes_to_remove);
+        this.routes = temp_routes;
     }
 
     /**
@@ -91,5 +99,10 @@ public class SearchRoutePresenter {
     public Passenger findPassenger(String username) {
         return passengerDAO.findByUsername(username);
     }
-
+    public void save(Route route) {
+        routeDAO.save(route);
+    }
+    public RouteDAO getRouteDAO() {
+        return routeDAO;
+    }
 }

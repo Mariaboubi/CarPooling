@@ -34,7 +34,7 @@
         android:id="@+id/textInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="192dp"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:hint="@string/politeness"
         android:textColorHint="@color/black"
         app:boxStrokeColor="@color/black"
@@ -47,8 +47,8 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/Politeness"
-            android:layout_width="192dp"
-            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
             android:layout_gravity="center"
             android:layout_marginBottom="112dp"
             android:fontFamily="sans-serif-medium"
@@ -80,7 +80,7 @@
         android:id="@+id/textInputLayout1"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="192dp"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
 
         android:hint="@string/reliability"
         android:textColorHint="@color/black"
@@ -94,8 +94,8 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/Reliability"
-            android:layout_width="192dp"
-            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="sans-serif-medium"
             android:inputType="text"
@@ -110,7 +110,7 @@
         android:id="@+id/textInputLayout2"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="192dp"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
 
         android:hint="@string/consistency"
         android:textColorHint="@color/black"
@@ -124,8 +124,8 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/Consistency"
-            android:layout_width="192dp"
-            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="sans-serif-medium"
             android:inputType="text"

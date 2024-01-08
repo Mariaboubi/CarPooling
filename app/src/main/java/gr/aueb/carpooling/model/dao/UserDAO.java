@@ -15,11 +15,11 @@ public interface UserDAO {
 
     void save(User entity);
 
-    User find(String username, String password);
+    User findByUsername(String username, String password);
 
-    User find(String username);
+    User findByUsername(String username);
 
-    User find(int id);
+    User findByUsername(int id);
 
     //debug
     int size();

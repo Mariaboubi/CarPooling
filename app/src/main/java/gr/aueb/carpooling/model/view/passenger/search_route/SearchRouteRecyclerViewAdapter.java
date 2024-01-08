@@ -58,6 +58,7 @@ public class SearchRouteRecyclerViewAdapter extends RecyclerView.Adapter<SearchR
             public void onClick(View v) {
                 Route clickroute= routes.get(position);
                 listener.selectRoute(clickroute);
+
             }
         });
     }

@@ -58,7 +58,7 @@ public class DriverRatingActivity extends AppCompatActivity implements DriverRat
         subroute = subrouteDAO.findById(subroute_id);
 
         rate_button = (Button) findViewById(R.id.RateButton);
-        Route route = routeDAO.findByMap(passengerDAO.findByUsername(username), subroute);
+        Route route = routeDAO.findRouteByPassAndSub(passengerDAO.findByUsername(username), subroute);
         DriverUsername = ((TextView) findViewById(R.id.DriversUserName));
         DriverUsername.setText(route.getDriver().getUsername());
 

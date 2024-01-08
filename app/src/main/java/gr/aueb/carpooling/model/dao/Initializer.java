@@ -55,6 +55,7 @@ public abstract class Initializer {
         userDAO.save(user1);
         userDAO.save(user2);
         userDAO.save(user3);
+        userDAO.save(user4);
 
         //// NEW DRIVERS////////////////////////////////////////////////////////////////
         DriverDAO driverDAO= getDriverDAO();

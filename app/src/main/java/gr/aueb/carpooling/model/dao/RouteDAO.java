@@ -40,7 +40,7 @@ public interface RouteDAO {
     Passenger findPassengerByRoute(Route route);
     ArrayList<Route> findExistedRoutes();
 
-    Route findByMap(Passenger pas, Subroute sub);
+    Route findRouteByPassAndSub(Passenger pas, Subroute sub);
 
     Route findByDestDateDriver(String dest, String date,Driver driver);
 

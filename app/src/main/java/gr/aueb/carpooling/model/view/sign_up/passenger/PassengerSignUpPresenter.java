@@ -37,7 +37,7 @@ public class PassengerSignUpPresenter {
         } else if (inputCVV.length() != 3) {
             view.showErrorMessage("Error!", "CVV must have 3 numbers.");
         }else{
-                User user = userDao.find(username);
+                User user = userDao.findByUsername(username);
                 Passenger passenger = new Passenger(user.getUsername(),user.getName(),user.getSurname(),user.getPhone(),user.getEmail(),user.getPassword(),user.getAge(),inputCardNumber,inputCardHolderName,inputCVV);
                 passengerDao.save(passenger);
 

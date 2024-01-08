@@ -58,9 +58,9 @@ public class ShowRequestPresenter {
 
     public void setSubrouteList(ArrayList<Route> routes) {
 
-        for(Route route:routes){
+        for(Route route: routes){
             HashMap<Passenger, Subroute> passengerSubrouteMap = route.getPassengerRoutes();
-
+            System.out.println("passengerSubrouteMap: " + passengerSubrouteMap);
             // Add all subroutes to the subroutes_exist list
             // print status
             System.out.println("subroute status: " + passengerSubrouteMap.values().stream().map(Subroute::getStatus).toList());

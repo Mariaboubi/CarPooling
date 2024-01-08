@@ -75,6 +75,11 @@ public class SignUpPresenter {
             view.showErrorMessage("Error!", "The fields password and confirm password must match!");
         } else {
 
+            /* check if user with username exists already */
+            if (userDao.findByUsername(inputUsername) != null) {
+                view.showErrorMessage("Error!", "This username is taken.");
+                return;
+            }
             User newUser = new User(inputUsername, inputName, inputSurname, inputPhoneNumber, inputEmail, inputPassword, inputAge);
             userDao.save(newUser);
 

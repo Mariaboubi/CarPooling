@@ -47,7 +47,7 @@ public class RouteDAOmemory implements RouteDAO {
     }
 
     @Override
-    public Route findByMap(Passenger pas, Subroute sub) {
+    public Route findRouteByPassAndSub(Passenger pas, Subroute sub) {
         for (Route route : entities) {
             return route.getRoute(pas, sub);
         }

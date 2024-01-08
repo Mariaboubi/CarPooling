@@ -76,9 +76,10 @@ public class ShowRequestRecyclerViewAdapter extends RecyclerView.Adapter<ShowReq
             @Override
             public void onClick(View view) {
                 currentSubroute.setStatus(Request_status.REJECTED);
+                // TODO test this
+                Route route = routeDAO.findRouteBySubroute(currentSubroute);
+                route.removeSubroute(currentSubroute);
 
-//                System.out.println("ACCEPTED");
-//                System.out.println(currentSubroute.getStatus().toString());
                 listener.refreshRequests();
             }
         });

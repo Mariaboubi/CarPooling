@@ -33,7 +33,7 @@ public class DriverSignUpPresenter {
         if(inputIban.isEmpty() || inputCarType.isEmpty() || inputDriverLicense.isEmpty()) {
             view.showErrorMessage("Error!", "Complete all the fields");
         } else {
-            User user = userDao.find(username);
+            User user = userDao.findByUsername(username);
             Driver driver = new Driver(user.getUsername(),user.getName(),user.getSurname(),user.getPhone(),user.getEmail(),user.getPassword(),user.getAge(),inputIban,inputDriverLicense,inputCarType);
             driverDao.save(driver);
 
