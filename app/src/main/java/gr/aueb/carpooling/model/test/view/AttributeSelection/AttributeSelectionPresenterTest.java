@@ -24,13 +24,10 @@ public class AttributeSelectionPresenterTest {
 
     private AttributeSelectionPresenter presenter;
 
-    private  PassengerDAO passengerDAO;
+    private PassengerDAO passengerDAO;
 
     private AttributeSelectionView view;
 
-    private  PassengerDAOmemory passengerDAOmemory;
-
-    private  DriverDAOmemory driverDAOmemory;
     private DriverDAO driverDAO;
 
     private UserDAO userDAO;
@@ -46,7 +43,7 @@ public class AttributeSelectionPresenterTest {
         userDAO = new UserDAOmemory();
         driverDAO = new DriverDAOmemory();
         passengerDAO = new PassengerDAOmemory();
-        presenter=new AttributeSelectionPresenter(driverDAOmemory,passengerDAOmemory);
+        presenter = new AttributeSelectionPresenter(driverDAO, passengerDAO);
         presenter.setView(view);
 
         user = new User(
@@ -87,10 +84,11 @@ public class AttributeSelectionPresenterTest {
             }
         };
         presenter.setView(testView);
-        assertEquals(presenter.getView(),testView);
+        assertEquals(presenter.getView(), testView);
     }
+
     @Test
-    public void AuthenticPassengerTest(){
+    public void AuthenticPassengerTest() {
         assertTrue(presenter.authenticateAttributePassenger("markos_andre"));
     }
 //    @Test

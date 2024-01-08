@@ -28,7 +28,7 @@ public class DriverRatingDAOTest {
         driverRatingDAO = new DriverRatingDAOmemory();
 
         driver1 = new Driver("maria123", "maria", "maria", "1234567890", new EmailAddress("maria@gmail.com"), "12345678", "20", "1234567890", "License1", "bmw");
-        driver2 = new Driver("eleni123", "eleni", "eleni", "6980000000",  new EmailAddress("eleni@gmail.com"), "00000000", "20", "9876543210", "License2", "mercendes");
+        driver2 = new Driver("eleni123", "eleni", "eleni", "6980000000",  new EmailAddress("eleni@gmail.com"), "00000000", "20", "9876543210", "License2", "mercedes");
         route1 = new Route(driver1, null, null, null, 0, false);
         route2 = new Route(driver2, null, null, null, 0, false);
         driverRating1 = new DriverRating(driver1, route1, "4.0", "4.5", "3.5");
@@ -43,6 +43,9 @@ public class DriverRatingDAOTest {
         driverRatingDAO.deleteAll();
     }
 
+    /**
+     * Test case to check if the findAll method correctly retrieves all driver ratings in the DAO.
+     */
     @Test
     public void testFindAll() {
         // Check if both driver ratings are in the DAO
@@ -50,6 +53,9 @@ public class DriverRatingDAOTest {
         assertTrue(driverRatingDAO.findAll().contains(driverRating2));
     }
 
+    /**
+     * Test case to check if the findAll method correctly handles an empty DAO.
+     */
     @Test
     public void testFindAllEmpty() {
         // Clear all driver ratings from the DAO

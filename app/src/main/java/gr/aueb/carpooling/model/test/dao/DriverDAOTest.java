@@ -44,18 +44,27 @@ public class DriverDAOTest {
         driverDAO.deleteAll();
     }
 
+    /**
+     * Test case to check if the find method correctly finds an existing driver by username.
+     */
     @Test
     public void testFind() {
         boolean found = driverDAO.find(driver.getUsername());
         assertTrue(found);
     }
 
+    /**
+     * Test case to check if the find method correctly handles a non-existent username.
+     */
     @Test
     public void testFindNonExistent() {
         boolean found = driverDAO.find("nonexistent");
         assertFalse(found);
     }
 
+    /**
+     * Test case to check if the findByUsername method correctly finds an existing driver by username.
+     */
     @Test
     public void testFindByUsername() {
         Driver foundDriver = driverDAO.findByUsername(driver.getUsername());
@@ -63,12 +72,18 @@ public class DriverDAOTest {
         assertEquals(driver, foundDriver);
     }
 
+    /**
+     * Test case to check if the findByUsername method correctly handles a non-existent username.
+     */
     @Test
     public void testFindByUsernameNonExistent() {
         Driver foundDriver = driverDAO.findByUsername("nonexistent");
         assertNull(foundDriver);
     }
 
+    /**
+     * Test case to check if the findAll method correctly retrieves all drivers.
+     */
     @Test
     public void testFindAll() {
         ArrayList<Driver> allDrivers = driverDAO.findAll();
