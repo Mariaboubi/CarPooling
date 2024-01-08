@@ -9,8 +9,6 @@ public class Driver extends User implements DriverInterface {
 
     private Set<DriverRating> rates;
 
-
-//    private final Set<PassengerRating> passanger_rating;
     private final int driver_id;
     private DriverRating driver_rating;
     // Constructor
@@ -26,7 +24,6 @@ public class Driver extends User implements DriverInterface {
 
         // Initialize the 'routes' set
         this.routes = new HashSet<>();
-//        this.passanger_rating = new HashSet<>();
         this.rates = new HashSet<>();
 
         // Initialize the instance variables
@@ -41,6 +38,7 @@ public class Driver extends User implements DriverInterface {
         this.license_number = license_number;
         this.car_type = car_type;
     }
+
 
     public int getDriverId() {
         return driver_id;
@@ -107,28 +105,21 @@ public class Driver extends User implements DriverInterface {
         }
     }
 
-//    public void removePassengerRating(PassengerRating rating) throws UnsupportedOperationException {
-//        if(passanger_rating.size() > 0) {
-//            this.passanger_rating.remove(rating);
-//        } else {
-//            throw new UnsupportedOperationException("Cannot remove from an empty passenger rating set.");
-//        }
-//    }
 
     public boolean hasRoute(Route route) {
         return routes.contains(route);
     }
 
-//    public boolean hasPassengerRating(PassengerRating rating) {
-//        return passanger_rating.contains(rating);
-//    }
+    public boolean hasRate(DriverRating rate) {
+        return rates.contains(rate);
+    }
 
     public HashSet<Route> getRoutes() {
         return new HashSet<>(routes); // Return a new set to avoid direct access to the internal set
     }
 
-//    public HashSet<PassengerRating> getPassengerRating() {
-//        return new HashSet<>(passanger_rating); // Return a new set to avoid direct access to the internal set
-//    }
+    public HashSet<DriverRating> getRates() {
+        return new HashSet<>(rates); // Return a new set to avoid direct access to the internal set
+    }
 
 }

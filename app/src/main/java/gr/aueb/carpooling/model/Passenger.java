@@ -106,4 +106,12 @@ public class Passenger extends User implements PassengerInterface {
     public HashSet<Route> getRoutes() {
         return new HashSet<>(routes);
     }
+
+    public boolean hasRate(PassengerRating rate) {
+        return rates.contains(rate);
+    }
+
+    public HashSet<PassengerRating> getRates() {
+        return new HashSet<>(rates);
+    }
 }

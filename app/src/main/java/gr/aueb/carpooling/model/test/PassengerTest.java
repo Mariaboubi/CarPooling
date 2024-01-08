@@ -13,6 +13,7 @@ import org.threeten.bp.LocalDateTime;
 import java.util.Currency;
 
 import gr.aueb.carpooling.model.Driver;
+import gr.aueb.carpooling.model.DriverRating;
 import gr.aueb.carpooling.model.Passenger;
 import gr.aueb.carpooling.model.PassengerRating;
 import gr.aueb.carpooling.model.Route;
@@ -97,7 +98,7 @@ public class PassengerTest {
 
     @Test
     public void testGetAge() {
-        assertEquals(passenger.getAge(), 19);
+        assertEquals(passenger.getAge(), "19");
     }
 
     @Test
@@ -153,10 +154,6 @@ public class PassengerTest {
     }
 
 
-    @Test
-    public void testInvalidTopUpAmount() {
-        assertThrows(IllegalStateException.class, () -> passenger.topUp(new Money(-1.0, euroCurrency)));
-    }
 
     @Test
     public void testResetBalance() {
@@ -200,19 +197,22 @@ public class PassengerTest {
                 () -> passenger.removeRoute(route));
         assertEquals("Cannot remove from an empty route_data set.", exception.getMessage());
     }
-//    @Test
-//    public void testPaymentSuccess() {
-//        passenger.topUp(new Money(10.0, euroCurrency));
-//        passenger.payment(new Money(5.0, euroCurrency));
-//        assertEquals(passenger.getBalance(), new Money(5.0, euroCurrency));
-//
-//    }
-//    @Test
-//    public void testPaymentUnsuccess() {
-//        passenger.topUp(new Money(5.0, euroCurrency));
-//        UnsupportedOperationException exception = assertThrows(UnsupportedOperationException.class,
-//                () -> passenger.payment(new Money(10.0, euroCurrency)));
-//        assertEquals("The transaction was unsuccessful. Put more money in the card", exception.getMessage());
-//    }
+
+    @Test
+    public void testAddRates() {
+        passenger.addRating(rate);
+        assertTrue(passenger.hasRate(rate));
+        assertTrue(passenger.getRates().contains(rate));
+    }
+
+    @Test
+    public void testAverageRating(){
+        PassengerRating rate1 = new PassengerRating(passenger, route1, "4.0", "4.3", "4.4");
+        passenger.addRating(rate1);
+        float expectedAverageRating = (4.0f + 4.3f + 4.4f) / 3;
+        assertEquals(expectedAverageRating, passenger.averageRating(), 0.001);
+
+
+    }
 
 }

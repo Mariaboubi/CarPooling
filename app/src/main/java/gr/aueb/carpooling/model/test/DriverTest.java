@@ -36,6 +36,8 @@ public class DriverTest {
         email = new EmailAddress("pappas@gmail.com");
         driver = new Driver("john123", "john", "pappas", "696949", email, "12345123", "19", "GRE10230910290194",
                 "112233", "mersedes");
+
+
         Money money = new Money(10.0, euroCurrency);
         ZipCode zip = new ZipCode("16562");
         destination = new Address("mesogeiwn", "10", "athens", zip, "greece");
@@ -44,6 +46,8 @@ public class DriverTest {
         route1 = new Route(driver, money, LocalDateTime.of(2023, 9, 12, 10, 12), destination, 2, false);
 
         rate = new DriverRating(driver, route, "4.0", "4.3", "4.4");
+
+
 
     }
 
@@ -207,4 +211,21 @@ public class DriverTest {
         // Ensure that the routes set is still empty
         assertTrue(driver.getRoutes().isEmpty());
     }
+    @Test
+    public void testAddRates() {
+        driver.addRates(rate);
+        assertTrue(driver.hasRate(rate));
+        assertTrue(driver.getRates().contains(rate));
+    }
+
+    @Test
+    public void testAverageRating(){
+        DriverRating rate1 = new DriverRating(driver, route1, "4.0", "4.3", "4.4");
+        driver.addRates(rate1);
+        float expectedAverageRating = (4.0f + 4.3f + 4.4f) / 3;
+        assertEquals(expectedAverageRating, driver.averageRating(), 0.001);
+
+
+    }
+
 }

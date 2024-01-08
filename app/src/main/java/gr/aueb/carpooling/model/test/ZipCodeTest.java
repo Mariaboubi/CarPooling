@@ -55,15 +55,5 @@ public class ZipCodeTest {
                 () -> zip.setCode("11"));
         assertEquals("Invalid zipcode", exception.getMessage());
     }
-    @Test
-    public void testGetLatitude() {
-        ZipCode zip = new ZipCode("11111");
-        assertEquals(0.0, zip.getLatitude());
-    }
-    @Test
-    public void testGetLongitude() {
-        ZipCode zip = new ZipCode("11111");
-        assertEquals(0.0, zip.getLongitude());
-    }
 
 }

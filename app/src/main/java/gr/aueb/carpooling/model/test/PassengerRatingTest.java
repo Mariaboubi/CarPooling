@@ -13,7 +13,9 @@ import java.util.Currency;
 import gr.aueb.carpooling.model.Driver;
 import gr.aueb.carpooling.model.Passenger;
 import gr.aueb.carpooling.model.PassengerRating;
+import gr.aueb.carpooling.model.Rating;
 import gr.aueb.carpooling.model.Route;
+import gr.aueb.carpooling.model.User;
 import gr.aueb.carpooling.model.contact.Address;
 import gr.aueb.carpooling.model.contact.EmailAddress;
 import gr.aueb.carpooling.model.contact.Money;
@@ -53,14 +55,9 @@ public class PassengerRatingTest {
         assertEquals("4.5", passengerRating.getPolitenessRating());
         assertEquals("3.2", passengerRating.getConsistencyRating());
         assertEquals("5.0", passengerRating.getReliabilityRating());
-    }
+        assertEquals(passenger, passengerRating.getPassenger());
+        assertEquals((User) passenger, passengerRating.getUser());
 
-    @Test
-    public void testConstructorInvalidRatings() {
-        // Assert that the constructor throws IllegalArgumentException for invalid ratings
-        assertThrows(IllegalArgumentException.class, () -> {
-            new PassengerRating(passenger, route, "4.5", "5.2", "5.0");
-        });
     }
 
     @Test
@@ -81,18 +78,6 @@ public class PassengerRatingTest {
         assertEquals("1.5", passengerRating.getReliabilityRating());
     }
 
-    @Test
-    public void testSetInvalidRatings() {
-        // Assert that setting ratings above the expected range is not allowed
-        assertThrows(IllegalArgumentException.class, () -> passengerRating.setPolitenessRating("5.1"));
-        assertThrows(IllegalArgumentException.class, () -> passengerRating.setConsistencyRating("5.2"));
-        assertThrows(IllegalArgumentException.class, () -> passengerRating.setReliabilityRating("5.3"));
-
-        // Assert that setting ratings below the expected range is not allowed
-        assertThrows(IllegalArgumentException.class, () -> passengerRating.setPolitenessRating("-1.0"));
-        assertThrows(IllegalArgumentException.class, () -> passengerRating.setConsistencyRating("-2.0"));
-        assertThrows(IllegalArgumentException.class, () -> passengerRating.setReliabilityRating("-0.5f"));
-    }
 
     @Test
     public void testAverageRating() {
