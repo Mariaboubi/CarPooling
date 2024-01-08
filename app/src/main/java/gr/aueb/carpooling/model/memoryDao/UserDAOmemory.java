@@ -21,8 +21,8 @@ public class UserDAOmemory implements UserDAO {
 
     @Override
     public User findByUsernameAndPassword(String username, String password) {
-        for(User user: entities){
-            if(username.equals(user.getUsername()) && password.equals(user.getPassword())){
+        for (User user : entities) {
+            if (username.equals(user.getUsername()) && password.equals(user.getPassword())) {
                 return user;
             }
         }
@@ -30,10 +30,9 @@ public class UserDAOmemory implements UserDAO {
     }
 
     @Override
-    public User findByUsername(String username)
-    {
-        for(User user: entities){
-            if(username.equals(user.getUsername())){
+    public User findByUsername(String username) {
+        for (User user : entities) {
+            if (username.equals(user.getUsername())) {
                 return user;
             }
         }

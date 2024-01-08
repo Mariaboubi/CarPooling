@@ -27,14 +27,16 @@ public class RouteDAOmemory implements RouteDAO {
     }
 
     @Override
-    public List<Route> findAll() {
+    public ArrayList<Route> findAll() {
         return entities;
     }
 
     @Override
     public Route findRouteByPassAndSub(Passenger pas, Subroute sub) {
         for (Route route : entities) {
-            return route.getRoute(pas, sub);
+            if (route.getSubRouteByPassenger(pas) == sub) {
+                return route;
+            }
         }
         return null;
 
@@ -68,8 +70,8 @@ public class RouteDAOmemory implements RouteDAO {
             }
         }
         ArrayList<Subroute> result = new ArrayList<>();
-        for(Subroute sub : subroutes){
-            if(sub.getStatus()== Request_status.COMPLETED){
+        for (Subroute sub : subroutes) {
+            if (sub.getStatus() == Request_status.COMPLETED) {
                 result.add(sub);
             }
         }
@@ -95,12 +97,13 @@ public class RouteDAOmemory implements RouteDAO {
                 result.add(route);
             }
         }
-        return  result;
+        return result;
     }
+
     public ArrayList<Route> findByDriverIsCompleted(Driver driver) {
-        ArrayList<Route> result= new ArrayList<>();
-        for(Route route : entities){
-            if(route.getDriver()==driver  && route.isCompleted()){
+        ArrayList<Route> result = new ArrayList<>();
+        for (Route route : entities) {
+            if (route.getDriver() == driver && route.isCompleted()) {
                 result.add(route);
             }
         }
