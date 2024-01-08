@@ -40,22 +40,6 @@ public interface DriverDAO {
     Driver findByUsername(String username);
 
     /**
-     * Finds and returns a Driver entity based on the given user ID.
-     *
-     * @param id The user ID of the driver to find.
-     * @return The Driver entity with the specified user ID, or null if not found.
-     */
-    Driver find(int id);
-
-    /**
-     * Checks if a driver with the specified driver ID exists in the storage.
-     *
-     * @param id The driver ID of the driver to check.
-     * @return true if the driver with the given driver ID exists; otherwise, false.
-     */
-    boolean findDriver(int id);
-
-    /**
      * Retrieves and returns a list containing all Driver entities stored in the storage.
      *
      * @return An ArrayList containing all Driver entities.

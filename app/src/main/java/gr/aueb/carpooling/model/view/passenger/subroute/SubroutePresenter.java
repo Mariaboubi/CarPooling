@@ -68,10 +68,6 @@ public class SubroutePresenter {
         }
     }
 
-    public void setPassenger(int id) {
-        passenger = passengerDAO.find(id);
-    }
-
     public void setView(SubrouteView view) {
         this.view = view;
     }

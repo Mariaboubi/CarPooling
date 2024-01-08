@@ -23,4 +23,7 @@ public class DriverRatingDAOmemory implements DriverRatingDAO {
     public ArrayList<DriverRating> findAll() {
         return entities;
     }
+
+
+
 }

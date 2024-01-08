@@ -15,16 +15,21 @@ import gr.aueb.carpooling.model.memoryDao.DriverDAOmemory;
 
 public class CreateRoutePresenter {
 
-    private final RouteDAO routeDAO;
-    private final DriverDAO driverDAO ;
+    private RouteDAO routeDAO;
+    private DriverDAO driverDAO = new DriverDAOmemory();
 
     CreateRouteView view;
+    private int driverId;
 
     private Driver driver;
 
     public CreateRoutePresenter(DriverDAO driverDAO, RouteDAO routeDAO) {
         this.driverDAO = driverDAO;
         this.routeDAO = routeDAO;
+    }
+
+    public void setDriver(int id) {
+        driver = driverDAO.find(id);
     }
 
     public void setView(CreateRouteView view) {

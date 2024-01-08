@@ -20,7 +20,4 @@ public class PassengerFrontPagePresenter {
         this.view = view;
     }
 
-    public boolean authenticateAttributePassenger(int id) {
-        return passengerDAO.findPassenger(id);
-    }
 }

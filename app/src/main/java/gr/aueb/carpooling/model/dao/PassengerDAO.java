@@ -48,21 +48,6 @@ public interface PassengerDAO {
      */
     ArrayList<Passenger> findAllByRoute(Route route);
 
-    /**
-     * Finds and returns a Passenger entity based on the given user ID.
-     *
-     * @param id The user ID of the passenger to find.
-     * @return The Passenger entity with the specified user ID, or null if not found.
-     */
-    Passenger find(int id);
-
-    /**
-     * Checks if a passenger with the specified passenger ID exists in the storage.
-     *
-     * @param id The passenger ID of the passenger to check.
-     * @return true if the passenger with the given passenger ID exists; otherwise, false.
-     */
-    boolean findPassenger(int id);
 
     /**
      * Retrieves and returns a list containing all Passenger entities stored in the storage.

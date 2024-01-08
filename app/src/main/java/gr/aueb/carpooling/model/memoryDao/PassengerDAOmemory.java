@@ -47,24 +47,7 @@ public class PassengerDAOmemory implements PassengerDAO {
         return  result;
     }
 
-    @Override
-    public Passenger find(int id) {
-        for(Passenger passenger: entities){
-            if(passenger.getUserId()==id){
-                return passenger;
-            }
-        }
-        return null;
-    }
 
-    public boolean findPassenger(int id) {
-        for(Passenger passenger: entities){
-            if(passenger.getPassengerId()==id){
-                return true;
-            }
-        }
-        return false;
-    }
 
     public ArrayList<Passenger> findAll() {
         return entities;
