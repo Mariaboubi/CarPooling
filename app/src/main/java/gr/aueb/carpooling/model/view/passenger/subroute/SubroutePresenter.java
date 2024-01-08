@@ -2,7 +2,6 @@ package gr.aueb.carpooling.model.view.passenger.subroute;
 
 import org.threeten.bp.LocalDateTime;
 
-import gr.aueb.carpooling.model.Passenger;
 import gr.aueb.carpooling.model.Subroute;
 import gr.aueb.carpooling.model.contact.Address;
 import gr.aueb.carpooling.model.contact.ZipCode;
@@ -11,19 +10,15 @@ import gr.aueb.carpooling.model.dao.SubrouteDAO;
 
 
 public class SubroutePresenter {
-    private SubrouteDAO subrouteDAO;
-    private PassengerDAO passengerDAO;
+    private final SubrouteDAO subrouteDAO;
 
     SubrouteView view;
 
-    private Passenger passenger;
-
     public SubroutePresenter(PassengerDAO passengerDAO, SubrouteDAO subrouteDAO) {
-        this.passengerDAO = passengerDAO;
         this.subrouteDAO = subrouteDAO;
     }
 
-    public void onCreateSubRoute(String username) {
+    public void onCreateSubRoute() {
         String streetDest = view.StreetDest();
         String numberDest = view.NumberDest();
         String CityDest = view.CityDest();
@@ -74,9 +69,5 @@ public class SubroutePresenter {
 
     public SubrouteView getView() {
         return this.view;
-    }
-
-    public Passenger getPassenger() {
-        return this.passenger;
     }
 }

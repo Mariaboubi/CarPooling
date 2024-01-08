@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.List;
 
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.Passenger;
@@ -26,14 +25,10 @@ public class ShowRequestRecyclerViewAdapter extends RecyclerView.Adapter<ShowReq
 
     private final ArrayList<Subroute> subroutes;
 
-    private ArrayList<Route> routes;
-
-    private ShowRequestViewModel viewModel;
     private final ShowRequestRecyclerViewAdapter.ShowRequestListener listener;
     private final RouteDAO routeDAO = new RouteDAOmemory();
     public ShowRequestRecyclerViewAdapter(ArrayList<Subroute> subroutes, ShowRequestRecyclerViewAdapter.ShowRequestListener listener,ArrayList<Route> routes) {
         this.subroutes = subroutes;
-        this.routes = routes;
         this.listener = listener;
     }
 
@@ -62,26 +57,19 @@ public class ShowRequestRecyclerViewAdapter extends RecyclerView.Adapter<ShowReq
         String str_rate = "Passenger rating: " + new DecimalFormat("0.00").format(passenger.averageRating());
         holder.passengerRate.setText(str_rate);
 
-        holder.acceptButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                currentSubroute.setStatus(Request_status.APPROVED);
-//                System.out.println("ACCEPTED");
-//                System.out.println(currentSubroute.getStatus().toString());
-                listener.refreshRequests();
-            }
+        holder.acceptButton.setOnClickListener(view -> {
+            currentSubroute.setStatus(Request_status.APPROVED);
+
+            listener.refreshRequests();
         });
 
-        holder.rejectButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                currentSubroute.setStatus(Request_status.REJECTED);
-                // TODO test this
-                Route route = routeDAO.findRouteBySubroute(currentSubroute);
-                route.removeSubroute(currentSubroute);
+        holder.rejectButton.setOnClickListener(view -> {
+            currentSubroute.setStatus(Request_status.REJECTED);
 
-                listener.refreshRequests();
-            }
+            Route route = routeDAO.findRouteBySubroute(currentSubroute);
+            route.removeSubroute(currentSubroute);
+
+            listener.refreshRequests();
         });
     }
 

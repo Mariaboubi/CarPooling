@@ -15,10 +15,10 @@ import java.text.DecimalFormat;
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.dao.DriverDAO;
 import gr.aueb.carpooling.model.memoryDao.DriverDAOmemory;
-import gr.aueb.carpooling.model.view.driver.DriverStatistics.DriverStatisticsActivity;
-import gr.aueb.carpooling.model.view.driver.DriverTopUp.DriverTopUp;
-import gr.aueb.carpooling.model.view.driver.ExistedRoutes.ExistedRouteActivity;
-import gr.aueb.carpooling.model.view.driver.createRoute.CreateRouteActivity;
+import gr.aueb.carpooling.model.view.driver.statistics.DriverStatisticsActivity;
+import gr.aueb.carpooling.model.view.driver.top_up.DriverTopUp;
+import gr.aueb.carpooling.model.view.driver.existed_routes.ExistedRouteActivity;
+import gr.aueb.carpooling.model.view.driver.create_route.CreateRouteActivity;
 import gr.aueb.carpooling.model.view.driver.show_request.ShowRequestActivity;
 import gr.aueb.carpooling.model.view.log_in.LogInActivity;
 

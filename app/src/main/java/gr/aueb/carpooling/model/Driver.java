@@ -7,20 +7,16 @@ public class Driver extends User implements DriverInterface {
     private String iban, license_number, car_type; // personal details
     private final Set<Route> routes; // A HashSet of Routes that the driver takes part
 
-    private Set<DriverRating> rates;
+    private final Set<DriverRating> rates;
 
     private final int driver_id;
-    private DriverRating driver_rating;
+    private final DriverRating driver_rating;
     // Constructor
     public Driver(String username, String name, String surname, String phone, EmailAddress email,
                   String password, String age, String iban, String license_number, String car_type) {
         super(username, name, surname, phone, email, password, age);
         driver_id = super.getUserId();
         driver_rating = (DriverRating) super.getRate();
-        // Check for null values and provide meaningful error messages
-        Objects.requireNonNull(iban, "IBAN cannot be null");
-        Objects.requireNonNull(license_number, "License number cannot be null");
-        Objects.requireNonNull(car_type, "Car type cannot be null");
 
         // Initialize the 'routes' set
         this.routes = new HashSet<>();
@@ -40,9 +36,6 @@ public class Driver extends User implements DriverInterface {
     }
 
 
-    public int getDriverId() {
-        return driver_id;
-    }
     public String getIban() {
         return iban;
     }
@@ -55,24 +48,15 @@ public class Driver extends User implements DriverInterface {
         return car_type;
     }
 
-    public void changeIban(String iban) throws NullPointerException {
-        if (iban == null) {
-            throw new NullPointerException("IBAN cannot be null");
-        }
+    public void changeIban(String iban)  {
         this.iban = iban;
     }
 
-    public void changeLicenseNumber(String license_num) throws NullPointerException{
-        if (license_num == null) {
-            throw new NullPointerException("License number cannot be null");
-        }
+    public void changeLicenseNumber(String license_num) {
         this.license_number = license_num;
     }
 
-    public void changeCarType(String type) throws NullPointerException{
-        if (type == null) {
-            throw new NullPointerException("Car type cannot be null");
-        }
+    public void changeCarType(String type) {
         this.car_type = type;
     }
 
@@ -93,15 +77,10 @@ public class Driver extends User implements DriverInterface {
         return rates.size() != 0 ? (float) (sum / size) : 0;
     }
 
-//    public void addPassengerRating(PassengerRating rating) {
-//            this.passanger_rating.add(rating);
-//    }
 
-    public void removeRoute(Route route) throws UnsupportedOperationException {
+    public void removeRoute(Route route)  {
         if(routes.size() > 0) {
             this.routes.remove(route);
-        } else {
-            throw new UnsupportedOperationException("Cannot remove from an empty route_data set.");
         }
     }
 

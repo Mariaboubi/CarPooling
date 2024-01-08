@@ -1,15 +1,15 @@
 package gr.aueb.carpooling.model.view.driver.show_request;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
@@ -18,10 +18,8 @@ import gr.aueb.carpooling.model.Driver;
 import gr.aueb.carpooling.model.Route;
 import gr.aueb.carpooling.model.dao.DriverDAO;
 import gr.aueb.carpooling.model.dao.RouteDAO;
-import gr.aueb.carpooling.model.dao.SubrouteDAO;
 import gr.aueb.carpooling.model.memoryDao.DriverDAOmemory;
 import gr.aueb.carpooling.model.memoryDao.RouteDAOmemory;
-import gr.aueb.carpooling.model.memoryDao.SubrouteDAOmemory;
 import gr.aueb.carpooling.model.view.driver.front_page.DriverFrontPage;
 
 
@@ -34,11 +32,9 @@ public class ShowRequestActivity extends AppCompatActivity implements ShowReques
     private RecyclerView recyclerView;
     private TextView emptyView;
 
-    private SubrouteDAO subrouteDAO = new SubrouteDAOmemory();
+    private final DriverDAO driverDAO = new DriverDAOmemory();
 
-    private DriverDAO driverDAO = new DriverDAOmemory();
-
-    private RouteDAO routeDAO = new RouteDAOmemory();
+    private final RouteDAO routeDAO = new RouteDAOmemory();
 
     private ArrayList<Route> routes;
     @Override
@@ -52,7 +48,6 @@ public class ShowRequestActivity extends AppCompatActivity implements ShowReques
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             username = extras.getString("Username");
-            //The key argument here must match that used in the other activity
         }
 
 
@@ -67,12 +62,7 @@ public class ShowRequestActivity extends AppCompatActivity implements ShowReques
         emptyView = findViewById(R.id.NoRequests);
         viewModel.getPresenter().onChangeLayout();
 
-        findViewById(R.id.back_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openDriverFrontPage(username);
-            }
-        });
+        findViewById(R.id.back_button).setOnClickListener(v -> openDriverFrontPage(username));
 
 
     }
@@ -95,7 +85,6 @@ public class ShowRequestActivity extends AppCompatActivity implements ShowReques
         recyclerView.setVisibility(View.VISIBLE);
         emptyView.setVisibility(View.GONE);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        showErrorMessage("naiiii Size " ,String.valueOf(viewModel.getPresenter().getSubrouteList().size()));
         recyclerView.setAdapter(new ShowRequestRecyclerViewAdapter(viewModel.getPresenter().getSubrouteList(), this, routes));
     }
 
@@ -114,6 +103,5 @@ public class ShowRequestActivity extends AppCompatActivity implements ShowReques
         intent.putExtra("Username", username);
         startActivity(intent);
     }
-
 
 }

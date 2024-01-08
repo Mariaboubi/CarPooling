@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:padding="0dp"
-    tools:context=".model.view.driver.ExistedRoutes.ExistedRouteActivity"
+    tools:context=".model.view.driver.existed_routes.ExistedRouteActivity"
     tools:ignore="ScrollViewCount">
 
 <LinearLayout

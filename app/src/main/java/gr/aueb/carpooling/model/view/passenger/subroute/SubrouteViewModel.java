@@ -9,15 +9,15 @@ import gr.aueb.carpooling.model.memoryDao.SubrouteDAOmemory;
 public class SubrouteViewModel extends ViewModel {
     SubroutePresenter presenter;
     /**
-     * Αρχικοποιεί τον presenter και του περνάει ένα νέο αντικείμενο τύπου owner dao και restaurant dao για να χρησιμποιήσει
+     * Initializes the presenter and passes a new object of passenger DAO and subroute DAO for use.
      */
     public SubrouteViewModel(){
         presenter = new SubroutePresenter(new PassengerDAOmemory(), new SubrouteDAOmemory());
     }
 
     /**
-     * Επιστρέφει τον presenter στις κλάσεις όπου περιέχει τις πληροφορίες
-     * @return το instance του presenter που δημιουργήσαμε παραπάνω
+     * Returns the presenter to the classes that contain the information.
+     * @return The instance of the presenter created above.
      */
     public SubroutePresenter getPresenter(){
         return this.presenter;

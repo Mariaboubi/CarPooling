@@ -1,9 +1,5 @@
 package gr.aueb.carpooling.model;
 
-import static gr.aueb.carpooling.model.Request_status.APPROVED;
-import static gr.aueb.carpooling.model.Request_status.PENDING;
-import static gr.aueb.carpooling.model.Request_status.REJECTED;
-
 import org.threeten.bp.LocalDateTime;
 
 import gr.aueb.carpooling.model.contact.Address;

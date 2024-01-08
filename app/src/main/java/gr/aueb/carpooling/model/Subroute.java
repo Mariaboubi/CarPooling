@@ -1,19 +1,16 @@
 package gr.aueb.carpooling.model;
 
-import static gr.aueb.carpooling.model.Request_status.APPROVED;
 import static gr.aueb.carpooling.model.Request_status.NOT_EXIST;
-import static gr.aueb.carpooling.model.Request_status.PENDING;
-import static gr.aueb.carpooling.model.Request_status.REJECTED;
 
 import org.threeten.bp.LocalDateTime;
+
 import java.util.Currency;
-import java.util.Objects;
 
 import gr.aueb.carpooling.model.contact.Address;
 import gr.aueb.carpooling.model.contact.Money;
 
 public class Subroute implements SubrouteInterface {
-    private static int subroute_id = 0; // Id of Subrote Objects
+    private static int subroute_id = 0; // Id of Subroute Objects
     private int id; // Id of the Subroute
     private Address destination; // The destination of the subroute
     private Money cost; // The cost of the subroute

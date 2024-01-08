@@ -7,16 +7,13 @@ import gr.aueb.carpooling.model.Passenger;
 import gr.aueb.carpooling.model.User;
 import gr.aueb.carpooling.model.contact.Money;
 import gr.aueb.carpooling.model.dao.PassengerDAO;
-import gr.aueb.carpooling.model.memoryDao.PassengerDAOmemory;
 
 public class TopUpPresenter {
 
     private TopUpView view;
-    private PassengerDAO passengerDAO;
+    private final PassengerDAO passengerDAO;
     private Passenger passenger;
 
-
-    private Money money;
 
     public TopUpPresenter(PassengerDAO passengerDAO) {
         this.passengerDAO = passengerDAO;
@@ -40,10 +37,9 @@ public class TopUpPresenter {
 
 
     /**
-     * Εαν το instance του επιβατη δεν είναι null εμφανίζουμε το χρηματικό του υπόλοιπο
-     * αλλιως εμφανίζουμε Error
+     * If the passenger instance is not null, display their financial balance;
+     * otherwise, display an error.
      */
-
     public void setLayout() {
         if (passenger!=null) {
             User user = passenger;
@@ -56,14 +52,12 @@ public class TopUpPresenter {
     }
 
     /**
-     * Εαν το instance του επιβατη δεν είναι null
-     * του προσθέτουμε ένα χρηματικό ποσό και
-     * καλούμε SetLayout() για να ανανεώσουμε
-     * το υπολοιπο που φαίνεται στην οθόνη
+     * If the passenger instance is not null, add a monetary amount,
+     * and call setLayout() to refresh the displayed balance on the screen.
      */
     public void onTopUp(double amount) {
         if(passenger!=null) {
-            money = new Money(amount,Currency.getInstance("EUR"));
+            Money money = new Money(amount, Currency.getInstance("EUR"));
             passenger.topUp(money);
             setLayout();
         }

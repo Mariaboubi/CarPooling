@@ -47,9 +47,6 @@ public class Passenger extends User implements PassengerInterface {
     }
 
 
-    public int getPassengerId() {
-        return passenger_id;
-    }
     // Getters for personal details
     public String getCardNumber() {
         return cardNumber;

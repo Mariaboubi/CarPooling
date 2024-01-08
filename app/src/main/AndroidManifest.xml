@@ -25,7 +25,7 @@
             android:name=".model.view.passenger.search_route.SearchRouteActivity"
             android:exported="false" />
         <activity
-            android:name=".model.view.driver.createRoute.CreateRouteActivity"
+            android:name=".model.view.driver.create_route.CreateRouteActivity"
             android:exported="false" />
         <activity
             android:name=".model.view.driver.front_page.DriverFrontPage"
@@ -57,28 +57,28 @@
             android:name=".model.view.passenger.subroute.subrouteActivity"
             android:exported="false" />
         <activity
-            android:name=".model.view.driver.ExistedRoutes.ExistedRouteActivity"
+            android:name=".model.view.driver.existed_routes.ExistedRouteActivity"
             android:exported="true" />
         <activity
-            android:name=".model.view.driver.RatingPassengers.RatingPassengers"
+            android:name=".model.view.driver.rating_passengers.RatingPassengers"
             android:exported="true" />
         <activity
-            android:name=".model.view.passenger.ExistedSubroutes.ExistedSubrouteActivity"
+            android:name=".model.view.passenger.existed_subroutes.ExistedSubrouteActivity"
             android:exported="true" />
         <activity
-            android:name=".model.view.passenger.DriverRating.DriverRatingActivity"
+            android:name=".model.view.passenger.driver_rating.DriverRatingActivity"
             android:exported="true" />
         <activity
             android:name=".model.view.passenger.top_up.TopUpActivity"
             android:exported="true" />
         <activity
-            android:name=".model.view.driver.DriverTopUp.DriverTopUp"
+            android:name=".model.view.driver.top_up.DriverTopUp"
             android:exported="true" />
         <activity
-            android:name=".model.view.driver.DriverStatistics.DriverStatisticsActivity"
+            android:name=".model.view.driver.statistics.DriverStatisticsActivity"
             android:exported="true" />
 
-        <activity android:name=".model.view.passenger.PassengerStatistics.PassengerStatisticsActivity"
+        <activity android:name=".model.view.passenger.statistics.PassengerStatisticsActivity"
             android:exported="true"/>
     </application>
 

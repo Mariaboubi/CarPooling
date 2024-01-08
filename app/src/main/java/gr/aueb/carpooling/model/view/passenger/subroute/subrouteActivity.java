@@ -1,15 +1,14 @@
 package gr.aueb.carpooling.model.view.passenger.subroute;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.Subroute;
@@ -18,8 +17,6 @@ import gr.aueb.carpooling.model.view.passenger.search_route.SearchRouteActivity;
 
 public class subrouteActivity extends AppCompatActivity implements SubrouteView {
 
-    private ImageButton back_button;
-    private Button create_route_button;
     private String username;
 
     private SubrouteViewModel viewModel;
@@ -29,8 +26,8 @@ public class subrouteActivity extends AppCompatActivity implements SubrouteView 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_passenger_create_subroute);
 
-        back_button = (ImageButton) findViewById(R.id.back_button);
-        create_route_button = (Button) findViewById(R.id.btnCreateSubroute);
+        ImageButton back_button = (ImageButton) findViewById(R.id.back_button);
+        Button create_route_button = (Button) findViewById(R.id.btnCreateSubroute);
 
         viewModel = new ViewModelProvider(this).get(SubrouteViewModel.class);
 
@@ -39,21 +36,11 @@ public class subrouteActivity extends AppCompatActivity implements SubrouteView 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             username = extras.getString("Username");
-            //The key argument here must match that used in the other activity
         }
 
-        create_route_button.setOnClickListener(new View.OnClickListener(){ // Όταν πατηθεί το κουμπί δημιουργίας του  subroute
-            @Override
-            public void onClick(View v){
-                viewModel.getPresenter().onCreateSubRoute(username);
+        create_route_button.setOnClickListener(v -> viewModel.getPresenter().onCreateSubRoute());
 
-            }
-        });
-
-        back_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {openPassengerFrontPageActivity(username);}
-        });
+        back_button.setOnClickListener(v -> openPassengerFrontPageActivity(username));
 
 
 
