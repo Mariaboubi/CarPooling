@@ -12,9 +12,9 @@ public class AttributeSelectionPresenter {
     private final DriverDAO driverDAO;
     AttributeSelectionView view;
 
-    public AttributeSelectionPresenter(DriverDAOmemory driverDAOmemory, PassengerDAOmemory passengerDAOmemory) {
-        this.passengerDAO = passengerDAOmemory;
-        this.driverDAO = driverDAOmemory;
+    public AttributeSelectionPresenter(DriverDAO driverDAO, PassengerDAO passengerDAO) {
+        this.passengerDAO = passengerDAO;
+        this.driverDAO = driverDAO;
     }
 
     public AttributeSelectionView getView() {
