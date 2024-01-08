@@ -7,23 +7,54 @@ import java.util.Set;
 import gr.aueb.carpooling.model.Driver;
 import gr.aueb.carpooling.model.Route;
 
+/**
+ * The DriverDAO interface defines the contract for classes that
+ * manage the storage and retrieval of driver entities.
+ */
 public interface DriverDAO {
-    void delete(Driver entity);
 
-    void delete(int id);
-
+    /**
+     * Deletes all driver entities from the storage.
+     */
     void deleteAll();
 
-    List<Driver> findAll();
-
+    /**
+     * Saves a Driver entity to the storage.
+     *
+     * @param entity The Driver entity to be saved.
+     */
     void save(Driver entity);
+
+    /**
+     * Checks if a driver with the specified username exists in the storage.
+     *
+     * @param username The username of the driver to check.
+     * @return true if the driver with the given username exists; otherwise, false.
+     */
     boolean find(String username);
+
+    /**
+     * Finds and returns a Driver entity based on the given username.
+     *
+     * @param username The username of the driver to find.
+     * @return The Driver entity with the specified username, or null if not found.
+     */
     Driver findByUsername(String username);
 
+    /**
+     * Finds and returns a Driver entity based on the given user ID.
+     *
+     * @param id The user ID of the driver to find.
+     * @return The Driver entity with the specified user ID, or null if not found.
+     */
     Driver find(int id);
 
+    /**
+     * Checks if a driver with the specified driver ID exists in the storage.
+     *
+     * @param id The driver ID of the driver to check.
+     * @return true if the driver with the given driver ID exists; otherwise, false.
+     */
     boolean findDriver(int id);
-
-    int nextId();
-
 }
+

@@ -48,7 +48,7 @@ public class ShowRequestRecyclerViewAdapter extends RecyclerView.Adapter<ShowReq
     public void onBindViewHolder(@NonNull ShowRequestRecyclerViewAdapter.ViewHolder holder, int position) {
 
         Subroute currentSubroute = subroutes.get(position);
-        String str_destination = "Destination address: " + currentSubroute.getDestination().toString2();
+        String str_destination = "Destination address: " + currentSubroute.getDestination().toString();
         holder.routeDest.setText(str_destination);
 
         String str_date = "Date: " + currentSubroute.getPickupTime().toString();

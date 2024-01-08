@@ -1,5 +1,6 @@
 package gr.aueb.carpooling.model.view.passenger.top_up;
 
+import java.text.DecimalFormat;
 import java.util.Currency;
 
 import gr.aueb.carpooling.model.Passenger;
@@ -31,7 +32,6 @@ public class TopUpPresenter {
 
     public void setPassenger() {
         passenger = passengerDAO.findByUsername(view.getPassengerUername());
-//        view.showErrorMessage("username", passenger.getUsername());
     }
 
     public Passenger getPassenger() {
@@ -45,14 +45,11 @@ public class TopUpPresenter {
      */
 
     public void setLayout() {
-        if (passenger!=null)
-        {
-            User user=passenger;
-           String balance =String.valueOf(user.getBalance().getAmount());
+        if (passenger!=null) {
+            User user = passenger;
+           String balance = new DecimalFormat("0.00").format(user.getBalance().getAmount());
            view.setBalance("Balance "+ balance + " €");
-        }
-        else
-        {
+        } else {
             view.setBalance("ERROR");
         }
 

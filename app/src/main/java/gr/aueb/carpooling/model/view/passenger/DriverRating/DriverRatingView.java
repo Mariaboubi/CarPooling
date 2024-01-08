@@ -12,5 +12,5 @@ public interface DriverRatingView extends View {
 
     String cleanliness();
 
-    void showRateAddedMessage(DriverRating rating);
+    void RateAdded();
 }

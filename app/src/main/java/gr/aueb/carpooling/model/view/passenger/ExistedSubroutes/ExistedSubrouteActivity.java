@@ -150,25 +150,16 @@ public class ExistedSubrouteActivity extends AppCompatActivity implements Existe
     @Override
     public boolean payment(Subroute subroute) {
 
-//        Money pass_balance = passenger.getBalance();
-//        // money to double
-//        double pass_money = pass_balance.getAmount();
-//        // money to string
-//        String pass_moneyString = String.valueOf(pass_money);
-
-
         // Cost of the subroute
         Money cost_of_ride = subroute.calculateCost();
-        // money to double
-        double money = cost_of_ride.getAmount();
         // money to string
-        String moneyString = String.valueOf(money);
+        String moneyString = new DecimalFormat("0.00").format(cost_of_ride.getAmount());
 
         boolean success = passenger.transaction(cost_of_ride);
         if(!success){
-            showErrorMessage("Payment failed, please put money in the app. The ride costs:",moneyString);
+            showErrorMessage("Payment failed, please put money in the app. The ride costs: ",moneyString);
         }else{
-            showErrorMessage("Payment successful. The ride costs:",moneyString);
+            showErrorMessage("Payment successful. The ride costs: ",moneyString);
         }
         return success;
     }

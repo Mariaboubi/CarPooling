@@ -14,8 +14,6 @@ public interface PassengerDAO {
 
     void deleteAll();
 
-    List<Passenger> findAll();
-
     void save(Passenger entity);
 
     boolean find(String username);
@@ -24,7 +22,6 @@ public interface PassengerDAO {
 
     Passenger findByUsername(String username);
 
-    Passenger findByName(String name);
 
     ArrayList<Passenger> findAllByRoute(Route route);
 
@@ -32,8 +29,6 @@ public interface PassengerDAO {
 
     boolean findPassenger(int id);
 
-    Set<Route> findRoute(int id);
 
-    int nextId();
 
 }

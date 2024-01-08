@@ -122,10 +122,7 @@ public class DriverRatingActivity extends AppCompatActivity implements DriverRat
         return ((EditText) findViewById(R.id.Cleanliness)).getText().toString().trim();
     }
 
-    public void showRateAddedMessage(DriverRating raiting) {
-        showErrorMessage(" Η βαθμολογία καταχωρήθεικε.Σε αθτη την διαδρομη εχει Μ.Ο: ", String.valueOf(raiting.averageRating()));
-
-
+    public void RateAdded() {
         Intent intent = new Intent(this, PassengerFrontPageActivity.class);
         intent.putExtra("Username", username);
         startActivity(intent);

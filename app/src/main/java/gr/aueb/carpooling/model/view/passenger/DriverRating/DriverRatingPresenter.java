@@ -66,7 +66,7 @@ public class DriverRatingPresenter {
 
             driverRatingDAO.save(driverRating);
 
-            view.showRateAddedMessage(driverRating);
+            view.RateAdded();
 
         }
 

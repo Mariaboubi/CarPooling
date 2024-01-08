@@ -15,11 +15,6 @@ public class DriverRatingDAOmemory implements DriverRatingDAO {
     protected static ArrayList<DriverRating> entities = new ArrayList<>();
 
     @Override
-    public void delete(DriverRating entity) {
-        entities.remove(entity);
-    }
-
-    @Override
     public void deleteAll() {
         entities.clear();
     }
@@ -29,33 +24,4 @@ public class DriverRatingDAOmemory implements DriverRatingDAO {
         entities.add(entity);
     }
 
-    @Override
-    public List<DriverRating> findAll() {
-        return new ArrayList<>(entities);
-    }
-
-    @Override
-    public DriverRating findByPassenger(Passenger passenger) {
-        return null;
-    }
-
-    @Override
-    public DriverRating find(Route route) {
-        for(DriverRating rating: entities){
-            if(route.equals(rating.getRoute())){
-                return rating;
-            }
-        }
-        return null;
-    }
-
-    @Override
-    public DriverRating findByDriver(Driver driver) {
-        for(DriverRating rating: entities){
-            if(driver.equals(rating.getDriver())){
-                return rating;
-            }
-        }
-        return null;
-    }
 }

@@ -124,7 +124,7 @@ public class Route implements RouteInterface {
     }
 
     public String getDestinationString() {
-        return this.destination.toString2();
+        return this.destination.toString();
     }
 
     public void setDestination(Address destination) {

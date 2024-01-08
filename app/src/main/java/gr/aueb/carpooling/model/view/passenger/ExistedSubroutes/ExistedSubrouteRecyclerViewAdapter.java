@@ -54,10 +54,10 @@ public class ExistedSubrouteRecyclerViewAdapter extends RecyclerView.Adapter<Exi
     public void onBindViewHolder(@NonNull ExistedSubrouteRecyclerViewAdapter.ViewHolder holder, int position) {
         Subroute currentSubroute = subroutes.get(position);
 
-        String str_dest = "Destination address: " + currentSubroute.getDestination().toString2();
+        String str_dest = "Destination address: " + currentSubroute.getDestination().toString();
         holder.subrouteDest.setText(str_dest);
 
-        String pickUpPoint = "Pick up point: " + currentSubroute.getPickupPoint().toString2();
+        String pickUpPoint = "Pick up point: " + currentSubroute.getPickupPoint().toString();
         holder.subroutepickUpPoint.setText(pickUpPoint);
 
         String status = "Status: " + currentSubroute.getStatus().toString();
