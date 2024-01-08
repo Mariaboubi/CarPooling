@@ -31,7 +31,7 @@ public interface RouteDAO {
      *
      * @return A list of all Route entities.
      */
-    List<Route> findAll();
+    ArrayList<Route> findAll();
 
     /**
      * Finds and returns a Route entity based on the given passenger and subroute.

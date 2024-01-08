@@ -9,7 +9,7 @@ import gr.aueb.carpooling.model.dao.RouteDAO;
 import gr.aueb.carpooling.model.dao.SubrouteDAO;
 import gr.aueb.carpooling.model.dao.UserDAO;
 
-public class MemoryInitialized extends Initializer {
+public class MemoryInitializer extends Initializer {
     // Initializes memory DAO'S
 
     @Override
