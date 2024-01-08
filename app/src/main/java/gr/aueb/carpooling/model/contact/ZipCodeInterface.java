@@ -11,15 +11,6 @@ public interface ZipCodeInterface {
     String getCode();
 
     /**
-     * Checks if the given zipcode is valid.
-     *
-     * @param zipcode A string representing the zipcode to be validated.
-     * @return true if the zipcode is valid, false otherwise.
-     */
-    boolean isValid(String zipcode) ;
-
-    void setCode(String zip) throws IllegalArgumentException;
-    /**
      * Generates a hash code for the ZipCode.
      *
      * @return An integer hash code.

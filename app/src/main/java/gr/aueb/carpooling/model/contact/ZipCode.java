@@ -8,8 +8,8 @@ import java.util.Random;
 public class ZipCode {
     private String zipcode;
 
-    private  double latitude ;
-    private   double longitude ;
+    private final double latitude ;
+    private final double longitude ;
 
     Random random = new Random();
 

@@ -127,14 +127,9 @@ public class Address implements AddressInterface {
 
         return earthRadius * c;
     }
+
     @NonNull
     public String toString() {
-        return String.format(
-                "Address: %s %s, %s, %s, %s",
-                street, number, city, zip, country
-        );
-    }
-    public String toString2() {
         return String.format(
                 "%s %s, %s, %s, %s",
                 street, number, city, zip, country
