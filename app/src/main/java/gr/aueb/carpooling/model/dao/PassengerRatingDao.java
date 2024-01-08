@@ -9,8 +9,6 @@ import gr.aueb.carpooling.model.PassengerRating;
 import gr.aueb.carpooling.model.Route;
 
 public interface PassengerRatingDao {
-    void delete(PassengerRating rating);
-
 
     void deleteAll();
 
@@ -18,11 +16,6 @@ public interface PassengerRatingDao {
 
     void save(PassengerRating entity);
 
-
-
-    PassengerRating find(Passenger passenger);
-
-    PassengerRating find(Route route);
 
     ArrayList<PassengerRating> findAllByRoute(Route route);
 }

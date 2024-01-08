@@ -5,22 +5,20 @@ import java.util.List;
 import gr.aueb.carpooling.model.User;
 
 public interface UserDAO {
-    void delete(User entity);
-
-    void delete(int id);
+//    void delete(User entity);
+//
+//    void delete(int id);
 
     void deleteAll();
 
-    List<User> findAll();
-
+//    List<User> findAll();
+//
     void save(User entity);
-
+//
     User findByUsername(String username, String password);
-
+//
     User findByUsername(String username);
 
-    User findByUsername(int id);
-
     //debug
-    int size();
+   int size();
 }
