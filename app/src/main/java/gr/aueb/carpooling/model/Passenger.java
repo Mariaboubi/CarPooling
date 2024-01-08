@@ -82,7 +82,7 @@ public class Passenger extends User implements PassengerInterface {
     }
 
     // Method to top up a balance
-    public void topUp(Money money) throws IllegalStateException {
+    public void topUp(Money money) {
         super.topUp(money);
     }
 
