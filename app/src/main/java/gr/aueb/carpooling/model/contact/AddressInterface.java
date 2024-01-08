@@ -77,6 +77,11 @@ public interface AddressInterface {
      */
     String getCountry();
 
+    /**
+     * Returns a string representation of the object.
+     *
+     * @return A string representation of the object.
+     */
     @NonNull
     String toString();
 }
