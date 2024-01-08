@@ -73,35 +73,8 @@ public class RatingPassengerRecyclerViewAdapter extends RecyclerView.Adapter<Rat
         String str_username = "Passenger: " + currentItem.getUsername();
         holder.ratingUsername.setText(str_username);
 
-//        Route rating_route = currentItem.getRoute();
-//        String reliability = holder.ratingReliability;
-//        String politeness = holder.ratingPoliteness;
-//        String consistency = holder.ratingConsistency;
-
         Route route = routeDAO.find(routeId);
-//            route.Completed();
-//            currentItem.setConsistencyRating(reliability);
-//            currentItem.setReliabilityRating(politeness);
-//            currentItem.setPolitenessRating(consistency);
-        //PassengerRating passengerRating = new PassengerRating(passenger,route,politeness,consistency,reliability);
-//            passengerRatingDao.save(currentItem);
 
-//        PassengerRating passengerRating = new PassengerRating(currentItem,route,politeness,consistency,reliability);
-//        route.addPassengerRating(passengerRating);
-//        passengerRatingDao.save(passengerRating);
-//        currentItem.addRates(passengerRating);
-
-
-//        route.Completed();
-//
-//        PassengerRating passengerRating = new PassengerRating(currentItem,route,politeness,consistency,reliability);
-//        route.addPassengerRating(passengerRating);
-//        passengerRatingDao.save(passengerRating);
-//        currentItem.addRates(passengerRating);
-//            holder.RateButton.setOnClickListener(v -> listener.selectRate(currentItem),
-//                    routeDAO.delete(route);
-//            );
-//
         holder.RateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,11 +83,12 @@ public class RatingPassengerRecyclerViewAdapter extends RecyclerView.Adapter<Rat
                 String consistency = holder.ratingConsistency.getText().toString().trim();
                 String reliability = holder.ratingReliability.getText().toString().trim();
 
+                boolean result = listener.validateRates(rated_passenger, politeness, consistency, reliability, route);
+                if (!result) {
+                    return;
+                }
                 PassengerRating passengerRating = new PassengerRating(rated_passenger, route, politeness, consistency, reliability);
-//                System.out.println("Rating passenger");
-//                System.out.println(passengerRating.getPolitenessRating());
-//                System.out.println(passengerRating.getConsistencyRating());
-//                System.out.println(passengerRating.getReliabilityRating());
+
                 passengerRatingDao.save(passengerRating);
 
                 rated_passenger.addRating(passengerRating);
@@ -163,6 +137,8 @@ public class RatingPassengerRecyclerViewAdapter extends RecyclerView.Adapter<Rat
 
     public interface PassengerRatingSelectionListener {
         void selectRate(PassengerRating rating);
+
+        boolean validateRates(Passenger passenger, String politeness, String consistency, String reliability, Route route);
 
     }
 

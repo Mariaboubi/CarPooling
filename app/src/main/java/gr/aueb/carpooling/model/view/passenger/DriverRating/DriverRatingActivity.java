@@ -82,7 +82,7 @@ public class DriverRatingActivity extends AppCompatActivity implements DriverRat
         confirm_ratings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean check = viewModel.getPresenter().checkIfCanBePressed();
+                boolean check = viewModel.getPresenter().checkButtonCanBePressed();
                 if(check) {
                     openPassengerFrontPage(username);
                 }

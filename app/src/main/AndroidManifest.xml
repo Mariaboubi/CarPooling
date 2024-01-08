@@ -74,6 +74,12 @@
         <activity
             android:name=".model.view.driver.DriverTopUp.DriverTopUp"
             android:exported="true" />
+        <activity
+            android:name=".model.view.driver.DriverStatistics.DriverStatisticsActivity"
+            android:exported="true" />
+
+        <activity android:name=".model.view.passenger.PassengerStatistics.PassengerStatisticsActivity"
+            android:exported="true"/>
     </application>
 
 </manifest>

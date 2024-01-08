@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+
 import gr.aueb.carpooling.R;
 import gr.aueb.carpooling.model.Driver;
 import gr.aueb.carpooling.model.Route;
@@ -71,9 +73,10 @@ public class ExistedRouteActivity extends AppCompatActivity implements ExitedRou
         public void selectRoute (Route route){
             route.calculateTotalCost();
             driverDAO.findByUsername(username).topUp(route.getTotalCost());
-            showErrorMessage("cost",String.valueOf(route.getTotalCost().getAmount()));
 
+            String total_cost =  new DecimalFormat("0.00").format(route.getTotalCost().getAmount());
 
+            showErrorMessage("Route total cost",total_cost);
 
             Intent intent = new Intent(ExistedRouteActivity.this, RatingPassengers.class);
 
@@ -107,9 +110,6 @@ public class ExistedRouteActivity extends AppCompatActivity implements ExitedRou
                     .setMessage(message)
                     .setPositiveButton("OK", null).create().show();
 
-//            Intent intent = new Intent(ExistedRouteActivity.this, LogInActivity.class);
-////        intent.putExtra("Username",username);
-//            startActivity(intent);
 
         }
     }

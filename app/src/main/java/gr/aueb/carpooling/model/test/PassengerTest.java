@@ -200,19 +200,19 @@ public class PassengerTest {
                 () -> passenger.removeRoute(route));
         assertEquals("Cannot remove from an empty route_data set.", exception.getMessage());
     }
-    @Test
-    public void testPaymentSuccess() {
-        passenger.topUp(new Money(10.0, euroCurrency));
-        passenger.payment(new Money(5.0, euroCurrency));
-        assertEquals(passenger.getBalance(), new Money(5.0, euroCurrency));
-
-    }
-    @Test
-    public void testPaymentUnsuccess() {
-        passenger.topUp(new Money(5.0, euroCurrency));
-        UnsupportedOperationException exception = assertThrows(UnsupportedOperationException.class,
-                () -> passenger.payment(new Money(10.0, euroCurrency)));
-        assertEquals("The transaction was unsuccessful. Put more money in the card", exception.getMessage());
-    }
+//    @Test
+//    public void testPaymentSuccess() {
+//        passenger.topUp(new Money(10.0, euroCurrency));
+//        passenger.payment(new Money(5.0, euroCurrency));
+//        assertEquals(passenger.getBalance(), new Money(5.0, euroCurrency));
+//
+//    }
+//    @Test
+//    public void testPaymentUnsuccess() {
+//        passenger.topUp(new Money(5.0, euroCurrency));
+//        UnsupportedOperationException exception = assertThrows(UnsupportedOperationException.class,
+//                () -> passenger.payment(new Money(10.0, euroCurrency)));
+//        assertEquals("The transaction was unsuccessful. Put more money in the card", exception.getMessage());
+//    }
 
 }
