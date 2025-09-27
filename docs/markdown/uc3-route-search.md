@@ -27,12 +27,12 @@
 
 ## Διαγράμμα δραστηριότητας
 
-![Διάγραμμα δραστηριότητας](docs/markdown/uml/activity-route-search.png)
+![Διάγραμμα δραστηριότητας](uml/activity-route-search.png)
 
 ## Κλάσεις ανάλυσης
 
-![Κλάσεις ανάλυσης](docs/markdown/uml/class-analysis-route-search.png)
+![Κλάσεις ανάλυσης](uml/class-analysis-route-search.png)
 
 ## Διάγραμμα ακολουθίας
 
-![Διάγραμμα ακολουθίας](docs/markdown/uml/sequence-route-search.png)
+![Διάγραμμα ακολουθίας](uml/sequence-route-search.png)
