@@ -29,12 +29,12 @@
 
 ## Διάγραμμα δραστηριότητας
 
-![Διάγραμμα δραστηριότητας](docs/markdown/uml/activity-route-and-passenger-details.png)
+![Διάγραμμα δραστηριότητας](uml/activity-route-and-passenger-details.png)
 
 ## Κλάσεις ανάλυσης
 
-![Κλάσεις ανάλυσης](docs/markdown/uml/class-analysis-route-and-passenger-details.png)
+![Κλάσεις ανάλυσης](uml/class-analysis-route-and-passenger-details.png)
 
 ## Διάγραμμα ακολουθίας
 
-![Διαγραμμάτα ακολουθίας](docs/markdown/uml/sequence-route-and-passenger-details.png)
+![Διαγραμμάτα ακολουθίας](uml/sequence-route-and-passenger-details.png)
