@@ -32,12 +32,12 @@
 
 ## Διαγράμμα δραστηριότητας
 
-![Διάγραμμα δραστηριότητας](docs/markdown/uml/activity-send-request.png)
+![Διάγραμμα δραστηριότητας](uml/activity-send-request.png)
 
 ## Κλάσεις ανάλυσης
 
-![Κλάσεις ανάλυσης](docs/markdown/uml/class-analysis-send-request.png)
+![Κλάσεις ανάλυσης](uml/class-analysis-send-request.png)
 
 ## Διάγραμμα ακολουθίας
 
-![Διάγραμμα ακολουθίας](docs/markdown/uml/sequence-send-request.png)
+![Διάγραμμα ακολουθίας](uml/sequence-send-request.png)
