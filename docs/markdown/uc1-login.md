@@ -24,12 +24,12 @@
 
 ## Διαγράμμα δραστηριότητας
 
-![Διάγραμμα δραστηριότητας](docs/markdown/uml/activity-login.png)
+![Διάγραμμα δραστηριότητας](uml/activity-login.png)
 
 ## Κλάσεις ανάλυσης
 
-![Κλάσεις ανάλυσης](docs/markdown/uml/class-analysis-login.png)
+![Κλάσεις ανάλυσης](uml/class-analysis-login.png)
 
 ## Διαγραμμά ακολουθίας
 
-![Διαγραμμά ακολουθίας](docs/markdown/uml/sequence-login.png)
+![Διαγραμμά ακολουθίας](uml/sequence-login.png)
